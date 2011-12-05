@@ -1,0 +1,11 @@
+<h1>Hej <%= @member.name %></h1>
+
+<% if @member.location.nil? %>
+  <%= form_for Location.new, :url => @member, :method => :put do |f| %>
+    <%= f.label :address, "Location" %>
+    <%= f.text_field :address %>
+    <%= f.submit "Opdater", :disable_with => 'Opdatere...' %>
+  <% end %>
+<% else %>
+  <%= Geokit::Geocoders::GoogleGeocoder.geocode(@member.location.address, :bias => 'dk') %>
+<% end %>

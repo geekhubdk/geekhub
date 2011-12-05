@@ -1,0 +1,60 @@
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&region=DA"></script>
+<div class="masthead">
+  <div class="container">
+    <div class="progress">
+      <div class="step" style="width: 25%;"></div>
+    </div>
+  </div>
+</div>
+<div class="container step1">
+  <div class="page-header">
+      <h1>Fortæl os hvor du bor
+        <small>så vi kan give dig relevant information for dit område</small></h1>
+  </div>
+  <p class="teaser">
+  En af ideerne med geekhub, er at bruge din lokation til at fortælle dig om arrangementer inde for et bestemt område, samt lave et kort fuld af nørder. <br/>Vi vil ikke dele din lokation med nogen, og vi behøver kun nok af din adresse til at vi kan finde nærmeste arragementer.<br/>Du kan enten vælge at indtaste dit postnummer, eller være en af de seje, og bruge det der nye HTML5 som alle snakker om.
+  </p>
+  <div class="row">
+    <div class="span8">
+    <form class="form-stacked">
+      <fieldset>
+        <legend>
+          Indtast din adresse
+        </legend>
+      <div class="clearfix">
+        <p>F.eks. dit postnummer, eller bynavn.<br/>Husk at se om den finder det rigtige.</p>
+      </div>
+      <div class="clearfix">
+        <div class="input">
+          <input type="text" name="address" id="address">
+          <input type="hidden" id="address-lat" name="lat" />
+          <input type="hidden" id="address-lng" name="lng" />
+          <span id="address-result"></span>
+        </div>
+      </div>
+      <div class="actions" id="finish-address" style="display:none">
+        <input type="submit" class="btn primary" value="Fortsæt">
+      </div>
+    </form>
+    </div>
+    <div class="span8">
+      <form class="form-stacked">
+        <fieldset>
+          <legend>Find mig via det der HTML5</legend>
+          <p>Bemærk at vi gemmer den placering som der bliver sendt tilbage. Så denne placering kan være temmelig præcis.</p>
+          <button class="start-search btn primary">Find mig!</button>
+          <h5>Her er den lokation som vi fik fra dig:</h5>
+          <div id="map_canvas">
+          </div>
+          <input type="hidden" id="lat" name="lat" />
+          <input type="hidden" id="lng" name="lng" />
+          <div class="actions finish-search" style="display:none">
+            <input type="submit" class="btn primary" value="Fortsæt">
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+
+</div>
