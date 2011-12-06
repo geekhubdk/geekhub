@@ -33,6 +33,8 @@ gem 'geokit-rails3'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+gem 'mocha', :require => false 
+  
 group :development do
   gem 'guard'
   gem 'guard-test'
