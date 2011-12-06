@@ -1,4 +1,10 @@
 Geekhub::Application.routes.draw do
+  get "pages/frontpage"
+
+  root :to => 'pages#frontpage'
+  
+  get "pages_controller/frontpage"
+
   get "prototype/frontpage"
   get "prototype/create_step_1"
   get "prototype/create_step_2"
@@ -8,7 +14,7 @@ Geekhub::Application.routes.draw do
 
   resources :members do
 		collection do
-			get :authenticate
+			post :authenticate
 		end	
 	end
 
