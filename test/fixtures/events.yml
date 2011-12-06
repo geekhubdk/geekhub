@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  organizer: MyString
+  organizer_member_id: 1
+  description: MyString
+  location_id: 1
+  starts_at: 2011-12-06 21:30:22
+  ends_at: 2011-12-06 21:30:22
+
+two:
+  title: MyString
+  organizer: MyString
+  organizer_member_id: 1
+  description: MyString
+  location_id: 1
+  starts_at: 2011-12-06 21:30:22
+  ends_at: 2011-12-06 21:30:22
