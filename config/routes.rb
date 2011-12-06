@@ -1,6 +1,4 @@
 Geekhub::Application.routes.draw do
-  get "pages/frontpage"
-
   root :to => 'pages#frontpage'
   
   get "pages_controller/frontpage"
