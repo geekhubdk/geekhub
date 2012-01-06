@@ -1,5 +1,25 @@
-body { margin: 0; }
-header { background: lightblue; }
-.header-content, .page-content { width: 610px; margin: 0 auto; }
-.header-content { padding: 10px; }
-.logo { font-size: 150%; }
+body { 
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+header { 
+  background: lightblue; 
+}
+
+.header-content, .page-content { 
+  width: 610px; 
+  margin: 0 auto; 
+}
+
+.header-content { 
+  padding: 10px; 
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.logo { 
+  font-size: 150%; 
+}
