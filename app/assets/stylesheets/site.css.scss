@@ -7,11 +7,18 @@ body {
 
 header { 
   background: lightblue; 
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
-.header-content, .page-content { 
+.header-content, .page-content, .footer-content { 
   width: 610px; 
   margin: 0 auto; 
+}
+
+.page-content {
+  margin-top: 75px;
 }
 
 .header-content { 
@@ -22,4 +29,21 @@ header {
 
 .logo { 
   font-size: 150%; 
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-top: 50px;
+  background-color: #eaeaea;
+}
+
+.footer-content {
+  padding: 25px;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
 }

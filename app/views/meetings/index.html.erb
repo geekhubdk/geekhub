@@ -1,3 +1,6 @@
+<h1>
+  Kommende møder
+</h1>
 <div class="meetings">
   <% @meetings.each do |meeting| %>
     <div class="meeting">
@@ -5,7 +8,7 @@
       <div class="info"><%= meeting.location %> den <%= l meeting.starts_at, :format => :short %> - <%= meeting.organizer %></div>
       <div class="details" style="display:none">
         <div><%= meeting.description %></div>
-        <div><a href="<%= meeting.url %>">Læs mere</a></div>
+        <div class="url"><a href="<%= meeting.url %>">Læs mere</a></div>
       </div>
     </div>
   <% end %>

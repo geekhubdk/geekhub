@@ -2,7 +2,8 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
-    @meetings = Meeting.all
+    before = Date.today + 1.day
+    @meetings = Meeting.where("starts_at >= ?", before).order("starts_at")
 
     respond_to do |format|
       format.html # index.html.erb
