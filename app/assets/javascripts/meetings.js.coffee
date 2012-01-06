@@ -4,4 +4,10 @@
 
 $ ->
   $(".meeting").click ->
-    $("h1 a", this).click()
+    $("h2 a", this).click()
+  $(".meeting h2 a").click ->
+    $(this).closest(".meeting").find(".details").toggle(200)
+    false
+  $(".meeting a").click (e) ->
+    e.stopPropagation()
+    true

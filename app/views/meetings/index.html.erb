@@ -1,11 +1,11 @@
 <div class="meetings">
   <% @meetings.each do |meeting| %>
     <div class="meeting">
-      <h2><a href="http://deldy.dk"><%= meeting.title %></a></h2>
+      <h2><a href="#"><%= meeting.title %></a></h2>
       <div class="info"><%= meeting.location %> den <%= l meeting.starts_at, :format => :short %> - <%= meeting.organizer %></div>
-      <div class="details" style="display:none;">
+      <div class="details" style="display:none">
         <div><%= meeting.description %></div>
-        <div><%= meeting.url %></div>
+        <div><a href="<%= meeting.url %>">Læs mere</a></div>
       </div>
     </div>
   <% end %>
