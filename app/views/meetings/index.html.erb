@@ -9,6 +9,9 @@
       <div class="details" style="display:none">
         <div><%= meeting.description %></div>
         <div class="url"><a href="<%= meeting.url %>">Læs mere</a></div>
+        <% if user_signed_in? %>
+        <div class="edit"><%= link_to 'Rediger', edit_meeting_path(meeting) %></div>
+        <% end %>
       </div>
     </div>
   <% end %>
