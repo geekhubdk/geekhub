@@ -17,7 +17,8 @@
         </div>
         <div class="menu">
           <% if user_signed_in? %>
-            <%= link_to 'Log ud', destroy_user_session_path, :method => :delete %> 
+            <%= link_to 'Log ud', destroy_user_session_path, :method => :delete %>
+            <%= link_to 'Godkend møder', meetings_path(:approved => 0) %>
           <% end %>
           <%= link_to 'Foreslå event', new_meeting_path %>
           <%= link_to image_tag('/rss.png'), meetings_path(:format => :rss) %>
