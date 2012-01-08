@@ -6,6 +6,7 @@
 # by Lars Hoeg (larshoeg@gmail.com, http://www.lenio.dk/)
 
 da:
+
   # active_support
   date:
     # See http://sproget.dk/svarbase/SV00000046/ and http://en.wikipedia.org/wiki/Date_formats
@@ -226,6 +227,16 @@ da:
       body: "Der var problemer med følgende felter:"
 
   activerecord:
+    models:
+      meeting: "Møde"
+    attributes:
+      meeting:
+        title: "Titel"
+        starts_at: "Starter den"
+        location: "By"
+        organizer: "Arrangør"
+        description: "Beskrivelse"
+        url: "Link til event / tilmelding"
     errors:
       messages:
         <<: *errors_messages
