@@ -1,6 +1,6 @@
 <h1>
-  <%= "Nyt event" if @mode = :create %>
-  <%= "Foreslå event" unless @mode = :approve %>
+  <%= "Nyt event" if @mode == :create %>
+  <%= "Foreslå event" if @mode == :approve %>
 </h1>
 
 <%= render 'form' %>
