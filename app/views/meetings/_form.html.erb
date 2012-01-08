@@ -29,14 +29,14 @@
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :rows => 5, :cols => 23 %>
   </div>
   <div class="field">
     <%= f.label :url %><br />
     <%= f.text_field :url %>
   </div>
 
-  <% if @meeting.needs_approval? %>
+  <% if @meeting.needs_approval? && can_approve_meeting? %>
     <div class="field">
       <%= label_tag :approve %><br />
       <%= check_box_tag :approve %>
