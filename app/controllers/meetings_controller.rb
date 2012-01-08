@@ -12,19 +12,8 @@ class MeetingsController < ApplicationController
     end
   end
 
-  # GET /meetings/1
-  # GET /meetings/1.json
-  def show
-    @meeting = Meeting.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @meeting }
     end
-  end
-
   # GET /meetings/new
-  # GET /meetings/new.json
   def new
     @meeting = Meeting.new
 
