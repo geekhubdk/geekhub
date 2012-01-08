@@ -5,6 +5,12 @@ Geekhub::Application.routes.draw do
 
   root :to => "meetings#index"
 
+  namespace :api do
+    namespace :v1 do
+      resources :meetings, :defaults => { :format => 'json' }
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
