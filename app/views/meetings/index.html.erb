@@ -1,5 +1,6 @@
 <h1>
-  Kommende møder
+  <%= "Kommende møder" if @mode == :upcomming %>
+  <%= "Møder der mangler godkendelse" if @mode == :approve %>
 </h1>
 <div class="meetings">
   <% @meetings.each do |meeting| %>

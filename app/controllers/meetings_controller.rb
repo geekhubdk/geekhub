@@ -1,8 +1,18 @@
 class MeetingsController < ApplicationController
 
+  before_filter :authenticate_user!, :only => [:edit, :update, :destroy]
+
   def index
-    before = Date.today + 1.day
-    @meetings = Meeting.where("starts_at >= ?", before).order("starts_at")
+    @meetings = Meeting.upcomming.order("starts_at")
+
+    if params[:approved] == "0" and can_approve_meeting?
+      # approve mode
+      @mode = :approve
+      @meetings = @meetings.needs_approval  
+    else
+      @mode = :upcomming
+      @meetings = @meetings.approved
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,6 +23,7 @@ class MeetingsController < ApplicationController
 
   def new
     @meeting = Meeting.new
+    @mode = can_approve_meeting? ? :create : :approve
 
     respond_to do |format|
       format.html # new.html.erb
@@ -26,6 +37,8 @@ class MeetingsController < ApplicationController
 
   def create
     @meeting = Meeting.new(params[:meeting])
+
+    @meeting.approved_at = can_approve_meeting? ? Time.now : nil
 
     respond_to do |format|
       if @meeting.save
@@ -41,9 +54,13 @@ class MeetingsController < ApplicationController
   def update
     @meeting = Meeting.find(params[:id])
 
+    unless params[:approve].nil?
+      @meeting.approved_at = Time.now
+    end
+
     respond_to do |format|
       if @meeting.update_attributes(params[:meeting])
-        format.html { redirect_to @meeting, notice: 'Meeting was successfully updated.' }
+        format.html { redirect_to meetings_path, notice: 'Meeting was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -60,5 +77,11 @@ class MeetingsController < ApplicationController
       format.html { redirect_to meetings_url }
       format.json { head :ok }
     end
+  end
+
+  private
+
+  def can_approve_meeting?
+    user_signed_in?
   end
 end

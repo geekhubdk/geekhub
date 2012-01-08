@@ -35,6 +35,14 @@
     <%= f.label :url %><br />
     <%= f.text_field :url %>
   </div>
+
+  <% if @meeting.needs_approval? %>
+    <div class="field">
+      <%= label_tag :approve %><br />
+      <%= check_box_tag :approve %>
+    </div>
+    <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,4 +1,7 @@
-<h1>New meeting</h1>
+<h1>
+  <%= "Nyt event" if @mode = :create %>
+  <%= "Foreslå event" unless @mode = :approve %>
+</h1>
 
 <%= render 'form' %>
 

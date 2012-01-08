@@ -19,27 +19,37 @@ header {
 
 .header-content .logo {
   float: left;
+  padding: 10px; 
+  font-size: 32px;
+  font-family: 'Habibi', serif;
+  font-weight: normal;
+}
+
+.header-content .logo a {
+  text-decoration: none;
+  color: #000;
 }
 
 .header-content .menu {
   float: right;
-}
+  margin-top: 20px;
 
-.header-content a {
-  text-decoration: none;
-  color: #000;
+  a {
+    margin-left: 10px;
+    text-decoration: none;
+    border-right: 1px solid #aaa;
+    padding-right: 10px;
+    color: #333;
+  }
+
+  a img {
+    vertical-align: top;
+  }
 }
 
 .page-content {
   margin-top: 75px;
   margin-bottom: 75px;
-}
-
-.header-content { 
-  padding: 10px; 
-  font-size: 32px;
-  font-family: 'Habibi', serif;
-  font-weight: normal;
 }
 
 .logo { 
