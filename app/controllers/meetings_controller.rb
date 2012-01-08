@@ -5,8 +5,8 @@ class MeetingsController < ApplicationController
   def index
     @meetings = Meeting.upcomming.order("starts_at")
 
-    if params[:approved] == "0" and can_approve_meeting?
-      # approve mode
+    if params[:approved] == "0"
+      # approve mode, is visible to all, if they really like
       @mode = :approve
       @meetings = @meetings.needs_approval  
     else

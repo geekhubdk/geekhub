@@ -16,6 +16,9 @@
           <%= link_to 'Geekhub', root_path %>
         </div>
         <div class="menu">
+          <% if user_signed_in? %>
+            <%= link_to 'Log ud', destroy_user_session_path, :method => :delete %> 
+          <% end %>
           <%= link_to 'Foreslå event', new_meeting_path %>
           <%= link_to image_tag('/rss.png'), meetings_path(:format => :rss) %>
         </div>
