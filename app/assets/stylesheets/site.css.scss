@@ -17,6 +17,14 @@ header {
   margin: 0 auto; 
 }
 
+.header-content .logo {
+  float: left;
+}
+
+.header-content .menu {
+  float: right;
+}
+
 .header-content a {
   text-decoration: none;
   color: #000;

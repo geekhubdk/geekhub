@@ -12,7 +12,12 @@
   <body>
     <header>
       <div class="header-content">
-      <%= link_to 'Geekhub', root_path %>
+        <div class="logo">
+          <%= link_to 'Geekhub', root_path %>
+        </div>
+        <div class="menu">
+          <%= link_to image_tag('/rss.png'), meetings_path(:format => :rss) %>
+        </div>
       </div>
     </header>
     <div class="page-content">
