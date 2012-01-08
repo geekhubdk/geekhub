@@ -8,6 +8,7 @@ class MeetingsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @meetings }
+      format.rss
     end
   end
 
