@@ -2,6 +2,8 @@ class MeetingsController < ApplicationController
 
   before_filter :authenticate_user!, :only => [:edit, :update, :destroy]
 
+  helper_method :can_approve_meeting?
+
   def index
     @meetings = Meeting.upcomming.order("starts_at")
 
@@ -42,7 +44,7 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       if @meeting.save
-        format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
+        format.html { redirect_to meetings_path, notice: 'Meeting was successfully created.' }
         format.json { render json: @meeting, status: :created, location: @meeting }
       else
         format.html { render action: "new" }
