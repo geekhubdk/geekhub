@@ -1,6 +1,5 @@
 class MeetingsController < ApplicationController
-  # GET /meetings
-  # GET /meetings.json
+
   def index
     before = Date.today + 1.day
     @meetings = Meeting.where("starts_at >= ?", before).order("starts_at")
@@ -12,8 +11,6 @@ class MeetingsController < ApplicationController
     end
   end
 
-    end
-  # GET /meetings/new
   def new
     @meeting = Meeting.new
 
@@ -23,13 +20,10 @@ class MeetingsController < ApplicationController
     end
   end
 
-  # GET /meetings/1/edit
   def edit
     @meeting = Meeting.find(params[:id])
   end
 
-  # POST /meetings
-  # POST /meetings.json
   def create
     @meeting = Meeting.new(params[:meeting])
 
@@ -44,8 +38,6 @@ class MeetingsController < ApplicationController
     end
   end
 
-  # PUT /meetings/1
-  # PUT /meetings/1.json
   def update
     @meeting = Meeting.find(params[:id])
 
@@ -60,8 +52,6 @@ class MeetingsController < ApplicationController
     end
   end
 
-  # DELETE /meetings/1
-  # DELETE /meetings/1.json
   def destroy
     @meeting = Meeting.find(params[:id])
     @meeting.destroy
