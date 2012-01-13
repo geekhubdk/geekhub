@@ -1,36 +1,8 @@
-<div class="intro">
-  <p><strong>Velkommen til geekhub</strong></p>
-  <p>
-    Geekhub.dk lister events/møder som er interesandte for udviklere. 
-    <br/><a class="intro-show-more" href="#">Læs mere</a>
-    <div class="intro-more" style="display: none">
-      <p>
-Der findes utroligt mange tilbud om kurser, møder og arrangementer til udviklere i Danmark. 
-Desvære er informationen om alt dette temmelig fragmenteret, og ligger spredt ud overalt på nettet.</p> 
-<p>Geekhub satser på at være stedet, hvor du hurtigt kan få et overblik over hvad der er af events i det danske udvikler community. (uanset sprog-farve)</p>
-<p>Da listen her bliver vedligeholdt manuelt, kan der være events som ikke forekommer. Hvis du spotter en der mangler, så tryk på Foreslå event i menu'en. Ligeledes hvis du har gode ideer til hvad der kan gøre siden mere fed, så er der en orange 'Feedback' knap uden i venstre side.</p>
-<p>Geekhub er open source (kodet i Ruby), og kan findes på <a href="http://github.com/deldy/geekhub">Github</a>. Der tages gerne imod contributions.</p>
-<p>God fornøjelse <small><em>(popcorn ikke inkluderet)</em></small></p> 
-      </p>
-    </div>
-  </p>
-</div>
+<%= render 'shared/intro' %>
 <h1>
   <%= "Kommende events" if @mode == :upcomming %>
   <%= "Events der mangler godkendelse" if @mode == :approve %>
 </h1>
 <div class="meetings">
-  <% @meetings.each do |meeting| %>
-    <div class="meeting">
-      <h2><a href="#"><%= meeting.title %></a></h2>
-      <div class="info"><%= meeting.location %> den <%= l meeting.starts_at, :format => :short %> - <%= meeting.organizer %></div>
-      <div class="details" style="display:none">
-        <div><%= nl2br meeting.description %></div>
-        <div class="url"><a href="<%= meeting.url %>">Læs mere / tilmelding</a></div>
-        <% if user_signed_in? %>
-        <div class="edit"><%= link_to 'Rediger', edit_meeting_path(meeting) %></div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+  <%= render @meetings %>
 </div>
