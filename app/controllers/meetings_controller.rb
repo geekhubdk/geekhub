@@ -23,6 +23,14 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def show
+    @meeting = Meeting.find(params[:id])
+
+    respond_to do |format|
+      format.ics { send_data(@meeting.to_ical.export, :filename=>"event.ics", :disposition=>"inline; filename=event.ics", :type=>"text/calendar")}
+    end
+  end
+
   def new
     @meeting = Meeting.new
     @mode = can_approve_meeting? ? :create : :approve

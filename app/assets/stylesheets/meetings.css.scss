@@ -47,6 +47,28 @@
       background-color: white;
     }
   }
+
+  .ics {
+    float: right;
+    margin-top: 30px;
+    height: 16px;
+    a {
+      padding-left: 22px;
+      background-image: url(../ics.png);
+      background-repeat: no-repeat;
+      line-height: 16px;
+      display: inline-block;
+      color: #666;
+      opacity: 0.5;
+      z-index: 0;
+      text-decoration: none;
+    }
+  }
+  .ics:hover {
+    a {
+      opacity: 1;
+    }
+  }
 }
 
 .meeting:last-child {
