@@ -29,7 +29,16 @@
   }
   
   .url {
-    margin-top: 10px;
+    margin-top: 25px;
+    border: 2px solid lightblue;
+    padding: 10px 45px;
+    border-radius: 5px;
+    background-color: white;
+    display: inline-block;
+    a {
+      color: black;
+      text-decoration: none;
+    }
   }
 }
 
