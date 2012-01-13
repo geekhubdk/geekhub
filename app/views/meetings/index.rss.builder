@@ -24,7 +24,7 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
         end
         
         xml.description format_rss_description(meeting)
-        xml.guid url_for :only_path => false, :controller => 'meetings', :action => 'show', :id => meeting.id
+        xml.guid meeting.id
      end
     end
 
