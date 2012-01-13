@@ -11,3 +11,6 @@ $ ->
   $(".meeting a").click (e) ->
     e.stopPropagation()
     true
+  $(".intro-show-more").click ->
+    $(this).hide()
+    $(".intro-more").show(500)
