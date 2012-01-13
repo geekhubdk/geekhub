@@ -14,7 +14,7 @@ class Meeting < ActiveRecord::Base
   def to_ical
     RiCal.Calendar do |cal|
       cal.event do |event|
-        event.description = self.title
+        event.summary = self.title
         event.dtstart =  self.starts_at
         event.dtend = self.starts_at + 1.hour
         event.location = self.location
