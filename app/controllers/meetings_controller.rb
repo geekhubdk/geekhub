@@ -17,7 +17,7 @@ class MeetingsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @meetings }
       format.rss
     end

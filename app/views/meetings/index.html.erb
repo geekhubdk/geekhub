@@ -3,6 +3,10 @@
   <%= "Kommende events" if @mode == :upcomming %>
   <%= "Events der mangler godkendelse" if @mode == :approve %>
 </h1>
-<div class="meetings">
-  <%= render @meetings %>
-</div>
+
+  <% @meetings.group_by(&:month).sort.each do |month, meetings|%>
+    <h2><%= month_name month %></h2>
+    <div class="meetings">
+      <%= render meetings %>    
+    </div>
+  <% end %>

@@ -5,6 +5,14 @@ body {
   font-size: 14px;
 }
 
+a {
+  color: #666;
+}
+
+a:visited {
+  color: #666;
+}
+
 header { 
   background: lightblue; 
   position: fixed;
@@ -72,6 +80,10 @@ h1 {
   font-weight: 300;
 }
 
+h2 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
 form .field {
   margin-bottom: 10px;
 }

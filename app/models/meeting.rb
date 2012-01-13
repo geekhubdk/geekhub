@@ -7,4 +7,7 @@ class Meeting < ActiveRecord::Base
     approved_at.blank?
   end
 
+  def month
+    self.starts_at.strftime('%m')
+  end
 end
