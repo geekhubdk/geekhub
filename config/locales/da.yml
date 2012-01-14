@@ -237,6 +237,7 @@ da:
         organizer: "Arrangør"
         description: "Beskrivelse"
         url: "Link til event / tilmelding"
+        suggested_by: "Din email"
     errors:
       messages:
         <<: *errors_messages

@@ -11,33 +11,40 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :starts_at %><br />
+    <%= f.label :starts_at %>
     <%= f.datetime_select :starts_at %>
   </div>
   <div class="field">
-    <%= f.label :location %><br />
+    <%= f.label :location %>
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :organizer %><br />
+    <%= f.label :organizer %>
     <%= f.text_field :organizer %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :description %>
     <%= f.text_area :description, :rows => 5, :cols => 23 %>
+    <small>(understøtter p.t. ikke fancy formateringer)</small>
   </div>
   <div class="field">
-    <%= f.label :url %><br />
+    <%= f.label :url %>
     <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :suggested_by %>
+    <%= f.text_field :suggested_by %>
+    <small>(valgfri - bruges hvis der er spørgsmål til forslaget)</small>
   </div>
 
   <% if @meeting.needs_approval? && can_approve_meeting? %>
     <div class="field">
-      <%= label_tag :approve %><br />
+      <%= label_tag :approve %>
       <%= check_box_tag :approve %>
     </div>
     <% end %>
