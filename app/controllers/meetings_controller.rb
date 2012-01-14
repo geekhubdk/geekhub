@@ -33,6 +33,8 @@ class MeetingsController < ApplicationController
 
   def new
     @meeting = Meeting.new
+    @meeting.starts_at = 1.month.from_now.to_date
+
     @mode = can_approve_meeting? ? :create : :approve
 
     respond_to do |format|
