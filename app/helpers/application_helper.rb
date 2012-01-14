@@ -1,8 +1,11 @@
 module ApplicationHelper
   def format_rss_description meeting
     
+    costs_money_text = ""
+    costs_money_text = "(gratis)" unless meeting.costs_money
+
     <<-eos
-      <strong>#{meeting.location}, #{l meeting.starts_at, :format => :long} - #{meeting.organizer}</strong><br/> 
+      <strong>#{meeting.location}, #{l meeting.starts_at, :format => :long} - #{meeting.organizer} #{costs_money_text} </strong><br/> 
       <p>#{nl2br h(meeting.description)}</p>
       eos
           
