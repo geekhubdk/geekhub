@@ -1,6 +1,6 @@
-<div class="meeting">
-  <h2><a href="#"><%= meeting.title %></a></h2>
-  <div class="info"><%= meeting.location %> den <%= l meeting.starts_at, :format => :short %> - <%= meeting.organizer %></div>
+<div class="meeting vevent">
+  <h2><a href="#" class="summary"><%= meeting.title %></a></h2>
+  <div class="info"><span class="location"><%= meeting.location %></span> den <span class="dtstart" title="<%= meeting.starts_at.iso8601 %>"><%= l meeting.starts_at, :format => :short %></span> - <span class="organizer"><%= meeting.organizer %></span></div>
   <div class="details" style="display:none">
     <div><%= nl2br meeting.description %></div>
     <div class="url"><a href="<%= meeting.url %>">Læs mere / tilmelding</a></div>
