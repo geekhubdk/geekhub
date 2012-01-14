@@ -238,6 +238,7 @@ da:
         description: "Beskrivelse"
         url: "Link til event / tilmelding"
         suggested_by: "Din email"
+        costs_money: "Det koster penge at deltage"
     errors:
       messages:
         <<: *errors_messages

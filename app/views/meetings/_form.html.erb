@@ -14,6 +14,9 @@
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
+  <div class="field checkbox">
+    <%= f.check_box :costs_money %> <%= f.label :costs_money %>
+  </div>
   <div class="field">
     <%= f.label :starts_at %>
     <%= f.datetime_select :starts_at %>
@@ -35,7 +38,6 @@
     <%= f.label :url %>
     <%= f.text_field :url %>
   </div>
-
   <div class="field">
     <%= f.label :suggested_by %>
     <%= f.text_field :suggested_by %>

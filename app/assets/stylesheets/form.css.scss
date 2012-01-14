@@ -9,3 +9,7 @@ form .field label {
 form .field small {
   display: block;
 }
+
+form .field.checkbox label {
+  display: inline;
+}

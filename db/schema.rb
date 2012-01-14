@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120114112612) do
+ActiveRecord::Schema.define(:version => 20120114194051) do
 
   create_table "meetings", :force => true do |t|
     t.string   "title"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20120114112612) do
     t.datetime "updated_at"
     t.datetime "approved_at"
     t.string   "suggested_by"
+    t.boolean  "costs_money"
   end
 
   create_table "users", :force => true do |t|
