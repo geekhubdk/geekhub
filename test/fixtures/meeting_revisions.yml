@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  meeting: 
+  title: MyString
+  starts_at: 2012-01-15 09:37:05
+  location: MyString
+  organizer: MyString
+  description: MyText
+  url: MyString
+  costs_money: false
+
+two:
+  meeting: 
+  title: MyString
+  starts_at: 2012-01-15 09:37:05
+  location: MyString
+  organizer: MyString
+  description: MyText
+  url: MyString
+  costs_money: false
