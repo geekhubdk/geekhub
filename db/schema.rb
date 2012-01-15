@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120115083705) do
+ActiveRecord::Schema.define(:version => 20120115084202) do
 
   create_table "meeting_revisions", :force => true do |t|
     t.integer  "meeting_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20120115083705) do
     t.boolean  "costs_money"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "suggested_by"
   end
 
   add_index "meeting_revisions", ["meeting_id"], :name => "index_meeting_revisions_on_meeting_id"
