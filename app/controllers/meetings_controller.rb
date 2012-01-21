@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:edit, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:destroy]
 
   helper_method :can_approve_meeting?
 
@@ -45,6 +45,15 @@ class MeetingsController < ApplicationController
 
   def edit
     @meeting = Meeting.find(params[:id])
+
+    unless can_approve_meeting?
+      @meeting.suggested_by = nil
+      render 'suggest_edit'
+    end
+  end
+
+  def suggest_edit
+    @meeting = Meeting.find(params[:id])
   end
 
   def create
@@ -70,14 +79,15 @@ class MeetingsController < ApplicationController
       @meeting.approved_at = Time.now
     end
 
-    respond_to do |format|
-      if @meeting.update_attributes(params[:meeting])
-        format.html { redirect_to meetings_path, notice: 'Meeting was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @meeting.errors, status: :unprocessable_entity }
-      end
+    # if they want to make a suggestion, then return that
+    unless can_approve_meeting?
+      return create_meeting_suggestion
+    end
+
+    if @meeting.update_attributes(params[:meeting])
+      redirect_to meetings_path, notice: 'Meeting was successfully updated.'
+    else
+      render "edit"
     end
   end
 
@@ -93,7 +103,16 @@ class MeetingsController < ApplicationController
 
   private
 
+  def create_meeting_suggestion
+    if @meeting.meeting_revisions.create(params[:meeting])
+      redirect_to meetings_path, notice: 'Dit forslag er indsendt.'
+    else
+      render "suggest_edit"
+    end
+  end
+
   def can_approve_meeting?
     user_signed_in?
   end
+
 end

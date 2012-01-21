@@ -25,11 +25,18 @@ class MeetingsControllerTest < ActionController::TestCase
 
     assert_redirected_to meetings_path()
   end
-
+  
   test "should get edit" do
     sign_in User.first
     get :edit, id: @meeting.to_param
     assert_response :success
+  end
+
+  test "should get suggest edit" do
+    get :edit, id: @meeting.to_param
+    assert_response :success
+
+    assert assigns[:meeting].suggested_by.nil?
   end
 
   test "should update meeting" do
