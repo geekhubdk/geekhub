@@ -57,14 +57,13 @@
     float: right;
   }
 
-  .ics {
+  .ics, .edit_meeting {
     margin-left: 10px;
     margin-top: 5px;
     margin-bottom: 10px;
     height: 16px;
     a {
       padding-left: 22px;
-      background-image: url(../ics.png);
       background-repeat: no-repeat;
       line-height: 16px;
       display: inline-block;
@@ -73,10 +72,18 @@
       text-decoration: none;
     }
   }
-  .ics:hover {
+  .ics:hover, .edit_meeting:hover {
     a {
       opacity: 1;
     }
+  }
+
+  .ics a {
+    background-image: url(../ics.png);
+  }
+
+  .edit_meeting a {
+    background-image: url(calendar_pen.png);
   }
 
   .money-icon {

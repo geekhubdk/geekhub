@@ -10,7 +10,7 @@ class MeetingsController < ApplicationController
     if params[:approved] == "0"
       # approve mode, is visible to all, if they really like
       @mode = :approve
-      @meetings = @meetings.needs_approval + MeetingRevision.order("starts_at") 
+      @meetings = @meetings.needs_approval + MeetingRevision.needs_approval.order("starts_at") 
     else
       @mode = :upcomming
       @meetings = @meetings.approved

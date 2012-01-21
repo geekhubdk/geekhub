@@ -2,9 +2,12 @@ Geekhub::Application.routes.draw do
   devise_for :users
 
   resources :meetings
+  resources :meeting_revisions do
+    member do
+      post 'approve'
+    end
+  end
 
-  resources :meeting_revisions
-  
   root :to => "meetings#index"
 
   namespace :api do
