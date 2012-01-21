@@ -31,7 +31,11 @@
       </div>
     </div>
     <% if user_signed_in? %>
-      <div class="edit"><%= link_to 'Rediger', edit_meeting_path(meeting) %></div>
+      <% if meeting.kind_of? Meeting %>
+        <div class="edit"><%= link_to 'Rediger', edit_meeting_path(meeting) %></div>
+      <% else %>
+        <div class="edit"><%= link_to 'Rediger forslag', edit_meeting_revision_path(meeting) %></div>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -3,6 +3,8 @@ Geekhub::Application.routes.draw do
 
   resources :meetings
 
+  resources :meeting_revisions
+  
   root :to => "meetings#index"
 
   namespace :api do

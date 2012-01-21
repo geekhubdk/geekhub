@@ -45,6 +45,14 @@ class MeetingsControllerTest < ActionController::TestCase
     assert_redirected_to meetings_path()
   end
 
+  test "should create meeting revision if not signed in" do
+    assert_difference 'MeetingRevision.count' do
+      attributes = @meeting.attributes
+      attributes.delete('approved_at')
+      put :update, id: @meeting.to_param, meeting: attributes
+    end
+  end
+
   test "should destroy meeting" do
     sign_in User.first
     assert_difference('Meeting.count', -1) do
