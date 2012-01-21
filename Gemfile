@@ -43,4 +43,5 @@ group :development, :test do
   gem 'guard'
   gem 'guard-test'
   gem 'growl_notify'
+  gem 'guard-rails'
 end
