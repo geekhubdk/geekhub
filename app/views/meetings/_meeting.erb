@@ -23,7 +23,7 @@
     <div class="alt-actions">
       <div class="edit_meeting">
         <% if meeting.kind_of? Meeting %>
-          <%= link_to 'Foreslå rettelse', edit_meeting_path(meeting) %>
+          <%= link_to 'Indsend rettelse', edit_meeting_path(meeting) %>
         <% else %>
           <%= link_to 'Rediger forslag', edit_meeting_revision_path(meeting) %>
         <% end %>
