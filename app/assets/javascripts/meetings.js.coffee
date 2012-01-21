@@ -11,6 +11,8 @@ $ ->
   $(".meeting a").click (e) ->
     e.stopPropagation()
     true
+  $(".meeting .alt-actions").click (e) ->
+    e.stopPropagation()
   $(".intro-show-more").click ->
     $(this).hide()
     $(".intro-more").show(500)

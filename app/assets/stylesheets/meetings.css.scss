@@ -38,7 +38,7 @@
   .url {
     display: inline-block;
     clear:both;
-    margin-top: 25px;
+    margin-top: 65px;
     margin-bottom: 10px;
     a {
       color: black;
@@ -46,15 +46,21 @@
       
       font-size: 120%;
       border: 2px solid lightblue;
-      padding: 10px 45px;
+      padding: 10px 35px;
       border-radius: 5px;
       background-color: white;
     }
   }
 
-  .ics {
+  .alt-actions {
+    margin-top: 45px;
     float: right;
-    margin-top: 30px;
+  }
+
+  .ics {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     height: 16px;
     a {
       padding-left: 22px;
@@ -63,7 +69,6 @@
       line-height: 16px;
       display: inline-block;
       color: #666;
-      opacity: 0.5;
       z-index: 0;
       text-decoration: none;
     }

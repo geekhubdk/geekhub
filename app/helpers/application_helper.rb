@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def month_name number
-    months = %w[januar feburar marts april maj juni juli august september oktober november december]
+    months = %w[januar februar marts april maj juni juli august september oktober november december]
     months[number.to_i - 1]  
   end
 
