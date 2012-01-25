@@ -19,7 +19,10 @@ class MeetingsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @meetings }
-      format.rss
+      format.rss do
+        # Only show meetings in the next month
+        @meetings = @meetings.where("starts_at < ?", Time.now + 1.month)
+      end
     end
   end
 
