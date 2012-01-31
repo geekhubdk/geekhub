@@ -99,7 +99,8 @@ class MeetingsController < ApplicationController
   private
 
   def create_meeting_suggestion
-    if @meeting.meeting_revisions.create(params[:meeting])
+    revision = @meeting.meeting_revisions.new(params[:meeting])
+    if revision.save
       redirect_to meetings_path, notice: 'Dit forslag er indsendt.'
     else
       render "suggest_edit"

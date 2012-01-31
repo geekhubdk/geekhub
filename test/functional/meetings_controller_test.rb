@@ -45,6 +45,12 @@ class MeetingsControllerTest < ActionController::TestCase
     assert_redirected_to meetings_path()
   end
   
+  test "should not create meeting, if invalid" do
+    post :create, meeting: nil
+
+    assert_response :success
+  end
+
   test "should get edit" do
     sign_in User.first
     get :edit, id: @meeting.to_param
@@ -60,8 +66,19 @@ class MeetingsControllerTest < ActionController::TestCase
 
   test "should update meeting" do
     sign_in User.first
-    put :update, id: @meeting.to_param, meeting: @meeting.attributes
+    put :update, id: @meeting.to_param, meeting: @meeting.attributes, approve: true
     assert_redirected_to meetings_path()
+  end
+
+  test "should render suggest edit if update is invalid" do
+    put :update, id: @meeting.to_param, meeting: {title: ''}
+    assert_template "suggest_edit"
+  end
+
+  test "should not update meeting, if invalid" do
+    sign_in User.first
+    put :update, id: @meeting.to_param, meeting: {title: nil}
+    assert_response :success
   end
 
   test "should create meeting revision if not signed in" do
