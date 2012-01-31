@@ -1,8 +1,8 @@
 body { 
   margin: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: arial, sans-serif;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 a {
@@ -52,7 +52,7 @@ header {
 
 .header-content .menu {
   float: right;
-  margin-top: 14px;
+  margin-top: 16px;
 
   a {
     margin-left: 10px;
@@ -64,7 +64,7 @@ header {
   }
 
   a img {
-    margin-top:1px;
+    margin-top:-1px;
     vertical-align: top;
   }
 }
@@ -89,11 +89,11 @@ footer {
 }
 
 h1 {
-  font-family: 'Lato', sans-serif;
+  font-family: arial, sans-serif;
   font-weight: 300;
 }
 
 h2 {
-  font-family: 'Lato', sans-serif;
+  font-family: arial, sans-serif;
   font-weight: 300;
 }
