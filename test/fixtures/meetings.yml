@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  id: 1
   title: MyString
   starts_at: 2012-01-06 13:59:34
   location: MyString
@@ -9,6 +10,7 @@ one:
   url: MyString
 
 two:
+  id: 2
   title: MyString
   starts_at: 2012-01-06 13:59:34
   location: MyString
