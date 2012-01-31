@@ -15,8 +15,25 @@ class MeetingsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:meetings)
   end
 
+  test "should get index, with non-approved" do
+    get :index, :approved => "0" 
+    assert_response :success
+    assert_not_nil assigns(:meetings)
+    assert_equal :approve, assigns(:mode)
+  end
+
+  test "should get index as rss" do
+    get :index, :format => :rss 
+    assert_response :success
+  end
+
   test "should get new" do
     get :new
+    assert_response :success
+  end
+
+  test "should get show, as ics" do
+    get :show, id: @meeting.to_param, :format => :ics 
     assert_response :success
   end
 

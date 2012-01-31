@@ -55,23 +55,15 @@ class MeetingsController < ApplicationController
     end
   end
 
-  def suggest_edit
-    @meeting = Meeting.find(params[:id])
-  end
-
   def create
     @meeting = Meeting.new(params[:meeting])
 
     @meeting.approved_at = can_approve_meeting? ? Time.now : nil
 
-    respond_to do |format|
-      if @meeting.save
-        format.html { redirect_to meetings_path, notice: 'Meeting was successfully created.' }
-        format.json { render json: @meeting, status: :created, location: @meeting }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @meeting.errors, status: :unprocessable_entity }
-      end
+    if @meeting.save
+      redirect_to meetings_path, notice: 'Meeting was successfully created.'
+    else
+      render action: "new"
     end
   end
 

@@ -3,11 +3,12 @@
 one:
   id: 1
   title: MyString
-  starts_at: 2012-01-06 13:59:34
+  starts_at: 2100-12-12 13:59:34
   location: MyString
   organizer: MyString
   description: MyText
   url: MyString
+  approved_at: 2012-01-06 13:59:34
 
 two:
   id: 2
