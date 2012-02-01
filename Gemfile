@@ -25,6 +25,5 @@ group :development, :test do
   gem 'guard-test'
   gem 'growl_notify'
   gem 'guard-rails'
-  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'simplecov', :require => false
 end
