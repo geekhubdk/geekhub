@@ -3,38 +3,42 @@
   border-bottom: 1px solid #C6C6C6; 
   margin-bottom: 50px;
   box-shadow: 2px 2px 2px rgba(200,200,200,0.2);
-}
 
-.meeting { 
-  border-bottom: 1px solid #e5e5e5;
-  padding: 24px 20px;
-  background-color: #f8f8f8;
-  border-left: 1px solid #c6c6c6;
-  border-right: 1px solid #c6c6c6;
-  color: #222;
-  font-size: 12px;
-  cursor: pointer;
-  
+  a { text-decoration: none; }
+
+  .meeting { 
+    border-bottom: 1px solid #e5e5e5;
+    padding: 24px 20px;
+    background-color: #f8f8f8;
+    border-left: 1px solid #c6c6c6;
+    border-right: 1px solid #c6c6c6;
+    color: #222;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .meeting:last-child {
+    border-bottom: 0;
+  }
+
   h2 {
     letter-spacing: -1px;
-    font-family: 'Open Sans', arial, sans-serif;
     font-weight: bold;
     margin: 0;
     font-size: 35px;
-    
-    a {
-      text-decoration: none;
-      color: #222;
-    }
   }
   
+  h2 a {
+      color: #222;
+  }
+
   .info {
     padding-top: 6px;
     padding-left: 2px;
   }
 
   .location {
-    font-weight: 400;
+    font-weight: normal;
   }
   
   .details {
@@ -42,8 +46,6 @@
     padding-right: 15px;
     margin-top: 20px;
     font-size: 14pt;
-    font-weight: 300;
-    font-family: 'Open Sans', arial, sans-serif;
     line-height: 30px;
   }
   
@@ -52,16 +54,6 @@
     clear:both;
     margin-top: 85px;
     margin-bottom: 10px;
-    a {
-      color: black;
-      text-decoration: none;
-      
-      font-size: 120%;
-      border: 2px solid lightblue;
-      padding: 10px 35px;
-      border-radius: 5px;
-      background-color: white;
-    }
   }
 
   .alt-actions {
@@ -74,6 +66,7 @@
     margin-top: 5px;
     margin-bottom: 10px;
     height: 16px;
+
     a {
       padding-left: 22px;
       background-repeat: no-repeat;
@@ -81,22 +74,11 @@
       display: inline-block;
       color: #666;
       z-index: 0;
-      text-decoration: none;
-    }
-  }
-  .ics:hover, .edit_meeting:hover {
-    a {
-      opacity: 1;
     }
   }
 
-  .ics a {
-    background-image: url(../ics.png);
-  }
-
-  .edit_meeting a {
-    background-image: url(calendar_pen.png);
-  }
+  .ics a { background-image: url(../ics.png); }
+  .edit_meeting a { background-image: url(calendar_pen.png); }
 
   .money-icon {
     vertical-align: top;
@@ -106,6 +88,7 @@
   }
 }
 
-.meeting:last-child {
-  border-bottom: 0;
-}
+
+
+
+
