@@ -1,8 +1,4 @@
 <%= render 'shared/intro' %>
-<h1>
-  <%= "Kommende events" if @mode == :upcomming %>
-  <%= "Events der mangler godkendelse" if @mode == :approve %>
-</h1>
 
   <% @meetings.group_by(&:month).sort.each do |month, meetings|%>
     <h2><%= month_name month %></h2>
