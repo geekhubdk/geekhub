@@ -5,10 +5,10 @@
   Vi har behov for denne side, for at vi kan se hvor mange som aktivt bruger vores feed.
 </small>
 <script>
-  window.onload = function() {
+  $(function() {
     _gaq.push(["_trackPageview"]);
     _gaq.push(function(){
-        window.location = url_decode('<%=raw escape_javascript(@meeting.url)%>');
+        window.location = '<%=raw escape_javascript(@meeting.url)%>';
     });
-  }
+  });
 </script>
