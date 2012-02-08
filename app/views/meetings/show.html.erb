@@ -1,0 +1,14 @@
+<h1>Vi sender dig videre til '<%= @meeting.title %>'</h1>
+<p>Vent venligst mens vi stiller dig om til siden, som omhandler:</p>
+<p><%= link_to @meeting.title, @meeting.url %></p>
+<small>
+  Vi har behov for denne side, for at vi kan se hvor mange som aktivt bruger vores feed.
+</small>
+<script>
+  window.onload = function() {
+    _gaq.push(["_trackPageview"]);
+    _gaq.push(function(){
+        window.location = '<%=escape_javascript(@meeting.url)%>';
+    });
+  }
+</script>
