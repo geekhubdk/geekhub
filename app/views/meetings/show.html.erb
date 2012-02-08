@@ -8,7 +8,7 @@
   window.onload = function() {
     _gaq.push(["_trackPageview"]);
     _gaq.push(function(){
-        window.location = '<%=escape_javascript(@meeting.url)%>';
+        window.location = url_decode('<%=raw escape_javascript(@meeting.url)%>');
     });
   }
 </script>
