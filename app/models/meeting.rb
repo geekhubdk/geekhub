@@ -4,8 +4,6 @@ class Meeting < ActiveRecord::Base
   scope :approved, where("approved_at is not null")
   scope :needs_approval, where("approved_at is null")
 
-  has_many :meeting_revisions
-  
   def needs_approval?
     approved_at.blank?
   end

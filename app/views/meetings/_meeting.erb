@@ -22,10 +22,8 @@
     <div class="url"><a href="<%= meeting.url %>" class="button big">Læs mere / tilmelding</a></div>
     <div class="alt-actions">
       <div class="edit_meeting">
-        <% if meeting.kind_of? Meeting %>
-          <%= link_to 'Indsend rettelse', edit_meeting_path(meeting) %>
-        <% else %>
-          <%= link_to 'Rediger forslag', edit_meeting_revision_path(meeting) %>
+        <% if user_signed_in? %>
+          <%= link_to 'Rediger', edit_meeting_path(meeting) %>
         <% end %>
       </div>    
       <div class="ics">

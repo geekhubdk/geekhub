@@ -56,37 +56,17 @@ class MeetingsControllerTest < ActionController::TestCase
     get :edit, id: @meeting.to_param
     assert_response :success
   end
-
-  test "should get suggest edit" do
-    get :edit, id: @meeting.to_param
-    assert_response :success
-
-    assert assigns[:meeting].suggested_by.nil?
-  end
-
+  
   test "should update meeting" do
     sign_in User.first
     put :update, id: @meeting.to_param, meeting: @meeting.attributes, approve: true
     assert_redirected_to meetings_path()
   end
 
-  test "should render suggest edit if update is invalid" do
-    put :update, id: @meeting.to_param, meeting: {title: ''}
-    assert_template "suggest_edit"
-  end
-
   test "should not update meeting, if invalid" do
     sign_in User.first
     put :update, id: @meeting.to_param, meeting: {title: nil}
     assert_response :success
-  end
-
-  test "should create meeting revision if not signed in" do
-    assert_difference 'MeetingRevision.count' do
-      attributes = @meeting.attributes
-      attributes.delete('approved_at')
-      put :update, id: @meeting.to_param, meeting: attributes
-    end
   end
 
   test "should destroy meeting" do

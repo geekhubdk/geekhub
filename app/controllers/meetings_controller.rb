@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:destroy]
+  before_filter :authenticate_user!, :only => [:destroy, :edit, :update]
 
   helper_method :can_approve_meeting?
 
@@ -10,7 +10,7 @@ class MeetingsController < ApplicationController
     if params[:approved] == "0"
       # approve mode, is visible to all, if they really like
       @mode = :approve
-      @meetings = @meetings.needs_approval + MeetingRevision.needs_approval.order("starts_at") 
+      @meetings = @meetings.needs_approval
     else
       @mode = :upcomming
       @meetings = @meetings.approved
@@ -18,7 +18,6 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @meetings }
       format.rss do
         # Only show meetings in the 14 days
         @meetings = @meetings.where("starts_at < ?", Time.now + 14.days)
@@ -40,20 +39,10 @@ class MeetingsController < ApplicationController
     @meeting.starts_at = 1.month.from_now.to_date
 
     @mode = can_approve_meeting? ? :create : :approve
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @meeting }
-    end
   end
 
   def edit
     @meeting = Meeting.find(params[:id])
-
-    unless can_approve_meeting?
-      @meeting.suggested_by = nil
-      render 'suggest_edit'
-    end
   end
 
   def create
@@ -75,11 +64,6 @@ class MeetingsController < ApplicationController
       @meeting.approved_at = Time.now
     end
 
-    # if they want to make a suggestion, then return that
-    unless can_approve_meeting?
-      return create_meeting_suggestion
-    end
-
     if @meeting.update_attributes(params[:meeting])
       redirect_to meetings_path, notice: 'Meeting was successfully updated.'
     else
@@ -91,21 +75,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
     @meeting.destroy
 
-    respond_to do |format|
-      format.html { redirect_to meetings_url }
-      format.json { head :ok }
-    end
-  end
-
-  private
-
-  def create_meeting_suggestion
-    revision = @meeting.meeting_revisions.new(params[:meeting])
-    if revision.save
-      redirect_to meetings_path, notice: 'Dit forslag er indsendt.'
-    else
-      render "suggest_edit"
-    end
+    redirect_to meetings_url
   end
 
   def can_approve_meeting?
