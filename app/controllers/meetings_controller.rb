@@ -78,6 +78,8 @@ class MeetingsController < ApplicationController
     redirect_to meetings_url
   end
 
+private
+
   def can_approve_meeting?
     user_signed_in?
   end
