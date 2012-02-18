@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   APP_DOMAIN = 'geekhub.dk'
 
+protected 
+
   def ensure_domain
     if Rails.env == "production"
       if request.env['HTTP_HOST'] != APP_DOMAIN
@@ -15,14 +17,21 @@ class ApplicationController < ActionController::Base
   end
   
   def boolean_param(name, default_value = nil)
+    name = name.to_sym
     return default_value if params[name].nil?
     
-    params[name].to_s.to_bool
+    val = params[name].to_s.to_bool
+    return default_value if val.nil?
+    
+    return val
   end
   
   def integer_param(name, default_value = nil)
+    name = name.to_sym
+    
     return default_value if params[name].nil?
-    return default_value if params[name] !=~ /^[-+]?[0-9]+$/
-    params[name].to_i
+    return default_value unless params[name] =~ /^[-+]?[0-9]+$/
+    
+    return params[name].to_i
   end
 end
