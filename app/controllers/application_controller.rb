@@ -13,4 +13,16 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+  
+  def boolean_param(name, default_value = nil)
+    return default_value if params[name].nil?
+    
+    params[name].to_s.to_bool
+  end
+  
+  def integer_param(name, default_value = nil)
+    return default_value if params[name].nil?
+    return default_value if params[name] !=~ /^[-+]?[0-9]+$/
+    params[name].to_i
+  end
 end

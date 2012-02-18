@@ -13,20 +13,21 @@ class MeetingsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:meetings)
+    assert_equal 0, assigns(:meetings).take_while{|m| m.approved_at == nil }.length
   end
 
   test "should get index, with non-approved" do
-    get :index, :approved => "0" 
+    get :index, :approved => "false"
     assert_response :success
     assert_not_nil assigns(:meetings)
-    assert_equal :approve, assigns(:mode)
+    assert_equal 0, assigns(:meetings).take_while{|m| m.approved_at != nil }.length
   end
 
   test "should get index as rss" do
     get :index, :format => :rss 
     assert_response :success
   end
-
+  
   test "should get new" do
     get :new
     assert_response :success

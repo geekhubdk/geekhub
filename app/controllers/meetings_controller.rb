@@ -1,27 +1,22 @@
 class MeetingsController < ApplicationController
-
   before_filter :authenticate_user!, :only => [:destroy, :edit, :update]
-
   helper_method :can_approve_meeting?
 
   def index
-    @meetings = Meeting.upcomming.order("starts_at")
-
-    if params[:approved] == "0"
-      # approve mode, is visible to all, if they really like
-      @mode = :approve
-      @meetings = @meetings.needs_approval
-    else
-      @mode = :upcomming
-      @meetings = @meetings.approved
-    end
+    filters = {
+      upcomming: boolean_param(:upcomming, true),
+      approved: boolean_param(:approved, true),
+      days_from_now: integer_param(:days_from_now, 0)
+    }
+  
+    @meetings = Meeting.order("starts_at")
+    @meetings = @meetings.upcomming if filters[:upcomming] == true
+    @meetings = filters[:approved] ? @meetings.approved : @meetings.needs_approval
+    @meetings = @meetings.where("starts_at < ?", Time.now + filters[:days_from_now].to_i.days) if filters[:days_from_now].to_i > 0
 
     respond_to do |format|
       format.html
-      format.rss do
-        # Only show meetings in the 14 days
-        @meetings = @meetings.where("starts_at < ?", Time.now + 14.days)
-      end
+      format.rss
     end
   end
 
