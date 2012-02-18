@@ -33,11 +33,6 @@ class MeetingsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get show, as ics" do
-    get :show, id: @meeting.to_param, :format => :ics 
-    assert_response :success
-  end
-
   test "should create meeting" do
     assert_difference('Meeting.count') do
       post :create, meeting: @meeting.attributes

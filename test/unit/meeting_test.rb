@@ -5,9 +5,4 @@ class MeetingTest < ActiveSupport::TestCase
     meeting = Meeting.first
     assert_equal "12", meeting.month
   end
-
-  test "to_ical" do
-    meeting = Meeting.first
-    assert_not_nil meeting.to_ical
-  end
 end

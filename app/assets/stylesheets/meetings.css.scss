@@ -8,7 +8,7 @@
 
   .meeting { 
     border-bottom: 1px solid #e5e5e5;
-    padding: 24px 20px;
+    padding: 16px 10px;
     background-color: #f8f8f8;
     border-left: 1px solid #c6c6c6;
     border-right: 1px solid #c6c6c6;
@@ -25,7 +25,7 @@
     letter-spacing: -1px;
     font-weight: bold;
     margin: 0;
-    font-size: 35px;
+    font-size: 24px;
   }
   
   h2 a {
@@ -45,28 +45,29 @@
     padding-left: 4px;
     padding-right: 15px;
     margin-top: 20px;
-    font-size: 14pt;
-    line-height: 30px;
+    font-size: 14px;
+    line-height: 22px;
+    width: 400px;
   }
   
   .url {
     display: inline-block;
     clear:both;
-    margin-top: 85px;
+    margin-top: 20px;
     margin-bottom: 10px;
   }
 
   .alt-actions {
-    margin-top: 45px;
+    margin-top: 20px;
     float: right;
   }
 
-  .ics, .edit_meeting {
+  .edit_meeting {
     margin-left: 10px;
     margin-top: 5px;
     margin-bottom: 10px;
     height: 16px;
-
+    
     a {
       padding-left: 22px;
       background-repeat: no-repeat;
@@ -77,7 +78,6 @@
     }
   }
 
-  .ics a { background-image: url(../ics.png); }
   .edit_meeting a { background-image: url(calendar_pen.png); }
 
   .money-icon {

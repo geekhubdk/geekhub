@@ -11,15 +11,4 @@ class Meeting < ActiveRecord::Base
   def month
     self.starts_at.strftime('%m')
   end
-
-  def to_ical
-    RiCal.Calendar do |cal|
-      cal.event do |event|
-        event.summary = self.title
-        event.dtstart =  self.starts_at
-        event.dtend = self.starts_at + 1.hour
-        event.location = self.location
-      end
-    end
-  end
 end

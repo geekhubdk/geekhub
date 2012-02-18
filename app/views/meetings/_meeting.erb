@@ -19,21 +19,19 @@
   </div>
   <div class="details" style="display:none">
     <div><%= nl2br meeting.description %></div>
-    <div class="url"><a href="<%= meeting.url %>" class="button big">Læs mere / tilmelding</a></div>
-    <div class="alt-actions">
-      <div class="edit_meeting">
-        <% if user_signed_in? %>
-          <%= link_to 'Rediger', edit_meeting_path(meeting) %>
-        <% end %>
-      </div>    
-      <div class="ics">
-        <%= link_to 'Tilføj til kalender', meeting_path(meeting, :format => :ics) %>
-      </div>
+    <div class="edit_meeting">
+      <% if user_signed_in? %>
+        <%= link_to 'Rediger', edit_meeting_path(meeting) %>
+      <% end %>
+    </div>
+    <div class="alt-actions"> 
       <div class="share">
         <span class="st_facebook_button" st_url="<%= meeting.url %>" st_title="<%= meeting.title %>"></span>
         <span class="st_twitter_button" st_url="<%= meeting.url %>" st_title="<%= meeting.title %>"></span>
         <!--<span class="st_plusone_button" st_url="<%= meeting.url %>" st_title="<%= meeting.title %>"></span>-->
       </div>
     </div>
+    <div class="url"><a href="<%= meeting.url %>" class="button big">Læs mere / tilmelding</a></div>
+    
   </div>
 </div>

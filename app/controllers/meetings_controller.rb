@@ -22,11 +22,6 @@ class MeetingsController < ApplicationController
 
   def show
     @meeting = Meeting.find(params[:id])
-
-    respond_to do |format|
-      format.ics { send_data(@meeting.to_ical.export, :filename=>"event.ics", :disposition=>"inline; filename=event.ics", :type=>"text/calendar")}
-      format.html
-    end
   end
 
   def new
