@@ -9,10 +9,7 @@ class MeetingsController < ApplicationController
       days_from_now: integer_param(:days_from_now, 0)
     }
   
-    @meetings = Meeting.order("starts_at")
-    @meetings = @meetings.upcomming if filters[:upcomming] == true
-    @meetings = filters[:approved] ? @meetings.approved : @meetings.needs_approval
-    @meetings = @meetings.where("starts_at < ?", Time.now + filters[:days_from_now].to_i.days) if filters[:days_from_now].to_i > 0
+    @meetings = Meeting.filter(filters)
 
     respond_to do |format|
       format.html
