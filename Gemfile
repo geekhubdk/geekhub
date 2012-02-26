@@ -25,5 +25,6 @@ group :development, :test do
   gem 'guard-test'
   gem 'growl_notify'
   gem 'guard-rails'
+  gem 'guard-livereload'
   gem 'simplecov', :require => false
 end

@@ -1,0 +1,18 @@
+<h1>Velkommen til geekhub</h1>
+  <section class="grid_6">
+    <h3>
+      Det sker de næste 7 dage
+    </h3>
+    <div class="meetings">
+      <%= render :partial => "meetinglist", :collection => Meeting.limit(10), :as => :meeting %>
+    </div>
+  </section>
+  <div class="grid_6">
+    <h3>
+      Sidst tilføjet
+    </h3>
+    <div class="meetings">
+      <%= render :partial => "meetinglist", :collection => Meeting.limit(10), :as => :meeting %>
+    </div>
+  </div>
+  <div class="clear"></div>
