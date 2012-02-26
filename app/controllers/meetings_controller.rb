@@ -14,6 +14,9 @@ class MeetingsController < ApplicationController
     respond_to do |format|
       format.html
       format.rss
+      format.json do
+        render :json => @meetings
+      end
     end
   end
 
