@@ -8,11 +8,9 @@ class Api::V1::MeetingsController < ApplicationController
   private
 
   def meetings_json(meetings)
-    {
-      meetings: meetings.collect do |meeting|
-        meeting_json(meeting)
-      end
-    }
+    meetings.collect do |meeting|
+      meeting_json(meeting)
+    end
   end
 
   def meeting_json(meeting)
