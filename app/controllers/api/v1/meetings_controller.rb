@@ -9,7 +9,7 @@ class Api::V1::MeetingsController < ApplicationController
 
   def meetings_json(meetings)
     {
-      Meetings: meetings.collect do |meeting|
+      meetings: meetings.collect do |meeting|
         meeting_json(meeting)
       end
     }
@@ -17,14 +17,13 @@ class Api::V1::MeetingsController < ApplicationController
 
   def meeting_json(meeting)
     {
-      ID: meeting.id,
-      Title: meeting.title,
-      DateStart: meeting.starts_at,
-      Summary: meeting.description,
-      Location: meeting.location,
-      Link: meeting.url,
-      Organizer: meeting.organizer,
-      Organiser: meeting.organizer # DEPRECATED: for windows phone support (spelled wrong)
+      title: meeting.title,
+      starts_at: meeting.starts_at,
+      description: meeting.description,
+      location: meeting.location,
+      url: meeting.url,
+      organizer: meeting.organizer,
+      costs_money: meeting.costs_money
     }
   end
 end
