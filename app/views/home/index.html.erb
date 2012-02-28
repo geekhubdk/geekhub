@@ -4,7 +4,7 @@
       Det sker de næste 7 dage
     </h3>
     <div class="meetings">
-      <%= render :partial => "meetinglist", :collection => Meeting.limit(10), :as => :meeting %>
+      <%= render :partial => "meetinglist", :collection => Meeting.all, :as => :meeting %>
     </div>
   </section>
   <div class="grid_6">
@@ -12,7 +12,7 @@
       Sidst tilføjet
     </h3>
     <div class="meetings">
-      <%= render :partial => "meetinglist", :collection => Meeting.limit(10), :as => :meeting %>
+      <%= render :partial => "meetinglist", :collection => Meeting.limit(5), :as => :meeting %>
     </div>
   </div>
   <div class="clear"></div>

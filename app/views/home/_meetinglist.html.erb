@@ -5,8 +5,10 @@
         <span class="day"><%= l meeting.starts_at, format: :day %></span>
         <span class="month"><%= l meeting.starts_at, format: :month %></span>
       </td>
-      <td class="title">
-        <%= meeting.title %>
+      <td>
+        <div class="title">
+          <%= meeting.title %>
+        </div>
       </td>
       <td class="information">
         <div class="tags">
@@ -16,6 +18,7 @@
           <% unless meeting.costs_money %>
             <div class="tag free">Gratis</div>
           <% end %>
+          <div class="tag organizer"><%= meeting.organizer %></div>
         </div>
       </td>
     </tr> 
