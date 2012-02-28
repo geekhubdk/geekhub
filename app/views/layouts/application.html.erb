@@ -36,7 +36,7 @@
             <%= link_to 'Log ud', destroy_user_session_path, :method => :delete %>
             <%= link_to 'Godkend møder', meetings_path(:approved => false) %>
           <% end %>
-          <%= link_to 'Indsend event', new_meeting_path %>
+          <%= link_to image_tag('/add.png') + raw(' Indsend event'), new_meeting_path %>
           <%= link_to image_tag('/rss.png'), meetings_path(:format => :rss) %>
         </div>
       </div>
