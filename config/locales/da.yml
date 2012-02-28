@@ -74,6 +74,7 @@ da:
       month: "%b"
       day: "%d"
       time: "%H.%M"
+      weekday: "%A"
     am: ""
     pm: ""
 

@@ -1,18 +1,24 @@
 <h1>Velkommen til geekhub</h1>
-  <section class="grid_6">
-    <h3>
-      Det sker de næste 7 dage
-    </h3>
-    <div class="meetings">
-      <%= render :partial => "meetinglist", :collection => Meeting.all, :as => :meeting %>
-    </div>
-  </section>
-  <div class="grid_6">
-    <h3>
-      Sidst tilføjet
-    </h3>
-    <div class="meetings">
-      <%= render :partial => "meetinglist", :collection => Meeting.limit(5), :as => :meeting %>
-    </div>
+<section class="grid_6">
+  <h3>
+    Det sker de næste 7 dage
+  </h3>
+  <div class="meetings">
+    <%= render :partial => "meetinglist", :collection => @next_seven_days, :as => :meeting, :locals => { show_day: true }  %>
   </div>
-  <div class="clear"></div>
+</section>
+<section class="grid_6">
+  <h3>
+    Sidst tilføjet
+  </h3>
+  <div class="meetings">
+    <%= render :partial => "meetinglist", :collection => @newest_approved, :as => :meeting %>
+  </div>
+</section>
+<div class="clear"></div>
+<section class="grid_12">
+  <h3>Alle events</h3>
+  <div class="meetings">
+    <%= render :partial => "meetinglist", :collection => @all_upcomming, :as => :meeting %>
+  </div>
+</section>

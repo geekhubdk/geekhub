@@ -1,9 +1,17 @@
+<%
+  show_day = show_day || false
+%>
 <div class="meeting">
   <table>
     <tr>
       <td class="date">
-        <span class="day"><%= l meeting.starts_at, format: :day %></span>
-        <span class="month"><%= l meeting.starts_at, format: :month %></span>
+        <% if show_day %>
+          <span class="day"><%= l meeting.starts_at, format: :weekday %></span>
+          <span class="month"><%= l meeting.starts_at, format: :day %>. <%= l meeting.starts_at, format: :month %></span>
+        <% else %>
+          <span class="day"><%= l meeting.starts_at, format: :day %></span>
+          <span class="month"><%= l meeting.starts_at, format: :month %></span>
+        <% end %>
       </td>
       <td>
         <div class="title">
