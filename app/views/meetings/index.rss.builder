@@ -15,7 +15,7 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
 
     @meetings.each do |meeting|
       xml.item do
-        xml.title       meeting.title
+        xml.title       "#{meeting.title} - #{l(meeting.starts_at, :format => :short)}"
 
         if @mode == :upcomming
           xml.link meeting_url(meeting)
