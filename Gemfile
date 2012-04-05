@@ -26,7 +26,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'guard'
   gem 'guard-test'
-  gem 'growl_notify'
+  gem 'growl'
   gem 'guard-rails'
   gem 'guard-livereload'
   gem 'simplecov', :require => false
