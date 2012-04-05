@@ -20,6 +20,9 @@ end
 group :development, :test do
   # Pretty printed test output
   gem 'test-unit', '>= 2.4.5'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
   gem 'sqlite3'
   gem 'guard'
   gem 'guard-test'
