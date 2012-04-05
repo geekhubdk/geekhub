@@ -1,17 +1,6 @@
 <h1>Velkommen til geekhub</h1>
 <section class="grid_6">
   <h3>
-    Det sker de næste 7 dage
-  </h3>
-  <div class="meetings">
-    <%= render :partial => "meetinglist", 
-      :collection => @next_seven_days, 
-      :as => :meeting, 
-      :locals => { show_day: true }  %>
-  </div>
-</section>
-<section class="grid_6">
-  <h3>
     Sidst tilføjet
   </h3>
   <div class="meetings">
