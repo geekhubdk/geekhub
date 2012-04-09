@@ -19,15 +19,7 @@
         </div>
       </td>
       <td class="information">
-        <div class="tags">
-          <div class="tag location"><%= meeting.location %></div>
-          <!--<div class="tag technology">.NET</div>
-          <div class="tag technology">Web</div>-->
-          <% unless meeting.costs_money %>
-            <div class="tag free">Gratis</div>
-          <% end %>
-          <div class="tag organizer"><%= meeting.organizer %></div>
-        </div>
+        <%= render partial: 'meetings/tags', locals: { meeting: meeting } %> 
       </td>
     </tr> 
   </table>  

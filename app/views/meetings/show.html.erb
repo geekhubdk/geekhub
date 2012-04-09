@@ -1,8 +1,25 @@
-<h1><%= @meeting.title %></h1>
-<%= @meeting.organizer %>
-<%= @meeting.location %>
-<%= @meeting.starts_at %>
-<div>
-  <%= @meeting.description %>
+<article class="meeting">
+  <div class="grid_2 back">
+    <%= link_to 'Tilbage', root_path %>
+  </div>
+  <div class="grid_6">
+    <header>
+      <h1><%= @meeting.title %></h1>
+    </header>
+    <section class="description">
+      <%= nl2br @meeting.description %>
+    </section>
+    <footer>
+      <%= link_to 'Læs mere', @meeting.url, {id: 'readmore'} %>
+    </footer>
+  </div>
+  <aside class="grid_4">
+    <span class="starts_at"><%= l @meeting.starts_at, format: :short %></span>
+    <%= render partial: 'tags', locals: { meeting: @meeting } %>   
+    <% if user_signed_in? %>
+      <div>
+        <%= link_to 'Rediger', edit_meeting_path(@meeting) %>
+      </div>
+    <% end %>
+  </aside>
 </div>
-<%= link_to 'Læs mere', @meeting.url, {id: 'readmore'} %>
