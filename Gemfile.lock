@@ -97,6 +97,8 @@ GEM
     nokogiri (1.5.2)
     orm_adapter (0.0.7)
     pg (0.13.2)
+    pjax_rails (0.2.0)
+      jquery-rails
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -176,6 +178,7 @@ DEPENDENCIES
   jquery-rails
   newrelic_rpm
   pg
+  pjax_rails
   rails (= 3.2.1)
   ri_cal
   sass-rails

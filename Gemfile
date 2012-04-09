@@ -5,6 +5,7 @@ gem 'rails', '3.2.1'
 gem 'devise'
 gem 'jquery-rails'
 gem 'ri_cal'
+gem 'pjax_rails'
 
 group :assets do
   gem 'sass-rails'
