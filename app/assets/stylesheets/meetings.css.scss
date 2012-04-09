@@ -1,10 +1,47 @@
+article.meeting
+{
+  aside { margin-top: 90px; }
+  .starts_at { display: block; margin-bottom: 16px; }
+  .tags { margin-bottom: 18px; }
+  .description { width: 400px ; margin-bottom: 18px; line-height: 1.5em; }
+  .back { margin-top: 90px; }
+}
+
+.meeting .tags .tag {
+  display: inline-block;
+  padding: 2px 4px;
+  margin-top: 5px;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.meeting .tags .tag.technology {
+  color: #336644;
+}
+
+.meeting .tags .tag.location {
+  color: #777799;
+}
+
+.meeting .tags .tag.free {
+  font-weight: 500;
+}
+
 .meetings {
   border-top: 5px solid #0072BB; 
   border-bottom: 1px solid #C6C6C6; 
   margin-bottom: 50px;
   box-shadow: 2px 2px 2px rgba(200,200,200,0.2);
 
-  a { text-decoration: none; }
+  a 
+  { 
+    text-decoration: none; 
+    color: #111;
+  }
+
+  .tags {
+    text-align: right;
+  }
 
   .meeting { 
     border-bottom: 1px solid #e5e5e5;
@@ -12,83 +49,53 @@
     background-color: #f8f8f8;
     border-left: 1px solid #c6c6c6;
     border-right: 1px solid #c6c6c6;
-    color: #222;
-    font-size: 12px;
-    cursor: pointer;
+    color: #111;
+    font-size: 16px;
+    overflow: hidden;
+    height: 62px;
   }
 
-  .meeting:last-child {
-    border-bottom: 0;
-  }
+  .date {
+    margin-right: 10px;
+    border-radius: 2px;
+    width: 45px;
 
-  h2 {
-    letter-spacing: -1px;
-    font-weight: bold;
-    margin: 0;
-    font-size: 24px;
-  }
-  
-  h2 a {
-      color: #222;
-  }
+    .day, .month {
+      display: block;
+      text-align: center;
+      padding: 2px 5px;
+    }
 
-  .info {
-    padding-top: 6px;
-    padding-left: 2px;
-  }
+    .day {
+      color: #333;
+      font-size: 120%;
+    }
 
-  .location {
-    font-weight: normal;
-  }
-  
-  .details {
-    padding-left: 4px;
-    padding-right: 15px;
-    margin-top: 20px;
-    font-size: 14px;
-    line-height: 22px;
-    width: 400px;
-  }
-  
-  .url {
-    display: inline-block;
-    clear:both;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-
-  .alt-actions {
-    margin-top: 20px;
-    float: right;
-  }
-
-  .edit_meeting {
-    margin-left: 10px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    height: 16px;
-    
-    a {
-      padding-left: 22px;
-      background-repeat: no-repeat;
-      line-height: 16px;
-      display: inline-block;
-      color: #666;
-      z-index: 0;
+    .month {
+      margin-top: -5px;
+      font-size: 80%;
+      font-weight: bold;
     }
   }
 
-  .edit_meeting a { background-image: url(calendar_pen.png); }
+  table {
+    width: 100%;
+    height: 100%;
+  }
 
-  .money-icon {
-    vertical-align: top;
-    padding-left: 5px;
-    opacity: 0.4;
-    z-index: 0;
+  .information {
+    font-size: 80%;
+  }
+
+  .title {
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 200px;
+  }
+
+  .location {
+    text-align: right;
   }
 }
-
-
-
 
 

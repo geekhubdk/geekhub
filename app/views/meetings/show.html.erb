@@ -1,14 +1,25 @@
-<h1>Vi sender dig videre til '<%= @meeting.title %>'</h1>
-<p>Vent venligst mens vi stiller dig om til siden, som omhandler:</p>
-<p><%= link_to @meeting.title, @meeting.url %></p>
-<small>
-  Vi har behov for denne side, for at vi kan se hvor mange som aktivt bruger vores feed.
-</small>
-<script>
-  $(function() {
-    _gaq.push(["_trackPageview"]);
-    _gaq.push(function(){
-        window.location = '<%=raw escape_javascript(@meeting.url)%>';
-    });
-  });
-</script>
+<article class="meeting">
+  <div class="grid_2 back">
+    <%= link_to 'Tilbage', root_path %>
+  </div>
+  <div class="grid_6">
+    <header>
+      <h1><%= @meeting.title %></h1>
+    </header>
+    <section class="description">
+      <%= nl2br @meeting.description %>
+    </section>
+    <footer>
+      <%= link_to 'Læs mere', @meeting.url, {id: 'readmore'} %>
+    </footer>
+  </div>
+  <aside class="grid_4">
+    <span class="starts_at"><%= l @meeting.starts_at, format: :short %></span>
+    <%= render partial: 'tags', locals: { meeting: @meeting } %>   
+    <% if user_signed_in? %>
+      <div>
+        <%= link_to 'Rediger', edit_meeting_path(@meeting) %>
+      </div>
+    <% end %>
+  </aside>
+</div>

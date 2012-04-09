@@ -17,7 +17,6 @@ da:
       default: "%d.%m.%Y"
       short: "%e. %b %Y"
       long: "%e. %B %Y"
-
     day_names:
       - søndag
       - mandag
@@ -72,6 +71,10 @@ da:
       default: "%e. %B %Y, %H.%M"
       short: "%e. %b %Y, %H.%M"
       long: "%A d. %e. %B %Y, %H.%M"
+      month: "%b"
+      day: "%d"
+      time: "%H.%M"
+      weekday: "%A"
     am: ""
     pm: ""
 

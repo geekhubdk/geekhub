@@ -20,10 +20,14 @@ end
 group :development, :test do
   # Pretty printed test output
   gem 'test-unit', '>= 2.4.5'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
   gem 'sqlite3'
   gem 'guard'
   gem 'guard-test'
-  gem 'growl_notify'
+  gem 'growl'
   gem 'guard-rails'
+  gem 'guard-livereload'
   gem 'simplecov', :require => false
 end

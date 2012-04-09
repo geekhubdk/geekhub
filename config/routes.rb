@@ -8,7 +8,7 @@ Geekhub::Application.routes.draw do
     end
   end
 
-  root :to => "meetings#index"
+  root :to => "home#index"
 
   namespace :api do
     namespace :v1 do
