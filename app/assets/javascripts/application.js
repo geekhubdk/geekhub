@@ -6,9 +6,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.pjax
 //= require_tree .
-
-$(function() {
-  $('a:not([data-remote],[data-behavior],[data-skip-pjax])').pjax({container: '.page-content'})
-})
