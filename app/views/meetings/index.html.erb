@@ -1,7 +1,8 @@
-
-  <% @meetings.group_by(&:month).sort.each do |month, meetings|%>
-    <h2><%= month_name month %></h2>
-    <div class="meetings">
-      <%= render meetings %>    
-    </div>
-  <% end %>
+<section class="grid_12">
+  <h3>Events</h3>
+  <div class="meetings">
+    <%= render :partial => "list", 
+      :collection => @meetings, 
+      :as => :meeting %>
+  </div>
+</section>

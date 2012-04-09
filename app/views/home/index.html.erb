@@ -7,7 +7,7 @@
     Sidst tilføjet
   </h3>
   <div class="meetings">
-    <%= render :partial => "meetinglist", 
+    <%= render :partial => "meetings/list", 
       :collection => @newest_approved, 
       :as => :meeting %>
   </div>
@@ -16,7 +16,7 @@
 <section class="grid_12">
   <h3>Alle events</h3>
   <div class="meetings">
-    <%= render :partial => "meetinglist", 
+    <%= render :partial => "meetings/list", 
       :collection => @all_upcomming, 
       :as => :meeting %>
   </div>

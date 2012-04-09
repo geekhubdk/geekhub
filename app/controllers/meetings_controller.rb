@@ -41,7 +41,7 @@ class MeetingsController < ApplicationController
     @meeting.approved_at = can_approve_meeting? ? Time.now : nil
 
     if @meeting.save
-      redirect_to meetings_path, notice: 'Meeting was successfully created.'
+      redirect_to root_path, notice: 'Meeting was successfully created.'
     else
       render action: "new"
     end
@@ -55,7 +55,7 @@ class MeetingsController < ApplicationController
     end
 
     if @meeting.update_attributes(params[:meeting])
-      redirect_to meetings_path, notice: 'Meeting was successfully updated.'
+      redirect_to root_path, notice: 'Meeting was successfully updated.'
     else
       render "edit"
     end
@@ -65,7 +65,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
     @meeting.destroy
 
-    redirect_to meetings_url
+    redirect_to root_path
   end
 
 private

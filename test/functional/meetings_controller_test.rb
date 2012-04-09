@@ -38,7 +38,7 @@ class MeetingsControllerTest < ActionController::TestCase
       post :create, meeting: @meeting.attributes
     end
 
-    assert_redirected_to meetings_path()
+    assert_redirected_to root_path()
   end
   
   test "should not create meeting, if invalid" do
@@ -56,7 +56,7 @@ class MeetingsControllerTest < ActionController::TestCase
   test "should update meeting" do
     sign_in User.first
     put :update, id: @meeting.to_param, meeting: @meeting.attributes, approve: true
-    assert_redirected_to meetings_path()
+    assert_redirected_to root_path()
   end
 
   test "should not update meeting, if invalid" do
@@ -71,6 +71,6 @@ class MeetingsControllerTest < ActionController::TestCase
       delete :destroy, id: @meeting.to_param
     end
 
-    assert_redirected_to meetings_path
+    assert_redirected_to root_path
   end
 end
