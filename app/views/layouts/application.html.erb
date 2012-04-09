@@ -35,7 +35,7 @@
             <%= link_to 'Godkend møder', meetings_path(:approved => false) %>
           <% end %>
           <%= link_to image_tag('/add.png') + raw(' Indsend event'), new_meeting_path %>
-          <%= link_to image_tag('/rss.png'), meetings_path(:format => :rss) %>
+          <%= link_to image_tag('/rss.png'), meetings_path(:format => :rss), { 'data-skip-pjax' => true } %>
         </div>
       </div>
     </header>
