@@ -1,7 +1,7 @@
 class Api::V1::MeetingsController < ApplicationController
   respond_to :json
   def index
-    @meetings = Meeting.upcomming.approved.order("starts_at")
+    @meetings = Meeting.upcomming.order("starts_at")
     respond_with meetings_json(@meetings)
   end
 

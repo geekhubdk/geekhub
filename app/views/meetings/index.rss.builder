@@ -4,11 +4,7 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
   xml.channel do
 
 
-    if @mode == :upcomming
-      xml.title "geekhub - kommende events"
-    elsif @mode == :approve
-      xml.title "geekhub - events der mangler godkendelse"
-    end
+    xml.title "geekhub - kommende events"
 
     xml.link        url_for :only_path => false, :controller => 'meetings'
     xml.description "kommende events i Danmark"

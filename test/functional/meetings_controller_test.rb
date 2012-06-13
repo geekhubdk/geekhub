@@ -16,24 +16,19 @@ class MeetingsControllerTest < ActionController::TestCase
     assert_equal 0, assigns(:meetings).take_while{|m| m.approved_at == nil }.length
   end
 
-  test "should get index, with non-approved" do
-    get :index, :approved => "false"
-    assert_response :success
-    assert_not_nil assigns(:meetings)
-    assert_equal 0, assigns(:meetings).take_while{|m| m.approved_at != nil }.length
-  end
-
   test "should get index as rss" do
     get :index, :format => :rss 
     assert_response :success
   end
   
   test "should get new" do
+    sign_in User.first
     get :new
     assert_response :success
   end
 
   test "should create meeting" do
+    sign_in User.first
     assert_difference('Meeting.count') do
       post :create, meeting: @meeting.attributes
     end
@@ -42,6 +37,7 @@ class MeetingsControllerTest < ActionController::TestCase
   end
   
   test "should not create meeting, if invalid" do
+    sign_in User.first
     post :create, meeting: nil
 
     assert_response :success

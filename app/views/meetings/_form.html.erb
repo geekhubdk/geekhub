@@ -44,13 +44,6 @@
     <small>(valgfri - bruges hvis der er spørgsmål til forslaget)</small>
   </div>
 
-  <% if @meeting.needs_approval? && can_approve_meeting? %>
-    <div class="field">
-      <%= label_tag :approve %>
-      <%= check_box_tag :approve %>
-    </div>
-    <% end %>
-
   <div class="actions">
     <%= f.submit %>
   </div>

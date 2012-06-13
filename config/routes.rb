@@ -2,11 +2,6 @@ Geekhub::Application.routes.draw do
   devise_for :users
 
   resources :meetings
-  resources :meeting_revisions do
-    member do
-      post 'approve'
-    end
-  end
 
   root :to => "home#index"
 

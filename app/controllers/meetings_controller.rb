@@ -1,6 +1,5 @@
 class MeetingsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:destroy, :edit, :update]
-  helper_method :can_approve_meeting?
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
     filters = {
@@ -27,8 +26,6 @@ class MeetingsController < ApplicationController
   def new
     @meeting = Meeting.new
     @meeting.starts_at = 1.month.from_now.to_date
-
-    @mode = can_approve_meeting? ? :create : :approve
   end
 
   def edit
@@ -37,8 +34,6 @@ class MeetingsController < ApplicationController
 
   def create
     @meeting = Meeting.new(params[:meeting])
-
-    @meeting.approved_at = can_approve_meeting? ? Time.now : nil
 
     if @meeting.save
       redirect_to root_path, notice: 'Meeting was successfully created.'
@@ -49,10 +44,6 @@ class MeetingsController < ApplicationController
 
   def update
     @meeting = Meeting.find(params[:id])
-
-    unless params[:approve].nil?
-      @meeting.approved_at = Time.now
-    end
 
     if @meeting.update_attributes(params[:meeting])
       redirect_to root_path, notice: 'Meeting was successfully updated.'
