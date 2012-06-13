@@ -30,10 +30,16 @@ class MeetingsController < ApplicationController
 
   def edit
     @meeting = Meeting.find(params[:id])
+
+    unless @meeting.can_be_edited_by current_user
+      redirect_to new_user_session_path
+    end
   end
 
   def create
     @meeting = Meeting.new(params[:meeting])
+
+    @meeting.user = current_user
 
     if @meeting.save
       redirect_to root_path, notice: 'Meeting was successfully created.'
@@ -44,6 +50,10 @@ class MeetingsController < ApplicationController
 
   def update
     @meeting = Meeting.find(params[:id])
+
+    if @meeting.user.nil?
+      @meeting.user = current_user
+    end
 
     if @meeting.update_attributes(params[:meeting])
       redirect_to root_path, notice: 'Meeting was successfully updated.'

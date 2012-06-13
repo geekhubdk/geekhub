@@ -15,8 +15,10 @@
   </div>
   <aside class="grid_4">
     <span class="starts_at"><%= l @meeting.starts_at, format: :short %></span>
-    <%= render partial: 'tags', locals: { meeting: @meeting } %>   
-    <% if user_signed_in? %>
+    <%= render partial: 'tags', locals: { meeting: @meeting } %>
+
+    <% if user_signed_in? && 
+       @meeting.can_be_edited_by(current_user) %>
       <div>
         <%= link_to 'Rediger', edit_meeting_path(@meeting) %>
       </div>
