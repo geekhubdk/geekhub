@@ -23,6 +23,10 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
   end
 
+  def vote
+    render :nothing => true
+  end
+
   def new
     @meeting = Meeting.new
     @meeting.starts_at = 1.month.from_now.to_date

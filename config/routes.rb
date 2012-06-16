@@ -1,7 +1,9 @@
 Geekhub::Application.routes.draw do
   devise_for :users
 
-  resources :meetings
+  resources :meetings do
+    post :vote
+  end
 
   root :to => "home#index"
 

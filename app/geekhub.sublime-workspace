@@ -1,0 +1,389 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "class HomeController < ApplicationController\n  def index\n    @newest_approved = Meeting.order(\"created_at desc\").limit(3)\n    @all_upcomming = Meeting.upcomming.order(\"starts_at\")\n  end\nend\n",
+			"file": "controllers/home_controller.rb",
+			"file_size": 190,
+			"file_write_time": 1339615860000000,
+			"settings":
+			{
+				"buffer_size": 190,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/deldy/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 53,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "class User < ActiveRecord::Base\n  # Include default devise modules. Others available are:\n  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable\n  devise :database_authenticatable,\n         :recoverable, :rememberable, :trackable, :registerable\n\n  # Setup accessible (or protected) attributes for your model\n  attr_accessible :email, :password, :password_confirmation, :remember_me\n\n  has_many :user_roles\nend\n",
+			"file": "models/user.rb",
+			"file_size": 429,
+			"file_write_time": 1339615860000000,
+			"settings":
+			{
+				"buffer_size": 453,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 267.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"rails",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"",
+				"Package Control: Discover Packages"
+			]
+		],
+		"width": 530.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/deldy/code/geekhub/app/models/user_role.rb",
+		"/Users/deldy/Library/Application Support/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/Users/deldy/Library/Application Support/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/deldy/code/geekhub/app/models/user.rb",
+		"/Users/deldy/code/geekhub/app/models/meeting.rb",
+		"/Users/deldy/code/geekhub/coverage/index.html",
+		"/Users/deldy/code/geekhub/app/controllers/meetings_controller.rb",
+		"/Users/deldy/Library/Application Support/Sublime Text 2/Packages/User/rails/vp",
+		"/Users/deldy/Library/Application Support/Sublime Text 2/Packages/User/rails/bt",
+		"/Users/deldy/Library/Application Support/Sublime Text 2/Installed Packages/Package Control.sublime-package",
+		"/Users/deldy/code/geekhub/app/views/layouts/application.html.erb",
+		"/Users/deldy/code/geekhub/app/views/meetings/show.html.erb",
+		"/Users/deldy/code/geekhub/app/controllers/application_controller.rb",
+		"/Users/deldy/code/geekhub/app/views/meetings/new.html.erb",
+		"/Users/deldy/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/deldy/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/deldy/code/geekhub/db/schema.rb",
+		"/Users/deldy/code/geekhub/app/views/meetings/_form.html.erb",
+		"/Users/deldy/code/geekhub/app/controllers/home_controller.rb",
+		"/Users/deldy/code/geekhub/Gemfile",
+		"/Users/deldy/code/geekhub/db/migrate/20120613192338_add_created_by_to_meeting.rb",
+		"/Users/deldy/code/geekhub/app/controllers/api/v1/meetings_controller.rb",
+		"/Users/deldy/code/geekhub/app/views/home/index.html.erb",
+		"/Users/deldy/code/geekhub/app/views/meetings/index.rss.builder",
+		"/Users/deldy/code/geekhub/config/routes.rb",
+		"/Users/deldy/code/geekhub/test/fixtures/meetings.yml",
+		"/Users/deldy/code/geekhub/test/functional/meetings_controller_test.rb"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"|",
+			"\n    @meetings = Meeting.filter(filters)\n\n    respond_to do |format|\n      format.html\n      format.rss\n      format.json do\n        render :json => @meetings\n      end\n    end\n  end\n\n  def show\n    @meeting = Meeting.find(params[:id])\n  end\n\n  def new\n    @meeting = Meeting.new\n    @meeting.starts_at = 1.month.from_now.to_date\n  end\n\n  def edit\n    @meeting = Meeting.find(params[:id])\n\n    unless @meeting.can_be_edited_by current_user\n      redirect_to new_user_session_path",
+			"user",
+			"approve",
+			"needs_approval"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "controllers/home_controller.rb",
+					"settings":
+					{
+						"buffer_size": 190,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								190,
+								190
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/Ruby on Rails.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/deldy/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+					"settings":
+					{
+						"buffer_size": 53,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "models/user.rb",
+					"settings":
+					{
+						"buffer_size": 453,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								453,
+								453
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"index",
+				"coverage/index.html"
+			],
+			[
+				"user",
+				"app/models/user.rb"
+			],
+			[
+				"meeting",
+				"app/models/meeting.rb"
+			],
+			[
+				"mee",
+				"app/models/meeting.rb"
+			],
+			[
+				"userrole",
+				"app/models/user_role.rb"
+			],
+			[
+				"meetingscon",
+				"app/controllers/meetings_controller.rb"
+			],
+			[
+				"meetingcon",
+				"app/controllers/meetings_controller.rb"
+			],
+			[
+				"layout",
+				"app/views/layouts/application.html.erb"
+			],
+			[
+				"schema",
+				"db/schema.rb"
+			],
+			[
+				"applicationcon",
+				"app/controllers/application_controller.rb"
+			],
+			[
+				"show",
+				"app/views/meetings/show.html.erb"
+			],
+			[
+				"show.erb",
+				"app/views/meetings/show.html.erb"
+			],
+			[
+				"meeting.erb",
+				"app/views/meetings/new.html.erb"
+			],
+			[
+				"form",
+				"app/views/meetings/_form.html.erb"
+			],
+			[
+				"meetings",
+				"app/controllers/meetings_controller.rb"
+			],
+			[
+				"new",
+				"app/views/meetings/new.html.erb"
+			],
+			[
+				"homecontrol",
+				"app/controllers/home_controller.rb"
+			],
+			[
+				"meetingscontrol",
+				"app/controllers/meetings_controller.rb"
+			],
+			[
+				"addcreate",
+				"db/migrate/20120613192338_add_created_by_to_meeting.rb"
+			],
+			[
+				"gemfile",
+				"Gemfile"
+			],
+			[
+				"sche",
+				"db/schema.rb"
+			],
+			[
+				"ap",
+				"config/application.rb"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": false,
+	"side_bar_visible": true,
+	"side_bar_width": 282.0,
+	"status_bar_visible": true
+}

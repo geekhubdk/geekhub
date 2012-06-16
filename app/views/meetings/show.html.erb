@@ -6,6 +6,11 @@
     <header>
       <h1><%= @meeting.title %></h1>
     </header>
+    <div class="votes">
+      <span class="num-votes">0</span>
+      <span class="label">up's</span>
+      <%= link_to 'Stem', meeting_vote_path(@meeting), remote: true, method: :post %>
+    </div>
     <section class="description">
       <%= nl2br @meeting.description %>
     </section>

@@ -1,0 +1,4 @@
+<div id="user_toolbar">
+	<%= image_tag avatar_url(current_user) %>
+	<%= link_to 'Log ud', destroy_user_session_path, :method => :delete%>
+</div>

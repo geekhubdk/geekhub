@@ -31,7 +31,7 @@
         </div>
         <div class="menu">
           <% if user_signed_in? %>
-            <%= link_to 'Log ud', destroy_user_session_path, :method => :delete %>
+            <%= render 'shared/user_toolbar' %>
           <% else %>
             <%= link_to 'Log ind / opret bruger', new_user_session_path %>
           <% end %>
@@ -48,13 +48,5 @@
         Copyright &copy; 2012 <a href="http://twitter.com/#!/jesperbjensen">Jesper Blad Jensen (aka. Deldy)</a>. Kildekoden er tilgængelig på <a href="http://github.com/deldy/geekhub">Github</a>
       </div>
     </footer>
-    <script type="text/javascript">
-      var uvOptions = {};
-      (function() {
-        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/4W5qHXOB7PGC2tcRzH2VkQ.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-      })();
-    </script>
   </body>
 </html>

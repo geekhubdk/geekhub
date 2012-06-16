@@ -20,4 +20,8 @@ module ApplicationHelper
     months[number.to_i - 1]  
   end
 
+  def avatar_url(user)
+    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=16"
+  end
 end

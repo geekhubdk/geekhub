@@ -3,7 +3,7 @@
 %>
 <div class="meeting">
   <table>
-    <tr>
+    <tr>  
       <td class="date">
         <% if show_day %>
           <span class="day"><%= l meeting.starts_at, format: :weekday %></span>
@@ -12,6 +12,10 @@
           <span class="day"><%= l meeting.starts_at, format: :day %></span>
           <span class="month"><%= l meeting.starts_at, format: :month %></span>
         <% end %>
+      </td>
+      <td class="votes">
+        <span class="num-votes">0</span>
+        <span class="label">up's</span>
       </td>
       <td>
         <div class="title">

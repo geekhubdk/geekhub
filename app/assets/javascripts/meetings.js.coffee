@@ -2,17 +2,3 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$ ->
-  $(".meeting").click ->
-    $("h2 a", this).click()
-  $(".meeting h2 a").click ->
-    $(this).closest(".meeting").find(".details").toggle(200)
-    false
-  $(".meeting a").click (e) ->
-    e.stopPropagation()
-    true
-  $(".meeting .alt-actions").click (e) ->
-    e.stopPropagation()
-  $(".intro-show-more").click ->
-    $(this).hide()
-    $(".intro-more").show(500)

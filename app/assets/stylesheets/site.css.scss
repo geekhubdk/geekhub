@@ -78,3 +78,21 @@ body>footer {
     padding: 15px;
   }
 }
+
+#user_toolbar {
+  display: inline-block;
+  img {
+    vertical-align: top;
+  }
+}
+
+.big-frontpage-button {
+  float: right;
+  background: #0072BB;
+  padding: 25px;
+  color: #fff;
+  margin-right: 10px;
+  margin-top: 25px;
+  font-weight: bold;
+  text-decoration: none;
+}
