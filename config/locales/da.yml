@@ -223,6 +223,7 @@ da:
       even: "skal være et lige tal"
       taken: "er allerede brugt"
       record_invalid: "Godkendelse gik galt: %{errors}"
+      not_saved: "Ændringerne blev ikke gemt"
     template: &errors_template
       header:
         one: "En fejl forhindrede %{model} i at blive gemt"
@@ -242,6 +243,11 @@ da:
         url: "Link til event / tilmelding"
         suggested_by: "Din email"
         costs_money: "Det koster penge at deltage"
+      user:
+        email: "E-mail"
+        password: "Kodeord"
+        password_confirmation: "Gentag kodeord"
+        remember_me: "Husk mig"
     errors:
       messages:
         <<: *errors_messages
