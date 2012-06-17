@@ -35,7 +35,7 @@ class MeetingsController < ApplicationController
     
     current_user.vote_on(meeting)
 
-    render :nothing => true
+    redirect_to meeting
   end
 
   def new
