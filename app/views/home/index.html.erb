@@ -6,17 +6,17 @@
 <%= render 'shared/intro' %>
 
 
-<section class="grid_12">
+<%#<section class="grid_12">
   <h3>
     Sidst tilføjet
   </h3>
   <div class="meetings">
     <%= render :partial => "meetings/list", 
       :collection => @newest_approved, 
-      :as => :meeting %>
+      :as => :meeting 
   </div>
 </section>
-<div class="clear"></div>
+<div class="clear"></div>%>
 <section class="grid_12">
   <h3>Alle events</h3>
   <div class="meetings">
