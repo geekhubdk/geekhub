@@ -6,4 +6,12 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  has_many :meeting_votes
+
+  def vote_on meeting
+    unless meeting_votes.where("meeting_id = ?", meeting.id).length > 0
+      meeting_votes.create({ meeting_id: meeting.id })
+    end
+  end
 end

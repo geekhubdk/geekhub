@@ -21,9 +21,20 @@ class MeetingsController < ApplicationController
 
   def show
     @meeting = Meeting.find(params[:id])
+    
+    if user_signed_in?
+      @can_vote = @meeting.meeting_votes.where("user_id = ?", current_user.id).empty?
+    else
+      @can_vote = false
+    end
+ 
   end
 
   def vote
+    meeting = Meeting.find(params[:meeting_id])
+    
+    current_user.vote_on(meeting)
+
     render :nothing => true
   end
 
