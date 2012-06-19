@@ -66,6 +66,10 @@ class MeetingsController < ApplicationController
   def update
     @meeting = Meeting.find(params[:id])
 
+    unless @meeting.can_be_edited_by current_user
+      redirect_to new_user_session_path
+    end
+
     if @meeting.user.nil?
       @meeting.user = current_user
     end
@@ -79,6 +83,11 @@ class MeetingsController < ApplicationController
 
   def destroy
     @meeting = Meeting.find(params[:id])
+
+    unless @meeting.can_be_edited_by current_user
+      redirect_to new_user_session_path
+    end
+
     @meeting.destroy
 
     redirect_to root_path

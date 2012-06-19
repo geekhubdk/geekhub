@@ -35,6 +35,9 @@
       <div>
         <%= link_to 'Rediger', edit_meeting_path(@meeting) %>
       </div>
+      <div>
+        <%= link_to 'Slet', @meeting, method: :delete, confirm: "Nu er du ikke ved at gøre noget dumt, vel? :)" %>
+      </div>
     <% end %>
   </aside>
 </div>
