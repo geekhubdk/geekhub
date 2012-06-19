@@ -16,4 +16,22 @@ class User < ActiveRecord::Base
       meeting_votes.create({ meeting_id: meeting.id })
     end
   end
+
+  def self.authenticate email, password
+    if email.blank? || password.blank?
+      false
+    end
+    
+    user = User.find_for_database_authentication(:email=>email)
+    
+    if user.nil?
+      false
+    end
+
+    if user.valid_password?(password)
+      user
+    else
+      false
+    end
+  end
 end
