@@ -11,9 +11,13 @@ group :assets do
   gem 'uglifier'
 end
 
-group :production, :staging do
+group :production do
   gem 'pg'
   gem 'newrelic_rpm'
+end
+
+group :staging do
+  gem 'pg'
 end
 
 group :development, :test do
