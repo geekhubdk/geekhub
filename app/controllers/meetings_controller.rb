@@ -31,7 +31,7 @@ class MeetingsController < ApplicationController
   end
 
   def vote
-    meeting = Meeting.find(params[:meeting_id])
+    meeting = Meeting.find(params[:id])
     
     current_user.vote_on(meeting)
 

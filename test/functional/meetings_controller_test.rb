@@ -69,4 +69,31 @@ class MeetingsControllerTest < ActionController::TestCase
 
     assert_redirected_to root_path
   end
+
+  test "should display show without logging in" do
+    get :show, id: @meeting.to_param
+    assert_equal false, assigns[:can_vote], "People need to login to vote"
+  end
+
+  test "should display show with login" do
+    sign_in User.first
+
+    get :show, id: @meeting.to_param
+    assert_equal true, assigns[:can_vote], "If a person is logged in, and has not voted before, they should be able to vote"
+  end
+    
+  test "should display show without can_vote if voted before" do
+    User.first.meeting_votes.create({ meeting_id: @meeting.id })
+
+    get :show, id: @meeting.to_param
+    assert_equal false, assigns[:can_vote], "Should not be able to vote, if have voted before"
+  end
+
+  test "vote on should redirect back to meeting after vote" do
+    sign_in User.first
+
+    post :vote, id: @meeting.to_param
+
+    assert_redirected_to @meeting
+  end
 end
