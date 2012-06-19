@@ -1,10 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '~> 3.2'
 
 gem 'devise'
 gem 'jquery-rails'
-gem 'ri_cal'
 
 group :assets do
   gem 'sass-rails'
