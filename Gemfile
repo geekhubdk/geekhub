@@ -4,6 +4,7 @@ gem 'rails', '~> 3.2'
 
 gem 'devise'
 gem 'jquery-rails'
+gem 'slim'
 
 group :assets do
   gem 'sass-rails'
