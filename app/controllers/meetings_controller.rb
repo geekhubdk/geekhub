@@ -40,7 +40,7 @@ class MeetingsController < ApplicationController
 
   def new
     @meeting = Meeting.new
-    @meeting.starts_at = 1.month.from_now.to_date + 16.hours
+    @meeting.starts_at = 7.days.from_now.to_date + 16.hours
   end
 
   def edit
