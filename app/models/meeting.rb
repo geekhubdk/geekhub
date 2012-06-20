@@ -21,4 +21,5 @@
   def can_be_edited_by user
     user_id.nil? || user_id == user.id
   end
+
 end

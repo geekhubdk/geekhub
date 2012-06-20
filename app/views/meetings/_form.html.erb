@@ -1,3 +1,4 @@
+<div class="container_12">
 <%= form_for(@meeting) do |f| %>
   <% if @meeting.errors.any? %>
     <div id="error_explanation">
@@ -10,36 +11,60 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <div class="container_12">
+    <div class="grid_12 alpha omega">
+      <div class="well">
+        <div class="field">
+          <%= f.label :url %>
+          <%= f.text_field :url, placeholder: "http://example.org", style: 'width:900px' %>
+        </div>
+      </div>
+    </div>
+    <div class="grid_6 alpha"> 
+      <div class="well">   
+        <div class="field">
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+        </div>
+        <div class="field">
+          <%= f.label :starts_at %>
+          <div class="dateselector">
+            <%= f.hidden_field :starts_at %>
+            <div class="date"><input type="text" maxlength="10" class="datepicker" name="date" value="<%= params[:date] ? params[:date] : @meeting.starts_at.strftime('%d/%m/%Y') %>" /></div>    
+            <div class="time">
+              kl. 
+              <%= select_tag :hour, options_for_select((0..23).map{|h| h < 10 ? "0#{h}" : "#{h}"}, @meeting.starts_at.strftime('%H')) %>
+              :
+              <%= select_tag :minute, options_for_select((0..55).step(5).map{|h| h < 10 ? "0#{h}" : "#{h}" }, @meeting.starts_at.strftime('%M')) %>
+            </div>
+          </div>
+        </div>
+        <div class="field checkbox">
+          <%= f.check_box :costs_money %> <%= f.label :costs_money %>
+        </div>
+        <div class="field">
+          <%= f.label :location %>
+          <%= f.text_field :location %>
+        </div>
+        <div class="field">
+          <%= f.label :organizer %>
+          <%= f.text_field :organizer %>
+        </div>
+      </div>
+    </div>
+    <div class="grid_6 omega">
+      <div class="well">
+        <div class="field">
+          <%= f.label :description %>
+          <%= f.text_area :description, :rows => 13, :cols => 58 %>
+          <small>(understøtter p.t. ikke fancy formateringer)</small>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
   </div>
-  <div class="field checkbox">
-    <%= f.check_box :costs_money %> <%= f.label :costs_money %>
-  </div>
-  <div class="field">
-    <%= f.label :starts_at %>
-    <%= f.datetime_select :starts_at %>
-  </div>
-  <div class="field">
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :organizer %>
-    <%= f.text_field :organizer %>
-  </div>
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description, :rows => 5, :cols => 23 %>
-    <small>(understøtter p.t. ikke fancy formateringer)</small>
-  </div>
-  <div class="field">
-    <%= f.label :url %>
-    <%= f.text_field :url %>
-  </div>
-
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>

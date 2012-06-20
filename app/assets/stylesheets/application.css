@@ -4,5 +4,6 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require 960_12_col
+ *= require jquery.ui.datepicker
  *= require_tree . 
 */
