@@ -1,10 +1,15 @@
 class Api::V1::MeetingsController < ApplicationController
-  respond_to :json
+  respond_to :json, :timeline
 
   before_filter :authenticate, only: [:create, :new]
 
   def index
-    @meetings = Meeting.upcomming.order("starts_at")
+    if params[:all] == "1"
+      @meetings = Meeting.order("starts_at").all
+    else
+      @meetings = Meeting.upcomming.order("starts_at")    
+    end
+    
     respond_with meetings_json(@meetings)
   end
 

@@ -1,0 +1,18 @@
+{
+    "timeline":
+    {
+        "headline":"Events i det danske udvikler community",
+        "type":"default",
+		"startDate": <%= raw(Time.now.to_json)%>,
+		"text":"Powered by geekhub.dk",
+        "date": [
+        <%= raw(@meetings.map do |m|
+            {
+                startDate: m.starts_at,
+                headline: m.title,
+                text:m.description + "<br/><br/><a href=\"#{m.url}\" target=\"_blank\">Læs mere / tilmelding</a>"
+            }.to_json
+        end.join(',')) %>
+        ]
+    }
+}

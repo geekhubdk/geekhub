@@ -4,3 +4,4 @@
 # Mime::Type.register "text/richtext", :rtf
 # Mime::Type.register_alias "text/html", :iphone
 Mime::Type.register "text/calendar", :ical
+Mime::Type.register "application/json", :timeline, %w( text/x-json application/jsonrequest )  
