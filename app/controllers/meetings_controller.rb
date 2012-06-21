@@ -14,9 +14,6 @@ class MeetingsController < ApplicationController
         redirect_to root_path
       end
       format.rss
-      format.json do
-        render :json => @meetings
-      end
     end
   end
 
