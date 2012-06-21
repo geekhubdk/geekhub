@@ -4,7 +4,7 @@
   </div>
   <div class="grid_6">
     <header>
-      <h1><%= @meeting.title %></h1>
+      <h1><%= link_to @meeting.title, @meeting.url %></h1>
     </header>
     <div class="votes">
       <span class="num-votes"><%= @meeting.meeting_votes.count %></span>
@@ -23,7 +23,7 @@
       <%= nl2br @meeting.description %>
     </section>
     <footer>
-      <%= link_to 'Læs mere', @meeting.url, {id: 'readmore'} %>
+      <%= link_to 'Læs mere / tilmelding', @meeting.url, {id: 'readmore'} %>
     </footer>
   </div>
   <aside class="grid_4">
