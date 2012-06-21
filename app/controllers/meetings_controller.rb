@@ -4,14 +4,15 @@ class MeetingsController < ApplicationController
   def index
     filters = {
       upcomming: boolean_param(:upcomming, true),
-      approved: boolean_param(:approved, true),
       days_from_now: integer_param(:days_from_now, 0)
     }
   
     @meetings = Meeting.filter(filters)
 
     respond_to do |format|
-      format.html
+      format.html do
+        redirect_to root_path
+      end
       format.rss
       format.json do
         render :json => @meetings
