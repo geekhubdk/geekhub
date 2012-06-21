@@ -11,9 +11,8 @@ class MeetingsControllerTest < ActionController::TestCase
 
   test "should get index" do
     get :index
-    assert_response :success
-    assert_not_nil assigns(:meetings)
-    assert_equal 0, assigns(:meetings).take_while{|m| m.approved_at == nil }.length
+
+    assert_redirected_to root_path
   end
 
   test "should get index as rss" do

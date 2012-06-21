@@ -1,0 +1,10 @@
+<div class="dateselector">
+  <%= f.hidden_field field %>
+  <div class="date"><input type="text" maxlength="10" class="datepicker" name="date" value="<%= @meeting.starts_at ? @meeting.starts_at.strftime('%d/%m/%Y') : '' %>" /></div>    
+  <div class="time">
+    kl. 
+    <%= select_tag field.to_s + "_hour", options_for_select((0..23).map{|h| h < 10 ? "0#{h}" : "#{h}"}, @meeting.starts_at ? @meeting.starts_at.strftime('%H') : '00'), { class: "hour" } %>
+    :
+    <%= select_tag field.to_s + "_minute", options_for_select((0..55).step(5).map{|h| h < 10 ? "0#{h}" : "#{h}" }, @meeting.starts_at ? @meeting.starts_at.strftime('%M') : '00'), { class: "minute"} %>
+  </div>
+</div>
