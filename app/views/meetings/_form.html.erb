@@ -24,13 +24,13 @@
       <div class="well">   
         <div class="field">
           <%= f.label :title %>
-          <%= f.text_field :title %>
+          <%= f.text_field :title, style: "width: 420px" %>
         </div>
         <div class="field">
           <%= f.label :starts_at %>
           <div class="dateselector">
             <%= f.hidden_field :starts_at %>
-            <div class="date"><input type="text" maxlength="10" class="datepicker" name="date" value="<%= params[:date] ? params[:date] : (@meeting.starts_at ? @meeting.starts_at.strftime('%d/%m/%Y') : '') %>" /></div>    
+            <div class="date"><input type="text" maxlength="10" class="datepicker" name="date" value="<%= @meeting.starts_at ? @meeting.starts_at.strftime('%d/%m/%Y') : '' %>" /></div>    
             <div class="time">
               kl. 
               <%= select_tag :hour, options_for_select((0..23).map{|h| h < 10 ? "0#{h}" : "#{h}"}, @meeting.starts_at ? @meeting.starts_at.strftime('%H') : '00') %>

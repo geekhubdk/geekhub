@@ -9,7 +9,7 @@ form {
   }
 
   .datepicker {
-  	width: 105px;
+  	width: 110px;
   }
 
   input {
@@ -24,12 +24,13 @@ form {
   input, textarea {
   	border: 1px solid #cacaca;
   	border-radius: 4px;
-  	padding: 4px;
+  	padding: 4px 0px 4px 4px;
   }
 
   input[type=submit] {
   	background-color: #cacaca;
   	border: 1px solid gray;
+    padding: 4px;
   	box-shadow: 0 1px 0 lightgray inset, 0 -1px 0 lightgray inset;
   }
 
