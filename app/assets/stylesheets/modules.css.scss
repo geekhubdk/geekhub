@@ -47,6 +47,10 @@
      	opacity: 0.8;
 	}
 
+	.toolbar-button {
+		vertical-align: middle;
+	}
+
 	.toolbar-button:last-child, .toolbar-imagebutton:last-child {
 		border-right: 0px;
 	}
