@@ -10,26 +10,6 @@ article.meeting
   h1 a { text-decoration: none; }
 }
 
-.meeting .tags .tag {
-  display: inline-block;
-  padding: 2px 4px;
-  margin-top: 5px;
-  border-top: 1px solid #e8e8e8;
-  border-bottom: 1px solid #e8e8e8;
-}
-
-.meeting .tags .tag.technology {
-  color: #336644;
-}
-
-.meeting .tags .tag.location {
-  color: #777799;
-}
-
-.meeting .tags .tag.free {
-  font-weight: 500;
-}
-
 .meeting #readmore {
   font-size: 150%;
 }
