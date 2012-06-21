@@ -6,6 +6,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'slim'
+gem 'pjax-rails'
 
 group :assets do
   gem 'sass-rails'
