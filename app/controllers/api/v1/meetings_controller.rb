@@ -2,6 +2,7 @@ class Api::V1::MeetingsController < ApplicationController
   respond_to :json, :timeline
 
   before_filter :authenticate, only: [:create, :new]
+  after_filter :set_access_control_headers
 
   def index
     if params[:all] == "1"
@@ -36,6 +37,11 @@ class Api::V1::MeetingsController < ApplicationController
 
   private
 
+  def set_access_control_headers 
+    headers['Access-Control-Allow-Origin'] = '*' 
+    headers['Access-Control-Request-Method'] = '*' 
+  end
+  
   def param_match value, param
     if param.is_a? Array
       param.any?{|p| p.downcase == value.downcase}
