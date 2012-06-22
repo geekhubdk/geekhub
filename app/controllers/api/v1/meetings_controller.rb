@@ -66,6 +66,7 @@ class Api::V1::MeetingsController < ApplicationController
 
   def meeting_json(meeting)
     {
+      id: meeting.id,
       title: meeting.title,
       starts_at: meeting.starts_at,
       description: meeting.description,
