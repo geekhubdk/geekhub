@@ -5,20 +5,8 @@ class Api::V1::MeetingsController < ApplicationController
   after_filter :set_access_control_headers
 
   def index
-    if params[:all] == "1"
-      @meetings = Meeting.order("starts_at").all
-    else
-      @meetings = Meeting.upcomming.order("starts_at")    
-    end
-
-    if params[:organizer]
-      @meetings = @meetings.select{|m| param_match(m.organizer,params[:organizer])}
-    end
+    @meetings = Meeting.filter(params)
     
-    if params[:location]
-      @meetings = @meetings.select{|m| param_match(m.location,params[:location])}
-    end
-
     respond_with meetings_json(@meetings)
   end
 
@@ -42,14 +30,6 @@ class Api::V1::MeetingsController < ApplicationController
     headers['Access-Control-Request-Method'] = '*' 
   end
   
-  def param_match value, param
-    if param.is_a? Array
-      param.any?{|p| p.downcase == value.downcase}
-    else    
-      value.downcase == param.downcase 
-    end
-  end
-
   def authenticate
     if user = authenticate_with_httpb_asic { |u, p| User.authenticate(u, p) }
       @current_user = user

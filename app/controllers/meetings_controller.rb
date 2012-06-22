@@ -2,12 +2,7 @@ class MeetingsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
-    filters = {
-      upcomming: boolean_param(:upcomming, true),
-      days_from_now: integer_param(:days_from_now, 0)
-    }
-  
-    @meetings = Meeting.filter(filters)
+    @meetings = Meeting.filter(params)
 
     respond_to do |format|
       format.html do
