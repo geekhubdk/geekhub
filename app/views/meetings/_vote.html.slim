@@ -1,10 +1,11 @@
 .votes
-      span.num-votes = @meeting.meeting_votes.count
-      span.label 
-        | up's - 
-        = link_to('Stem', vote_meeting_path(@meeting), method: :post) if @can_vote
-        - unless @can_vote
-          - if user_signed_in?
-            = "Du har allerede stemt"
-          - else
-            = "Du skal logge ind for at stemme"
+	span.num-votes = @meeting.meeting_votes.count
+	span.label 
+		| up's - 
+		= link_to('Stem', vote_meeting_path(@meeting), method: :post) if @can_vote
+		- unless @can_vote
+			- if user_signed_in?
+				= "Du har allerede stemt"
+			- else
+				= "Du skal logge ind for at stemme"
+		

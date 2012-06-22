@@ -1,19 +1,19 @@
 article.meeting
-  
-  .grid_2.back
-    = link_to 'Tilbage', root_path
-  
-  .grid_6  
-    header
-      h1 = link_to @meeting.title, @meeting.url
-    = render 'vote'
-    
-    section.description
-      = nl2br @meeting.description
-    footer
-      = link_to 'Læs mere / tilmelding', @meeting.url, {id: 'readmore'}
-  
-  aside.grid_4  
-    span.starts_at = l @meeting.starts_at, format: :short
-    = render partial: 'tags', locals: { meeting: @meeting }
-    = render partial: 'functions'
+	
+	.grid_2.back
+		= link_to 'Tilbage', root_path
+	
+	.grid_6  
+		header
+			h1 = link_to @meeting.title, @meeting.url
+		= render 'vote'
+		
+		section.description
+			= nl2br @meeting.description
+		footer
+			= link_to 'Læs mere / tilmelding', @meeting.url, {id: 'readmore'}
+	
+	aside.grid_4  
+		span.starts_at = l @meeting.starts_at, format: :short
+		= render partial: 'tags', locals: { meeting: @meeting }
+		= render partial: 'functions'
