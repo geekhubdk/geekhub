@@ -9,7 +9,15 @@ class Api::V1::MeetingsController < ApplicationController
     else
       @meetings = Meeting.upcomming.order("starts_at")    
     end
+
+    if params[:organizer]
+      @meetings = @meetings.select{|m| param_match(m.organizer,params[:organizer])}
+    end
     
+    if params[:location]
+      @meetings = @meetings.select{|m| param_match(m.location,params[:location])}
+    end
+
     respond_with meetings_json(@meetings)
   end
 
@@ -28,8 +36,16 @@ class Api::V1::MeetingsController < ApplicationController
 
   private
 
+  def param_match value, param
+    if param.is_a? Array
+      param.any?{|p| p.downcase == value.downcase}
+    else    
+      value.downcase == param.downcase 
+    end
+  end
+
   def authenticate
-    if user = authenticate_with_http_basic { |u, p| User.authenticate(u, p) }
+    if user = authenticate_with_httpb_asic { |u, p| User.authenticate(u, p) }
       @current_user = user
     else
       request_http_basic_authentication
