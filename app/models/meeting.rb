@@ -9,10 +9,12 @@
     self.starts_at.strftime('%m')
   end
 
-  def self.filter(filters)
+  def self.filter(filters, return_filters = false)
     m = Meeting.includes(:meeting_votes).order("starts_at")
     m = m.upcomming if filters[:all] != "1"
-    
+
+    location_filters = m.map{|m| m.location}.uniq
+
     if filters[:organizer]
       m = m.select{|m| param_match(m.organizer,filters[:organizer])}
     end
@@ -21,7 +23,8 @@
       m = m.select{|m| param_match(m.location,filters[:location])}
     end
 
-    return m
+    return [m, location_filters] if return_filters
+    return m unless return_filters
   end
 
   def can_be_edited_by user

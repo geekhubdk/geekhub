@@ -1,5 +1,12 @@
 class HomeController < ApplicationController
   def index
-    @all_upcomming = Meeting.filter(params)
+    @meetings, @location_filters = Meeting.filter(params, true)
+    if params[:location].is_a? String
+    	@active_location_filters = [params[:location]]
+    else
+    	@active_location_filters = params[:location]
+    end
+
+    @active_location_filters ||= []
   end
 end
