@@ -85,7 +85,7 @@
 		padding: 5px;
 		min-width: 100px;
 		text-align: center;
-		background-color: #eaeaea;
+		background-color: #EFEFEF;
 		text-transform: uppercase;
 
 		a { color: #444; text-decoration: none; }
@@ -94,7 +94,7 @@
 
 	.main-nav-tab.is-active{
 		a { color: #fff; }
-		background-color: #0072BB;
+		background-color: #66B8DB;
 		position: relative;
 	}
 
@@ -106,7 +106,7 @@
 		bottom: -8px;
 		margin-left: 0px;
 		font-size: 0px; line-height: 0%; width: 0px;
-		border-left: 8px solid #0072BB;
+		border-left: 8px solid #66B8DB;
 		border-bottom: 8px solid transparent;
 	}
 
@@ -118,7 +118,7 @@
 		bottom: -8px;
 		margin-left: -8px;
 		font-size: 0px; line-height: 0%; width: 0px;
-		border-right: 8px solid #0072BB;
+		border-right: 8px solid #66B8DB;
 		border-bottom: 8px solid transparent;
 	}
 }
