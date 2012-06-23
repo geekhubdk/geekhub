@@ -8,5 +8,20 @@ h1 Velkommen til geekhub
 
 section.grid_12
   h3 Alle events
+  .filters
+  	.filters-locations
+  		.filters-locations
+			.filters-filter
+				label
+					input type="checkbox" value="København"
+				 	| København
+			.filters-filter
+				label
+		  			input type="checkbox" value="Odense"
+		  			| Odense
+			.filters-filter
+				label
+	   				input type="checkbox" value="Aarhus"
+	   				| Aarhus
   div.meetings 
     == render :partial => "meetings/list", :collection => @all_upcomming, :as => :meeting
