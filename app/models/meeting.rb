@@ -15,11 +15,11 @@
 
     location_filters = m.map{|m| m.location}.uniq
 
-    if filters[:organizer]
+    if filters[:organizer] && !filters[:organizer].blank?
       m = m.select{|m| param_match(m.organizer,filters[:organizer])}
     end
     
-    if filters[:location]
+    if filters[:location] && !filters[:location].blank?
       m = m.select{|m| param_match(m.location,filters[:location])}
     end
 
