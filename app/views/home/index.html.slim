@@ -8,7 +8,7 @@ h1 Velkommen til geekhub
 
 section.grid_12
 	.filters
-		= form_tag root_path, method: :get do
+		= form_tag root_path, method: :get, remote: true do
 			.filters-locations
 				- @location_filters.each do |f|
 					.filters-filter
