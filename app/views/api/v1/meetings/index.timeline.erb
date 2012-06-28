@@ -10,7 +10,7 @@
             {
                 startDate: m.starts_at,
                 headline: m.title,
-                text:m.description + "<br/><br/><a href=\"#{m.url}\" target=\"_blank\">Læs mere / tilmelding</a>"
+                text: timeline_text(m)
             }.to_json
         end.join(',')) %>
         ]
