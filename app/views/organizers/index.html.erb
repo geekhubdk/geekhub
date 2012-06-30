@@ -1,0 +1,30 @@
+<div id="organizers">
+	<%= render "shared/navigation" %>
+	<h1>Listing organizers</h1>
+
+	<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Description</th>
+	    <th>Url</th>
+	    <th></th>
+	    <th></th>
+	    <th></th>
+	  </tr>
+
+	<% @organizers.each do |organizer| %>
+	  <tr>
+	    <td><%= organizer.name %></td>
+	    <td><%= organizer.description %></td>
+	    <td><%= organizer.url %></td>
+	    <td><%= link_to 'Show', organizer %></td>
+	    <td><%= link_to 'Edit', edit_organizer_path(organizer) %></td>
+	    <td><%= link_to 'Destroy', organizer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  </tr>
+	<% end %>
+	</table>
+
+	<br />
+
+	<%= link_to 'New Organizer', new_organizer_path %>
+</div>

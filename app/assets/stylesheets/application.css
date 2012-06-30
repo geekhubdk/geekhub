@@ -6,4 +6,5 @@
  *= require 960_12_col
  *= require jquery.ui.datepicker
  *= require_tree . 
+ *= require modules/all
 */
