@@ -1,3 +1,31 @@
 // Place all the styles related to the organizers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.organizers {
+	border-top: 5px solid #0072BB; 
+	border-bottom: 1px solid #C6C6C6; 
+	margin-bottom: 50px;
+	box-shadow: 2px 2px 2px rgba(200,200,200,0.2);
+	
+	
+	.organizer {
+		border-bottom: 1px solid #e5e5e5;
+	    padding: 16px 10px;
+	    background-color: #f8f8f8;
+	    border-left: 1px solid #c6c6c6;
+	    border-right: 1px solid #c6c6c6;
+	    color: #111;
+	    font-size: 16px;
+	    overflow: hidden;
+
+		h1 {
+			font-size: 140%;
+			margin: 0;
+		}
+		
+		h1 a {
+			text-decoration: none;
+		}
+	}
+}

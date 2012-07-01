@@ -1,30 +1,21 @@
 <div id="organizers">
 	<%= render "shared/navigation" %>
-	<h1>Listing organizers</h1>
+	
+	<%= link_to 'Ny arrangør', new_organizer_path, class: "big-frontpage-button" %>
+	
+	<h1>Arrangører i det danske community</h1>
+	<p>Nedenunder ses en liste af arrangøre og brugergrupper i det danske community som hoster events til udviklere.<br/>Hvis der mangler en på listen, så kan du tilføje den ved at trykke på 'Ny arrangør'</p>
+	<div class="organizers">
+		<% @organizers.each do |organizer| %>
+			<article class="organizer">
+			  <h1><%= link_to organizer.name, organizer.url %></h1>
+			  <p><%= organizer.description %></p>
+				<% if user_signed_in? && organizer.can_be_edited_by(current_user) %>
+				  <%= link_to 'Rediger', edit_organizer_path(organizer) %>
+				  <%= link_to 'Slet', organizer, method: :delete, data: { confirm: 'Are you sure?' } %>
+				<% end %>
+			</article>
+		<% end %>
+	</div>
 
-	<table>
-	  <tr>
-	    <th>Name</th>
-	    <th>Description</th>
-	    <th>Url</th>
-	    <th></th>
-	    <th></th>
-	    <th></th>
-	  </tr>
-
-	<% @organizers.each do |organizer| %>
-	  <tr>
-	    <td><%= organizer.name %></td>
-	    <td><%= organizer.description %></td>
-	    <td><%= organizer.url %></td>
-	    <td><%= link_to 'Show', organizer %></td>
-	    <td><%= link_to 'Edit', edit_organizer_path(organizer) %></td>
-	    <td><%= link_to 'Destroy', organizer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-	  </tr>
-	<% end %>
-	</table>
-
-	<br />
-
-	<%= link_to 'New Organizer', new_organizer_path %>
 </div>

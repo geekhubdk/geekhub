@@ -1,23 +1,14 @@
 class OrganizersController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+
   # GET /organizers
   # GET /organizers.json
   def index
-    @organizers = Organizer.all
+    @organizers = Organizer.order("name").all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @organizers }
-    end
-  end
-
-  # GET /organizers/1
-  # GET /organizers/1.json
-  def show
-    @organizer = Organizer.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @organizer }
     end
   end
 
@@ -44,7 +35,7 @@ class OrganizersController < ApplicationController
 
     respond_to do |format|
       if @organizer.save
-        format.html { redirect_to @organizer, notice: 'Organizer was successfully created.' }
+        format.html { redirect_to organizers_url, notice: 'Organizer was successfully created.' }
         format.json { render json: @organizer, status: :created, location: @organizer }
       else
         format.html { render action: "new" }
@@ -60,7 +51,7 @@ class OrganizersController < ApplicationController
 
     respond_to do |format|
       if @organizer.update_attributes(params[:organizer])
-        format.html { redirect_to @organizer, notice: 'Organizer was successfully updated.' }
+        format.html { redirect_to organizers_url, notice: 'Organizer was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
