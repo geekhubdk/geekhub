@@ -233,6 +233,7 @@ da:
   activerecord:
     models:
       meeting: "Møde"
+      organizer: "Arrangør"
     attributes:
       meeting:
         title: "Titel"
@@ -243,6 +244,10 @@ da:
         url: "Link til event / tilmelding"
         suggested_by: "Din email"
         costs_money: "Det koster penge at deltage"
+      organizer:
+        name: "Navn"
+        description: "Kort beskrivelse"
+        url: "Link (gerne direkte til aktivitetskalender)"
       user:
         email: "E-mail"
         password: "Kodeord"
