@@ -9,7 +9,7 @@
 		<% @organizers.each do |organizer| %>
 			<article class="organizer">
 			  <h1><%= link_to organizer.name, organizer.url %></h1>
-			  <p><%= organizer.description %></p>
+			  <p><%= nl2br organizer.description %></p>
 				<% if user_signed_in? && organizer.can_be_edited_by(current_user) %>
 				  <%= link_to 'Rediger', edit_organizer_path(organizer) %>
 				  <%= link_to 'Slet', organizer, method: :delete, data: { confirm: 'Are you sure?' } %>
