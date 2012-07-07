@@ -18,7 +18,7 @@ $ ->
         url: $("#meeting_url").val()
       success: (data) ->
         set_meeting_information data unless data == null
-    request.then ->
+    request.complete ->
       $("#spinner").stop().slideUp("fast")
         
 set_meeting_information = (data) ->

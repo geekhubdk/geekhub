@@ -32,29 +32,28 @@ class Api::V1::LookupsController < ApplicationController
   end
   
   def is_eventbrite_event url
-    return /http:\/\/www.eventbrite.com\/event\/(.*)/.match url
+    return /http:\/\/www.eventbrite.com\/event\/([0-9]*)/.match url
   end
     
   def parse_eventbrite_event url
-    doc = Nokogiri::HTML(open(url))
-    location = doc.css(".vcard .adr .locality").text.strip
-    {
-      title: doc.css(".summary").first.text.strip,
-      description: doc.css(".description").first.text.strip,
-      starts_at: eventbrite_parse_date(doc.css(".dtstart .value-title").first["title"]),
-      url: url,
-      organizer: doc.css("#hostedByDiv h2").text.strip,
-      location: location[5..location.length]
-    }
-  end
-  
-  def eventbrite_parse_date date_str
-    date = Time.parse(date_str)
-    if Time.zone.utc_offset / 1.hour == 2
-      date = date - 1.hour
-    end
+    id = /http:\/\/www.eventbrite.com\/event\/([0-9]*)/.match(url).captures[0]
+    # hack to make the gem work
+    old_parser = YAML::ENGINE.yamler
+    YAML::ENGINE.yamler = "syck"
+    # request event
+    c = EventbriteClient.new({app_key: "HTEHZULE5EXWWADVKM"})
+    e = c.event_get({id: id.to_i})['event']
+    # rollback parser
+    YAML::ENGINE.yamler = old_parser
     
-    return date
+    {
+      title: e['title'],
+      description: view_context.strip_tags(e['description']),
+      starts_at: e['start_date'],
+      url: url,
+      organizer: e['organizer']['name'],
+      location: e['venue']['city']
+    }
   end
   
   def is_facebook_event url
