@@ -50,7 +50,7 @@ class Api::V1::LookupsController < ApplicationController
   
   def eventbrite_parse_date date_str
     date = Time.parse(date_str)
-    if Time.now.gmt_offset / 1.hour == 2
+    if Time.zone.utc_offset / 1.hour == 2
       date = date - 1.hour
     end
     
