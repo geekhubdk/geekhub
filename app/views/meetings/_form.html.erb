@@ -1,5 +1,5 @@
 <div class="container_12">
-    <%= form_for(@meeting) do |f| %>
+		<%= form_for(@meeting) do |f| %>
         <% if @meeting.errors.any? %>
             <div id="error_explanation">
                 <h2>Find <%= @meeting.errors.count %> fejl:</h2>
@@ -16,10 +16,11 @@
                 <div class="well">
                     <div class="field">
                         <%= f.label :url %>
-                        <%= f.text_field :url, placeholder: "http://example.org", style: 'width:900px' %>
+												<%= f.text_field :url, placeholder: "http://example.org", style: 'width:900px', 'data-behavior' => "meeting-url" %>
                     </div>
                 </div>
             </div>
+						<div id="spinner" style="display:none;" class="grid_12 alpha omega"><div class="well">Indlæser fra URL...</div></div>
             <div class="grid_6 alpha"> 
                 <div class="well">   
                     <div class="field">

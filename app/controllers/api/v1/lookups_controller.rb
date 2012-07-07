@@ -1,7 +1,7 @@
 class Api::V1::LookupsController < ApplicationController
   respond_to :json
   
-  def create
+  def index
     url = params[:url]
     
     meeting = lookup(url)
@@ -9,7 +9,7 @@ class Api::V1::LookupsController < ApplicationController
     unless meeting.nil?
       respond_with meeting
     else
-      respond_with nil
+      respond_with(nil)
     end    
   end
   
@@ -32,20 +32,29 @@ class Api::V1::LookupsController < ApplicationController
   end
   
   def is_eventbrite_event url
-    return /http:\/\/www.eventbrite.com\/event\/(.*)\/eorg/
+    return /http:\/\/www.eventbrite.com\/event\/(.*)/.match url
   end
     
   def parse_eventbrite_event url
     doc = Nokogiri::HTML(open(url))
-    location = doc.css(".vcard .adr .locality").text
+    location = doc.css(".vcard .adr .locality").text.strip
     {
-      title: doc.css(".summary").first.text,
-      description: doc.css(".description").first.text,
-      starts_at: doc.css(".dtstart .value-title").first["title"],
+      title: doc.css(".summary").first.text.strip,
+      description: doc.css(".description").first.text.strip,
+      starts_at: eventbrite_parse_date(doc.css(".dtstart .value-title").first["title"]),
       url: url,
-      organizer: doc.css("#hostedByDiv h2").text,
+      organizer: doc.css("#hostedByDiv h2").text.strip,
       location: location[5..location.length]
     }
+  end
+  
+  def eventbrite_parse_date date_str
+    date = Time.parse(date_str)
+    if Time.now.gmt_offset / 1.hour == 2
+      date = date - 1.hour
+    end
+    
+    return date
   end
   
   def is_facebook_event url
@@ -53,9 +62,10 @@ class Api::V1::LookupsController < ApplicationController
   end
   
   def parse_facebook_event url
-    token = "AAADx1MjB6VkBABoVFZBoxytl6Gnv3EgpxADzZAS8wcVNDO03qottBJfYss1yiNqMem6uK2IeBe4HEr7aW52xIQHx3QjzMNvISQ1W3h8wZDZD"
     id = /http:\/\/www.facebook.com\/events\/(.*)\//.match(url).captures[0]
     
+    app = FbGraph::Application.new("265896203512153", :secret => "f6683249f7769b8bb5216a82bc66005d")
+    token = app.get_access_token
     event = FbGraph::Event.fetch(id, :access_token => token)
     venue = FbGraph::Place.fetch(event.venue.identifier, :access_token => token)
     
