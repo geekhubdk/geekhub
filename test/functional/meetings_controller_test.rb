@@ -49,7 +49,7 @@ class MeetingsControllerTest < ActionController::TestCase
   end
   
   test "should redirect to login page, when visiting edit page, if not logged in" do
-    sign_in users(:two)
+    sign_in User.find(users(:two).id)
     get :edit, id: @meeting.to_param
     assert_redirected_to new_user_session_path
   end
