@@ -7,6 +7,10 @@
 one: {
   email: test@test.dk
 }
+
+two: {
+  email: test2@test.dk
+}
 # column: value
 #
 #  column: value

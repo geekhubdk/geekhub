@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
       meeting_votes.create({ meeting_id: meeting.id })
     end
   end
+  
+  def can_vote_on meeting
+    meeting.meeting_votes.where("user_id = ?", self.id).empty?
+  end
 
   def self.authenticate email, password
     if email.blank? || password.blank?

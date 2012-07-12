@@ -1,6 +1,7 @@
 class MeetingsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-
+  before_filter :find_meeting, :only => [:show, :update, :edit, :vote, :destroy]
+   
   def index
     respond_to do |format|
       format.html do
@@ -13,22 +14,12 @@ class MeetingsController < ApplicationController
   end
 
   def show
-    @meeting = Meeting.find(params[:id])
-    
-    if user_signed_in?
-      @can_vote = @meeting.meeting_votes.where("user_id = ?", current_user.id).empty?
-    else
-      @can_vote = false
-    end
- 
+    @can_vote = user_signed_in? ? current_user.can_vote_on(@meeting) : false
   end
 
   def vote
-    meeting = Meeting.find(params[:id])
-    
-    current_user.vote_on(meeting)
-
-    redirect_to meeting
+    current_user.vote_on(@meeting)
+    redirect_to @meeting
   end
 
   def new
@@ -37,11 +28,7 @@ class MeetingsController < ApplicationController
   end
 
   def edit
-    @meeting = Meeting.find(params[:id])
-
-    unless @meeting.can_be_edited_by current_user
-      redirect_to new_user_session_path
-    end
+    redirect_to_login unless @meeting.can_be_edited_by current_user
   end
 
   def create
@@ -57,15 +44,12 @@ class MeetingsController < ApplicationController
   end
 
   def update
-    @meeting = Meeting.find(params[:id])
 
     unless @meeting.can_be_edited_by current_user
       redirect_to new_user_session_path
     end
 
-    if @meeting.user.nil?
-      @meeting.user = current_user
-    end
+    @meeting.user ||= current_user
 
     if @meeting.update_attributes(params[:meeting])
       redirect_to root_path, notice: 'Meeting was successfully updated.'
@@ -75,8 +59,6 @@ class MeetingsController < ApplicationController
   end
 
   def destroy
-    @meeting = Meeting.find(params[:id])
-
     unless @meeting.can_be_edited_by current_user
       redirect_to new_user_session_path
     end
@@ -90,6 +72,10 @@ private
 
   def can_approve_meeting?
     user_signed_in?
+  end
+  
+  def find_meeting
+    @meeting = Meeting.find(params[:id])
   end
 
 end

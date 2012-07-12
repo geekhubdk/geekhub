@@ -48,6 +48,17 @@ class MeetingsControllerTest < ActionController::TestCase
     assert_response :success
   end
   
+  test "should redirect to login page, when visiting edit page, if not logged in" do
+    sign_in users(:two)
+    get :edit, id: @meeting.to_param
+    assert_redirected_to new_user_session_path
+  end
+  
+  test "should redirect to login page, when visiting edit page, if you cant edit meeting" do
+    get :edit, id: @meeting.to_param
+    assert_redirected_to new_user_session_path
+  end
+  
   test "should update meeting" do
     sign_in User.first
     put :update, id: @meeting.to_param, meeting: @meeting.attributes, approve: true
