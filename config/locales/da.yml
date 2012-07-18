@@ -6,6 +6,10 @@
 # by Lars Hoeg (larshoeg@gmail.com, http://www.lenio.dk/)
 
 da:
+  devise:
+    failure:
+      user:
+        invalid: "Ugyldig bruger"
 
   # active_support
   date:

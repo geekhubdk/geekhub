@@ -1,7 +1,7 @@
 class Api::V1::MeetingsController < ApplicationController
   respond_to :json, :timeline
 
-  before_filter :authenticate, only: [:create, :new]
+  before_filter :authenticate_user!, only: [:create]
   after_filter :set_access_control_headers
 
   def index
@@ -28,14 +28,6 @@ class Api::V1::MeetingsController < ApplicationController
   def set_access_control_headers 
     headers['Access-Control-Allow-Origin'] = '*' 
     headers['Access-Control-Request-Method'] = '*' 
-  end
-  
-  def authenticate
-    if user = authenticate_with_httpb_asic { |u, p| User.authenticate(u, p) }
-      @current_user = user
-    else
-      request_http_basic_authentication
-    end
   end
 
   def meetings_json(meetings)
