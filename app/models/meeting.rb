@@ -1,6 +1,6 @@
   class Meeting < ActiveRecord::Base
   validates :title, :starts_at, :location, :organizer, :description, :url, :presence => true
-  scope :upcomming, lambda { includes(:meeting_votes).where("starts_at >= ?", Date.today) }
+  scope :upcoming, lambda { includes(:meeting_votes).where("starts_at >= ?", Date.today) }
 
   belongs_to :user
   has_many :meeting_votes 
@@ -11,16 +11,16 @@
 
   def self.filter(filters, return_filters = false)
     m = Meeting.includes(:meeting_votes).order("starts_at")
-    m = m.upcomming if filters[:all] != "1"
+    m = m.upcoming if filters[:all] != "1"
 
-    location_filters = m.map{|m| m.location}.uniq
+    location_filters = m.map{|x| x.location}.uniq
 
     if filters[:organizer] && !filters[:organizer].blank?
-      m = m.select{|m| param_match(m.organizer,filters[:organizer])}
+      m = m.select{|x| param_match(x.organizer,filters[:organizer])}
     end
     
     if filters[:location] && !filters[:location].blank?
-      m = m.select{|m| param_match(m.location,filters[:location])}
+      m = m.select{|x| param_match(x.location,filters[:location])}
     end
 
     return [m, location_filters] if return_filters

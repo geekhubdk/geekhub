@@ -9,18 +9,14 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
     xml.link        url_for :only_path => false, :controller => 'meetings'
     xml.description "kommende events i Danmark"
 
-    @meetings.each do |meeting|
+    @meetings.each do |m|
       xml.item do
-        xml.title       "#{meeting.title} - #{l(meeting.starts_at, :format => :short)}"
+        xml.title       "#{m.title} - #{l(m.starts_at, :format => :short)}"
 
-        if @mode == :upcomming
-          xml.link meeting_url(meeting)
-        elsif @mode == :approve
-          xml.link url_for :only_path => false, :controller => 'meetings', :action => 'edit', :id => meeting.id
-        end
-        
-        xml.description format_rss_description(meeting)
-        xml.guid meeting_url(meeting)
+        xml.link meeting_url(m)
+
+        xml.description format_rss_description(m)
+        xml.guid meeting_url(m)
      end
     end
 
