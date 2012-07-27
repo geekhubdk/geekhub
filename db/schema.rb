@@ -14,28 +14,28 @@
 ActiveRecord::Schema.define(:version => 20120630074230) do
 
   create_table "meeting_votes", :force => true do |t|
-    t.integer   "user_id"
-    t.integer   "meeting_id"
-    t.timestamp "created_at", :null => false
-    t.timestamp "updated_at", :null => false
+    t.integer  "user_id"
+    t.integer  "meeting_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "meeting_votes", ["meeting_id"], :name => "index_meeting_votes_on_meeting_id"
   add_index "meeting_votes", ["user_id"], :name => "index_meeting_votes_on_user_id"
 
   create_table "meetings", :force => true do |t|
-    t.string    "title"
-    t.timestamp "starts_at"
-    t.string    "location"
-    t.string    "organizer"
-    t.text      "description"
-    t.string    "url"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.timestamp "approved_at"
-    t.string    "suggested_by"
-    t.boolean   "costs_money"
-    t.integer   "user_id"
+    t.string   "title"
+    t.datetime "starts_at"
+    t.string   "location"
+    t.string   "organizer"
+    t.text     "description"
+    t.string   "url"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.datetime "approved_at"
+    t.string   "suggested_by"
+    t.boolean  "costs_money"
+    t.integer  "user_id"
   end
 
   create_table "organizers", :force => true do |t|
@@ -46,35 +46,28 @@ ActiveRecord::Schema.define(:version => 20120630074230) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
+  create_table "user_roles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "role"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "user_roles", :force => true do |t|
-    t.integer   "user_id"
-    t.string    "role"
-    t.timestamp "created_at", :null => false
-    t.timestamp "updated_at", :null => false
   end
 
   add_index "user_roles", ["user_id"], :name => "index_user_roles_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string    "email",                                 :default => "", :null => false
-    t.string    "encrypted_password",     :limit => 128, :default => "", :null => false
-    t.string    "reset_password_token"
-    t.timestamp "reset_password_sent_at"
-    t.timestamp "remember_created_at"
-    t.integer   "sign_in_count",                         :default => 0
-    t.timestamp "current_sign_in_at"
-    t.timestamp "last_sign_in_at"
-    t.string    "current_sign_in_ip"
-    t.string    "last_sign_in_ip"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
