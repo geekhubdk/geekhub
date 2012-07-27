@@ -9,6 +9,7 @@ gem 'slim'
 gem 'fb_graph'
 gem 'eventbrite-client'
 gem 'nokogiri'
+gem 'pg', '0.13.2'
 
 group :assets do
   gem 'sass-rails'
@@ -17,12 +18,7 @@ group :assets do
 end
 
 group :production do
-  gem 'pg'
   gem 'newrelic_rpm'
-end
-
-group :staging do
-  gem 'pg'
 end
 
 group :development, :test do
