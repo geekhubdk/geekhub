@@ -1,7 +1,5 @@
 require 'test_helper'
 
-SimpleCov.command_name 'Functional Tests' 
-
 class MeetingsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
