@@ -1,0 +1,24 @@
+<article class="meeting">
+	
+	<div class="grid_2 back">
+		<%= link_to 'Tilbage', root_path %>
+	</div>
+	<div class="grid_6">  
+		<header>
+			<h1><%= link_to @meeting.title, @meeting.url %></h1>
+		</header>
+		<%= render 'vote' %>
+		
+		<section class="description">
+			<%= nl2br @meeting.description %>
+		</section>
+		<footer>
+			<%= link_to 'Læs mere / tilmelding', @meeting.url, {id: 'readmore'} %>
+		</footer>
+	</div>
+	<aside class="grid_4"> 
+		<span class="starts_at"><%= l @meeting.starts_at, format: :short %></span>
+		<%= render partial: 'tags', locals: { meeting: @meeting } %>
+		<%= render partial: 'functions' %>
+	</aside>
+</article>
