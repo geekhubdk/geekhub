@@ -27,7 +27,6 @@ end
 group :development, :test do
   # Pretty printed test output
   gem 'test-unit', '>= 2.4.5'
-  #gem 'factory_girl_rails'
   gem 'guard'
   gem 'guard-test'
 end
