@@ -1,62 +1,62 @@
 <div class="container_12">
-		<%= form_for(@meeting) do |f| %>
-        <% if @meeting.errors.any? %>
-            <div id="error_explanation">
-                <h2>Find <%= @meeting.errors.count %> fejl:</h2>
-                <ul>
-                    <% @meeting.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
-                    <% end %>
-                </ul>
-            </div>
-        <% end %>
-
-        <div class="container_12">
-            <div class="grid_12 alpha omega">
-                <div class="well">
-                    <div class="field">
-                        <%= f.label :url %>
-						<%= f.text_field :url, placeholder: "http://example.org", style: 'width:900px', 'data-behavior' => "meeting-url" %>
-                    </div>
-                </div>
-            </div>
-			<div id="spinner" style="display:none;" class="grid_12 alpha omega"><div class="well">Indlæser fra URL...</div></div>
-            <div class="grid_6 alpha"> 
-                <div class="well">   
-                    <div class="field">
-                        <%= f.label :title %>
-                        <%= f.text_field :title, style: "width: 420px" %>
-                    </div>
-                    <div class="field">
-                        <%= f.label :starts_at %>
-                        <%= render partial: "shared/datepicker", locals: { f: f, field: :starts_at, value: @meeting.starts_at } %>
-                    </div>
-                    <div class="field checkbox">
-                        <%= f.check_box :costs_money %> <%= f.label :costs_money %>
-                    </div>
-                    <div class="field">
-                        <%= f.label :location %>
-                        <%= f.text_field :location %>
-                    </div>
-                    <div class="field">
-                        <%= f.label :organizer %>
-                        <%= f.text_field :organizer %>
-                    </div>
-                </div>
-            </div>
-            <div class="grid_6 omega">
-                <div class="well">
-                    <div class="field">
-                        <%= f.label :description %>
-                        <%= f.text_area :description, :rows => 13, :cols => 58 %>
-                        <small>(understøtter p.t. ikke fancy formateringer)</small>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="actions">
-            <%= f.submit %>
-        </div>
+  <%= form_for(@meeting) do |f| %>
+    <% if @meeting.errors.any? %>
+      <div id="error_explanation">
+        <h2>Find <%= @meeting.errors.count %> fejl:</h2>
+        <ul>
+          <% @meeting.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
+
+    <div class="container_12">
+      <div class="grid_12 alpha omega">
+        <div class="well">
+          <div class="field">
+            <%= f.label :url %>
+            <%= f.text_field :url, placeholder: "http://example.org", style: 'width:900px', 'data-behavior' => "meeting-url" %>
+          </div>
+        </div>
+      </div>
+      <div id="spinner" style="display:none;" class="grid_12 alpha omega"><div class="well">Indlæser fra URL...</div></div>
+      <div class="grid_6 alpha"> 
+        <div class="well">   
+          <div class="field">
+            <%= f.label :title %>
+            <%= f.text_field :title, style: "width: 420px" %>
+          </div>
+          <div class="field">
+            <%= f.label :starts_at %>
+            <%= render partial: "shared/datepicker", locals: { f: f, field: :starts_at, value: @meeting.starts_at } %>
+          </div>
+          <div class="field checkbox">
+            <%= f.check_box :costs_money %> <%= f.label :costs_money %>
+          </div>
+          <div class="field">
+            <%= f.label :location %>
+            <%= f.text_field :location %>
+          </div>
+          <div class="field">
+            <%= f.label :organizer %>
+            <%= f.text_field :organizer %>
+          </div>
+        </div>
+      </div>
+      <div class="grid_6 omega">
+        <div class="well">
+          <div class="field">
+            <%= f.label :description %>
+            <%= f.text_area :description, :rows => 13, :cols => 58 %>
+            <small>(understøtter p.t. ikke fancy formateringer)</small>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
 </div>
