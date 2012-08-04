@@ -50,11 +50,6 @@ GEM
       tzinfo (~> 0.3.22)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    factory_girl (4.0.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.0.0)
-      factory_girl (~> 4.0.0)
-      railties (>= 3.0.0)
     fb_graph (2.4.19)
       httpclient (>= 2.2.0.2)
       rack-oauth2 (>= 0.14.4)
@@ -162,10 +157,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  coffee-rails
+  coffee-rails (~> 3.2.1)
   devise
   eventbrite-client
-  factory_girl_rails
   fb_graph
   guard
   guard-test
@@ -173,8 +167,8 @@ DEPENDENCIES
   jquery-ui-rails
   newrelic_rpm
   pg (= 0.13.2)
-  rails (~> 3.2)
-  sass-rails
+  rails (= 3.2.7)
+  sass-rails (~> 3.2.3)
   slim
   test-unit (>= 2.4.5)
-  uglifier
+  uglifier (>= 1.0.3)
