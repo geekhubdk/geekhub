@@ -1,1 +1,1 @@
-<%= link_to image_tag(avatar_url(current_user)) + raw("<span>Log ud</span>"), destroy_user_session_path, :method => :delete, class: "toolbar-imagebutton" %>
+<li><%= link_to image_tag(avatar_url(current_user)) + raw(" <span>Log ud</span>"), destroy_user_session_path, :method => :delete, class: "toolbar-imagebutton" %></li>

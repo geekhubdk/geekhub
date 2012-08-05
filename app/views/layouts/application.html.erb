@@ -32,26 +32,26 @@
     </script>
   </head>
   <body>
-    <header>
-      <div class="header-content toolbar">
-        <div class="toolbar-left">
-          <div class="toolbar-image logo">
-            <%= link_to 'geekhub', root_path %>
-          </div>
-        </div>
-        <div class="toolbar-right">
-          <% if user_signed_in? %>
-            <%= render 'shared/user_toolbar' %>
-          <% else %>
-            <%= link_to 'Log ind / opret bruger', new_user_session_path, class: "toolbar-button" %>
-          <% end %>
-          <%= link_to image_tag('/add.png') + raw('<span>Indsend event</span>'), new_meeting_path, class: "toolbar-imagebutton" %>
-          <%= link_to image_tag('/rss.png'), meetings_path(:format => :rss), class: "toolbar-imagebutton" %>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to 'geekhub', root_path, class: "brand" %>
+          <ul class="nav pull-right">
+              <% if user_signed_in? %>
+                <%= render 'shared/user_toolbar' %>
+              <% else %>
+                <li><%= link_to 'Log ind / opret bruger', new_user_session_path, class: "toolbar-button" %></li>
+              <% end %>
+              <li><%= link_to image_tag('/add.png') + raw('<span>Indsend event</span>'), new_meeting_path, class: "toolbar-imagebutton" %></li>
+              <li><%= link_to image_tag('/rss.png'), meetings_path(:format => :rss), class: "toolbar-imagebutton" %></li>
+            </ul>
         </div>
       </div>
-    </header>
-    <div class="container_12 page-content">
+    </div>
+    <div class="container">
+      <div class="content">
       <%= yield %>
+    </div>
     </div>
     <footer>
       <div class="footer-content">

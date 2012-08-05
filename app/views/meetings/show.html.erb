@@ -7,8 +7,6 @@
 		<header>
 			<h1><%= link_to @meeting.title, @meeting.url %></h1>
 		</header>
-		<%= render 'vote' %>
-		
 		<section class="description">
 			<%= nl2br @meeting.description %>
 		</section>
