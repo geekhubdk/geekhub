@@ -23,14 +23,12 @@
             <%= hidden_field_tag "organizer", params[:organizer] %>
           <% end %>
 
-          <div class="filters-locations">
+          <div class="btn-group">
             <% @location_filters.each do |f| %>
-              <div class="filters-filter">
-                <label>
+                <label class="btn">
                   <%= check_box_tag "location[]", f, @active_location_filters.any?{|l| l.downcase == f.downcase} || @active_location_filters.empty? %>
                   <%= f %>
                 </label>
-              </div>
             <% end %>
           </div>
           <%= submit_tag "Tilpas" %>
