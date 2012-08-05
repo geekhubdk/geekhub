@@ -48,14 +48,14 @@
         <div class="well">
           <div class="field">
             <%= f.label :description %>
-            <%= f.text_area :description, :rows => 13, :cols => 58 %>
+            <%= f.text_area :description, :rows => 13, style: "width: 100%" %>
             <small>(understøtter p.t. ikke fancy formateringer)</small>
           </div>
         </div>
       </div>
     </div>
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>
