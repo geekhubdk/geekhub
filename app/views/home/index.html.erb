@@ -1,40 +1,44 @@
 <div id="events">
-  <%= render 'shared/navigation' %>
-
-  <%= link_to "Indsend event", new_meeting_path, class: "big-frontpage-button" %>
-
-  <h1>Velkommen til geekhub</h1>
-
-  <%= render 'shared/intro' %>
-
-  <section class="grid_12">
-    <div class="filters">
-      <%= form_tag root_path, method: :get, remote: true do %>
-        <%= hidden_field_tag :all, params[:all] %>
-
-        <% if params[:organizer].is_a? Array %>
-          <% params[:organizer].each do |o| %>
-            <%= hidden_field_tag "organizer[]", o %>
-          <% end %>
-        <% else %>
-          <%= hidden_field_tag "organizer", params[:organizer] %>
-        <% end %>
-
-        <div class="filters-locations">
-          <% @location_filters.each do |f| %>
-            <div class="filters-filter">
-              <label>
-                <%= check_box_tag "location[]", f, @active_location_filters.any?{|l| l.downcase == f.downcase} || @active_location_filters.empty? %>
-                <%= f %>
-              </label>
-            </div>
-          <% end %>
-        </div>
-        <%= submit_tag "Tilpas" %>
-      <% end %>
+  <div class="row">
+    <div class="span12"><%= render 'shared/navigation' %></div>
+  </div>
+  <div class="row">
+    <div class="span8">
+      <h1>Velkommen til geekhub</h1>
+      <%= render 'shared/intro' %>
     </div>
-    <div class="meetings"> 
-      <%= render :partial => "meetings/list", :collection => @meetings, :as => :meeting %>
+    <div class="span4"><%= link_to "Indsend event", new_meeting_path, class: "big-frontpage-button" %></div>
+  </div>
+  <section>
+    <div class="row">
+      <div class="filters span12">
+        <%= form_tag root_path, method: :get, remote: true do %>
+          <%= hidden_field_tag :all, params[:all] %>
+
+          <% if params[:organizer].is_a? Array %>
+            <% params[:organizer].each do |o| %>
+              <%= hidden_field_tag "organizer[]", o %>
+            <% end %>
+          <% else %>
+            <%= hidden_field_tag "organizer", params[:organizer] %>
+          <% end %>
+
+          <div class="filters-locations">
+            <% @location_filters.each do |f| %>
+              <div class="filters-filter">
+                <label>
+                  <%= check_box_tag "location[]", f, @active_location_filters.any?{|l| l.downcase == f.downcase} || @active_location_filters.empty? %>
+                  <%= f %>
+                </label>
+              </div>
+            <% end %>
+          </div>
+          <%= submit_tag "Tilpas" %>
+        <% end %>
+      </div>
+      <div class="meetings span12"> 
+        <%= render :partial => "meetings/list", :collection => @meetings, :as => :meeting %>
+      </div>
     </div>
   </section>
 </div>

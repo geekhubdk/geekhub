@@ -12,45 +12,15 @@ form {
   	width: 110px;
   }
 
-  input {
-  	font-size: 120%;
-  }
-
-  textarea {
-  	font-size: 100%;
-  	font-family: serif;
-  }
-
-  input, textarea {
-  	border: 1px solid #cacaca;
-  	border-radius: 4px;
-  	padding: 4px 0px 4px 4px;
-  }
-
-  input[type=submit] {
-  	background-color: #cacaca;
-  	border: 1px solid gray;
-    padding: 4px;
-  	box-shadow: 0 1px 0 lightgray inset, 0 -1px 0 lightgray inset;
-  }
-
-  input[type=submit]:hover {
-  	cursor: pointer;
-  	box-shadow: 0 1px 0 gray inset, 0 -1px 0 gray inset;
-  }
-
   .date, .time {
   	display: table-cell;
   }
 
   .time {
   	padding-left: 10px;
-  }
 
-  .well {
-  	border: 1px solid #ddd;
-  	padding: 15px;
-  	margin-bottom: 15px;
+    select {
+      width: inherit;
+    }
   }
-
 }

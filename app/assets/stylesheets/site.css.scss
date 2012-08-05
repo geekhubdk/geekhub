@@ -69,12 +69,12 @@ body>footer {
 }
 
 .big-frontpage-button {
+  display: inline-block;
   float: right;
   background: #0072BB;
   padding: 25px;
   color: #fff;
-  margin-right: 10px;
-  margin-top: 25px;
   font-weight: bold;
   text-decoration: none;
+  text-align: right;
 }
