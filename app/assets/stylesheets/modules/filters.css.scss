@@ -1,18 +1,5 @@
 .filters {
 
-	.filters-locations {
-		display: inline-block;
-	}
-
-	.filters-filter {
-		padding: 10px;
-		display: inline-block;
-
-    @media (max-width: 480px) {
-    	display: block;
-    }
-	}
-
 	input[type=submit] {
 		display: none;
 	}

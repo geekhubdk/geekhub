@@ -76,10 +76,10 @@
               <% if user_signed_in? %>
                 <%= render 'shared/user_toolbar' %>
               <% else %>
-                <li><%= link_to 'Log ind / opret bruger', new_user_session_path, class: "toolbar-button" %></li>
+                <li><%= link_to 'Log ind / opret bruger', new_user_session_path %></li>
               <% end %>
-              <li><%= link_to image_tag('/add.png') + raw('<span>Indsend event</span>'), new_meeting_path, class: "toolbar-imagebutton" %></li>
-              <li><%= link_to image_tag('/rss.png'), meetings_path(:format => :rss), class: "toolbar-imagebutton" %></li>
+              <li><%= link_to image_tag('/add.png') + raw('<span>Indsend event</span>'), new_meeting_path %></li>
+              <li><%= link_to image_tag('/rss.png'), meetings_path(:format => :rss) %></li>
             </ul>
           </div>
         </div>
