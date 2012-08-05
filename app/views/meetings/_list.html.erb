@@ -1,18 +1,13 @@
-<div class="meeting">
-  <table>
-    <tr>  
-      <td class="date">
-        <span class="day"><%= l meeting.starts_at, format: :day %></span>
-        <span class="month"><%= l meeting.starts_at, format: :month %></span>
-      </td>
-      <td>
-        <div class="title">
-          <%= link_to meeting.title, meeting %>
-        </div>
-      </td>
-      <td class="information">
-        <%= render partial: 'meetings/tags', locals: { meeting: meeting } %> 
-      </td>
-    </tr> 
-  </table>  
+<div class="span6">
+  <div class="meeting"> 
+    <div>
+      <%= l meeting.starts_at, format: :short %>
+    </div>
+    <div class="title">
+        <%= link_to meeting.title, meeting, title: meeting.title %>
+    </div>
+    <div>
+      <%= render partial: 'meetings/tags', locals: { meeting: meeting } %> 
+    </div> 
+  </div>
 </div>

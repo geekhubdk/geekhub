@@ -35,8 +35,24 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+
           <%= link_to 'geekhub', root_path, class: "brand" %>
-          <ul class="nav pull-right">
+          <div class="nav-collapse">
+            <ul class="nav visible-phone">
+              <li>
+                <%= link_to 'Events', root_path %>
+              </li>
+              <li>
+                <%= link_to 'Arrangører', organizers_path %>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
               <% if user_signed_in? %>
                 <%= render 'shared/user_toolbar' %>
               <% else %>
@@ -45,6 +61,7 @@
               <li><%= link_to image_tag('/add.png') + raw('<span>Indsend event</span>'), new_meeting_path, class: "toolbar-imagebutton" %></li>
               <li><%= link_to image_tag('/rss.png'), meetings_path(:format => :rss), class: "toolbar-imagebutton" %></li>
             </ul>
+          </div>
         </div>
       </div>
     </div>

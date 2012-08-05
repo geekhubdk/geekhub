@@ -7,11 +7,11 @@
       <h1>Velkommen til geekhub</h1>
       <%= render 'shared/intro' %>
     </div>
-    <div class="span4"><%= link_to "Indsend event", new_meeting_path, class: "big-frontpage-button" %></div>
+    <div class="span4 hidden-phone"><%= link_to "Indsend event", new_meeting_path, class: "big-frontpage-button" %></div>
   </div>
   <section>
     <div class="row">
-      <div class="filters span12">
+      <div class="filters span12 hidden-phone">
         <%= form_tag root_path, method: :get, remote: true do %>
           <%= hidden_field_tag :all, params[:all] %>
 
@@ -36,9 +36,9 @@
           <%= submit_tag "Tilpas" %>
         <% end %>
       </div>
-      <div class="meetings span12"> 
-        <%= render :partial => "meetings/list", :collection => @meetings, :as => :meeting %>
-      </div>
+    </div>
+    <div class="meetings row"> 
+      <%= render :partial => "meetings/list", :collection => @meetings, :as => :meeting %>
     </div>
   </section>
 </div>

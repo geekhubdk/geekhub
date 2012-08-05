@@ -3,106 +3,34 @@ article.meeting
   aside { margin-top: 20px; }
   .starts_at { display: block; margin-bottom: 16px; }
   .tags { margin-bottom: 18px; }
-  .description { width: 400px ; margin-bottom: 18px; line-height: 1.5em; }
+  .description { margin-bottom: 18px; line-height: 1.5em; }
   .back { margin-top: 90px; }
   h1 { margin-bottom: 10px; }
-  .votes { margin-bottom: 10px; font-weight: bold; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; padding: 5px; }
   h1 a { text-decoration: none; }
-}
-
-.meeting #readmore {
-  font-size: 150%;
+  .meeting #readmore { font-size: 150%; }
 }
 
 .meetings {
-  border-top: 5px solid #0072BB; 
-  border-bottom: 1px solid #C6C6C6; 
-  margin-bottom: 50px;
-  box-shadow: 2px 2px 2px rgba(200,200,200,0.2);
+  .meeting {
+    margin-bottom: 25px;
+    border: 1px solid #C6C6C6;
+    border-top: 5px solid #0072BB;
+    padding: 25px;
+    box-shadow: rgba(200, 200, 200, 0.199219) 2px 2px 2px 0px;
 
-  a 
-  { 
-    text-decoration: none; 
-    color: #111;
-  }
-
-  .tags {
-    text-align: right;
-  }
-
-  .meeting { 
-    border-bottom: 1px solid #e5e5e5;
-    padding: 16px 10px;
-    background-color: #f8f8f8;
-    border-left: 1px solid #c6c6c6;
-    border-right: 1px solid #c6c6c6;
-    color: #111;
-    font-size: 16px;
-    overflow: hidden;
-    height: 62px;
-  }
-
-  .meeting .votes {
-    width: 55px;
-
-    .num-votes {
-      display: block;
-      font-size: 120%;
-      text-align: center;
-      padding: 2px 5px;
-    }
-
-    .label {
-      display: block;
-      font-size: 80%;
+    .title {
+      font-size: 140%;
+      line-height: 150%;
       font-weight: bold;
-      margin-top: -5px;
-      padding: 2px 5px;
-      text-align: center;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+
+      @media (max-width: 480px) {
+        text-overflow: inherit;
+        overflow: inherit;
+        white-space: inherit;
+      }
     }
-  }
-
-  .date {
-    margin-right: 10px;
-    border-radius: 2px;
-    width: 45px;
-
-    .day, .month {
-      display: block;
-      text-align: center;
-      padding: 2px 5px;
-    }
-
-    .day {
-      color: #333;
-      font-size: 120%;
-    }
-
-    .month {
-      margin-top: -5px;
-      font-size: 80%;
-      font-weight: bold;
-    }
-  }
-
-  table {
-    width: 100%;
-    height: 100%;
-  }
-
-  .information {
-    font-size: 80%;
-  }
-
-  .title {
-    padding-left: 10px;
-    padding-right: 10px;
-    min-width: 200px;
-  }
-
-  .location {
-    text-align: right;
   }
 }
-
-
