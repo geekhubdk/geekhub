@@ -16,16 +16,16 @@
         <div class="well">
           <div class="field">
             <%= f.label :url %>
-            <%= f.text_field :url, placeholder: "http://example.org", style: 'width:900px', 'data-behavior' => "meeting-url" %>
+            <%= f.text_field :url, placeholder: "http://example.org", class: 'span11', 'data-behavior' => "meeting-url" %>
           </div>
         </div>
       </div>
-      <div id="spinner" style="display:none;" class="grid_12 alpha omega"><div class="well">Indlæser fra URL...</div></div>
+      <div id="spinner" style="display:none;" class="span_12"><div class="well">Indlæser fra URL...</div></div>
       <div class="span6"> 
         <div class="well">   
           <div class="field">
             <%= f.label :title %>
-            <%= f.text_field :title, style: "width: 420px" %>
+            <%= f.text_field :title, class: "span5" %>
           </div>
           <div class="field">
             <%= f.label :starts_at %>
@@ -48,14 +48,14 @@
         <div class="well">
           <div class="field">
             <%= f.label :description %>
-            <%= f.text_area :description, :rows => 13, style: "width: 100%" %>
+            <%= f.text_area :description, :rows => 13, class: "span5" %>
             <small>(understøtter p.t. ikke fancy formateringer)</small>
           </div>
         </div>
       </div>
     </div>
     <div class="actions">
-      <%= f.submit class: "btn btn-primary" %>
+      <%= f.submit class: "btn btn-primary btn-large" %>
     </div>
   <% end %>
 </div>
