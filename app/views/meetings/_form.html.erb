@@ -29,7 +29,7 @@
           </div>
           <div class="field">
             <%= f.label :starts_at %>
-            <%= render partial: "shared/datepicker", locals: { f: f, field: :starts_at, value: @meeting.starts_at } %>
+            <%= render partial: "datepicker", locals: { f: f, field: :starts_at, value: @meeting.starts_at } %>
           </div>
           <div class="field checkbox">
             <%= f.check_box :costs_money %> <%= f.label :costs_money %>
