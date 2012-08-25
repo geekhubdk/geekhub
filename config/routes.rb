@@ -14,7 +14,6 @@ Geekhub::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :meetings, :defaults => { :format => 'json' }
-      resources :lookups
     end
   end
 

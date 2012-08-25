@@ -5,8 +5,6 @@ gem 'rails', '3.2.7'
 gem 'devise'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'fb_graph'
-gem 'eventbrite-client'
 gem 'pg', '0.13.2'
 
 group :assets do

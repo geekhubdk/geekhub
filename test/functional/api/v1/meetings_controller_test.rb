@@ -54,10 +54,4 @@ class Api::V1::MeetingsControllerTest < ActionController::TestCase
     assert_false assigns[:meetings].any?{|m| m.location != "Odense" && m.location != "Aarhus"}
   end
 
-  test "should get index with timeline" do
-    get :index, :format => :timeline 
-    assert_response :success
-    assert_not_nil assigns[:meetings]
-  end
-
 end
