@@ -1,5 +1,5 @@
 class Api::V1::MeetingsController < ApplicationController
-  respond_to :json, :timeline
+  respond_to :json
 
   before_filter :authenticate_user!, only: [:create]
   after_filter :set_access_control_headers
