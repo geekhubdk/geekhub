@@ -5,7 +5,8 @@ class MeetingsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        redirect_to root_path
+        @meetings, @location_filters = Meeting.filter(params, true)
+       	@active_location_filters = [*params[:location]]
       end
       format.rss do
         @meetings = Meeting.filter(params)

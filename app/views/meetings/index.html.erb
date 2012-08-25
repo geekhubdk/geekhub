@@ -1,8 +1,42 @@
-<section class="grid_12">
-  <h3>Events</h3>
-  <div class="meetings">
-    <%= render :partial => "list", 
-      :collection => @meetings, 
-      :as => :meeting %>
+<div id="events">
+  <div class="row">
+    <div class="span12"><%= render 'shared/navigation' %></div>
   </div>
-</section>
+  <div class="row">
+    <div class="span8">
+      <h1>Velkommen til geekhub</h1>
+      <%= render 'shared/intro' %>
+    </div>
+    <div class="span4 hidden-phone"><%= link_to "Indsend event", new_meeting_path, class: "big-frontpage-button" %></div>
+  </div>
+  <section>
+    <div class="row">
+      <div class="filters span12 hidden-phone">
+        <%= form_tag root_path, method: :get, remote: true do %>
+          <%= hidden_field_tag :all, params[:all] %>
+
+          <% if params[:organizer].is_a? Array %>
+            <% params[:organizer].each do |o| %>
+              <%= hidden_field_tag "organizer[]", o %>
+            <% end %>
+          <% else %>
+            <%= hidden_field_tag "organizer", params[:organizer] %>
+          <% end %>
+
+          <div class="btn-group">
+            <% @location_filters.each do |f| %>
+                <label class="btn">
+                  <%= check_box_tag "location[]", f, @active_location_filters.any?{|l| l.downcase == f.downcase} || @active_location_filters.empty? %>
+                  <%= f %>
+                </label>
+            <% end %>
+          </div>
+          <%= submit_tag "Tilpas" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="meetings row"> 
+      <%= render :partial => "meetings/list", :collection => @meetings, :as => :meeting %>
+    </div>
+  </section>
+</div>
