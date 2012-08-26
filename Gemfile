@@ -27,4 +27,5 @@ group :development, :test do
   gem 'test-unit', '>= 2.4.5'
   gem 'guard'
   gem 'guard-test'
+  gem 'growl'
 end
