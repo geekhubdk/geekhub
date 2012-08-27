@@ -4,7 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geekhub</title>
+    <title>
+      <% if content_for?(:title) %>
+        <%=h yield(:title) %> - Geekhub
+      <% else %>
+        Geekhub
+      <% end %>
+    </title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Habibi' rel='stylesheet' type='text/css'>
     <link rel="alternate" type="application/rss+xml" title="RSS over kommende møder" href="/meetings.rss" />
