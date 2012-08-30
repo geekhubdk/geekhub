@@ -11,7 +11,7 @@
   </div>
   <section>
     <div class="row">
-      <div class="filters span12 hidden-phone">
+      <div class="filters span12">
         <%= form_tag root_path, method: :get, remote: true do %>
           <%= hidden_field_tag :all, params[:all] %>
 
@@ -23,7 +23,7 @@
             <%= hidden_field_tag "organizer", params[:organizer] %>
           <% end %>
 
-          <div class="btn-group">
+          <div class="btn-group hidden-phone">
             <% @location_filters.each do |f| %>
                 <label class="btn">
                   <%= check_box_tag "location[]", f, @active_location_filters.any?{|l| l.downcase == f.downcase} || @active_location_filters.empty? %>
