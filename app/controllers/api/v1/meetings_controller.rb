@@ -45,7 +45,9 @@ class Api::V1::MeetingsController < ApplicationController
       location: meeting.location,
       url: meeting.url,
       organizer: meeting.organizer,
-      costs_money: meeting.costs_money
+      costs_money: meeting.costs_money,
+      latitude: meeting.latitude,
+      longtitude: meeting.longitude
     }
   end
 end

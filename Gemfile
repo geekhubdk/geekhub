@@ -6,6 +6,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'pg', '0.13.2'
+gem 'geocoder'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

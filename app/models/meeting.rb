@@ -5,6 +5,9 @@
   belongs_to :user
   has_many :meeting_votes 
 
+  geocoded_by :location  # can also be an IP address
+  after_validation :geocode          # auto-fetch coordinates
+
   def month
     self.starts_at.strftime('%m')
   end
