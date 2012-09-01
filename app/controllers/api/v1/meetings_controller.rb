@@ -6,7 +6,6 @@ class Api::V1::MeetingsController < ApplicationController
 
   def index
     @meetings = Meeting.filter(params)
-    
     respond_with meetings_json(@meetings)
   end
 
