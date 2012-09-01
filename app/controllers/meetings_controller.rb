@@ -1,12 +1,12 @@
 class MeetingsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :find_meeting, :only => [:show, :update, :edit, :vote, :destroy]
-   
+
   def index
     respond_to do |format|
       format.html do
         @meetings, @location_filters = Meeting.filter(params, true)
-       	@active_location_filters = [*params[:location]]
+        @active_location_filters = [*params[:location]]
       end
       format.rss do
         @meetings = Meeting.filter(params)
