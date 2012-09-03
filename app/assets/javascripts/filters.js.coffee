@@ -16,6 +16,12 @@ $ ->
         $(this).addClass("blur")
       else
         $(this).removeClass("blur")
+
+  $("#change_to_old_filter").click ->
+    $("#location-filter").show()
+    $("#distance-filter").hide()
+    return false
+
 $ ->
   if navigator.geolocation
     navigator.geolocation.getCurrentPosition(success, null)
