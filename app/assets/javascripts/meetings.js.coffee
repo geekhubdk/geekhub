@@ -2,15 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$ -> 	
-	$("a[data-behavior=intro-show-more]").click ->  	
-		$(this).hide()
-		$(".intro-more").show(500)
+$ ->
+  $("a[data-behavior=intro-show-more]").click ->
+    $(this).hide()
+    $(".intro-more").show(500)
 
 $ ->
   $('.datepicker').datepicker
     dateFormat: "dd/mm/yy"
-  $(".date input,.time select").change ->  
+  $(".date input,.time select").change ->
     container = $(this).closest(".dateselector")
     update_date_time_hidden_field container
 

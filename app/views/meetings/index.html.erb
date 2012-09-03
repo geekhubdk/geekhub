@@ -11,8 +11,8 @@
   </div>
   <section>
     <div class="row">
-      <div class="filters span12">
-        <%= form_tag root_path, method: :get, remote: true do %>
+      <%= form_tag root_path, method: :get, remote: true do %>
+        <div class="filters span12">
           <%= hidden_field_tag :all, params[:all] %>
 
           <% if params[:organizer].is_a? Array %>
@@ -31,13 +31,15 @@
                 </label>
             <% end %>
           </div>
-          <div id="distance-filter" style="display:none">
-            Maks: 
+        </div>
+        <div class="span12">
+          <div class="well" id="distance-filter" style="display:none; overflow: hidden">
+            <span>Maks afstand fra mig:</span>
             <input name="max-distance" type="range" min="10" max="250" step="10" value="250" /> (<span class="max-distance-value">250</span> km)
           </div>
-          <%= submit_tag "Tilpas" %>
-        <% end %>
-      </div>
+        </div>
+        <%= submit_tag "Tilpas", style: "display:none" %>
+      <% end %>
     </div>
     <div class="meetings row"> 
       <%= render :partial => "meetings/list", :collection => @meetings, :as => :meeting %>

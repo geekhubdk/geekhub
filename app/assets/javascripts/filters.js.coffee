@@ -6,7 +6,8 @@ $ ->
     html = $(".meetings", $(data)).html()
     $(".meetings").html(html)
     calculate_meeting_distance()
-  $(".filters input[name=max-distance]").change ->
+
+  $("input[name=max-distance]").change ->
     $(".max-distance-value").text($(this).val())
     max_distance = $(this).val()
     $(".meetings .meeting").each ->
@@ -23,6 +24,7 @@ success = (data) ->
   window.lat = data.coords.latitude
   window.lng = data.coords.longitude
   calculate_meeting_distance()
+  $(".filters").hide()
   $("#distance-filter").show()
 
 calculate_meeting_distance = () ->
