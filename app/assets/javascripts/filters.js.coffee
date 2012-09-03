@@ -24,7 +24,7 @@ success = (data) ->
   window.lat = data.coords.latitude
   window.lng = data.coords.longitude
   calculate_meeting_distance()
-  $(".filters").hide()
+  $("#location-filter").hide()
   $("#distance-filter").show()
 
 calculate_meeting_distance = () ->
