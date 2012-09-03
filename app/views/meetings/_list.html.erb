@@ -1,7 +1,7 @@
 <div class="span6">
   <div class="meeting" data-lat="<%= meeting.latitude %>" data-lng="<%= meeting.longitude %>"> 
     <div>
-      <%= l meeting.starts_at, format: :short %>
+      <%= friendly_date(meeting.starts_at) %>
     </div>
     <div class="title">
         <%= link_to meeting.title, meeting, title: meeting.title %>
