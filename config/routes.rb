@@ -1,4 +1,6 @@
 Geekhub::Application.routes.draw do
+  get "datapolitik" => "static_pages#datapolitik"
+
   resources :organizers
 
   devise_for :users
