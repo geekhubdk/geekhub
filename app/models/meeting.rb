@@ -17,13 +17,8 @@
 
     location_filters = m.map{|x| x.location}.uniq
 
-    unless filters[:organizer].blank?
-      m = m.select{|x| param_match(x.organizer,filters[:organizer])}
-    end
-    
-    unless filters[:location].blank?
-      m = m.select{|x| param_match(x.location,filters[:location])}
-    end
+    m = m.select{|x| param_match(x.organizer,filters[:organizer])}
+    m = m.select{|x| param_match(x.location,filters[:location])}
 
     return [m, location_filters] if return_filters
     return m unless return_filters
@@ -36,11 +31,13 @@
   private
 
   def self.param_match value, param
-    if param.is_a? Array
+    if param.blank?
+      true
+    elsif param.is_a? Array
       param.any?{|p| p.downcase == value.downcase}
     else    
       value.downcase == param.downcase 
-    end
+    end  
   end
 
 end
