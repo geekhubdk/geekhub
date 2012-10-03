@@ -9,18 +9,6 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :email
 
-  has_many :meeting_votes
-
-  def vote_on meeting
-    unless meeting_votes.where("meeting_id = ?", meeting.id).length > 0
-      meeting_votes.create({ meeting_id: meeting.id })
-    end
-  end
-  
-  def can_vote_on meeting
-    meeting.meeting_votes.where("user_id = ?", self.id).empty?
-  end
-
   def self.authenticate email, password
     if email.blank? || password.blank?
       false

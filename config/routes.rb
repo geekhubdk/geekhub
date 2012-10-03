@@ -1,15 +1,9 @@
 Geekhub::Application.routes.draw do
   get "datapolitik" => "static_pages#datapolitik"
 
-  resources :organizers
+  resources :organizers, :meetings
 
   devise_for :users
-
-  resources :meetings do
-    member do
-      post :vote
-    end
-  end
 
   root :to => "meetings#index"
 

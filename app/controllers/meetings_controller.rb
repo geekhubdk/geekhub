@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-  before_filter :find_meeting, :only => [:show, :update, :edit, :vote, :destroy]
+  before_filter :find_meeting, :only => [:show, :update, :edit, :destroy]
 
   def index
     respond_to do |format|
@@ -15,12 +15,6 @@ class MeetingsController < ApplicationController
   end
 
   def show
-    @can_vote = user_signed_in? ? current_user.can_vote_on(@meeting) : false
-  end
-
-  def vote
-    current_user.vote_on(@meeting)
-    redirect_to @meeting
   end
 
   def new

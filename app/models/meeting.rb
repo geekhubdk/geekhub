@@ -1,9 +1,8 @@
   class Meeting < ActiveRecord::Base
   validates :title, :starts_at, :location, :organizer, :description, :url, :presence => true
-  scope :upcoming, lambda { includes(:meeting_votes).where("starts_at >= ?", Date.today) }
+  scope :upcoming, lambda { where("starts_at >= ?", Date.today) }
 
   belongs_to :user
-  has_many :meeting_votes 
 
   geocoded_by :location  # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
@@ -13,7 +12,7 @@
   end
 
   def self.filter(filters, return_filters = false)
-    m = Meeting.includes(:meeting_votes).order("starts_at")
+    m = Meeting.order("starts_at")
     m = m.upcoming if filters[:all] != "1"
 
     location_filters = m.map{|x| x.location}.uniq
