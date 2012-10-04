@@ -31,11 +31,7 @@
   private
 
   def self.param_match value, param
-    if param.blank?
-      true
-    else
-      [*param].any?{|p| p.downcase == value.downcase} 
-    end  
+    param.blank? || [*param].any?{|p| p.downcase == value.downcase}  
   end
 
 end
