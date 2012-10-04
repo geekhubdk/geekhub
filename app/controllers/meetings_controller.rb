@@ -1,7 +1,7 @@
 class MeetingsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :find_meeting, :only => [:show, :update, :edit, :destroy]
-
+  before_filter :ensure_that_user_can_edit, only: [:update, :edit, :destroy]
   def index
     respond_to do |format|
       format.html do
@@ -39,11 +39,6 @@ class MeetingsController < ApplicationController
   end
 
   def update
-
-    unless @meeting.can_be_edited_by current_user
-      redirect_to new_user_session_path
-    end
-
     @meeting.user ||= current_user
 
     if @meeting.update_attributes(params[:meeting])
@@ -54,10 +49,6 @@ class MeetingsController < ApplicationController
   end
 
   def destroy
-    unless @meeting.can_be_edited_by current_user
-      redirect_to new_user_session_path
-    end
-
     @meeting.destroy
 
     redirect_to root_path
@@ -71,6 +62,12 @@ private
   
   def find_meeting
     @meeting = Meeting.find(params[:id])
+  end
+
+  def ensure_that_user_can_edit
+    unless @meeting.can_be_edited_by current_user
+      redirect_to new_user_session_path
+    end
   end
 
 end
