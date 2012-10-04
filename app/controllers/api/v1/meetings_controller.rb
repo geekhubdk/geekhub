@@ -5,7 +5,7 @@ class Api::V1::MeetingsController < ApplicationController
   after_filter :set_access_control_headers
 
   def index
-    @meetings = Meeting.filter(params)
+    @meetings = Meeting.filter(params).meetings
     respond_with meetings_json(@meetings)
   end
 

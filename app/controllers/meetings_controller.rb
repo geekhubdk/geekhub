@@ -5,11 +5,13 @@ class MeetingsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @meetings, @location_filters = Meeting.filter(params, true)
+        filter = Meeting.filter(params)
+        @meetings = filter.meetings
+        @location_filters = filter.location_filters
         @active_location_filters = [*params[:location]]
       end
       format.rss do
-        @meetings = Meeting.filter(params)
+        @meetings = Meeting.filter(params).meetings
       end
     end
   end

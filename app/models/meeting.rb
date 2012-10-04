@@ -11,7 +11,7 @@
     self.starts_at.strftime('%m')
   end
 
-  def self.filter(filters, return_filters = false)
+  def self.filter(filters)
     m = Meeting.order("starts_at")
     m = m.upcoming if filters[:all] != "1"
 
@@ -20,8 +20,8 @@
     m = m.select{|x| param_match(x.organizer,filters[:organizer])}
     m = m.select{|x| param_match(x.location,filters[:location])}
 
-    return [m, location_filters] if return_filters
-    return m unless return_filters
+    result = Struct.new(:meetings,:location_filters)
+    result.new(m, location_filters)
   end
 
   def can_be_edited_by user

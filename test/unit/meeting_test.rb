@@ -9,36 +9,36 @@ class MeetingTest < ActiveSupport::TestCase
   test "one location filter should work" do
     location = meetings(:one).location
     params = { location: location }
-    meetings, location_filters = Meeting.filter(params, true)
+    result = Meeting.filter(params)
     
-    assert_true location_filters.any?{|v| v == location}
-    assert_true meetings.any?{|m| m.location = location}
-    assert_false meetings.any?{|m| m.location != location}
+    assert_true result.location_filters.any?{|v| v == location}
+    assert_true result.meetings.any?{|m| m.location = location}
+    assert_false result.meetings.any?{|m| m.location != location}
   end
 
   test "two location filter should work" do
     locations = [meetings(:one).location,meetings(:two).location]
     params = { location: locations }
-    meetings, location_filters = Meeting.filter(params, true)
+    result = Meeting.filter(params)
     
-    assert_true location_filters.any?{|v| (v == locations[0]) || (v == locations[1])}
-    assert_false meetings.any?{|m| (m.location != locations[0] && m.location != locations[1])}
+    assert_true result.location_filters.any?{|v| (v == locations[0]) || (v == locations[1])}
+    assert_false result.meetings.any?{|m| (m.location != locations[0] && m.location != locations[1])}
   end
 
   test "one organizer filter should work" do
     organizer = meetings(:one).organizer
     params = { organizer: organizer }
-    meetings, location_filters = Meeting.filter(params, true)
+    result = Meeting.filter(params)
 
-    assert_true meetings.any?{|m| m.organizer = organizer}
-    assert_false meetings.any?{|m| m.organizer != organizer}
+    assert_true result.meetings.any?{|m| m.organizer = organizer}
+    assert_false result.meetings.any?{|m| m.organizer != organizer}
   end
 
   test "two organizer filter should work" do
     organizers = [meetings(:one).organizer,meetings(:two).organizer]
     params = { organizer: organizers }
-    meetings, location_filters = Meeting.filter(params, true)
+    result = Meeting.filter(params)
 
-    assert_false meetings.any?{|m| (m.organizer != organizers[0] && m.organizer != organizers[1])}
+    assert_false result.meetings.any?{|m| (m.organizer != organizers[0] && m.organizer != organizers[1])}
   end
 end
