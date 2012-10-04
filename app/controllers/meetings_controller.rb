@@ -2,6 +2,7 @@ class MeetingsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :find_meeting, :only => [:show, :update, :edit, :destroy]
   before_filter :ensure_that_user_can_edit, only: [:update, :edit, :destroy]
+  
   def index
     respond_to do |format|
       format.html do
@@ -25,7 +26,6 @@ class MeetingsController < ApplicationController
   end
 
   def edit
-    redirect_to_login unless @meeting.can_be_edited_by current_user
   end
 
   def create
@@ -52,7 +52,6 @@ class MeetingsController < ApplicationController
 
   def destroy
     @meeting.destroy
-
     redirect_to root_path
   end
 
