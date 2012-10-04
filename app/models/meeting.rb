@@ -33,10 +33,8 @@
   def self.param_match value, param
     if param.blank?
       true
-    elsif param.is_a? Array
-      param.any?{|p| p.downcase == value.downcase}
-    else    
-      value.downcase == param.downcase 
+    else
+      [*param].any?{|p| p.downcase == value.downcase} 
     end  
   end
 
