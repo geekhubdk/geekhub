@@ -35,8 +35,8 @@
             <%= f.check_box :costs_money %> <%= f.label :costs_money %>
           </div>
           <div class="field">
-            <%= f.label :location %>
-            <%= f.text_field :location %>
+            <%= f.label :city_id %>
+            <%= f.select(:city_id, City.order("name").collect {|p| [ p.name, p.id ] }, {:include_blank => 'Vælg venligst by'})%>
           </div>
           <div class="field">
             <%= f.label :organizer %>

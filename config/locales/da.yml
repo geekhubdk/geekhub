@@ -242,7 +242,7 @@ da:
       meeting:
         title: "Titel"
         starts_at: "Starter den"
-        location: "By"
+        city_id: "By"
         organizer: "Arrangør"
         description: "Beskrivelse"
         url: "Link til event / tilmelding"

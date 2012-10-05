@@ -7,22 +7,22 @@ class MeetingTest < ActiveSupport::TestCase
   end
   
   test "one location filter should work" do
-    location = meetings(:one).location
+    location = meetings(:one).city.name
     params = { location: location }
     result = Meeting.filter(params)
     
     assert_true result.location_filters.any?{|v| v == location}
-    assert_true result.meetings.any?{|m| m.location = location}
-    assert_false result.meetings.any?{|m| m.location != location}
+    assert_true result.meetings.any?{|m| m.city.name = location}
+    assert_false result.meetings.any?{|m| m.city.name != location}
   end
 
   test "two location filter should work" do
-    locations = [meetings(:one).location,meetings(:two).location]
+    locations = [meetings(:one).city.name,meetings(:two).city.name]
     params = { location: locations }
     result = Meeting.filter(params)
     
     assert_true result.location_filters.any?{|v| (v == locations[0]) || (v == locations[1])}
-    assert_false result.meetings.any?{|m| (m.location != locations[0] && m.location != locations[1])}
+    assert_false result.meetings.any?{|m| (m.city.name != locations[0] && m.city.name != locations[1])}
   end
 
   test "one organizer filter should work" do

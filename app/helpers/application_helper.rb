@@ -5,7 +5,7 @@ module ApplicationHelper
     costs_money_text = "(gratis)" unless meeting.costs_money
 
     <<-eos
-      <strong>#{meeting.location}, #{l meeting.starts_at, :format => :long} - #{meeting.organizer} #{costs_money_text} </strong><br/> 
+      <strong>#{meeting.city.name}, #{l meeting.starts_at, :format => :long} - #{meeting.organizer} #{costs_money_text} </strong><br/> 
       <p>#{nl2br h(meeting.description)}</p>
       eos
 

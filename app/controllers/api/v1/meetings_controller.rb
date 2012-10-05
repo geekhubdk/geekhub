@@ -41,7 +41,7 @@ class Api::V1::MeetingsController < ApplicationController
       title: meeting.title,
       starts_at: meeting.starts_at,
       description: meeting.description,
-      location: meeting.location,
+      location: meeting.city.name,
       url: meeting.url,
       organizer: meeting.organizer,
       costs_money: meeting.costs_money,

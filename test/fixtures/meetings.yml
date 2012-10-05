@@ -4,7 +4,7 @@ one:
   id: 1
   title: MyString
   starts_at: 2100-12-12 13:59:34
-  location: Odense
+  city_id: 1
   organizer: ONUG
   description: This is a description
   url: http://mysite.dk
@@ -15,7 +15,7 @@ two:
   id: 2
   title: MyString2
   starts_at: 2012-01-06 13:59:34
-  location: Aarhus
+  city_id: 2
   organizer: ANUG
   description: MyText
   url: MyString
@@ -24,7 +24,7 @@ three:
   id: 3
   title: MyString3
   starts_at: 2100-01-06 13:59:34
-  location: MyString
+  city_id: 2
   organizer: ANUG
   description: MyText
   url: MyString
