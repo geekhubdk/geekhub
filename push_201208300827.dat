@@ -1,1 +1,0 @@
-{"klass":"Taps::Push","database_url":"postgres://localhost:5432/geekhub?encoding=utf8","remote_url":"http://heroku:osui59a24am79x@taps19.heroku.com","session_uri":"/sessions/4599824295","stream_state":{},"completed_tables":["user_roles"],"table_filter":null,"local_tables_info":{"user_roles":0,"meeting_votes":14,"organizers":12,"schema_migrations":14,"users":12,"meetings":157}}
