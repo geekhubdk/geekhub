@@ -4,8 +4,12 @@
 
 .organizers {
   margin-top: 50px;
-
-	.organizer {
+  
+  a {
+    color: #333;
+  }
+	
+  .organizer {
     margin-bottom: 25px;
     border: 1px solid #C6C6C6;
     border-top: 5px solid #0072BB;
