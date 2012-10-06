@@ -18,7 +18,12 @@
 	</div>
 	<aside class="span4"> 
 		<span class="starts_at"><%= l @meeting.starts_at, format: :short %></span>
-		<%= render partial: 'tags', locals: { meeting: @meeting } %>
+		<% unless @meeting.address.blank? %>
+			<p>
+				<%= google_maps_image_link @meeting.address %></p>
+		<% end %>
+
+		<%= render partial: 'tags', locals: { meeting: @meeting } %>		
 		<%= render partial: 'functions' %>
 	</aside>
 </article>

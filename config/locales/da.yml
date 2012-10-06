@@ -248,6 +248,7 @@ da:
         url: "Link til event / tilmelding"
         suggested_by: "Din email"
         costs_money: "Det koster penge at deltage"
+        address: "Adresse"
       organizer:
         name: "Navn"
         description: "Kort beskrivelse"

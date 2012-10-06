@@ -13,7 +13,11 @@
   end
 
   def geocode_location
-    city.name unless city.nil?
+    unless address.blank?
+      address
+    else
+      city.name unless city.nil?
+    end
   end
 
   def self.filter(filters)

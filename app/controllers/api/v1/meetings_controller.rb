@@ -50,7 +50,8 @@ class Api::V1::MeetingsController < ApplicationController
       organizer: meeting.organizer,
       costs_money: meeting.costs_money,
       latitude: meeting.latitude,
-      longtitude: meeting.longitude
+      longtitude: meeting.longitude,
+      address: meeting.address
     }
   end
 end

@@ -22,6 +22,7 @@ article.meeting
     border-top: 5px solid #0072BB;
     padding: 25px;
     box-shadow: rgba(200, 200, 200, 0.199219) 2px 2px 2px 0px;
+    overflow: hidden;
 
     .title {
       font-size: 140%;
@@ -36,6 +37,11 @@ article.meeting
         overflow: inherit;
         white-space: inherit;
       }
+    }
+
+    .map {
+      margin: -25px -25px -25px 0px;
+      float: right;
     }
   }
   .blur {
