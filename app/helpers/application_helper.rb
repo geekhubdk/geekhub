@@ -26,7 +26,7 @@ module ApplicationHelper
   end
 
   def google_maps_image sizex, sizey, address
-    "http://maps.googleapis.com/maps/api/staticmap?size=#{sizex}x#{sizey}&zoom=9&markers=#{CGI.escape address}&sensor=false&key=AIzaSyDF3n_lGmqAvqxgRcRm1n1MPslVJW9oyG0"
+    "http://maps.googleapis.com/maps/api/staticmap?size=#{sizex}x#{sizey}&zoom=10&markers=#{CGI.escape address}&sensor=false&key=AIzaSyDF3n_lGmqAvqxgRcRm1n1MPslVJW9oyG0"
   end
 
   def google_maps_link(address)
