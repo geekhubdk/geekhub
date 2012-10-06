@@ -10,9 +10,13 @@ class Api::V1::MeetingsController < ApplicationController
   end
 
   def create
+    location = params[:meeting][:location]
+    @city = City.where("lower(name) = ?", location)
+    @city = City.create({ name: location}) if @city.nil?
 
     @meeting = Meeting.new(params[:meeting])
     @meeting.user = @current_user
+    @meeting.city = city
 
     if @meeting.save
       render json: @meeting, status: :created, location: @meeting

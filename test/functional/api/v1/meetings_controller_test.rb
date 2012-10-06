@@ -54,4 +54,9 @@ class Api::V1::MeetingsControllerTest < ActionController::TestCase
     assert_false assigns[:meetings].any?{|m| m.city.name != "Odense" && m.city.name != "Aarhus"}
   end
 
+  test "should be able to create meeting" do
+    post :create, meeting: { title: "My title", starts_at: Time.now, description: "Something", url: "http://something.dk", organizer: "ONUG", location: cities(:odense).name, costs_money: false }
+
+    assert_response 302
+  end
 end
