@@ -17,10 +17,10 @@
   end
 
   def self.filter(filters)
-    m = Meeting.includes(:city).order("starts_at")
+    m = Meeting.includes(:city => :region).order("starts_at")
     m = m.upcoming if filters[:all] != "1"
 
-    location_filters = m.map{|x| x.city.name}.uniq
+    location_filters = m.map{|x| x.city}.uniq
 
     m = m.select{|x| param_match(x.organizer,filters[:organizer])}
     m = m.select{|x| param_match(x.city.name,filters[:location])}

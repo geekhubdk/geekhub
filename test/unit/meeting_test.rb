@@ -7,13 +7,13 @@ class MeetingTest < ActiveSupport::TestCase
   end
   
   test "one location filter should work" do
-    location = meetings(:one).city.name
-    params = { location: location }
+    city = meetings(:one).city
+    params = { location: city.name }
     result = Meeting.filter(params)
     
-    assert_true result.location_filters.any?{|v| v == location}
-    assert_true result.meetings.any?{|m| m.city.name = location}
-    assert_false result.meetings.any?{|m| m.city.name != location}
+    assert_true result.location_filters.any?{|v| v.name == city.name}
+    assert_true result.meetings.any?{|m| m.city.name = city.name}
+    assert_false result.meetings.any?{|m| m.city.name != city.name}
   end
 
   test "two location filter should work" do
@@ -21,7 +21,7 @@ class MeetingTest < ActiveSupport::TestCase
     params = { location: locations }
     result = Meeting.filter(params)
     
-    assert_true result.location_filters.any?{|v| (v == locations[0]) || (v == locations[1])}
+    assert_true result.location_filters.any?{|v| (v.name == locations[0]) || (v.name == locations[1])}
     assert_false result.meetings.any?{|m| (m.city.name != locations[0] && m.city.name != locations[1])}
   end
 
