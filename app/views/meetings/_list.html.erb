@@ -1,6 +1,6 @@
 <div class="span12">
   <div class="meeting" data-lat="<%= meeting.latitude %>" data-lng="<%= meeting.longitude %>"> 
-    <div class="map"> 
+    <div class="map hidden-phone"> 
       <% unless meeting.address.blank? %>
         <%= google_maps_image_link meeting.address, 250, 150 %>
       <% end %>
@@ -11,7 +11,7 @@
     <div class="title">
         <%= link_to meeting.title, meeting, title: meeting.title %>
     </div>
-    <div class="hidden-phone">
+    <div>
       <%= render partial: 'meetings/tags', locals: { meeting: meeting } %> 
     </div>
   </div>
