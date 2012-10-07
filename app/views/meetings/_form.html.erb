@@ -38,7 +38,7 @@
             <%= f.label :city_id %>
             <%= f.select(:city_id, City.order("name").collect {|p| [ p.name, p.id ] }, {:include_blank => 'Vælg venligst by'})%>
             <div>
-              <small></small>
+              <small>Mangler der en by? Så skriv en mail til <a href="mailto:hello@geekhub.dk">hello@geekhub.dk</a>.</small>
             </div>
           </div>
           <div class="field">
