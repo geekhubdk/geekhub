@@ -5,7 +5,7 @@ class MeetingsController < ApplicationController
   
   def index
 
-    if(params[:location].nil?)
+    if params[:location].nil? && cookies[:location] != nil
       params[:location] = cookies[:location].split("&")
     end
 
