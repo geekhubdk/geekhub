@@ -3,4 +3,6 @@ class StaticPagesController < ApplicationController
   end
   def om
   end
+  def kontakt
+  end
 end

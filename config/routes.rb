@@ -1,7 +1,8 @@
 Geekhub::Application.routes.draw do
   get "datapolitik" => "static_pages#datapolitik"
   get "om" => "static_pages#om"
-
+  get "kontakt" => "static_pages#kontakt"
+  
   resources :organizers, :meetings
 
   devise_for :users
