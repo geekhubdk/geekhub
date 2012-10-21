@@ -40,7 +40,7 @@
   private
 
   def self.param_match value, param
-    param.blank? || [*param].any?{|p| p.downcase == value.downcase}  
+    param.blank? || [*param].any?{|p| value.nil? == false && p.downcase == value.downcase}  
   end
 
 end
