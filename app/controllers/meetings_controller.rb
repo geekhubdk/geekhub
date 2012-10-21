@@ -4,13 +4,12 @@ class MeetingsController < ApplicationController
   before_filter :ensure_that_user_can_edit, only: [:update, :edit, :destroy]
   
   def index
-
-    if params[:location].nil? && cookies[:location] != nil
-      params[:location] = cookies[:location].split("&")
-    end
-
     respond_to do |format|
       format.html do
+        if params[:location].nil? && cookies[:location] != nil
+          params[:location] = cookies[:location].split("&")
+        end
+        
         filter = Meeting.filter(params)
         @meetings = filter.meetings
         @location_filters = filter.location_filters
