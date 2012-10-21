@@ -14,7 +14,7 @@ $ ->
     form = $(this).closest("form")
     $.post("/meetings/save_filter", form.serialize()).success ->
       disable_save_button()
-      false
+    false
 
 disable_save_button = () ->
   button = $("#save_filter")
