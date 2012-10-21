@@ -6,8 +6,6 @@ $ ->
   $('.filters form').bind 'ajax:success', (e, data) ->
     html = $(".meetings", $(data)).html()
     $(".meetings").html(html)
-    calculate_meeting_distance()
-
 
   $("#save_filter").click ->
     button = $(this)

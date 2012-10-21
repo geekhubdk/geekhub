@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show, :save_filter]
   before_filter :find_meeting, :only => [:show, :update, :edit, :destroy]
   before_filter :ensure_that_user_can_edit, only: [:update, :edit, :destroy]
   
@@ -9,7 +9,7 @@ class MeetingsController < ApplicationController
         if params[:location].nil? && cookies[:location] != nil
           params[:location] = cookies[:location].split("&")
         end
-        
+
         filter = Meeting.filter(params)
         @meetings = filter.meetings
         @location_filters = filter.location_filters
