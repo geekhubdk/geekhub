@@ -52,5 +52,10 @@
     <div class="meetings row"> 
       <%= render :partial => "meetings/list", :collection => @meetings, :as => :meeting %>
     </div>
+    <div class="row">
+      <div class="span12">
+        <%= link_to "Arkiv", meetings_path(all: "1") %> 
+      </div>
+    </div>
   </section>
 </div>

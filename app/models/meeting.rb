@@ -24,10 +24,10 @@
     m = Meeting.includes(:city => :region).order("starts_at")
     m = m.upcoming if filters[:all] != "1"
 
-    location_filters = m.map{|x| x.city}.uniq
+    location_filters = m.select{|x| x.city != nil}.map{|x| x.city}.uniq
 
     m = m.select{|x| param_match(x.organizer,filters[:organizer])}
-    m = m.select{|x| param_match(x.city.name,filters[:location])}
+    m = m.select{|x| param_match(x.city.try(:name),filters[:location])}
 
     result = Struct.new(:meetings,:location_filters)
     result.new(m, location_filters)
