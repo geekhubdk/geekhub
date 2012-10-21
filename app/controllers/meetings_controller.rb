@@ -4,6 +4,11 @@ class MeetingsController < ApplicationController
   before_filter :ensure_that_user_can_edit, only: [:update, :edit, :destroy]
   
   def index
+
+    if(params[:location].nil?)
+      params[:location] = cookies[:location].split("&")
+    end
+
     respond_to do |format|
       format.html do
         filter = Meeting.filter(params)
@@ -53,6 +58,12 @@ class MeetingsController < ApplicationController
   def destroy
     @meeting.destroy
     redirect_to root_path
+  end
+
+  def save_filter
+    cookies.permanent[:location] = params[:location]
+
+    render nothing: true
   end
 
 private

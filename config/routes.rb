@@ -3,7 +3,13 @@ Geekhub::Application.routes.draw do
   get "om" => "static_pages#om"
   get "kontakt" => "static_pages#kontakt"
   
-  resources :organizers, :meetings
+  resources :organizers
+
+  resources :meetings do
+    collection do
+      post :save_filter
+    end
+  end
 
   devise_for :users
 
