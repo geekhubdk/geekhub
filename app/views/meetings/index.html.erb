@@ -15,15 +15,11 @@
         <%= form_tag root_path, method: :get, remote: true do %>
           <%= hidden_field_tag :all, params[:all] %>
 
-          <% if params[:organizer].is_a? Array %>
-            <% params[:organizer].each do |o| %>
-              <%= hidden_field_tag "organizer[]", o %>
-            <% end %>
-          <% else %>
-            <%= hidden_field_tag "organizer", params[:organizer] %>
+          <% [*params[:organizer]].each do |o| %>
+            <%= hidden_field_tag "organizer[]", o %>
           <% end %>
 
-          <div id="location-filter" class="hidden-phone">
+          <div id="location-filter">
             <% @location_filters.group_by(&:region).each do |r, filters| %>
                 <div class="group">
                   <div><%=r.blank? ? "Andet" : r.name%></div>
@@ -39,11 +35,6 @@
             <% end %>
           </div>
 
-          <div class="well" id="distance-filter" style="display:none; overflow: hidden">
-            <span>Maks afstand fra mig:</span>
-            <input name="max-distance" type="range" min="10" max="250" step="10" value="250" /> (<span class="max-distance-value">250</span> km)
-            <span style="float: right">(<a id="change_to_old_filter" href="#">jeg vil hellere filtrere via by</a>)</span>
-          </div>
           <%= submit_tag "Tilpas", style: "display:none" %>
         <% end %>
 
