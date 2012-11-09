@@ -45,7 +45,7 @@ class Api::V1::MeetingsController < ApplicationController
       title: meeting.title,
       starts_at: meeting.starts_at,
       description: meeting.description,
-      location: meeting.city.name,
+      location: meeting.city.nil? ? "ukendt" : meeting.city.name,
       url: meeting.url,
       organizer: meeting.organizer,
       costs_money: meeting.costs_money,
