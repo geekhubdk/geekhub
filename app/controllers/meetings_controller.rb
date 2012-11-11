@@ -61,7 +61,6 @@ class MeetingsController < ApplicationController
 
   def save_filter
     cookies.permanent[:location] = params[:location]
-
     render nothing: true
   end
 
