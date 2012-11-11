@@ -16,25 +16,6 @@ protected
     end
   end
   
-  def boolean_param(name, default_value = nil)
-    name = name.to_sym
-    return default_value if params[name].nil?
-    
-    val = params[name].to_s.to_bool
-    return default_value if val.nil?
-    
-    return val
-  end
-  
-  def integer_param(name, default_value = nil)
-    name = name.to_sym
-    
-    return default_value if params[name].nil?
-    return default_value unless params[name] =~ /^[-+]?[0-9]+$/
-    
-    return params[name].to_i
-  end
-  
   def redirect_to_login
     redirect_to new_user_session_path
   end
