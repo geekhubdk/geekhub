@@ -37,7 +37,7 @@
     user_id.nil? || user_id == user.id || user.email == "deldy@deldysoft.dk"
   end
 
-  private
+private
 
   def self.param_match value, param
     param.blank? || [*param].any?{|p| value.nil? == false && p.downcase == value.downcase}  
