@@ -6,7 +6,7 @@ class MeetingsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        if params[:location].nil? && cookies[:location] != nil
+        if should_read_location_from_config
           params[:location] = cookies[:location].split("&")
         end
 
@@ -79,6 +79,10 @@ private
     unless @meeting.can_be_edited_by current_user
       redirect_to new_user_session_path
     end
+  end
+
+  def should_read_location_from_config
+    params[:location].nil? && cookies[:location] != nil
   end
 
 end
