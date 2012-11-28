@@ -1,0 +1,32 @@
+<div class="filters span12">
+  <%= form_tag root_path, method: :get, remote: true do %>
+    <%= hidden_field_tag :all, params[:all] %>
+
+    <% [*params[:organizer]].each do |o| %>
+      <%= hidden_field_tag "organizer[]", o %>
+    <% end %>
+
+    <div id="location-filter">
+      <% @location_filters.group_by(&:region).each do |r, filters| %>
+          <div class="group">
+            <div><%=r.blank? ? "Andet" : r.name%></div>
+            <div class="btn-group">
+              <% filters.each do |f| %>
+                <label class="btn">
+                  <%= check_box_tag "location[]", f.name, @active_location_filters.any?{|l| l.downcase == f.name.downcase} || @active_location_filters.empty? %>
+                  <%= f.name %>
+                </label>
+              <% end %>
+            </div>
+          </div>
+      <% end %>
+      <div class="group">
+        <div>&nbsp;</div>
+        <div class="btn-group">
+          <a id="save_filter" href="#" class="btn" title="Gem filter"><i class="icon-hdd"></i></a>
+        </div>
+      </div>
+    </div>
+    <%= submit_tag "Tilpas", style: "display:none" %>
+  <% end %>
+</div>
