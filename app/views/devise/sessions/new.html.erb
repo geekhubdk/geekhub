@@ -2,31 +2,17 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <legend>Log ind</legend>
 
-  <div class="control-group">
-    <%= f.label :email, class: "control-label" %>
-    <div class="controls">
-      <%= f.email_field :email %>
-    </div>
-  </div>
-  <div>
+  <%= f.label :email, class: "control-label" %>
+  <%= f.email_field :email %>
 
-  <div class="control-group">
-    <%= f.label :password, class: "control-label" %>
-    <div class="controls">
-      <%= f.password_field :password %>
-    </div>
-  </div>
+  <%= f.label :password, class: "control-label" %>
+  <%= f.password_field :password %>
 
   <% if devise_mapping.rememberable? -%>
-    <div class="control-group">
-      <div class="controls">
-        <label class="checkbox">
-          <%= f.check_box :remember_me %> Husk mig
-
-        </label>
-      </div>
-    </div>
-  <% end -%>
+    <label class="checkbox">
+      <%= f.check_box :remember_me %> Husk mig
+    </label>
+  <% end %>
 
   <div class="form-actions">
     <%= f.submit "Log ind", class: "btn btn-large btn-primary" %>
