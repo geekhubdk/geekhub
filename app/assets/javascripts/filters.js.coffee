@@ -1,6 +1,6 @@
 $ ->
   $(".filters input[type=checkbox]").change ->
-    $(this).closest(".filters").find("input[type=submit]").click()
+    $(this).closest("form").submit()
     enable_save_button()
 
   $('.filters form').bind 'ajax:success', (e, data) ->
