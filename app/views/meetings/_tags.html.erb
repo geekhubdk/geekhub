@@ -1,7 +1,7 @@
 <div class="tags">
-  	<div class="tags-tag location"><%= meeting.city.try(:name) %></div>
-  	<% unless meeting.costs_money %>
-    	<div class="tags-tag free">Gratis</div>
-  	<% end %>
-	<div class="tags-tag organizer"><%= meeting.organizer %></div>
+  <div class="tags-tag location"><%= meeting.city.try(:name) %></div>
+    <% unless meeting.costs_money %>
+      <div class="tags-tag free">Gratis</div>
+    <% end %>
+  <div class="tags-tag organizer"><%= meeting.organizer %></div>
 </div>

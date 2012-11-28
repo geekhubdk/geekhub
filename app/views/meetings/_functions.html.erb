@@ -1,8 +1,0 @@
-<% if user_signed_in? &&  @meeting.can_be_edited_by(current_user) %>
-  <div>
-    <%= link_to 'Rediger', edit_meeting_path(@meeting) %>
-  </div>
-  <div>
-    <%= link_to 'Slet', @meeting, method: :delete, :data => { :confirm => 'Nu er du ikke ved at gøre noget dumt, vel? :)' } %>
-  </div>
-<% end %>
