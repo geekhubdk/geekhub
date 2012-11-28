@@ -3,7 +3,9 @@
     <div id="location-filter">
       <% @location_filters.group_by(&:region).each do |region, filters| %>
           <div class="group">
-            <div><%=region.blank? ? "Andet" : region.name%></div>
+            <div>
+              <%=region.blank? ? "Andet" : region.name%>
+            </div>
             <div class="btn-group">
               <% filters.each do |f| %>
                 <label class="btn">
@@ -17,7 +19,9 @@
       <div class="group">
         <div>&nbsp;</div>
         <div class="btn-group">
-          <a id="save_filter" href="#" class="btn" title="Gem filter"><i class="icon-hdd"></i></a>
+          <a id="save_filter" href="#" class="btn" title="Gem filter">
+            <i class="icon-hdd"></i>
+          </a>
         </div>
       </div>
     </div>

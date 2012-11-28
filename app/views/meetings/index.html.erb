@@ -7,14 +7,16 @@
       <h1>Velkommen til geekhub</h1>
       <%= render 'intro' %>
     </div>
-    <div class="span4 hidden-phone"><%= link_to "Indsend event", new_meeting_path, class: "big-frontpage-button" %></div>
+    <div class="span4 hidden-phone">
+      <%= link_to "Indsend event", new_meeting_path, class: "big-frontpage-button" %>
+    </div>
   </div>
   <section>
     <div class="row">
       <%= render "filters" %>
     </div>
     <div class="meetings row"> 
-      <%= render :partial => "meetings/list", :collection => @meetings, :as => :meeting %>
+      <%= render @meetings%>
     </div>
     <div class="row">
       <div class="span12">
