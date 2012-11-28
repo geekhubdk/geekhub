@@ -5,14 +5,13 @@ $navbarBrandColor: #fff;
 $navbarLinkColor: #fff;
 
 @import "bootstrap";
-body { padding-top: 60px; }
-@import "bootstrap-responsive";
 
 h1 { font-weight: 300; font-size: 30px; }
 h2 { font-weight: 300; font-size: 20px; }
 strong { font-weight: bold; }
 
 body {
+  padding-top: 60px;
   font-family: 'Open Sans', arial, sans-serif;
   font-weight: 300;
   background-color: #F9F9F9;
@@ -116,3 +115,4 @@ form {
 @import "meetings";
 @import "organizers";
 @import "modules/main_nav";
+@import "bootstrap-responsive";
