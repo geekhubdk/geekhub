@@ -1,11 +1,5 @@
 <div class="filters span12">
-  <%= form_tag root_path, method: :get, remote: true do %>
-    <%= hidden_field_tag :all, params[:all] %>
-
-    <% [*params[:organizer]].each do |o| %>
-      <%= hidden_field_tag "organizer[]", o %>
-    <% end %>
-
+  <%= form_tag "", method: :get, remote: true do %>
     <div id="location-filter">
       <% @location_filters.group_by(&:region).each do |r, filters| %>
           <div class="group">
