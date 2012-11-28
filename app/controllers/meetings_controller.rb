@@ -9,7 +9,7 @@ class MeetingsController < ApplicationController
         if should_read_location_from_config
           params[:location] = cookies[:location].split("&")
         end
-
+        
         filter = Meeting.filter(params)
         @meetings = filter.meetings
         @location_filters = filter.location_filters

@@ -26,4 +26,8 @@ module MeetingsHelper
   def google_maps_image_link(address, sizex = 300, sizey = 300)
     link_to image_tag(google_maps_image(sizex, sizey,address)), google_maps_link(address)
   end
+
+  def is_filter_active filter
+    @active_location_filters.any?{|l| l.casecmp(filter.name.downcase) == 0} || @active_location_filters.empty?
+  end
 end

@@ -1,13 +1,17 @@
 <div class="filters span12">
   <%= form_tag "", method: :get, remote: true do %>
+    <% [*params[:organizer]].each do |o| %>
+      <%= hidden_field_tag "organizer[]", o %>
+    <% end %>
+
     <div id="location-filter">
-      <% @location_filters.group_by(&:region).each do |r, filters| %>
+      <% @location_filters.group_by(&:region).each do |region, filters| %>
           <div class="group">
-            <div><%=r.blank? ? "Andet" : r.name%></div>
+            <div><%=region.blank? ? "Andet" : region.name%></div>
             <div class="btn-group">
               <% filters.each do |f| %>
                 <label class="btn">
-                  <%= check_box_tag "location[]", f.name, @active_location_filters.any?{|l| l.downcase == f.name.downcase} || @active_location_filters.empty? %>
+                  <%= check_box_tag "location[]", f.name, is_filter_active(f) %>
                   <%= f.name %>
                 </label>
               <% end %>
