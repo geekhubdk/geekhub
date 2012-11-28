@@ -1,4 +1,4 @@
-<div class="meeting"> 
+<article class="meeting"> 
   <div class="map hidden-phone">
     <% if meeting.city.try(:name) == "Online" %>
       <div class="online"></div>
@@ -11,11 +11,11 @@
   <div>
     <%= friendly_date(meeting.starts_at) %>
   </div>
-  <div class="title">
+  <h1>
       <%= link_to meeting.title, meeting, title: meeting.title %>
-  </div>
+  </h1>
   <div>
     <%= render partial: 'tags', locals: { meeting: meeting } %>
   </div>
-</div>
+</article>
 

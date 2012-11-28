@@ -24,14 +24,15 @@ article.meeting
     box-shadow: rgba(200, 200, 200, 0.199219) 2px 2px 2px 0px;
     overflow: hidden;
 
-    .title {
+    h1 {
       font-size: 140%;
       line-height: 150%;
       font-weight: bold;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
-
+      margin: 0;
+      
       @media (max-width: 480px) {
         text-overflow: inherit;
         overflow: inherit;
