@@ -93,6 +93,17 @@
     </div>
     <div class="container">
       <div class="content">
+        <% unless flash[:error].nil? %>
+          <div class="alert alert-error">
+            <%= flash[:error] %>
+          </div>
+        <% end %>
+        <% unless flash[:notice].nil? %>
+          <div class="alert alert-success">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        
         <%= yield %>
       </div>
     </div>

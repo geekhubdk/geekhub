@@ -3,7 +3,7 @@ Geekhub::Application.routes.draw do
   get "om" => "static_pages#om"
   get "kontakt" => "static_pages#kontakt"
   
-  resources :organizers
+  resources :organizers, :meeting_suggestions
 
   resources :meetings do
     collection do
