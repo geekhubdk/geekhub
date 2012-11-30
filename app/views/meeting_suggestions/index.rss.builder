@@ -15,8 +15,8 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
 
         xml.link m.url
 
-        xml.description ""
-        xml.guid m.id.to_s + "-" + m.url
+        xml.description m.url
+        xml.guid m.url + "##{m.id.to_s}"
      end
     end
 
