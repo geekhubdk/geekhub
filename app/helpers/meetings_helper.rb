@@ -30,4 +30,16 @@ module MeetingsHelper
   def is_filter_active filter
     @active_location_filters.any?{|l| l.casecmp(filter.name.downcase) == 0} || @active_location_filters.empty?
   end
+
+  def time_options_for_select value
+    values = []
+
+    (0..23).each do |h|
+      (0..55).step(15).each do |m| 
+        values << (h < 10 ? "0#{h}" : "#{h}") + ":" + (m < 10 ? "0#{m}" : "#{m}")
+      end
+    end
+
+    options_for_select(values, value ? value.strftime('%H:%M')  : '00:00')
+  end
 end

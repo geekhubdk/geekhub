@@ -5,8 +5,6 @@
 	</div>
 	<div class="time">
     	kl. 
-    	<%= select_tag field.to_s + "_hour", options_for_select((0..23).map{|h| h < 10 ? "0#{h}" : "#{h}"}, value ? value.strftime('%H') : '00'), { class: "hour" } %>
-    	:
-    	<%= select_tag field.to_s + "_minute", options_for_select((0..55).step(5).map{|h| h < 10 ? "0#{h}" : "#{h}" }, value ? value.strftime('%M') : '00'), { class: "minute"} %>
+    	<%= select_tag field.to_s + "_hour", time_options_for_select(value), { class: "time" } %>
     </div>
 </div>

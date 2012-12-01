@@ -11,8 +11,7 @@ $ ->
 
 update_date_time_hidden_field = (container) ->
   date_field = container.find(".date input")
-  hour_field = container.find(".time select.hour")
-  minute_field = container.find(".time select.minute")
-  container.find("input[type=hidden]").val("#{date_field.val()} #{hour_field.val()}:#{minute_field.val()}")
+  time_field = container.find(".time select.time")
+  container.find("input[type=hidden]").val("#{date_field.val()} #{time_field.val()}")
 
 
