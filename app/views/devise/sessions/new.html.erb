@@ -1,7 +1,7 @@
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <legend>Log ind</legend>
-  <p>Du skal være logget ind for at indsende events. Tryk på <i>opret bruger</i> for at oprette en profil.<br/>Denne profil giver dig mulighed for at senere at kunne opdatere dit event, hvis der skulle komme ændringer.</p>
+  <p>Du skal være logget ind for at indsende events. Tryk på <%=link_to "opret bruger", new_registration_path(resource_name) %></i> for at oprette en profil.<br/>Denne profil giver dig mulighed for at senere at kunne opdatere dit event, hvis der skulle komme ændringer.</p>
   <%= f.label :email, class: "control-label" %>
   <%= f.email_field :email %>
 
