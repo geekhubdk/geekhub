@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class MeetingsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show, :save_filter]
   before_filter :find_meeting, :only => [:show, :update, :edit, :destroy]
@@ -38,7 +40,7 @@ class MeetingsController < ApplicationController
     @meeting.user = current_user
 
     if @meeting.save
-      redirect_to root_path, notice: 'Meeting was successfully created.'
+      redirect_to root_path, notice: 'Event tilføjet!'
     else
       render action: "new"
     end
@@ -48,7 +50,7 @@ class MeetingsController < ApplicationController
     @meeting.user ||= current_user
 
     if @meeting.update_attributes(params[:meeting])
-      redirect_to root_path, notice: 'Meeting was successfully updated.'
+      redirect_to root_path, notice: 'Event opdateret!'
     else
       render "edit"
     end
