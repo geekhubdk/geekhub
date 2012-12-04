@@ -1,22 +1,23 @@
 <% content_for :title, @meeting.title %>
 
-<article class="meeting row vevent">
+<article class="meeting row vevent" itemscope itemtype="http://schema.org/Event">
 	
 	<div class="span2 back">
 		<%= link_to 'Tilbage', root_path %>
 	</div>
 	<div class="span6">  
 		<header>
-			<h1><%= link_to @meeting.title, @meeting.url, class:"summary" %></h1>
+			<h1><%= link_to @meeting.title, @meeting.url, class:"summary", itemprop:"name" %></h1>
 		</header>
 		<section class="description">
 			<%= nl2br @meeting.description %>
 		</section>
 		<footer>
-			<%= link_to 'Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "url"} %>
+			<%= link_to 'Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "url", itemprop:"url"} %>
 		</footer>
 	</div>
 	<aside class="span4"> 
+		<meta itemprop="startDate" content="<%= @meeting.starts_at.iso8601 %>">
 		<span class="starts_at dtstart" title="<%= @meeting.starts_at.iso8601 %>"><%= l @meeting.starts_at, format: :short %></span>
 		<% unless @meeting.address.blank? %>
 			<p class="location" title="<%=@meeting.address%>">
