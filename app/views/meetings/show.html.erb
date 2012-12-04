@@ -7,7 +7,7 @@
 	</div>
 	<div class="span6">  
 		<header>
-			<h1 class="summary"><%= link_to @meeting.title, @meeting.url %></h1>
+			<h1><%= link_to @meeting.title, @meeting.url, class:"summary" %></h1>
 		</header>
 		<section class="description">
 			<%= nl2br @meeting.description %>
