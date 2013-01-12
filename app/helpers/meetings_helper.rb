@@ -15,8 +15,8 @@ module MeetingsHelper
 
   end
 
-  def google_maps_image sizex, sizey, address
-    "http://maps.googleapis.com/maps/api/staticmap?size=#{sizex}x#{sizey}&zoom=10&markers=#{CGI.escape address}&sensor=false&key=AIzaSyDF3n_lGmqAvqxgRcRm1n1MPslVJW9oyG0"
+  def google_maps_image sizex, sizey, address, scale
+    "http://maps.googleapis.com/maps/api/staticmap?size=#{sizex}x#{sizey}&scale=#{scale}&zoom=10&markers=#{CGI.escape address}&sensor=false&key=AIzaSyDF3n_lGmqAvqxgRcRm1n1MPslVJW9oyG0"
   end
 
   def google_maps_link(address)
@@ -24,8 +24,8 @@ module MeetingsHelper
   end
 
   def google_maps_image_link(address, sizex = 300, sizey = 300)
-    high_res = google_maps_image(sizex*2, sizey*2,address)
-    normal_res = google_maps_image(sizex, sizey,address)
+    high_res = google_maps_image(sizex, sizey,address, 2)
+    normal_res = google_maps_image(sizex, sizey,address, 1)
 
     html = image_tag(normal_res, width: sizex, height: sizey, alt: address, class: "hidden-high-res") + 
            image_tag(high_res, width: sizex, height: sizey, alt: address,  class: "hidden-normal-res")
