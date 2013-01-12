@@ -111,6 +111,18 @@ form {
   }
 }
 
+.hidden-normal-res {
+  display: none;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hidden-high-res {
+    display: none;
+  }
+  .hidden-normal-res {
+    display: inherit;
+  }
+}
 
 @import "meetings";
 @import "organizers";

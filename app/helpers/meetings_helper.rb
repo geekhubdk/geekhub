@@ -24,7 +24,15 @@ module MeetingsHelper
   end
 
   def google_maps_image_link(address, sizex = 300, sizey = 300)
-    link_to image_tag(google_maps_image(sizex, sizey,address)), google_maps_link(address)
+    high_res = google_maps_image(sizex*2, sizey*2,address)
+    normal_res = google_maps_image(sizex, sizey,address)
+
+    html = image_tag(normal_res, width: sizex, height: sizey, alt: address, class: "hidden-high-res") + 
+           image_tag(high_res, width: sizex, height: sizey, alt: address,  class: "hidden-normal-res")
+    
+    link_to(
+      html,
+      google_maps_link(address))
   end
 
   def is_filter_active filter
