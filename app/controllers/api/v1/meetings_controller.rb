@@ -11,7 +11,7 @@ class Api::V1::MeetingsController < ApplicationController
 
   def create
     location = params[:meeting][:location]
-    @city = City.where("lower(name) = ?", location)
+    @city = City.where("lower(name) = lower(?)", location)
     @city ||= City.create({ name: location})
 
     @meeting = Meeting.new(params[:meeting])
