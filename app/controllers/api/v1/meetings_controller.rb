@@ -12,7 +12,7 @@ class Api::V1::MeetingsController < ApplicationController
   def create
     location = params[:meeting][:location]
     @city = City.where("lower(name) = ?", location)
-    @city = City.create({ name: location}) if @city.nil?
+    @city ||= City.create({ name: location})
 
     @meeting = Meeting.new(params[:meeting])
     @meeting.user = @current_user
