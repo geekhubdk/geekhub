@@ -7,12 +7,40 @@
 
 da:
   devise:
-    failure:
-      user:
-        invalid: "Ugyldig bruger"
-    sessions:
-      user:
-        signed_in: "Du er nu logget ind"
+      failure:
+        unauthenticated: 'Du skal logge ind for at kunne fortsætte.'
+        unconfirmed: 'Du skal bekræfte din konto for at kunne fortsætte.'
+        locked: 'Din konto er låst.'
+        invalid: 'Email eller kodeord er ikke gyldig.'
+        invalid_token: 'Ugyldig token til autorisering.'
+        timeout: 'Din session er udløbet. Log ind igen for at kunne fortsætte.'
+        inactive: 'Din konto er ikke bekræftet.'
+      sessions:
+        signed_in: 'Du er nu logget ind.'
+        signed_out: 'Du er nu logget ud.'
+      passwords:
+        send_instructions: 'Du vil om et øjeblik modtage en email vedrørende nulstilling af kodeord.'
+        updated: 'Dit kodeord er ændret og du er nu logget ind.'
+      confirmations:
+        send_instructions: 'Om få minutter vil du modtage en email med instruktioner om aktivering af din konto.'
+        confirmed: 'Din konto er aktiveret og du er nu logget ind.'
+      registrations:
+        signed_up: 'Din registrering er godkendt.'
+        updated: 'Din profil er opdateret'
+        destroyed: 'Farvel. Din konto er nu lukket.'
+      unlocks:
+        send_instructions: 'Om få minutter vil du modtage en email med instruktioner om genåbning af din konto.'
+        unlocked: 'Din konto er genåbnet og du er nu logget ind.'
+      omniauth_callbacks:
+        success: 'Du er nu logget ind med din %{kind} konto.'
+        failure: 'Vi kunne ikke logge din ind med din %{kind} konto fordi "%{reason}".'
+      mailer:
+        confirmation_instructions:
+          subject: 'Bekræft din konto'
+        reset_password_instructions:
+          subject: 'Nulstilling af kodeord'
+        unlock_instructions:
+          subject: 'Genåbning af konto'
   # active_support
   date:
     # See http://sproget.dk/svarbase/SV00000046/ and http://en.wikipedia.org/wiki/Date_formats
