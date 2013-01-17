@@ -19,9 +19,12 @@
 	<aside class="span4"> 
 		<meta itemprop="startDate" content="<%= @meeting.starts_at.iso8601 %>">
 		<span class="starts_at dtstart" title="<%= @meeting.starts_at.iso8601 %>"><%= l @meeting.starts_at, format: :short %></span>
-		<% unless @meeting.address.blank? %>
+		<% if !@meeting.address.blank? %>
 			<p class="location" title="<%=@meeting.address%>">
 				<%= google_maps_image_link @meeting.address %></p>
+        <% elsif !@meeting.city.nil?%>
+          <p class="location" title="<%=@meeting.city.name%>">
+            <%= google_maps_image_link @meeting.city.name %></p>
 		<% end %>
 
 		<%= render partial: 'tags', locals: { meeting: @meeting } %>		
