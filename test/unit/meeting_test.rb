@@ -3,7 +3,7 @@ require 'test_helper'
 class MeetingTest < ActiveSupport::TestCase
   test "month" do
     meeting = Meeting.first
-    assert_equal "12", meeting.month
+    assert_equal "01", meeting.month
   end
   
   test "one location filter should work" do
