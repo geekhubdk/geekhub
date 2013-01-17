@@ -5,22 +5,19 @@ class MeetingsController < ApplicationController
   before_filter :find_meeting, :only => [:show, :update, :edit, :destroy]
   before_filter :ensure_that_user_can_edit, only: [:update, :edit, :destroy]
   
+  respond_to :html, :rss, only: [ :index ]
+
   def index
-    respond_to do |format|
-      format.html do
-        if should_read_location_from_config
-          params[:location] = cookies[:location].split("&")
-        end
-        
-        filter = Meeting.filter(params)
-        @meetings = filter.meetings
-        @location_filters = filter.location_filters
-        @active_location_filters = [*params[:location]]
-      end
-      format.rss do
-        @meetings = Meeting.filter(params).meetings
-      end
+    if should_read_location_from_config
+      params[:location] = cookies[:location].split("&")
     end
+    
+    filter = Meeting.filter(params)
+    @meetings = filter.meetings
+    @location_filters = filter.location_filters
+    @active_location_filters = [*params[:location]]
+
+    respond_with @meetings
   end
 
   def show
