@@ -8,9 +8,7 @@ class MeetingsController < ApplicationController
   respond_to :html, :rss, only: [ :index ]
 
   def index
-    if should_read_location_from_config
-      params[:location] = cookies[:location].split("&")
-    end
+    load_saved_location_filters
     
     filter = Meeting.filter(params)
     @meetings = filter.meetings
@@ -76,6 +74,12 @@ private
   def ensure_that_user_can_edit
     unless @meeting.can_be_edited_by current_user
       redirect_to new_user_session_path
+    end
+  end
+
+  def load_saved_location_filters
+    if should_read_location_from_config
+      params[:location] = cookies[:location].split("&")
     end
   end
 
