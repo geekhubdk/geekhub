@@ -39,21 +39,8 @@ body>footer {
 }
 
 .big-frontpage-button {
-  display: inline-block;
-  float: right;
-  background: #0072BB;
   padding: 25px;
-  color: #fff;
   font-weight: bold;
-  text-decoration: none;
-  text-align: right;
-
-  @media (max-width: 480px) {
-    display: block;
-    float: inherit;
-    padding: 5px;
-    text-align: center;
-  }
 }
 
 #location-filter .group {

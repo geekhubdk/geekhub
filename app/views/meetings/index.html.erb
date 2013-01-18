@@ -4,6 +4,7 @@
   </div>
   <div class="row">
     <div class="span8">
+      <div class="hidden-tablet hidden-desktop"><%= link_to "Foreslå event", "#eventModal", { class: "btn btn-small", role: "button", 'data-toggle' => "modal" } %></div>
       <h1>Velkommen til geekhub</h1>
       <div class="intro">
         <p>
@@ -13,8 +14,8 @@
         </p>
       </div>
     </div>
-    <div class="span4 hidden-phone">
-      <%= link_to "Foreslå event", "#eventModal", { class: "big-frontpage-button", role: "button", 'data-toggle' => "modal" } %>
+    <div class="span4">
+      <%= link_to "Foreslå event", "#eventModal", { class: "pull-right big-frontpage-button btn btn-primary btn-large hidden-phone", role: "button", 'data-toggle' => "modal" } %>
     </div>
   </div>
   <section>
