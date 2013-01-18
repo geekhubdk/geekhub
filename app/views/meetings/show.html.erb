@@ -10,13 +10,15 @@
 			<%= nl2br @meeting.description %>
 		</section>
 		<footer>
-			<%= link_to 'Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "btn btn-primary", itemprop:"url"} %>
+			<%= link_to 'Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "btn btn-primary", itemprop:"url"} %>		
+			<%= link_to "Rapportér fejl", "mailto:hello@geekhub.dk?subject=" + u("Ang. #{@meeting.title} (##{@meeting.id})"), class: "btn btn-link pull-right" %>
 		</footer>
 	</div>
 	<aside class="span5"> 
 		<meta itemprop="startDate" content="<%= @meeting.starts_at.iso8601 %>">
 		<span class="starts_at dtstart" title="<%= @meeting.starts_at.iso8601 %>"><%= l @meeting.starts_at, format: :short %></span>
-		<%= render partial: 'tags', locals: { meeting: @meeting } %>		
+		<%= render partial: 'tags', locals: { meeting: @meeting } %>
+
 		<% if !@meeting.address.blank? %>
 			<p class="location" title="<%=@meeting.address%>">
 				<%= google_maps_image_link @meeting.address, 470, 300, 14 %></p>
@@ -25,13 +27,10 @@
             <%= google_maps_image_link @meeting.city.name, 470, 300, 10 %></p>
 		<% end %>
 
-		
 		<% if user_signed_in? &&  @meeting.can_be_edited_by(current_user) %>
-		  <div>
-		    <%= link_to 'Rediger', edit_meeting_path(@meeting) %>
-		  </div>
-		  <div>
-		    <%= link_to 'Slet', @meeting, method: :delete, :data => { :confirm => 'Nu er du ikke ved at gøre noget dumt, vel? :)' } %>
+		  <div class="btn-group">
+		    <%= link_to 'Rediger', edit_meeting_path(@meeting), class: "btn" %>
+		    <%= link_to 'Slet', @meeting, method: :delete, :data => { :confirm => 'Nu er du ikke ved at gøre noget dumt, vel? :)' }, class: "btn btn-danger" %>
 		  </div>
 		<% end %>
 	</aside>
