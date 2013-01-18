@@ -15,20 +15,20 @@ module MeetingsHelper
 
   end
 
-  def google_maps_image sizex, sizey, address, scale
-    "http://maps.googleapis.com/maps/api/staticmap?size=#{sizex}x#{sizey}&scale=#{scale}&zoom=10&markers=#{CGI.escape address}&sensor=false&key=AIzaSyDF3n_lGmqAvqxgRcRm1n1MPslVJW9oyG0"
+  def google_maps_image sizex, sizey, address, scale, zoom
+    "http://maps.googleapis.com/maps/api/staticmap?size=#{sizex}x#{sizey}&scale=#{scale}&zoom=#{zoom}&markers=#{CGI.escape address}&sensor=false&key=AIzaSyDF3n_lGmqAvqxgRcRm1n1MPslVJW9oyG0"
   end
 
   def google_maps_link(address)
     "https://maps.google.dk/maps?q=#{CGI.escape address}"
   end
 
-  def google_maps_image_link(address, sizex = 300, sizey = 300)
-    high_res = google_maps_image(sizex, sizey,address, 2)
-    normal_res = google_maps_image(sizex, sizey,address, 1)
+  def google_maps_image_link(address, sizex = 300, sizey = 300, zoom = 10)
+    high_res = google_maps_image(sizex, sizey,address, 2, zoom)
+    normal_res = google_maps_image(sizex, sizey,address, 1, zoom)
 
-    html = image_tag(normal_res, width: sizex, height: sizey, alt: address, class: "hidden-high-res") + 
-           image_tag(high_res, width: sizex, height: sizey, alt: address,  class: "hidden-normal-res")
+    html = image_tag(normal_res, width: sizex, height: sizey, alt: address, class: "google-map-image hidden-high-res") + 
+           image_tag(high_res, width: sizex, height: sizey, alt: address,  class: "google-map-image hidden-normal-res")
     
     link_to(
       html,

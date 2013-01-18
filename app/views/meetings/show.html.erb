@@ -2,10 +2,7 @@
 
 <article class="meeting row vevent" itemscope itemtype="http://schema.org/Event">
 	
-	<div class="span2 back">
-		<%= link_to 'Tilbage', root_path %>
-	</div>
-	<div class="span6">  
+	<div class="span7">  
 		<header>
 			<h1><%= link_to @meeting.title, @meeting.url, class:"summary", itemprop:"name" %></h1>
 		</header>
@@ -16,18 +13,18 @@
 			<%= link_to 'Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "btn btn-primary", itemprop:"url"} %>
 		</footer>
 	</div>
-	<aside class="span4"> 
+	<aside class="span5"> 
 		<meta itemprop="startDate" content="<%= @meeting.starts_at.iso8601 %>">
 		<span class="starts_at dtstart" title="<%= @meeting.starts_at.iso8601 %>"><%= l @meeting.starts_at, format: :short %></span>
+		<%= render partial: 'tags', locals: { meeting: @meeting } %>		
 		<% if !@meeting.address.blank? %>
 			<p class="location" title="<%=@meeting.address%>">
-				<%= google_maps_image_link @meeting.address %></p>
+				<%= google_maps_image_link @meeting.address, 470, 300, 14 %></p>
         <% elsif !@meeting.city.nil?%>
           <p class="location" title="<%=@meeting.city.name%>">
-            <%= google_maps_image_link @meeting.city.name %></p>
+            <%= google_maps_image_link @meeting.city.name, 470, 300, 14 %></p>
 		<% end %>
 
-		<%= render partial: 'tags', locals: { meeting: @meeting } %>		
 		
 		<% if user_signed_in? &&  @meeting.can_be_edited_by(current_user) %>
 		  <div>
