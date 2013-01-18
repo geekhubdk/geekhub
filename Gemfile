@@ -30,4 +30,5 @@ group :development, :test do
   gem 'guard'
   gem 'guard-test'
   gem 'growl'
+  gem 'rb-fsevent', '~> 0.9.1'
 end

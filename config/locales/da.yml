@@ -288,6 +288,7 @@ da:
         password: "Kodeord"
         password_confirmation: "Gentag kodeord"
         remember_me: "Husk mig"
+        current_password: "Nuværende kodeord"
     errors:
       messages:
         <<: *errors_messages

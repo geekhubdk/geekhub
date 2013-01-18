@@ -80,13 +80,13 @@
               </li>
             </ul>
             <ul class="nav pull-right">
+              <li><%= link_to "Indsend event", new_meeting_path %></li>
+              <li><%= link_to "RSS", meetings_path(:format => :rss) %></li>
               <% if user_signed_in? %>
                 <%= render 'shared/user_toolbar' %>
               <% else %>
                 <li><%= link_to "Log ind / opret bruger", new_user_session_path %></li>
               <% end %>
-              <li><%= link_to "Indsend event", new_meeting_path %></li>
-              <li><%= link_to "RSS", meetings_path(:format => :rss) %></li>
             </ul>
           </div>
         </div>
