@@ -22,7 +22,7 @@
 				<%= google_maps_image_link @meeting.address, 470, 300, 14 %></p>
         <% elsif !@meeting.city.nil?%>
           <p class="location" title="<%=@meeting.city.name%>">
-            <%= google_maps_image_link @meeting.city.name, 470, 300, 14 %></p>
+            <%= google_maps_image_link @meeting.city.name, 470, 300, 10 %></p>
 		<% end %>
 
 		
