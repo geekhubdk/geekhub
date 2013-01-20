@@ -6,7 +6,8 @@ class Api::V1::MeetingsController < ApplicationController
 
   def index
     @meetings = Meeting.filter(params).meetings
-    respond_with meetings_json(@meetings)
+    @json = meetings_json(@meetings)
+    respond_with @json
   end
 
   def create
@@ -46,12 +47,13 @@ class Api::V1::MeetingsController < ApplicationController
       starts_at: meeting.starts_at,
       description: meeting.description,
       location: meeting.city.name,
-      url: meeting.url,
+      url: meeting.join_url,
       organizer: meeting.organizer,
       costs_money: meeting.costs_money,
       latitude: meeting.latitude,
       longtitude: meeting.longitude,
-      address: meeting.address
+      address: meeting.address,
+      joinable: meeting.joinable
     }
   end
 end

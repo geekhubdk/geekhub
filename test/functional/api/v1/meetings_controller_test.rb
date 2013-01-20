@@ -59,4 +59,11 @@ class Api::V1::MeetingsControllerTest < ActionController::TestCase
 
     assert_response 302
   end
+
+  test "should return own url if the meeting is joinable" do
+    get :index, :format => :json
+    joinable = assigns[:json].select{|m| m[:joinable] == true}.first
+
+    assert_equal "http://geekhub.dk/meetings/#{joinable[:id]}", joinable[:url]
+  end
 end

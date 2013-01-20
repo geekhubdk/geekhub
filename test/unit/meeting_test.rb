@@ -41,4 +41,32 @@ class MeetingTest < ActiveSupport::TestCase
 
     assert_false result.meetings.any?{|m| (m.organizer != organizers[0] && m.organizer != organizers[1])}
   end
+
+  test "does allow empty url if meeting is joinable" do
+    m = meetings(:one)
+    m.url = ""
+    m.joinable = true
+    assert_true m.save
+  end
+
+  test "does not allow empty url if meeting is not joinable" do
+    m = meetings(:one)
+    m.url = ""
+    m.joinable = false
+    assert_false m.save
+  end
+
+  test "join_url should return url if not joinable" do
+    m = meetings(:one)
+    m.url = "http://url.dk"
+    m.joinable = false
+    assert_equal "http://url.dk", m.join_url
+  end
+
+  test "join_url should return geekhub url if joinable" do
+    m = meetings(:one)
+    m.url = "http://url.dk"
+    m.joinable = true
+    assert_equal "http://geekhub.dk/meetings/#{m.id}", m.join_url
+  end
 end

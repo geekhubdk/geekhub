@@ -1,5 +1,7 @@
   class Meeting < ActiveRecord::Base
-  validates :title, :starts_at, :city_id, :organizer, :description, :url, :presence => true
+  validates :title, :starts_at, :city_id, :organizer, :description, :presence => true
+  validates :url, presence: true, :unless => :joinable
+  
   scope :upcoming, lambda { where("starts_at >= ?", Date.today) }
 
   default_scope order("starts_at").includes(:city => :region)
@@ -35,6 +37,12 @@
 
   def can_be_edited_by user
     user_id.nil? || user_id == user.id || user.email == "deldy@deldysoft.dk"
+  end
+
+  def join_url
+    return url unless joinable
+
+    "http://geekhub.dk/meetings/#{self.id}"
   end
 
   class MeetingFilterResult
