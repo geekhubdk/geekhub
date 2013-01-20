@@ -10,7 +10,8 @@
 			<%= nl2br @meeting.description %>
 		</section>
 		<footer>
-			<%= link_to 'Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "btn btn-primary", itemprop:"url"} %>		
+			<%= link_to('Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "btn btn-primary", itemprop:"url"}) unless @meeting.joinable %>
+			<%= link_to('Tilmeld dig', "#attendModal", {id: 'attend', class: "btn btn-primary", role: "button", 'data-toggle' => "modal"}) if @meeting.joinable %>	
 			<%= link_to "Rapportér fejl", "mailto:hello@geekhub.dk?subject=" + u("Ang. #{@meeting.title} (##{@meeting.id})"), class: "btn btn-link pull-right" %>
 		</footer>
 	</div>
@@ -35,3 +36,16 @@
 		<% end %>
 	</aside>
 </article>
+<!-- Modal -->
+<div id="attendModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Tilmelding</h3>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Luk</button>
+      <input type="submit" class="btn btn-primary" value="Foreslå" />
+    </div>
+</div>
