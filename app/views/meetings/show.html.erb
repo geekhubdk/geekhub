@@ -44,15 +44,17 @@
 	      <h3 id="myModalLabel">Tilmelding</h3>
 	    </div>
 	    <div class="modal-body">
-	    	<%= f.label :name %>
+	    	<p>Skriv navn og email på deltageren, og tryk på <em>Tilmeld</em>.</p>
+
+	    	<%= f.label :name, "Navn" %>
 	    	<%= f.text_field :name, required: true %>
 
-	    	<%= f.label :email %>
+	    	<%= f.label :email, "E-mail" %>
 	    	<%= f.email_field :email, required: true %>
 	    </div>
 	    <div class="modal-footer">
 	      <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Luk</button>
-	      <input type="submit" class="btn btn-primary" value="Tilmeld dig" />
+	      <input type="submit" class="btn btn-primary" value="Tilmeld" />
 	    </div>
     <% end %>
 </div>
