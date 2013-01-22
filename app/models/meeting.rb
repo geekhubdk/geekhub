@@ -9,6 +9,8 @@
   belongs_to :user
   belongs_to :city
 
+  has_many :attendees
+
   geocoded_by :geocode_location  # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
 

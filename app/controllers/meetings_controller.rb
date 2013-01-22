@@ -19,6 +19,7 @@ class MeetingsController < ApplicationController
   end
 
   def show
+    @new_attendee = @meeting.attendees.new
   end
 
   def new

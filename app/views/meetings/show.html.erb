@@ -38,14 +38,21 @@
 </article>
 <!-- Modal -->
 <div id="attendModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">Tilmelding</h3>
-    </div>
-    <div class="modal-body">
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Luk</button>
-      <input type="submit" class="btn btn-primary" value="Foreslå" />
-    </div>
+	<%= form_for @new_attendee, html: { style: "margin: 0" } do |f| %>
+	    <div class="modal-header">
+	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	      <h3 id="myModalLabel">Tilmelding</h3>
+	    </div>
+	    <div class="modal-body">
+	    	<%= f.label :name %>
+	    	<%= f.text_field :name, required: true %>
+
+	    	<%= f.label :email %>
+	    	<%= f.email_field :email, required: true %>
+	    </div>
+	    <div class="modal-footer">
+	      <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Luk</button>
+	      <input type="submit" class="btn btn-primary" value="Tilmeld dig" />
+	    </div>
+    <% end %>
 </div>

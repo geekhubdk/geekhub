@@ -1,9 +1,11 @@
 Geekhub::Application.routes.draw do
+  get "attendees/create"
+
   get "datapolitik" => "static_pages#datapolitik"
   get "om" => "static_pages#om"
   get "kontakt" => "static_pages#kontakt"
   
-  resources :organizers, :meeting_suggestions
+  resources :organizers, :meeting_suggestions, :attendees
 
   resources :meetings do
     collection do
