@@ -39,7 +39,7 @@ module ApplicationHelper
   end
 
   def auto_link_with_twitter(message)
-    message = message.gsub(/(@(\w+))/, %Q{<a href="http://twitter.com/\\2">\\1</a>})
-    auto_link message
+    message = auto_link message, :html => { :target => '_blank' }
+    message = message.gsub(/(@(\w+))/, %Q{<a href="http://twitter.com/\\2" target="_blank">\\1</a>})
   end
 end
