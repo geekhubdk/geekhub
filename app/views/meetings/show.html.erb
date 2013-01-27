@@ -12,8 +12,23 @@
 		<footer>
 			<%= link_to('Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "btn btn-primary", itemprop:"url"}) unless @meeting.joinable %>
 			<%= link_to('Tilmeld dig', "#attendModal", {id: 'attend', class: "btn btn-primary", role: "button", 'data-toggle' => "modal"}) if @meeting.joinable %>	
+			<%= link_to('Afmeld dig', "#detendModal", {id: 'detend', class: "btn btn-link", role: "button", 'data-toggle' => "modal"}) if @meeting.joinable && @attendees.count > 0 %>	
 			<%= link_to "Rapportér fejl", "mailto:hello@geekhub.dk?subject=" + u("Ang. #{@meeting.title} (##{@meeting.id})"), class: "btn btn-link pull-right" %>
 		</footer>
+		<% if @meeting.joinable && @attendees.count > 0 %>
+		<div class="attendees">
+			<h2>De kommer:</h2>
+			<% @attendees.each do |a| %>
+				<div class="attendee">
+					<%= image_tag avatar_url_from_email(a.email) %>
+					<span><%= a.name %></span>
+					<% if a.user.nil? == false && a.user == current_user %>
+						<%= link_to "Afmeld", meeting_attendee_path(@meeting, a), method: :delete, class: "btn btn-mini btn-danger", confirm: "Er du sikker?" %>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		<% end %>
 	</div>
 	<aside class="span5"> 
 		<meta itemprop="startDate" content="<%= @meeting.starts_at.iso8601 %>">
@@ -33,17 +48,7 @@
 		    <%= link_to 'Rediger', edit_meeting_path(@meeting), class: "btn" %>
 		    <%= link_to 'Slet', @meeting, method: :delete, :data => { :confirm => 'Nu er du ikke ved at gøre noget dumt, vel? :)' }, class: "btn btn-danger" %>
 		  </div>
-		<% end %>
 	</aside>
-	<% if @meeting.joinable %>
-	<div class="span12 attendees">
-		<% @attendees.each do |a| %>
-			<div class="attendee">
-				<%= image_tag avatar_url_from_email(a.email) %>
-				<span><%= a.name %></span>
-			</div>
-		<% end %>
-	</div>
 	<% end %>
 </article>
 <!-- Modal -->
@@ -65,6 +70,25 @@
 	    <div class="modal-footer">
 	      <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Luk</button>
 	      <input type="submit" class="btn btn-primary" value="Tilmeld" />
+	    </div>
+    <% end %>
+</div>
+<div id="detendModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<%= form_tag destroy_attendee_meeting_attendees_path(meeting_id: @meeting.id), style: "margin: 0" do %>
+	    <div class="modal-header">
+	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	      <h3 id="myModalLabel">Afmelding</h3>
+	    </div>
+	    <div class="modal-body">
+	    	<p>Skriv email på deltageren, og tryk på <em>Afmeld</em>.</p>
+
+	    	<%= label_tag :email, "E-mail" %>
+	    	<%= email_field_tag :email, "", required: true %>
+
+	    </div>
+	    <div class="modal-footer">
+	      <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Luk</button>
+	      <input type="submit" class="btn btn-primary" value="Afmeld" />
 	    </div>
     <% end %>
 </div>

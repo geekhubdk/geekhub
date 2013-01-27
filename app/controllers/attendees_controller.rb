@@ -16,7 +16,24 @@ class AttendeesController < ApplicationController
 	  	flash[:error] = "Der er allerede en deltager tilmeldt med den e-mail-adresse."
 	  	redirect_to @meeting
   	end
-
-
   end
+
+	def destroy
+		@meeting = Meeting.find(params[:meeting_id])
+		@attendee = @meeting.attendees.find(params[:id])
+
+		if(@attendee.user_id == current_user.id)
+			@attendee.destroy
+		end
+
+		redirect_to @meeting, notice: "Deltager er afmeldt."
+	end
+
+	def destroy_attendee
+		@meeting = Meeting.find(params[:meeting_id])
+		@attendee = @meeting.attendees.find_by_email(params[:email])
+		@attendee.destroy
+
+		redirect_to @meeting, notice: "Deltager er nu afmeldt."
+	end
 end

@@ -58,6 +58,7 @@ class MeetingsController < ApplicationController
     redirect_to root_path
   end
 
+
   def save_filter
     cookies.permanent[:location] = params[:location]
     render nothing: true

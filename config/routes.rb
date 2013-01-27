@@ -8,7 +8,13 @@ Geekhub::Application.routes.draw do
   resources :organizers, :meeting_suggestions
 
   resources :meetings do
-    resources :attendees
+    
+    resources :attendees do
+      collection do
+        post :destroy_attendee
+      end
+    end
+    
     collection do
       post :save_filter
     end
