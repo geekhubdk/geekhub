@@ -32,9 +32,9 @@ module ApplicationHelper
 
     if(attendee.twitter.blank?)
       gravatar_id = Digest::MD5.hexdigest(attendee.email.downcase)
-      "http://gravatar.com/avatar/#{gravatar_id}.png?s=24"
+      "http://gravatar.com/avatar/#{gravatar_id}.png?s=73"
     else
-      "https://api.twitter.com/1/users/profile_image?screen_name=#{attendee.twitter}&size=mini"
+      "https://api.twitter.com/1/users/profile_image?screen_name=#{attendee.twitter}&size=bigger"
     end
   end
 

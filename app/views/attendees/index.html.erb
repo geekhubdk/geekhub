@@ -10,7 +10,7 @@
 	</thead>
   <% @attendees.each do |a| %>
     <tr>
-      <td><%= image_tag avatar_url_for_attendee(a) %></td>
+      <td><%= image_tag avatar_url_for_attendee(a), style: "width: 32px; height: 32px" %></td>
       <td><%= a.name %></td>
       <td><%= mail_to a.email %></td>
       <td><%= link_to "@" + a.twitter, "http://twitter.com/#{a.twitter}" unless a.twitter.blank? %></td>

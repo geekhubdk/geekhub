@@ -25,7 +25,7 @@
 			<h2>De kommer (<%= @attendees.count %>):</h2>
 			<% @attendees.reverse.each do |a| %>
 				<div class="attendee">
-					<%= image_tag avatar_url_for_attendee(a) %>
+					<%= image_tag avatar_url_for_attendee(a), style: "width: 32px; height: 32px" %>
 					
 					<% if a.twitter.blank? %>
 						<span><%= a.name %></span>
