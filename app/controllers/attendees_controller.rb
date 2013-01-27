@@ -16,6 +16,7 @@ class AttendeesController < ApplicationController
   	if @meeting.can_add_attendee(params[:attendee][:email])
 	  	@attendee = @meeting.attendees.new(params[:attendee])
 	  	@attendee.user = current_user
+      @attendee.twitter.slice!(0) if @attendee.twitter.starts_with?("@")
 
 	  	if @attendee.save
 	  		redirect_to @meeting, notice: "Du er nu tilmeldt"
