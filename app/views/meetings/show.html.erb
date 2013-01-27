@@ -22,7 +22,7 @@
 		</footer>
 		<% if @meeting.joinable && @attendees.count > 0 %>
 		<div class="attendees">
-			<h2>De kommer:</h2>
+			<h2>De kommer (<%= @attendees.count %>):</h2>
 			<% @attendees.reverse.each do |a| %>
 				<div class="attendee">
 					<%= image_tag avatar_url_for_attendee(a) %>
