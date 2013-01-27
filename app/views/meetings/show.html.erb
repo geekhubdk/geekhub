@@ -23,7 +23,7 @@
 		<% if @meeting.joinable && @attendees.count > 0 %>
 		<div class="attendees">
 			<h2>De kommer:</h2>
-			<% @attendees.each do |a| %>
+			<% @attendees.reverse.each do |a| %>
 				<div class="attendee">
 					<%= image_tag avatar_url_from_email(a.email) %>
 					<span><%= a.name %></span>
