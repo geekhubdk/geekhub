@@ -25,9 +25,14 @@ module ApplicationHelper
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
 
-  def avatar_url_from_email(email, size = 24)
-    return "" if email.nil?
-    gravatar_id = Digest::MD5.hexdigest(email.downcase)
-    "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
+  def avatar_url_for_attendee(attendee)
+    return "" if attendee.nil?
+
+    if(attendee.twitter.blank?)
+      gravatar_id = Digest::MD5.hexdigest(attendee.email.downcase)
+      "http://gravatar.com/avatar/#{gravatar_id}.png?s=24"
+    else
+      "https://api.twitter.com/1/users/profile_image?screen_name=#{attendee.twitter}&size=mini"
+    end
   end
 end

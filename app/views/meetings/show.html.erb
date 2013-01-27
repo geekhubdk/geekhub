@@ -25,14 +25,20 @@
 			<h2>De kommer:</h2>
 			<% @attendees.reverse.each do |a| %>
 				<div class="attendee">
-					<%= image_tag avatar_url_from_email(a.email) %>
-					<span><%= a.name %></span>
+					<%= image_tag avatar_url_for_attendee(a) %>
+					
+					<% if a.twitter.blank? %>
+						<span><%= a.name %></span>
+					<% else %>
+						<span><%= link_to a.name, "http://twitter.com/#{a.twitter}" %></span>
+					<% end if %>
+
 					<% if a.user.nil? == false && a.user == current_user %>
 						<%= link_to "Afmeld", meeting_attendee_path(@meeting, a), method: :delete, class: "btn btn-mini btn-danger", confirm: "Er du sikker?" %>
 					<% end %>
 				</div>
 			<% end %>
-			<small class="muted">(Billeder er fra <a class="muted" href="http://gravatar.com/">Gravatar</a>. Hvis der skal ansigt på dig, så tilmeld dig på deres site)</small>
+			<small class="muted">(Billeder er fra <a class="muted" href="http://gravatar.com/">Gravatar</a> eller <a class="muted" href="http://twitter.com">Twitter</a>. Hvis der skal ansigt på dig, så tilmeld dig på en af disse sites)</small>
 		</div>
 		<% end %>
 	</div>
@@ -71,10 +77,17 @@
 	    	<p>Skriv navn og email på deltageren, og tryk på <em>Tilmeld</em>.</p>
 
 	    	<%= f.label :email, "E-mail" %>
-	    	<%= f.email_field :email, required: true %>
+	    	<%= f.email_field :email, required: true, placeholder: "person@example.org" %>
 
 	    	<%= f.label :name, "Navn" %>
-	    	<%= f.text_field :name, required: true %>
+	    	<%= f.text_field :name, required: true, placeholder: "Dit navn" %>
+
+	    	<hr />
+	    	<%= f.label :twitter, "Twitter (valgfri)" %>
+	    	<div class="input-prepend">
+				  <span class="add-on">@</span>
+	    		<%= f.text_field :twitter, class: "span2", placeholder: "username" %>
+				</div>
 	    </div>
 	    <div class="modal-footer">
 	      <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Luk</button>

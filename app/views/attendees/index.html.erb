@@ -5,13 +5,15 @@
 			<th></th>
       <th>Navn</th>
       <th>E-mail</th>
+      <th>Twitter</th>
 		</tr>
 	</thead>
   <% @attendees.each do |a| %>
     <tr>
-      <td><%= image_tag avatar_url_from_email a.email %></td>
+      <td><%= image_tag avatar_url_for_attendee(a) %></td>
       <td><%= a.name %></td>
       <td><%= mail_to a.email %></td>
+      <td><%= link_to "@" + a.twitter, "http://twitter.com/#{a.twitter}" unless a.twitter.blank? %></td>
     </tr>
   <% end %>
 </table>
