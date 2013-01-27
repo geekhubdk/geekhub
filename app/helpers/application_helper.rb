@@ -1,3 +1,5 @@
+require 'rails_autolink'
+
 module ApplicationHelper
   def format_rss_description meeting
 
@@ -12,7 +14,7 @@ module ApplicationHelper
   end
 
   def nl2br s
-    raw h(s).gsub(/\n/, '<br/>')
+    raw s.gsub(/\n/, '<br/>')
   end
 
   def month_name number
@@ -34,5 +36,10 @@ module ApplicationHelper
     else
       "https://api.twitter.com/1/users/profile_image?screen_name=#{attendee.twitter}&size=mini"
     end
+  end
+
+  def auto_link_with_twitter(message)
+    message = message.gsub(/(@(\w+))/, %Q{<a href="http://twitter.com/\\2">\\1</a>})
+    auto_link message
   end
 end

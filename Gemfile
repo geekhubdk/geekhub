@@ -8,6 +8,7 @@ gem 'jquery-ui-rails'
 gem 'pg', '0.13.2'
 gem 'geocoder'
 gem 'thin'
+gem 'rails_autolink'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
