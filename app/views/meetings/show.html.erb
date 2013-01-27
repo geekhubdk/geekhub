@@ -30,7 +30,7 @@
 					<% if a.twitter.blank? %>
 						<span><%= a.name %></span>
 					<% else %>
-						<span><%= link_to a.name, "http://twitter.com/#{a.twitter}" %></span>
+						<span><%= a.name %> (<%= link_to "@" + a.twitter.downcase, "http://twitter.com/#{a.twitter}" %>)</span>
 					<% end if %>
 
 					<% if a.user.nil? == false && a.user == current_user %>
