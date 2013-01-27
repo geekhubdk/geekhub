@@ -30,7 +30,7 @@
 					<% if a.twitter.blank? %>
 						<span><%= a.name %></span>
 					<% else %>
-						<span><%= a.name %> (<%= link_to "@" + a.twitter.downcase, "http://twitter.com/#{a.twitter}" %>)</span>
+						<span><%= a.name %> (<%= link_to "@" + a.twitter.downcase, "http://twitter.com/#{a.twitter}", target: "_blank" %>)</span>
 					<% end if %>
 
 					<% if a.user.nil? == false && a.user == current_user %>
@@ -38,7 +38,7 @@
 					<% end %>
 				</div>
 			<% end %>
-			<small class="muted">(Billeder er fra <a class="muted" href="http://gravatar.com/">Gravatar</a> eller <a class="muted" href="http://twitter.com">Twitter</a>. Hvis der skal ansigt på dig, så tilmeld dig på en af disse sites)</small>
+			<small class="muted">(Billeder er fra <a class="muted" target="_blank" href="http://gravatar.com/">Gravatar</a> eller <a class="muted" target="_blank" href="http://twitter.com">Twitter</a>. Hvis der skal ansigt på dig, så tilmeld dig på en af disse sites)</small>
 		</div>
 		<% end %>
 	</div>
