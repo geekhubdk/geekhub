@@ -1,4 +1,15 @@
 class AttendeesController < ApplicationController
+	def index
+
+  	@meeting = Meeting.find(params[:meeting_id])
+
+  	unless !current_user.nil? && @meeting.can_be_edited_by(current_user)
+  		raise "Not allowed to see attendee list"
+  	end
+
+  	@attendees = @meeting.attendees
+	end
+
   def create
   	@meeting = Meeting.find(params[:meeting_id])
 
@@ -31,9 +42,14 @@ class AttendeesController < ApplicationController
 
 	def destroy_attendee
 		@meeting = Meeting.find(params[:meeting_id])
-		@attendee = @meeting.attendees.find_by_email(params[:email])
-		@attendee.destroy
+		@attendee = @meeting.attendees.where('lower(email) = ?', params[:email].downcase).first
 
-		redirect_to @meeting, notice: "Deltager er nu afmeldt."
+    if @attendee.nil?
+      flash[:error] = "Ingen deltager med den email."
+      redirect_to @meeting
+    else
+      @attendee.destroy
+      redirect_to @meeting, notice: "Deltager er nu afmeldt."
+    end
 	end
 end

@@ -13,7 +13,11 @@
 			<%= link_to('Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "btn btn-primary", itemprop:"url"}) unless @meeting.joinable %>
 			<%= link_to('Tilmeld dig', "#attendModal", {id: 'attend', class: "btn btn-primary", role: "button", 'data-toggle' => "modal"}) if @meeting.joinable %>	
 			<%= link_to('Afmeld dig', "#detendModal", {id: 'detend', class: "btn btn-link", role: "button", 'data-toggle' => "modal"}) if @meeting.joinable && @attendees.count > 0 %>	
-			<%= link_to "Rapportér fejl", "mailto:hello@geekhub.dk?subject=" + u("Ang. #{@meeting.title} (##{@meeting.id})"), class: "btn btn-link pull-right" %>
+
+
+			<%= mail_to(@meeting.user.email, "Kontakt arrangør", class: "btn btn-link pull-right") if @meeting.joinable %>	
+
+			<%= link_to("Rapportér fejl", "mailto:hello@geekhub.dk?subject=" + u("Ang. #{@meeting.title} (##{@meeting.id})"), class: "btn btn-link pull-right") unless @meeting.joinable %>
 		</footer>
 		<% if @meeting.joinable && @attendees.count > 0 %>
 		<div class="attendees">
@@ -48,6 +52,9 @@
 		    <%= link_to 'Rediger', edit_meeting_path(@meeting), class: "btn" %>
 		    <%= link_to 'Slet', @meeting, method: :delete, :data => { :confirm => 'Nu er du ikke ved at gøre noget dumt, vel? :)' }, class: "btn btn-danger" %>
 		  </div>
+		  <% if @meeting.joinable %>
+		  	<%= link_to 'Se deltagerliste', meeting_attendees_path(@meeting), class: "btn btn-link" %>
+		  <% end %>
 	</aside>
 	<% end %>
 </article>
