@@ -3,7 +3,7 @@
     <div class="span12"><%= render 'shared/navigation' %></div>
   </div>
   <div class="row">
-    <div class="span8">
+    <div class="span9">
       <div class="hidden-tablet hidden-desktop"><%= link_to "Foreslå event", "#eventModal", { class: "btn btn-small", role: "button", 'data-toggle' => "modal" } %></div>
       <h1>Velkommen til geekhub</h1>
       <div class="intro">
@@ -14,8 +14,14 @@
         </p>
       </div>
     </div>
-    <div class="span4">
-      <%= link_to "Foreslå event", "#eventModal", { class: "pull-right big-frontpage-button btn btn-primary btn-large hidden-phone", role: "button", 'data-toggle' => "modal" } %>
+    <div class="span3">
+      <div class="pull-right">
+        <div>
+        <%= link_to "Foreslå event", "#eventModal", { class: "big-frontpage-button btn btn-primary btn-large hidden-phone", role: "button", 'data-toggle' => "modal" } %>
+        </div>
+        <div class="muted" style="margin: 5px; text-align: center;">eller: <%= link_to "Opret dit event", new_meeting_path %>
+        </div>
+      </div>  
     </div>
   </div>
   <section>
