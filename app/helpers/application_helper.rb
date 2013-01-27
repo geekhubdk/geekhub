@@ -25,4 +25,9 @@ module ApplicationHelper
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
 
+  def avatar_url_from_email(email, size = 24)
+    return "" if email.nil?
+    gravatar_id = Digest::MD5.hexdigest(email.downcase)
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
+  end
 end

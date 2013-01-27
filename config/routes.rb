@@ -5,9 +5,10 @@ Geekhub::Application.routes.draw do
   get "om" => "static_pages#om"
   get "kontakt" => "static_pages#kontakt"
   
-  resources :organizers, :meeting_suggestions, :attendees
+  resources :organizers, :meeting_suggestions
 
   resources :meetings do
+    resources :attendees
     collection do
       post :save_filter
     end

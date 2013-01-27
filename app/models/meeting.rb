@@ -47,6 +47,10 @@
     "http://geekhub.dk/meetings/#{self.id}"
   end
 
+  def can_add_attendee email
+    self.attendees.all.select{|a| a.email.downcase == email.downcase}.count == 0
+  end
+
   class MeetingFilterResult
     attr_reader :meetings, :location_filters
 
