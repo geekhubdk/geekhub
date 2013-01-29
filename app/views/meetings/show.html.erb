@@ -76,18 +76,34 @@
 	    <div class="modal-body">
 	    	<p>Skriv navn og email på deltageren, og tryk på <em>Tilmeld</em>.</p>
 
-	    	<%= f.label :email, "E-mail" %>
-	    	<%= f.email_field :email, required: true, placeholder: "person@example.org" %>
+	    	<div class="control-group">
+		    	<%= f.label :email, "E-mail" %>
+		    	<div class="form-inline"><%= f.email_field :email, required: true, placeholder: "person@example.org" %>
+			    	<span class="help-inline">
+			    		<i class="icon icon-question-sign help-tooltip" title="Email" data-content="Vi offentliggøre ikke din e-mail addresse, dog vil arrangøren have mulighed for at se og sende til din e-mail adresse."></i>
+			    	</span>
+		    	</div>
+		    </div>
 
-	    	<%= f.label :name, "Navn" %>
-	    	<%= f.text_field :name, required: true, placeholder: "Dit navn" %>
+	    	<div class="control-group">
+	    		<%= f.label :name, "Navn" %>
+	    		<%= f.text_field :name, required: true, placeholder: "Navn på deltager" %>
+	    	</div>
 
 	    	<hr />
-	    	<%= f.label :twitter, "Twitter (valgfri)" %>
-	    	<div class="input-prepend">
-				  <span class="add-on">@</span>
-	    		<%= f.text_field :twitter, class: "span2", placeholder: "username" %>
-				</div>
+
+	    	<div class="control-group">
+		    	<%= f.label :twitter, "Twitter (valgfri)" %>
+		    	<div class="form-inline">
+			    	<div class="input-prepend">
+						<span class="add-on">@</span>
+			    		<%= f.text_field :twitter, class: "span2", placeholder: "username" %>
+			    	</div>
+			    	<span class="help-inline">
+			    		<i class="icon icon-question-sign help-tooltip" title="Twitter" data-content="Vi bruger din Twitter-profil til at vise dit billede, samt vise et link til din twitter profil. Vi sender ikke tweets til dig, eller på dine vegne."></i>
+			    	</span>
+			    </div>
+		    </div>
 	    </div>
 	    <div class="modal-footer">
 	      <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Luk</button>

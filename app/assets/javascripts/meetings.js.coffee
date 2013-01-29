@@ -24,6 +24,8 @@ $ ->
       else
         target.hide()
 
+  $(".help-tooltip").popover()
+
 update_date_time_hidden_field = (container) ->
   date_field = container.find(".date input")
   time_field = container.find(".time select.time")

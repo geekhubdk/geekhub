@@ -102,6 +102,10 @@ form {
   display: none;
 }
 
+.help-tooltip {
+  cursor: pointer;
+}
+
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .hidden-high-res {
     display: none;
