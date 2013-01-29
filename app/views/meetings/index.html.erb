@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="span9">
-      <div class="hidden-tablet hidden-desktop"><%= link_to "Foreslå event", "#eventModal", { class: "btn btn-small", role: "button", 'data-toggle' => "modal" } %></div>
+      <div class="hidden-tablet hidden-desktop"><%= link_to "Foreslå event", "#eventModal", { class: "btn btn-small", role: "button", 'data-toggle' => "modal" } %> eller: <%= link_to "Opret dit event", new_meeting_path %></div>
       <h1>Velkommen til geekhub</h1>
       <div class="intro">
         <p>
@@ -19,7 +19,7 @@
         <div>
         <%= link_to "Foreslå event", "#eventModal", { class: "big-frontpage-button btn btn-primary btn-large hidden-phone", role: "button", 'data-toggle' => "modal" } %>
         </div>
-        <div class="muted" style="margin: 5px; text-align: center;">eller: <%= link_to "Opret dit event", new_meeting_path %>
+        <div class="hidden-phone muted" style="margin: 5px; text-align: center;">eller: <%= link_to "Opret dit event", new_meeting_path %>
         </div>
       </div>  
     </div>
