@@ -46,28 +46,4 @@
   </section>
 </div>
 <!-- Modal -->
-<div id="eventModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <%= form_for MeetingSuggestion.new(), html: { style: "margin: 0" } do |f| %>
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Foreslå event</h3>
-  </div>
-  <div class="modal-body">
-    <p>
-      Her kan du foreslå et event. Skriv web-addressen til eventet, og tryk på foreslå. Vi vil derefter kigge på eventet, og tilføje det til listen.
-    </p>
-    <%= f.label :url %>
-    <%= f.text_field :url, required: true, class: "span5", type: "url", placeholder:"http://example.org" %>
-    <p>
-      <small>
-        <strong>Er det dig som holder eventet?</strong>
-        <%= link_to "Udfyld mere info", new_meeting_path %>, og bestemt selv hvad der skal stå :)
-      </small>
-    </p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Luk</button>
-    <input type="submit" class="btn btn-primary" value="Foreslå" />
-  </div>
-  <% end %>
-</div>
+<%= render "suggest_modal" %>
