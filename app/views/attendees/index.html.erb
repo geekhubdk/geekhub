@@ -1,23 +1,22 @@
 <h1>Deltagere til '<%=@meeting.title%>'</h1>
 <table class="table">
-	<thead>
-		<tr>
-			<th></th>
+  <thead>
+    <tr>
+      <th></th>
       <th>Navn</th>
       <th>E-mail</th>
       <th>Twitter</th>
-		</tr>
-	</thead>
-  <% @attendees.each do |a| %>
-    <tr>
-      <td><%= image_tag avatar_url_for_attendee(a), style: "width: 32px; height: 32px" %></td>
-      <td><%= a.name %></td>
-      <td><%= mail_to a.email %></td>
-      <td><%= link_to "@" + a.twitter, "http://twitter.com/#{a.twitter}" unless a.twitter.blank? %></td>
     </tr>
+  </thead>
+  <% @attendees.each do |a| %>
+  <tr>
+    <td><%= image_tag avatar_url_for_attendee(a), style: "width: 32px; height: 32px" %></td>
+    <td><%= a.name %></td>
+    <td><%= mail_to a.email %></td>
+    <td><%= link_to "@" + a.twitter, "http://twitter.com/#{a.twitter}" unless a.twitter.blank? %></td>
+  </tr>
   <% end %>
 </table>
-
 <h2>Alle deltageres emails</h2>
 <p>Lige til at sætte ind i <strong>BCC</strong> i din email klient</p>
 <textarea style="width:100%; height: 100px"><%=@attendees.map{|m| m.email}.join('; ')%></textarea>
