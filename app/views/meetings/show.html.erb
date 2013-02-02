@@ -12,9 +12,9 @@
     <footer>
       <%= link_to('Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "btn btn-primary", itemprop:"url"}) unless @meeting.joinable %>
 
-      <%= link_to('Tilmeld dig', "#attendModal", {id: 'attend', class: "btn btn-primary", role: "button", 'data-toggle' => "modal"}) if @meeting.joinable && @meeting.starts_at.future? %>  
+      <%= link_to('Tilmeld dig', "#attendModal", {id: 'attend', class: "btn btn-primary", role: "button", 'data-toggle' => "modal"}) if @meeting.can_attend? %>  
 
-      <%= link_to('Afmeld dig', "#detendModal", {id: 'detend', class: "btn btn-link", role: "button", 'data-toggle' => "modal"}) if @meeting.joinable && @attendees.count > 0 && @meeting.starts_at.future? %>  
+      <%= link_to('Afmeld dig', "#detendModal", {id: 'detend', class: "btn btn-link", role: "button", 'data-toggle' => "modal"}) if @meeting.can_attend? %>  
 
       <%= mail_to(@meeting.user.email, "Kontakt arrangør", class: "btn btn-link pull-right") if @meeting.joinable %>  
 

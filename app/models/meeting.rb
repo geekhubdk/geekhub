@@ -51,6 +51,10 @@
     self.attendees.all.select{|a| a.email.downcase == email.downcase}.count == 0
   end
 
+  def can_attend?
+    self.joinable && self.starts_at.future?
+  end
+
   class MeetingFilterResult
     attr_reader :meetings, :location_filters
 
