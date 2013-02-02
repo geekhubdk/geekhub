@@ -5,9 +5,14 @@
 
 .attendee {
 	margin-bottom: 10px;
-  img {
+  .image {
+    display: inline-block;
     border-radius: 50px;
     margin-right: 5px;
     border: 2px solid #d8d8d8;
+
+    img {
+      border-radius: 50px;
+    }
   }
 }

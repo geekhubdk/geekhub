@@ -1,0 +1,16 @@
+<div class="attendee">
+  <div class="image"><%= image_tag avatar_url_for_attendee(attendee), style: "width: 32px; height: 32px" %></div>
+
+  <span>
+    <%= attendee.name %>
+
+    <% unless attendee.twitter.blank? %>
+    (<%= link_to "@" + attendee.twitter.downcase, "http://twitter.com/#{attendee.twitter}", target: "_blank" %>)
+    <% end %>
+  </span>
+
+  <% if attendee.user.nil? == false && attendee.user == current_user %>
+  <%= link_to "Afmeld", meeting_attendee_path(@meeting, attendee), method: :delete, 
+  class: "btn btn-mini btn-danger", confirm: "Er du sikker?" %>
+  <% end %>
+</div>
