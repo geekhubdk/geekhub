@@ -50,4 +50,8 @@ module MeetingsHelper
 
     options_for_select(values, value ? value.strftime('%H:%M')  : '00:00')
   end
+
+  def format_description description
+    raw nl2br(auto_link_with_twitter(h(description)))
+  end
 end

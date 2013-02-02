@@ -7,7 +7,7 @@
       <h1><%= link_to @meeting.title, @meeting.url, class:"summary", itemprop:"name" %></h1>
     </header>
     <section class="description">
-      <%= raw nl2br(auto_link_with_twitter(h(@meeting.description))) %>
+      <%= format_description @meeting.description %>
     </section>
     <footer>
       <%= link_to('Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "btn btn-primary", itemprop:"url"}) unless @meeting.joinable %>
