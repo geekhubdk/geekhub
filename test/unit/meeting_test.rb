@@ -69,4 +69,18 @@ class MeetingTest < ActiveSupport::TestCase
     m.joinable = true
     assert_equal "http://geekhub.dk/meetings/#{m.id}", m.join_url
   end
+
+  test "can_attend must return true if capacity is met" do
+    m = meetings(:joinable)
+    assert_true m.can_attend?
+  end
+
+  test "can_attend must return false if capacity is met" do
+    m = meetings(:joinable)
+    a = m.attendees.create
+    a.email = "test@test.dk"
+    a.name = "Jesper"
+    a.save
+    assert_false m.can_attend?
+  end
 end

@@ -38,4 +38,5 @@ joinable:
   url: http://mysite.dk
   approved_at: 2012-01-06 13:59:34
   user_id: 1
+  capacity: 1
   joinable: true

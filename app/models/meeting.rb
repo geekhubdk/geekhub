@@ -52,7 +52,13 @@
   end
 
   def can_attend?
-    self.joinable && self.starts_at.future?
+    self.joinable && self.starts_at.future? && !reached_capacity?
+  end
+
+  def reached_capacity?
+    return false if capacity.nil?
+
+    attendees.count >= capacity
   end
 
   class MeetingFilterResult

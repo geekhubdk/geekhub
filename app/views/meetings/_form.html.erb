@@ -29,6 +29,15 @@
             <%= f.text_field :url, placeholder: "http://example.org", class: 'span11', 'data-behavior' => "meeting-url" %>
           </div>
         </div>
+        <div class="well" data-visible-field="input[name='meeting[joinable]']" data-visible-value="true">
+          <div class="field-inline">
+            <%= f.label :capacity %>
+            <%= f.number_field :capacity, placeholder: "f.eks. 50", class: 'span2', min: "1" %>
+            <span class="help-inline">
+              Lad den være tom, hvis der ikke er nogen maks kapacitet.
+            </span>
+          </div>
+        </div>
       </div>
       <div class="span6"> 
         <div class="well">   

@@ -279,6 +279,7 @@ da:
         suggested_by: "Din email"
         costs_money: "Det koster penge at deltage"
         address: "Adresse"
+        capacity: "Kapacitet"
       organizer:
         name: "Navn"
         description: "Kort beskrivelse"
