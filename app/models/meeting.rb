@@ -1,7 +1,8 @@
   class Meeting < ActiveRecord::Base
   validates :title, :starts_at, :city_id, :organizer, :description, :presence => true
   validates :url, presence: true, :unless => :joinable
-  
+  validates :capacity, :numericality => { :greater_than => 0 }, :allow_nil => true
+
   scope :upcoming, lambda { where("starts_at >= ?", Date.today) }
 
   default_scope order("starts_at").includes(:city => :region)
@@ -53,6 +54,10 @@
 
   def can_attend?
     self.joinable && self.starts_at.future? && !reached_capacity?
+  end
+
+  def can_detend?
+    self.joinable && self.starts_at.future?
   end
 
   def reached_capacity?

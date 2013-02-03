@@ -14,7 +14,11 @@
 
       <%= link_to('Tilmeld dig', "#attendModal", {id: 'attend', class: "btn btn-primary", role: "button", 'data-toggle' => "modal"}) if @meeting.can_attend? %>  
 
-      <%= link_to('Afmeld dig', "#detendModal", {id: 'detend', class: "btn btn-link", role: "button", 'data-toggle' => "modal"}) if @meeting.can_attend? %>  
+      <% if @meeting.reached_capacity? %>
+        <strong style="color: red;">Udsolgt</strong>
+      <% end %>
+
+      <%= link_to('Afmeld dig', "#detendModal", {id: 'detend', class: "btn btn-link", role: "button", 'data-toggle' => "modal"}) if @meeting.can_detend? %>  
 
       <%= mail_to(@meeting.user.email, "Kontakt arrangør", class: "btn btn-link pull-right") if @meeting.joinable %>  
 
