@@ -33,3 +33,9 @@ group :development, :test do
   gem 'growl'
   gem 'rb-fsevent', '~> 0.9.1'
 end
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+end
