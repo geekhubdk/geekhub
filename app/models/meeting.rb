@@ -73,7 +73,9 @@
       @meetings = meetings
       @location_filters = location_filters
     end
+    
   end
+
 private
 
   def self.param_match value, param
@@ -84,4 +86,5 @@ private
   def self.build_location_filters meetings
     meetings.map{|x| x.city}.uniq
   end
+
 end
