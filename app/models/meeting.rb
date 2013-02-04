@@ -12,8 +12,8 @@
 
   has_many :attendees
 
-  geocoded_by :geocode_location  # can also be an IP address
-  after_validation :geocode          # auto-fetch coordinates
+  geocoded_by :geocode_location
+  after_validation :geocode
 
   def month
     self.starts_at.strftime('%m')
