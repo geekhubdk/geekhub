@@ -15,9 +15,11 @@
   geocoded_by :geocode_location
   after_validation :geocode
 
+
   def month
     self.starts_at.strftime('%m')
   end
+
 
   def geocode_location
     unless address.blank?
@@ -73,7 +75,7 @@
       @meetings = meetings
       @location_filters = location_filters
     end
-    
+
   end
 
 private
