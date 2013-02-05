@@ -61,11 +61,11 @@
           </div>
           <div class="field">
             <%= f.label :address %>
-            <%= f.text_field :address %> (valgfri)
+            <%= f.text_field :address, 'data-behavior'=>"typeahead-address" %> (valgfri)
           </div>
           <div class="field">
             <%= f.label :organizer %>
-            <%= f.text_field :organizer %>
+            <%= f.text_field :organizer, 'data-behavior'=>"typeahead-organizer" %>
           </div>
         </div>
       </div>

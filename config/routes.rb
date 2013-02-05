@@ -17,6 +17,8 @@ Geekhub::Application.routes.draw do
     
     collection do
       post :save_filter
+      get :typeahead_address
+      get :typeahead_organizers
     end
   end
 

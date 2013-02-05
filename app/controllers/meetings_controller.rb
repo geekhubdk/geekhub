@@ -6,6 +6,7 @@ class MeetingsController < ApplicationController
   before_filter :ensure_that_user_can_edit, only: [:update, :edit, :destroy]
   
   respond_to :html, :rss, only: [ :index ]
+  respond_to :json, only: [ :typeahead_organizers, :typeahead_address ]
 
   def index
     load_saved_location_filters
@@ -62,6 +63,24 @@ class MeetingsController < ApplicationController
   def save_filter
     cookies.permanent[:location] = params[:location]
     render nothing: true
+  end
+
+  def typeahead_address
+    query = "%" + params[:query] + "%"
+    after = Time.now - 6.months
+    respond_with Meeting.unscoped
+                  .select("DISTINCT(address)")
+                  .where("address ILIKE ? AND starts_at >= ? AND address IS NOT NULL", query, after)
+                  .collect{|m| m.address}
+  end
+
+  def typeahead_organizers
+    query = "%" + params[:query] + "%"
+    after = Time.now - 6.months
+    respond_with Meeting.unscoped
+                   .select("DISTINCT(organizer)")
+                   .where("organizer ILIKE ? AND starts_at >= ?", query, after)
+                   .collect{|m| m.organizer}
   end
 
 private
