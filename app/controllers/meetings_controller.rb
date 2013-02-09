@@ -69,10 +69,19 @@ class MeetingsController < ApplicationController
     query = "%" + params[:query] + "%"
     city = params[:city]
     after = Time.now - 6.months
-    respond_with Meeting.unscoped
-                  .select("DISTINCT(address)")
-                  .where("address ILIKE ? AND starts_at >= ? AND address IS NOT NULL and city_id = ?", query, after, city)
-                  .collect{|m| m.address}
+
+    if city.blank?
+      respond_with Meeting.unscoped
+                    .select("DISTINCT(address)")
+                    .where("address ILIKE ? AND starts_at >= ? AND address IS NOT NULL", query, after)
+                    .collect{|m| m.address}
+    else
+      respond_with Meeting.unscoped
+                    .select("DISTINCT(address)")
+                    .where("address ILIKE ? AND starts_at >= ? AND address IS NOT NULL and city_id = ?", query, after, city)
+                    .collect{|m| m.address}
+    end
+
   end
 
   def typeahead_organizers
