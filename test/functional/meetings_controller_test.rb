@@ -84,4 +84,15 @@ class MeetingsControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
+  test "should get typeahead_address" do
+    # not a good test
+    get :typeahead_address, query: "test"
+    assert_response :found
+  end
+
+  test "should get typeahead_address, with city" do
+    # not a good test
+    get :typeahead_address, query: "test", city_id: cities(:odense)
+    assert_response :found
+  end
 end
