@@ -19,7 +19,7 @@ class OrganizersController < ApplicationController
     if @organizer.save
       redirect_to organizers_url, notice: 'Organizer was successfully created.'
     else
-         render action: "new"
+      render action: "new"
     end
   end
 
@@ -27,9 +27,9 @@ class OrganizersController < ApplicationController
     @organizer = Organizer.find(params[:id])
 
     if @organizer.update_attributes(params[:organizer])
-        redirect_to organizers_url, notice: 'Organizer was successfully updated.'
+      redirect_to organizers_url, notice: 'Organizer was successfully updated.'
     else
-        render action: "edit"
+      render action: "edit"
     end
   end
 

@@ -27,7 +27,7 @@ class Api::V1::MeetingsController < ApplicationController
 
   end
 
-  private
+private
 
   def set_access_control_headers 
     headers['Access-Control-Allow-Origin'] = '*' 
