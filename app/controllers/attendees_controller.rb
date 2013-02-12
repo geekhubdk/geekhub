@@ -51,6 +51,7 @@ class AttendeesController < ApplicationController
       flash[:error] = "Ingen deltager med den email."
       redirect_to @meeting
     else
+      AttendeeMailer.destroy_attendee_email(@attendee).deliver
       @attendee.destroy
       redirect_to @meeting, notice: "Deltager er nu afmeldt."
     end
