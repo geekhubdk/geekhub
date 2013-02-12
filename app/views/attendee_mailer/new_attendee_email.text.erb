@@ -1,1 +1,1 @@
-<%= @attendee.name %> er nu tilmeldt dit event: <%= link_to @attendee.meeting.title, meeting_url(@attendee.meeting) %>
+<%= @attendee.name %> er nu tilmeldt dit event '<%=@attendee.meeting.title %>': <%=meeting_url(@attendee.meeting)%>
