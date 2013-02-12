@@ -1,5 +1,5 @@
 class AttendeeMailer < ActionMailer::Base
-  default from: "hello@geekhub.dk"
+  default from: "#Geekhub <hello@geekhub.dk>"
 
   def new_attendee_email attendee
     @attendee = attendee
