@@ -36,8 +36,8 @@ class AttendeesController < ApplicationController
 		@attendee = @meeting.attendees.find(params[:id])
 
 		if(@attendee.user_id == current_user.id)
-      AttendeeMailer.destroy_attendee_email(@attendee).deliver
 			@attendee.destroy
+      AttendeeMailer.destroy_attendee_email(@attendee).deliver
 		end
 
 		redirect_to @meeting, notice: "Deltager er afmeldt."
@@ -51,8 +51,8 @@ class AttendeesController < ApplicationController
       flash[:error] = "Ingen deltager med den email."
       redirect_to @meeting
     else
-      AttendeeMailer.destroy_attendee_email(@attendee).deliver
       @attendee.destroy
+      AttendeeMailer.destroy_attendee_email(@attendee).deliver
       redirect_to @meeting, notice: "Deltager er nu afmeldt."
     end
 	end
