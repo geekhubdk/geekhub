@@ -19,6 +19,7 @@ class AttendeesController < ApplicationController
       @attendee.twitter.slice!(0) if @attendee.twitter.starts_with?("@")
 
 	  	if @attendee.save
+        AttendeeMailer.new_attendee_email(@attendee).deliver
 	  		redirect_to @meeting, notice: "Du er nu tilmeldt"
 	  	else
 	  		flash[:error] = "Kunne ikke tilmelde dig."
@@ -35,6 +36,7 @@ class AttendeesController < ApplicationController
 		@attendee = @meeting.attendees.find(params[:id])
 
 		if(@attendee.user_id == current_user.id)
+      AttendeeMailer.destroy_attendee_email(@attendee).deliver
 			@attendee.destroy
 		end
 
