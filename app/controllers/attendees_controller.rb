@@ -35,10 +35,12 @@ class AttendeesController < ApplicationController
 		@meeting = Meeting.find(params[:meeting_id])
 		@attendee = @meeting.attendees.find(params[:id])
 
-		if(@attendee.user_id == current_user.id)
-			@attendee.destroy
-      AttendeeMailer.destroy_attendee_email(@attendee).deliver
-		end
+    if(@attendee.user_id != current_user.id)
+      raise "Not allowed"
+    end
+
+		@attendee.destroy
+    AttendeeMailer.destroy_attendee_email(@attendee).deliver
 
 		redirect_to @meeting, notice: t("attendee.destroyed")
   end

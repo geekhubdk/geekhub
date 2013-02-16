@@ -54,6 +54,20 @@ class AttendeesControllerTest < ActionController::TestCase
     assert_redirected_to meeting_path(meeting)
   end
 
+  test "Does not destroy attendee, if not currect user" do
+    ActionMailer::Base.deliveries.clear
+    sign_in User.first
+
+    meeting = Meeting.find(meetings(:one).id)
+    attendee = meeting.attendees.create({ email: "test@test.dk", name: "test", user_id: User.last.id })
+
+    assert_raise do
+      delete :destroy, meeting_id: meeting.id, id: attendee.id
+    end
+
+    assert_equal 0, ActionMailer::Base.deliveries.count
+  end
+
   test "Destroy attendee, by email" do
     ActionMailer::Base.deliveries.clear
     sign_in User.first
