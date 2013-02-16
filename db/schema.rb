@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216173917) do
+ActiveRecord::Schema.define(:version => 20130216180003) do
 
   create_table "attendees", :force => true do |t|
     t.string   "name"
@@ -52,9 +52,9 @@ ActiveRecord::Schema.define(:version => 20130216173917) do
     t.float    "longitude"
     t.integer  "city_id"
     t.string   "address"
-    t.boolean  "joinable",       :default => false
+    t.boolean  "joinable",        :default => false
     t.integer  "capacity"
-    t.integer  "attendee_count", :default => 0
+    t.integer  "attendees_count", :default => 0
   end
 
   create_table "organizers", :force => true do |t|
