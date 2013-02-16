@@ -16,7 +16,7 @@ class AttendeesController < ApplicationController
   	if @meeting.can_add_attendee(params[:attendee][:email])
 	  	@attendee = @meeting.attendees.new(params[:attendee])
 	  	@attendee.user = current_user
-      @attendee.twitter.slice!(0) if @attendee.twitter.starts_with?("@")
+      @attendee.twitter.slice!(0) if @attendee.twitter.present? && @attendee.twitter.starts_with?("@")
 
 	  	if @attendee.save
         AttendeeMailer.new_attendee_email(@attendee).deliver
