@@ -15,6 +15,8 @@ da:
     invalid: Kunne ikke tilmelde dig.
     destroyed: "Deltager er nu afmeldt."
     not_found_by_email: "Ingen deltager med den email."
+  meeting_suggestion:
+    created: 'Forslag indsendt. Vi vil kigge på det og tilføje det til listen.'
   devise:
       failure:
         unauthenticated: 'Du skal logge ind for at kunne fortsætte.'

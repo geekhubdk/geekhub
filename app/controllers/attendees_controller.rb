@@ -25,7 +25,7 @@ class AttendeesController < ApplicationController
 	  		flash[:error] = t("attendee.invalid")
 	  		redirect_to @meeting
 	  	end
-		 else
+		else
 	  	flash[:error] = t("attendee.already_attending")
 	  	redirect_to @meeting
   	end

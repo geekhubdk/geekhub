@@ -89,13 +89,22 @@ class MeetingsControllerTest < ActionController::TestCase
 
   test "should get typeahead_address" do
     # not a good test
-    get :typeahead_address, query: "test"
-    assert_response :found
+    sign_in User.first
+    get :typeahead_address, query: "test", format: :json
+    assert_response :ok
   end
 
   test "should get typeahead_address, with city" do
     # not a good test
-    get :typeahead_address, query: "test", city_id: cities(:odense)
-    assert_response :found
+    sign_in User.first
+    get :typeahead_address, query: "test", city_id: cities(:odense), format: :json
+    assert_response :ok
+  end
+
+  test "should get typeahead_organizers" do
+    # not a good test
+    sign_in User.first
+    get :typeahead_organizers, query: "test", format: :json
+    assert_response :ok
   end
 end

@@ -32,6 +32,7 @@ group :development, :test do
   gem 'guard-test'
   gem 'growl'
   gem 'rb-fsevent', '~> 0.9.1'
+  gem 'simplecov', :require => false
 end
 
 group :development do

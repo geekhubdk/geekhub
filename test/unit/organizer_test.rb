@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class OrganizerTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "can_be_edited_by" do
+    assert_true Organizer.first.can_be_edited_by(nil)
+  end
 end

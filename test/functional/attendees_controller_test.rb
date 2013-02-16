@@ -1,6 +1,22 @@
 require 'test_helper'
 
 class AttendeesControllerTest < ActionController::TestCase
+  test "index" do
+    sign_in User.first
+    get :index, meeting_id: meetings(:one).id
+
+    assert_not_nil assigns[:meeting]
+    assert_not_nil assigns[:attendees]
+    assert_response :success
+  end
+
+  test "index, must be allowed to edit" do
+    sign_in User.last
+    assert_raise do
+      get :index, meeting_id: meetings(:one).id
+    end
+  end
+
   test "Create a attendee" do
     ActionMailer::Base.deliveries.clear
     assert_difference "Attendee.count" do
@@ -8,6 +24,16 @@ class AttendeesControllerTest < ActionController::TestCase
     end
     assert_equal I18n.t("attendee.attending"), flash[:notice]
     assert_equal 1, ActionMailer::Base.deliveries.count
+    assert_redirected_to meeting_path(meetings(:one).id)
+  end
+
+  test "Does not create a invalid" do
+    ActionMailer::Base.deliveries.clear
+    assert_difference "Attendee.count", 0 do
+      post :create, meeting_id: meetings(:one).id, attendee: { email: nil, name: "test" }
+    end
+    assert_equal I18n.t("attendee.invalid"), flash[:error]
+    assert_equal 0, ActionMailer::Base.deliveries.count
     assert_redirected_to meeting_path(meetings(:one).id)
   end
 

@@ -14,7 +14,7 @@ class MeetingSuggestionsController < ApplicationController
     @meeting_suggestion = MeetingSuggestion.new(params[:meeting_suggestion])
 
     if @meeting_suggestion.save
-      redirect_to root_path, notice: 'Forslag indsendt. Vi vil kigge på det og tilfået det til listen.'
+      redirect_to root_path, notice: t("meeting_suggestion.created")
     else
       redirect_to root_path
     end
