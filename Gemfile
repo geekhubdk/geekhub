@@ -10,9 +10,10 @@ gem 'geocoder'
 gem 'thin'
 gem 'rails_autolink'
 
+gem 'turbo-sprockets-rails3'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 

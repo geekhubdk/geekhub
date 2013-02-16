@@ -4,6 +4,6 @@ class Attendee < ActiveRecord::Base
   validates :meeting, :email, :name, presence: true
   validates :email, :uniqueness => {:scope => :meeting_id, :case_sensitive => false}
 
-  belongs_to :meeting
+  belongs_to :meeting, :counter_cache => true
   belongs_to :user
 end

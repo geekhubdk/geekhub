@@ -93,6 +93,23 @@ form {
     color: #777799;
   }
 
+  .tags-tag.attendees .image {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    border-radius: 50px;
+    margin-right: 5px;
+    border: 1px solid #d8d8d8;
+    vertical-align: text-bottom;
+    
+    img {
+      width: 16px;
+      height: 16px;
+      border-radius: 50px;
+      vertical-align: top;
+    }
+  }
+
   .tags-tag.free {
     font-weight: 500;
   }
