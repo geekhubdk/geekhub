@@ -20,13 +20,13 @@ class AttendeesController < ApplicationController
 
 	  	if @attendee.save
         AttendeeMailer.new_attendee_email(@attendee).deliver
-	  		redirect_to @meeting, notice: "Du er nu tilmeldt"
+	  		redirect_to @meeting, notice: t("attendee.attending")
 	  	else
-	  		flash[:error] = "Kunne ikke tilmelde dig."
+	  		flash[:error] = t("attendee.invalid")
 	  		redirect_to @meeting
 	  	end
 		 else
-	  	flash[:error] = "Der er allerede en deltager tilmeldt med den e-mail-adresse."
+	  	flash[:error] = t("attendee.already_attending")
 	  	redirect_to @meeting
   	end
   end
@@ -40,20 +40,20 @@ class AttendeesController < ApplicationController
       AttendeeMailer.destroy_attendee_email(@attendee).deliver
 		end
 
-		redirect_to @meeting, notice: "Deltager er afmeldt."
-	end
+		redirect_to @meeting, notice: t("attendee.destroyed")
+  end
 
 	def destroy_attendee
 		@meeting = Meeting.find(params[:meeting_id])
 		@attendee = @meeting.attendees.where('lower(email) = ?', params[:email].downcase).first
 
     if @attendee.nil?
-      flash[:error] = "Ingen deltager med den email."
+      flash[:error] = t("attendee.not_found_by_email")
       redirect_to @meeting
     else
       @attendee.destroy
       AttendeeMailer.destroy_attendee_email(@attendee).deliver
-      redirect_to @meeting, notice: "Deltager er nu afmeldt."
+      redirect_to @meeting, notice: t("attendee.destroyed")
     end
 	end
 end

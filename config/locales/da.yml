@@ -6,6 +6,15 @@
 # by Lars Hoeg (larshoeg@gmail.com, http://www.lenio.dk/)
 
 da:
+  meeting:
+    added: 'Event tilføjet!'
+    updated: 'Event opdateret!'
+  attendee:
+    attending: 'Du er nu tilmeldt'
+    already_attending: "Der er allerede en deltager tilmeldt med den e-mail-adresse."
+    invalid: Kunne ikke tilmelde dig.
+    destroyed: "Deltager er nu afmeldt."
+    not_found_by_email: "Ingen deltager med den email."
   devise:
       failure:
         unauthenticated: 'Du skal logge ind for at kunne fortsætte.'

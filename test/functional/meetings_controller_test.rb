@@ -36,6 +36,7 @@ class MeetingsControllerTest < ActionController::TestCase
       post :create, meeting: @meeting.attributes
     end
 
+    assert_equal I18n.t("meeting.added"), flash[:notice]
     assert_redirected_to root_path()
   end
   
@@ -66,6 +67,8 @@ class MeetingsControllerTest < ActionController::TestCase
   test "should update meeting" do
     sign_in User.first
     put :update, id: @meeting.to_param, meeting: @meeting.attributes, approve: true
+    
+    assert_equal I18n.t("meeting.updated"), flash[:notice]
     assert_redirected_to root_path()
   end
 
