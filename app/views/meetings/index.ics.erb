@@ -1,0 +1,14 @@
+<%= RiCal.Calendar do |cal|
+  @meetings.each do |m|
+    cal.event do |e|
+      e.summary m.title
+      e.dtstart     m.starts_at
+      e.dtend       (m.starts_at + 3.hours)
+      e.location    m.city.name
+      e.url         m.url
+      e.alarm do
+        description m.title
+      end
+    end
+  end
+end.export %>

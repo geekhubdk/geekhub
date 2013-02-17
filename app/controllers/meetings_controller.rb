@@ -3,7 +3,7 @@ class MeetingsController < ApplicationController
   before_filter :find_meeting, :only => [:show, :update, :edit, :destroy]
   before_filter :ensure_that_user_can_edit, only: [:update, :edit, :destroy]
   
-  respond_to :html, :rss, only: [ :index ]
+  respond_to :html, :rss, :ics, only: [ :index ]
   respond_to :json, only: [ :typeahead_organizers, :typeahead_address ]
 
   def index

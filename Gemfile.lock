@@ -118,6 +118,7 @@ GEM
     rb-fsevent (0.9.3)
     rdoc (3.12)
       json (~> 1.4)
+    ri_cal (0.8.8)
     sass (3.2.5)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -173,9 +174,11 @@ DEPENDENCIES
   rails (= 3.2.11)
   rails_autolink
   rb-fsevent (~> 0.9.1)
+  ri_cal
   sass-rails (~> 3.2.3)
   simplecov
   test-unit (>= 2.4.5)
   thin
   turbo-sprockets-rails3
+  tzinfo
   uglifier (>= 1.0.3)

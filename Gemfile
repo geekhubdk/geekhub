@@ -12,6 +12,10 @@ gem 'rails_autolink'
 
 gem 'turbo-sprockets-rails3'
 
+gem 'ri_cal'
+
+gem 'tzinfo'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
