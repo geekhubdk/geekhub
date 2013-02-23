@@ -9,6 +9,15 @@ article.meeting
   h1 { margin-bottom: 10px; }
   h1 a { text-decoration: none; color: #333; }
   footer { border-top: 1px solid #C6C6C6; padding-top: 15px; }
+  .online {
+    background-color: #66B8DB;
+    height: 300px;
+    width: 470px;
+    background-image: url(/cloud.png);
+    background-repeat:no-repeat;
+    background-position: center center;
+    border-radius: 5px;
+  }
 }
 
 .meetings {

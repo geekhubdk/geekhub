@@ -37,21 +37,25 @@
     <meta itemprop="startDate" content="<%= @meeting.starts_at.iso8601 %>">
     <span class="starts_at dtstart" title="<%= @meeting.starts_at.iso8601 %>"><%= l @meeting.starts_at, format: :short %></span>
     <%= render partial: 'tags', locals: { meeting: @meeting } %>
+    <div class="map">
+    <% if @meeting.city.try(:name) == "Online" %>
+      <div class="online"></div>
+    <% else %>
+      <% if !@meeting.address.blank? %>
+      
+      <p class="location" title="<%=@meeting.address%>">
+        <%= google_maps_image_link @meeting.address, 470, 300, 14 %>
+      </p>
 
-    <% if !@meeting.address.blank? %>
-    
-    <p class="location" title="<%=@meeting.address%>">
-      <%= google_maps_image_link @meeting.address, 470, 300, 14 %>
-    </p>
-
-    <% elsif !@meeting.city.nil?%>
-    
-    <p class="location" title="<%=@meeting.city.name%>">
-      <%= google_maps_image_link @meeting.city.name, 470, 300, 10 %>
-    </p>
-    
+      <% elsif !@meeting.city.nil?%>
+      
+      <p class="location" title="<%=@meeting.city.name%>">
+        <%= google_maps_image_link @meeting.city.name, 470, 300, 10 %>
+      </p>
+      
+      <% end %>
     <% end %>
-
+    </div>
     <% if user_signed_in? &&  @meeting.can_be_edited_by(current_user) %>
     <div class="btn-group">
       <%= link_to 'Rediger', edit_meeting_path(@meeting), class: "btn" %>
