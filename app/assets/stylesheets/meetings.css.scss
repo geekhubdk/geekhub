@@ -54,12 +54,9 @@ article.meeting
       float: right;
 
       .online {
-        background-color: #66B8DB;
         width: 250px; 
         height: 150px; 
-        background-image: url(/cloud.png);
-        background-repeat:no-repeat;
-        background-position: center center;
+        border-radius: 0px;
       }
       .google-map-image { border-radius: 0px; }
     }
