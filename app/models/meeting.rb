@@ -1,4 +1,4 @@
-  class Meeting < ActiveRecord::Base
+class Meeting < ActiveRecord::Base
   validates :title, :starts_at, :city_id, :organizer, :description, :presence => true
   validates :url, presence: true, :unless => :joinable
   validates :capacity, :numericality => { :greater_than => 0 }, :allow_nil => true
@@ -82,7 +82,7 @@ private
 
   def self.param_match value, param
     return true if value.nil?
-    param.blank? || [*param].any?{|p| p.downcase == value.downcase}  
+    param.blank? || [*param].any?{|p| p.downcase == value.downcase}
   end
 
   def self.build_location_filters meetings
