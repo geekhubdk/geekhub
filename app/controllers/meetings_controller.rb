@@ -2,13 +2,13 @@ class MeetingsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show, :save_filter]
   before_filter :find_meeting, :only => [:show, :update, :edit, :destroy]
   before_filter :ensure_that_user_can_edit, only: [:update, :edit, :destroy]
-  
+
   respond_to :html, :rss, :ics, only: [ :index ]
   respond_to :json, only: [ :typeahead_organizers, :typeahead_address ]
 
   def index
     load_saved_location_filters
-    
+
     filter = Meeting.filter(params)
     @meetings = filter.meetings
     @location_filters = filter.location_filters
@@ -93,7 +93,7 @@ private
   def can_approve_meeting?
     user_signed_in?
   end
-  
+
   def find_meeting
     @meeting = Meeting.find(params[:id])
   end
