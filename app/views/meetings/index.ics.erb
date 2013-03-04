@@ -1,4 +1,5 @@
 <%= RiCal.Calendar do |cal|
+  cal.add_x_property('X-WR-CALNAME','Geekhub.dk')
   @meetings.each do |m|
     cal.event do |e|
       e.summary m.title
