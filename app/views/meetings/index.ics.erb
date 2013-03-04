@@ -5,7 +5,9 @@ require 'date'
 
 cal = Icalendar::Calendar.new
 
-cal.add_x_wr_caldesc('Geekhub.dk')
+
+cal.add_x_wr_caldesc('Geekhub')
+cal.add_x_wr_calname('Geekhub')
 
 @meetings.each do |m|
   e = Icalendar::Event.new
