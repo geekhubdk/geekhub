@@ -1,16 +1,24 @@
-<%= RiCal.Calendar do |cal|
-  cal.add_x_property('X-WR-CALNAME','Geekhub.dk')
-  @meetings.each do |m|
-    cal.event do |e|
-      e.summary m.title
-      e.dtstart     m.starts_at
-      e.dtend       (m.starts_at + 3.hours)
-      e.location    m.city.name
-      e.description m.description + "\n\nLæs mere: " + m.url
-      e.url         m.url
-      e.alarm do
-        description m.title
-      end
-    end
+<%
+require 'icalendar'
+require 'date'
+
+
+cal = Icalendar::Calendar.new
+
+cal.add_x_wr_caldesc('Geekhub.dk')
+
+@meetings.each do |m|
+  e = Icalendar::Event.new
+  e.summary m.title
+  e.dtstart     m.starts_at.to_datetime
+  e.dtend       (m.starts_at + 3.hours).to_datetime
+  e.location    m.city.name
+  e.description m.description + "\n\nLæs mere: " + m.url.gsub(";", "\\;")
+  e.url         m.url
+  e.alarm do
+    description m.title
   end
-end.export %>
+  cal.add_event(e)
+end
+%>
+<%= raw cal.to_ical %>

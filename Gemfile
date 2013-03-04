@@ -12,7 +12,7 @@ gem 'rails_autolink'
 
 gem 'turbo-sprockets-rails3'
 
-gem 'ri_cal'
+gem 'icalendar'
 
 gem 'tzinfo'
 
