@@ -14,4 +14,7 @@ class StaticPagesController < ApplicationController
 
   def kalender
   end
+
+  def feedback
+  end
 end

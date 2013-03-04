@@ -6,6 +6,7 @@ Geekhub::Application.routes.draw do
   get "kontakt" => "static_pages#kontakt"
   get "kalender" => "static_pages#kalender"
   get "rss" => "static_pages#rss"
+  get "feedback" => "static_pages#feedback"
 
   resources :organizers, :meeting_suggestions
 
