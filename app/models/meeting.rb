@@ -36,6 +36,7 @@ class Meeting < ActiveRecord::Base
 
     m = m.select{|x| param_match(x.organizer,filters[:organizer])}
     m = m.select{|x| param_match(x.city.name,filters[:location])}
+    m = m.select{|x| param_match(x.city.region.try(:name),filters[:region])}
 
     MeetingFilterResult.new(m, location_filters)
   end
