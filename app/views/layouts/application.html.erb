@@ -15,7 +15,7 @@
     <link href='http://fonts.googleapis.com/css?family=Habibi' rel='stylesheet' type='text/css'>
     <link rel="alternate" type="application/rss+xml" title="RSS over kommende møder" href="/meetings.rss" />
     <link rel="profile" href="http://microformats.org/profile/hcalendar">
-    
+
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
@@ -80,12 +80,13 @@
               </li>
             </ul>
             <ul class="nav pull-right">
-              <li><%= link_to "Indsend event", new_meeting_path %></li>
-              <li><%= link_to "RSS", meetings_path(:format => :rss) %></li>
+              <li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-plus'></i> Indsend event"), new_meeting_path %></li>
+              <li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-signal'></i> RSS"), meetings_path(:format => :rss) %></li>
+              <li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-calendar'></i> ICal/ICS"), kalender_path %></li>
               <% if user_signed_in? %>
                 <%= render 'shared/user_toolbar' %>
               <% else %>
-                <li><%= link_to "Log ind / opret bruger", new_user_session_path %></li>
+                <li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-user'></i> Log ind / opret bruger"), new_user_session_path %></li>
               <% end %>
             </ul>
           </div>
@@ -104,7 +105,7 @@
             <%= flash[:notice] %>
           </div>
         <% end %>
-        
+
         <%= yield %>
       </div>
     </div>
