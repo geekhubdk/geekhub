@@ -9,6 +9,9 @@ class StaticPagesController < ApplicationController
   def kontakt
   end
 
+  def rss
+  end
+
   def kalender
   end
 end
