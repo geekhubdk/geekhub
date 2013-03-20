@@ -27,9 +27,9 @@ module MeetingsHelper
     high_res = google_maps_image(sizex, sizey,address, 2, zoom)
     normal_res = google_maps_image(sizex, sizey,address, 1, zoom)
 
-    html = image_tag(normal_res, width: sizex, height: sizey, alt: address, class: "google-map-image hidden-high-res") + 
+    html = image_tag(normal_res, style: "width: #{sizex}px; height: #{sizey}px", alt: address, class: "google-map-image hidden-high-res") +
            image_tag(high_res, width: sizex, height: sizey, alt: address,  class: "google-map-image hidden-normal-res")
-    
+
     link_to(
       html,
       google_maps_link(address))
@@ -43,7 +43,7 @@ module MeetingsHelper
     values = []
 
     (0..23).each do |h|
-      (0..55).step(15).each do |m| 
+      (0..55).step(15).each do |m|
         values << (h < 10 ? "0#{h}" : "#{h}") + ":" + (m < 10 ? "0#{m}" : "#{m}")
       end
     end
