@@ -29,4 +29,15 @@ Geekhub::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  config.action_mailer.perform_deliveries = true
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :user_name => 'geekhub-bb385ef35e52bbf0',
+    :password => '8015e86d95590264',
+    :address => 'mailtrap.io',
+    :port => '2525',
+    :authentication => :plain,
+  }
 end

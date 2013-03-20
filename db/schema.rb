@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216180003) do
+ActiveRecord::Schema.define(:version => 20130320193123) do
 
   create_table "attendees", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,21 @@ ActiveRecord::Schema.define(:version => 20130216180003) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "region_id"
+  end
+
+  create_table "meeting_email_alert_subscriptions", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "meeting_email_alert_subscriptions", ["user_id"], :name => "index_meeting_email_alert_subscriptions_on_user_id"
+
+  create_table "meeting_email_alerts", :force => true do |t|
+    t.integer  "meeting_id"
+    t.string   "emails"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "meeting_suggestions", :force => true do |t|

@@ -1,0 +1,5 @@
+<% @meetings.each do |m| %>
+  <h1><%= link_to m.title, meeting_url(m) %></h1>
+  <strong><%= "#{m.city.name}, #{l m.starts_at, :format => :long} - #{m.organizer} #{"(gratis)" unless m.costs_money}" %></strong><br/>
+  <p><%= nl2br h(m.description) %></p>
+<% end %>

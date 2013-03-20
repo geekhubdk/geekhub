@@ -11,6 +11,7 @@ class Meeting < ActiveRecord::Base
   belongs_to :city
 
   has_many :attendees
+  has_many :meeting_email_alerts
 
   geocoded_by :geocode_location
   after_validation :geocode
@@ -67,6 +68,10 @@ class Meeting < ActiveRecord::Base
     return false if capacity.nil?
 
     attendees.count >= capacity
+  end
+
+  def self.available_for_alerts
+    Meeting.upcoming.where("meetings.created_at < ?", 3.hours.ago).includes(:meeting_email_alerts).where('meeting_email_alerts.id IS NULL').all
   end
 
   class MeetingFilterResult
