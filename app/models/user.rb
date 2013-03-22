@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   has_many :attendees
+  has_many :meeting_email_alert_subscriptions
 end

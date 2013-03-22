@@ -1,4 +1,5 @@
 Geekhub::Application.routes.draw do
+
   get "attendees/create"
 
   get "datapolitik" => "static_pages#datapolitik"
@@ -8,7 +9,7 @@ Geekhub::Application.routes.draw do
   get "rss" => "static_pages#rss"
   get "feedback" => "static_pages#feedback"
 
-  resources :organizers, :meeting_suggestions
+  resources :organizers, :meeting_suggestions, :meeting_email_alert_subscriptions
 
   resources :meetings do
 

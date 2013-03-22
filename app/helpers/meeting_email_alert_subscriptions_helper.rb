@@ -1,0 +1,2 @@
+module MeetingEmailAlertSubscriptionsHelper
+end

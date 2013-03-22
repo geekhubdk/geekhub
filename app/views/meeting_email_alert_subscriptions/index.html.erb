@@ -1,0 +1,22 @@
+<h1>Nyhedsbrev</h1>
+<p>Det er muligt at få et dagligt nyhedsbrev med nye events på geekhub. Der vil kun blive sendt et nyhedsbrev per dag, hvis der er nye events.</p>
+<p>Det kræver en profil at tilmelde sig nyhedsbrevet. I fremtiden bliver der evt. mulighed for at filtrere nyhedsbrevet, så man kan afgrænse til f.eks. kun at få et nyhedsbrev hvis der er nye events på f.eks. Sjælland, men dette kan man ikke p.t.</p>
+
+<% if current_user.nil? %>
+  <div class="well">
+    <%= link_to "Login, eller opret en profil", new_user_session_path %>
+  </div>
+<% else %>
+  <div class="well">
+    <% if @show_subscribe %>
+      <%= form_for @subscription, html: { class: "form-inline", style: "margin: 0" } do |f| %>
+        <%= f.submit "Tilmeld nyhedsbrev", class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+    <% if @show_unsubscribe %>
+      <%= form_for @subscription, method: :delete, html: { class: "form-inline", style: "margin: 0" } do |f| %>
+        <%= f.submit "Afmeld nyhedsbrev", class: "btn btn-danger" %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

@@ -83,6 +83,7 @@
               <li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-plus'></i> Indsend event"), new_meeting_path %></li>
               <li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-signal'></i> RSS"), rss_path %></li>
               <li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-calendar'></i> ICal/ICS"), kalender_path %></li>
+              <li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-envelope'></i> Nyhedsbrev"),meeting_email_alert_subscriptions_path %></li>
               <% if user_signed_in? %>
                 <%= render 'shared/user_toolbar' %>
               <% else %>
