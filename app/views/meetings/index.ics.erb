@@ -13,8 +13,8 @@ cal.add_x_wr_timezone('Europe/Copenhagen')
 @meetings.each do |m|
   e = Icalendar::Event.new
   e.summary m.title
-  e.dtstart     m.starts_at.to_datetime
-  e.dtend       (m.starts_at + 3.hours).to_datetime
+  e.dtstart     m.starts_at.utc.to_datetime
+  e.dtend       (m.starts_at + 3.hours).utc.to_datetime
   e.location    m.city.name
   e.description m.description + "\n\nLæs mere: " + m.url.gsub(";", "\\;")
   e.url         m.url
