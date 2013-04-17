@@ -8,6 +8,7 @@ cal = Icalendar::Calendar.new
 
 cal.add_x_wr_caldesc('Geekhub')
 cal.add_x_wr_calname('Geekhub')
+cal.add_x_wr_timezone('Europe/Copenhagen')
 
 @meetings.each do |m|
   e = Icalendar::Event.new
