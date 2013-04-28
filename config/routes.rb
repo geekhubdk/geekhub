@@ -1,7 +1,5 @@
 Geekhub::Application.routes.draw do
 
-  resources :comments
-
   get "attendees/create"
 
   get "datapolitik" => "static_pages#datapolitik"
@@ -14,7 +12,7 @@ Geekhub::Application.routes.draw do
   resources :organizers, :meeting_suggestions, :meeting_email_alert_subscriptions
 
   resources :meetings do
-
+    resources :comments
     resources :attendees do
       collection do
         post :destroy_attendee

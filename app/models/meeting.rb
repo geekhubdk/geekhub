@@ -9,7 +9,8 @@ class Meeting < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :city
-
+  belongs_to :commentable, :polymorphic => true
+  
   has_many :attendees
   has_many :meeting_email_alerts
 
