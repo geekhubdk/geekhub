@@ -1,5 +1,7 @@
 Geekhub::Application.routes.draw do
 
+  resources :comments
+
   get "attendees/create"
 
   get "datapolitik" => "static_pages#datapolitik"
