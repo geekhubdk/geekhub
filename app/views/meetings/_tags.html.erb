@@ -1,14 +1,19 @@
 <div class="tags">
-  <div class="tags-tag location"><%= meeting.city.try(:name) %></div>
-    <% unless meeting.costs_money %>
-      <div class="tags-tag free">Gratis</div>
-    <% end %>
-  <div class="tags-tag organizer"><%= meeting.organizer %></div>
-  <% if meeting.joinable? %>
-    <div class="tags-tag attendees">
-      <div class="image">
-        <%= image_tag "/person.png" %>
-      </div><%= pluralize meeting.attendees_count, 'deltager', 'deltagere' %>
-    </div>
-  <% end %>
+	<div class="tags-tag location"><%= meeting.city.try(:name) %></div>
+	<% unless meeting.costs_money %>
+	<div class="tags-tag free">Gratis</div>
+	<% end %>
+	<div class="tags-tag organizer"><%= meeting.organizer %></div>
+	<% if meeting.joinable? %>
+	<div class="tags-tag attendees">
+		<div class="image">
+			<%= image_tag "/person.png" %>
+		</div><%= pluralize meeting.attendees_count, 'deltager', 'deltagere' %>
+	</div>
+	<% end %>
+	<% if meeting.comments_count > 0 %>
+	<div class="tags-tag comments">
+		<%= pluralize meeting.comments_count, 'kommentar', 'kommentarer' %>
+	</div>
+	<% end %>
 </div>

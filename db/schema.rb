@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130501193940) do
+ActiveRecord::Schema.define(:version => 20130501202730) do
 
   create_table "attendees", :force => true do |t|
     t.string   "name"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20130501193940) do
     t.boolean  "joinable",        :default => false
     t.integer  "capacity"
     t.integer  "attendees_count", :default => 0
+    t.integer  "comments_count",  :default => 0
   end
 
   create_table "organizers", :force => true do |t|
