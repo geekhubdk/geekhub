@@ -1,4 +1,4 @@
-<h2>Kommentarer</h2>
+<h2>Kommentarer (<%= @comments.count %>):</h2>
 <% @comments.each do |comment| %>
 <div class="comment">
 	<div class="attendee">
@@ -11,7 +11,12 @@
 	<div style="padding-left: 45px;">
 		
 		<%= format_description comment.content %>
-		<small class="muted" style="display:block; margin-top: 20px;"><%= l comment.created_at, format: :short%></small>
+		<small class="muted" style="display:block; margin-top: 20px;">
+			<%= l comment.created_at, format: :short%>
+			<% if user_signed_in? &&  @meeting.can_be_edited_by(current_user) %>
+				<span> - <%= mail_to comment.email %></span>
+			<% end %>
+		</small>
 	</div>
 </div>
 <hr/>
