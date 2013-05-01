@@ -35,9 +35,11 @@
 		    </div>
 		</div>
 	    <% end %>
+		<% if @meeting.commentable? %>
 		<div class="span6">
-			<%= render 'comments' if @meeting.commentable? %>
+			<%= render 'comments' %>
 		</div>
+		<% end %>
 	</div>
   </div>
   <aside class="span5"> 

@@ -72,7 +72,7 @@ class Meeting < ActiveRecord::Base
   end
   
   def commentable?
-    self.joinable
+    true
   end
 
   def self.available_for_alerts
