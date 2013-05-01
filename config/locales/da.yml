@@ -17,6 +17,9 @@ da:
     not_found_by_email: "Ingen deltager med den email."
   meeting_suggestion:
     created: 'Forslag indsendt. Vi vil kigge på det og tilføje det til listen.'
+  comment:
+    added: "Kommentar tilføjet."
+    validation_failed: "Du skal udfylde alle felterne, prøv igen."
   devise:
       failure:
         unauthenticated: 'Du skal logge ind for at kunne fortsætte.'

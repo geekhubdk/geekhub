@@ -9,10 +9,10 @@ class Meeting < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :city
-  belongs_to :commentable, :polymorphic => true
   
   has_many :attendees
   has_many :meeting_email_alerts
+  has_many :comments, :as => :commentable
 
   geocoded_by :geocode_location
   after_validation :geocode
@@ -70,11 +70,15 @@ class Meeting < ActiveRecord::Base
 
     attendees.count >= capacity
   end
+  
+  def commentable?
+    self.joinable
+  end
 
   def self.available_for_alerts
     Meeting.upcoming.where("meetings.created_at < ?", 3.hours.ago).includes(:meeting_email_alerts).where('meeting_email_alerts.id IS NULL').all
   end
-
+  
   class MeetingFilterResult
     attr_reader :meetings, :location_filters
 

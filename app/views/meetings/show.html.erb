@@ -24,14 +24,21 @@
 
       <%= link_to("Rapportér fejl", "mailto:hello@geekhub.dk?subject=" + u("Ang. #{@meeting.title} (##{@meeting.id})"), class: "btn btn-link pull-right") unless @meeting.joinable %>
     </footer>
-    <% if @meeting.joinable && @attendees.count > 0 %>
-    <div class="attendees">
-      <h2>De kommer (<%= @attendees.count %>):</h2>
-      <%= render @attendees.reverse, locals: { meeting: @meeting } %>
-      
-      <small class="muted">(Billeder er fra <a class="muted" target="_blank" href="http://gravatar.com/">Gravatar</a> eller <a class="muted" target="_blank" href="http://twitter.com">Twitter</a>. Hvis der skal ansigt på dig, så tilmeld dig på en af disse sites)</small>
-    </div>
-    <% end %>
+	<div class="row-fluid">
+	    <% if @meeting.joinable && @attendees.count > 0 %>
+		<div class="span6">
+		    <div class="attendees">
+		      <h2>De kommer (<%= @attendees.count %>):</h2>
+		      <%= render @attendees.reverse, locals: { meeting: @meeting } %>
+     
+		      <small class="muted">(Billeder er fra <a class="muted" target="_blank" href="http://gravatar.com/">Gravatar</a> eller <a class="muted" target="_blank" href="http://twitter.com">Twitter</a>. Hvis der skal ansigt på dig, så tilmeld dig på en af disse sites)</small>
+		    </div>
+		</div>
+	    <% end %>
+		<div class="span6">
+			<%= render 'comments' if @meeting.commentable? %>
+		</div>
+	</div>
   </div>
   <aside class="span5"> 
     <meta itemprop="startDate" content="<%= @meeting.starts_at.iso8601 %>">

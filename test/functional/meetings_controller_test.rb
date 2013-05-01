@@ -107,4 +107,8 @@ class MeetingsControllerTest < ActionController::TestCase
     get :typeahead_organizers, query: "test", format: :json
     assert_response :ok
   end
+  
+  test "should show meeting" do
+    get :show, :id => meetings(:one).id
+  end
 end
