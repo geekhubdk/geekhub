@@ -3,15 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :ensure_domain
 
-  APP_DOMAIN = 'geekhub.dk'
-
 protected 
 
   def ensure_domain
     if Rails.env == "production"
-      if request.env['HTTP_HOST'] != APP_DOMAIN && !request.path.include?('/api/v1')
+      if request.env['HTTP_HOST'] == 'www.geekhub.dk' && !request.path.include?('/api/v1')
         # HTTP 301 is a "permanent" redirect
-        redirect_to "http://#{APP_DOMAIN}", :status => 301
+        redirect_to "http://geekhub.dk", :status => 301
       end
     end
   end
