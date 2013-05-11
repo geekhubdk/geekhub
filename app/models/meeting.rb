@@ -3,7 +3,7 @@ class Meeting < ActiveRecord::Base
   validates :url, presence: true, :unless => :joinable
   validates :capacity, :numericality => { :greater_than => 0 }, :allow_nil => true
 
-    scope :upcoming, ->{ where("starts_at >= ?", Date.today) }
+  scope :upcoming, ->{ where("starts_at >= ?", Date.today) }
 
   default_scope order("starts_at").includes(:city => :region)
 

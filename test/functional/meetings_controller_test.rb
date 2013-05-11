@@ -111,4 +111,13 @@ class MeetingsControllerTest < ActionController::TestCase
   test "should show meeting" do
     get :show, :id => meetings(:one).id
   end
+  
+  test "archive should get all meetings in reverse order" do
+    
+    get :archive
+    
+    @meetings = assigns(:meetings)
+    assert_not_nil(@meetings)
+    assert_equal(meetings(:future).id, @meetings.first.id)
+  end
 end

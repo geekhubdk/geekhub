@@ -12,6 +12,7 @@ Geekhub::Application.routes.draw do
   resources :organizers, :meeting_suggestions, :meeting_email_alert_subscriptions
 
   resources :meetings do
+
     resources :comments
     resources :attendees do
       collection do
@@ -20,6 +21,7 @@ Geekhub::Application.routes.draw do
     end
 
     collection do
+      get :archive
       post :save_filter
       get :typeahead_address
       get :typeahead_organizers

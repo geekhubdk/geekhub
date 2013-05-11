@@ -29,6 +29,14 @@ three:
   description: MyText
   url: MyString
 
+future:
+  title: Future
+  starts_at: 3000-01-01 00:00:00
+  city_id: 2
+  organizer: ANUG
+  description: MyText
+  url: MyString
+  
 joinable:
   title: MyString
   starts_at: 2100-12-12 13:59:34

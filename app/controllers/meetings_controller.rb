@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show, :save_filter]
+  before_filter :authenticate_user!, :except => [:index, :show, :save_filter, :archive]
   before_filter :find_meeting, :only => [:show, :update, :edit, :destroy]
   before_filter :ensure_that_user_can_edit, only: [:update, :edit, :destroy]
 
@@ -15,6 +15,10 @@ class MeetingsController < ApplicationController
     @active_location_filters = [*params[:location]]
 
     respond_with @meetings
+  end
+  
+  def archive
+    @meetings = Meeting.unscoped.order("starts_at desc").includes(:city => :region)
   end
 
   def show
