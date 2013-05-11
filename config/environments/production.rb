@@ -62,7 +62,7 @@ Geekhub::Application.configure do
   config.active_support.deprecation = :notify
 
   # Configuration for using SendGrid on Heroku
-  config.action_mailer.default_url_options = { :host => 'geekhub.dk' }
+  config.action_mailer.default_url_options = { :host => 'www.geekhub.dk' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     :user_name => ENV['SENDGRID_USERNAME'],

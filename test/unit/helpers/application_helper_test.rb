@@ -19,7 +19,7 @@ class ApplicationHelperTest < ActionView::TestCase
     actual = avatar_url_for_attendee(Attendee.new({ email: "test@test.dk", twitter: nil }))
 
     assert_match /gravatar/, actual
-    assert_match /http:\/\/geekhub\.dk\/person.png/, actual, "should use person.png as default image"
+    assert_match /http:\/\/www.geekhub\.dk\/person.png/, actual, "should use person.png as default image"
   end
 
   test "avatar_url_for_attendee, returns twitter if twitter is not empty" do

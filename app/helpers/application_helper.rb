@@ -12,7 +12,7 @@ module ApplicationHelper
 
   def avatar_url(email, size = 24)
     gravatar_id = Digest::MD5.hexdigest(email.downcase)
-    "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}&default=http://geekhub.dk/person.png"
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}&default=http://www.geekhub.dk/person.png"
   end
 
   def avatar_url_for_attendee(attendee)
@@ -20,7 +20,7 @@ module ApplicationHelper
 
     if(attendee.twitter.blank?)
       gravatar_id = Digest::MD5.hexdigest(attendee.email.downcase)
-      "http://gravatar.com/avatar/#{gravatar_id}.png?s=73&default=http://geekhub.dk/person.png"
+      "http://gravatar.com/avatar/#{gravatar_id}.png?s=73&default=http://www.geekhub.dk/person.png"
     else
       "https://api.twitter.com/1/users/profile_image?screen_name=#{attendee.twitter}&size=bigger"
     end

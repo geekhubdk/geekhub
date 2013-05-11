@@ -58,6 +58,6 @@ class Api::V1::MeetingsControllerTest < ActionController::TestCase
     get :index, :format => :json
     joinable = assigns[:json].select{|m| m[:joinable] == true}.first
 
-    assert_equal "http://geekhub.dk/meetings/#{joinable[:id]}", joinable[:url]
+    assert_equal "http://www.geekhub.dk/meetings/#{joinable[:id]}", joinable[:url]
   end
 end

@@ -50,7 +50,7 @@ class Meeting < ActiveRecord::Base
   def join_url
     return url unless joinable
 
-    "http://geekhub.dk/meetings/#{self.id}"
+    "http://www.geekhub.dk/meetings/#{self.id}"
   end
 
   def can_add_attendee email
