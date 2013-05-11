@@ -10,23 +10,6 @@ class Api::V1::MeetingsController < ApplicationController
     respond_with @json
   end
 
-  def create
-    location = params[:meeting][:location]
-    @city = City.where("lower(name) = lower(?)", location)
-    @city ||= City.create({ name: location})
-
-    @meeting = Meeting.new(params[:meeting])
-    @meeting.user = @current_user
-    @meeting.city = city
-
-    if @meeting.save
-      render json: @meeting, status: :created, location: @meeting
-    else
-      render json: @meeting.errors, status: :unprocessable_entity
-    end
-
-  end
-
 private
 
   def set_access_control_headers 
