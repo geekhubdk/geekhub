@@ -27,8 +27,8 @@ module MeetingsHelper
     high_res = google_maps_image(sizex, sizey,address, 2, zoom)
     normal_res = google_maps_image(sizex, sizey,address, 1, zoom)
 
-    html = image_tag(normal_res, style: "width: #{sizex}px; height: #{sizey}px", alt: address, class: "google-map-image hidden-high-res") +
-           image_tag(high_res, width: sizex, height: sizey, alt: address,  class: "google-map-image hidden-normal-res")
+    html = image_tag("/#{sizex}_#{sizey}.png", 'data-original' => normal_res, style: "width: #{sizex}px; height: #{sizey}px", alt: address, class: "lazy google-map-image hidden-high-res") +
+           image_tag("/#{sizex}_#{sizey}.png", 'data-original'=> high_res, width: sizex, height: sizey, alt: address,  class: "lazy google-map-image hidden-normal-res")
 
     link_to(
       html,
