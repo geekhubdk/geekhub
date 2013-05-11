@@ -9,7 +9,7 @@ protected
     if Rails.env == "production"
       if request.env['HTTP_HOST'] == 'geekhub.dk' && !request.path.include?('/api/v1')
         # HTTP 301 is a "permanent" redirect
-        redirect_to "http://www.geekhub.dk", :status => 301
+        redirect_to "http://geekhub.herokuapp.com", :status => 302
       end
     end
   end
