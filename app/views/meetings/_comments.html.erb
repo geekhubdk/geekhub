@@ -23,6 +23,7 @@
 <% end %>
 <div>
 	<%= form_for [@meeting, @comment] do |f| %>
+	<%= hidden_field_tag 'no-spammy-spammy', "0" %>
 	<p>
 		Skriv en kommentar:
 	</p>
