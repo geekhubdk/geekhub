@@ -42,9 +42,8 @@
 			<% end %>
 		</div>
 	</div>
-	<aside class="span5"> 
-		<meta itemprop="startDate" content="<%= @meeting.starts_at.iso8601 %>">
-		<span class="starts_at dtstart" title="<%= @meeting.starts_at.iso8601 %>"><%= l @meeting.starts_at, format: :short %></span>
+	<aside class="span5">
+		<span><%= l @meeting.starts_at, format: :short %></span>
 		<%= render partial: 'tags', locals: { meeting: @meeting } %>
 		<div class="map">
 			<%= raw meeting_map(@meeting) %>
