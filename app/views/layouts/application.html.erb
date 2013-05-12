@@ -1,125 +1,129 @@
 <!DOCTYPE html>
 <html lang="da">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-      <% if content_for?(:title) %>
-        <%=h yield(:title) %> - Geekhub
-      <% else %>
-        Geekhub
-      <% end %>
-    </title>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Habibi' rel='stylesheet' type='text/css'>
-    <link rel="alternate" type="application/rss+xml" title="RSS over kommende møder" href="/meetings.rss" />
-    <link rel="profile" href="http://microformats.org/profile/hcalendar">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		<% if content_for?(:title) %>
+		<%=h yield(:title) %> - Geekhub
+		<% else %>
+		Geekhub
+		<% end %>
+	</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Habibi' rel='stylesheet' type='text/css'>
+	<link rel="alternate" type="application/rss+xml" title="RSS over kommende møder" href="/meetings.rss" />
+	<link rel="profile" href="http://microformats.org/profile/hcalendar">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-    <![endif]-->
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+	<![endif]-->
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-    <script type="text/javascript">
+	<% if content_for?(:head) %>
+	<%=raw yield(:head) %>
+	<% end %>
 
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-4193296-7']);
-      _gaq.push(['_trackPageview']);
+	<%= stylesheet_link_tag    "application" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	<script type="text/javascript">
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-4193296-7']);
+	_gaq.push(['_trackPageview']);
 
-    </script>
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
 
-     <!-- For third-generation iPad with high-resolution Retina display: -->
-    <!-- Size should be 144 x 144 pixels -->
-    <%= favicon_link_tag '/apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+		</script>
 
-    <!-- For iPhone with high-resolution Retina display: -->
-    <!-- Size should be 114 x 114 pixels -->
-    <%= favicon_link_tag '/apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+		<!-- For third-generation iPad with high-resolution Retina display: -->
+		<!-- Size should be 144 x 144 pixels -->
+		<%= favicon_link_tag '/apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
 
-    <!-- For first- and second-generation iPad: -->
-    <!-- Size should be 72 x 72 pixels -->
-    <%= favicon_link_tag '/apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+		<!-- For iPhone with high-resolution Retina display: -->
+		<!-- Size should be 114 x 114 pixels -->
+		<%= favicon_link_tag '/apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
 
-    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-    <!-- Size should be 57 x 57 pixels -->
-    <%= favicon_link_tag '/apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+		<!-- For first- and second-generation iPad: -->
+		<!-- Size should be 72 x 72 pixels -->
+		<%= favicon_link_tag '/apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
 
-    <!-- For all other devices -->
-    <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag '/favicon.png', :rel => 'shortcut icon' %>
-  </head>
-  <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
+		<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+		<!-- Size should be 57 x 57 pixels -->
+		<%= favicon_link_tag '/apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
 
-          <%= link_to 'geekhub', root_path, class: "brand" %>
-          <div class="nav-collapse">
-            <ul class="nav visible-phone">
-              <li>
-                <%= link_to 'Events', root_path %>
-              </li>
-              <li>
-                <%= link_to 'Arrangører', organizers_path %>
-              </li>
-            </ul>
-            <ul class="nav pull-right">
-              <li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-plus'></i> Indsend event"), new_meeting_path %></li>
-              <li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-signal'></i> RSS"), rss_path %></li>
-              <li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-calendar'></i> ICal/ICS"), kalender_path %></li>
-              <li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-envelope'></i> Nyhedsbrev"),meeting_email_alert_subscriptions_path %></li>
-              <% if user_signed_in? %>
-                <%= render 'shared/user_toolbar' %>
-              <% else %>
-                <li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-user'></i> Log ind / opret bruger"), new_user_session_path %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="content">
-        <% unless flash[:error].nil? %>
-          <div class="alert alert-error">
-            <%= flash[:error] %>
-          </div>
-        <% end %>
-        <% unless flash[:notice].nil? %>
-          <div class="alert alert-success">
-            <%= flash[:notice] %>
-          </div>
-        <% end %>
+		<!-- For all other devices -->
+		<!-- Size should be 32 x 32 pixels -->
+		<%= favicon_link_tag '/favicon.png', :rel => 'shortcut icon' %>
+	</head>
+	<body>
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
 
-        <%= yield %>
-      </div>
-    </div>
-    <footer>
-      <div class="container">
-        <div class="content">
-          <div class="footer-content">
-            Copyright &copy; 2012 <a href="http://twitter.com/#!/jesperbjensen">Jesper Blad Jensen (aka. Deldy)</a>. Kildekoden er tilgængelig på <a href="http://github.com/geekhubdk/geekhub">Github</a><br/>
-            <a href="http://thenounproject.com/noun/cloud/#icon-No322" target="_blank">Cloud</a>  from The Noun Project<br/>
-            <a href="http://thenounproject.com/noun/person/#icon-No7345" target="_blank">Person</a> designed by <a href="http://thenounproject.com/bjorna1" target="_blank">Björn Andersson</a> from The Noun Project
-          </div>
-        </div>
-      </div>
-    </footer>
-  </body>
-</html>
+					<%= link_to 'geekhub', root_path, class: "brand" %>
+					<div class="nav-collapse">
+						<ul class="nav visible-phone">
+							<li>
+								<%= link_to 'Events', root_path %>
+							</li>
+							<li>
+								<%= link_to 'Arrangører', organizers_path %>
+							</li>
+						</ul>
+						<ul class="nav pull-right">
+							<li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-plus'></i> Indsend event"), new_meeting_path %></li>
+							<li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-signal'></i> RSS"), rss_path %></li>
+							<li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-calendar'></i> ICal/ICS"), kalender_path %></li>
+							<li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-envelope'></i> Nyhedsbrev"),meeting_email_alert_subscriptions_path %></li>
+							<% if user_signed_in? %>
+							<%= render 'shared/user_toolbar' %>
+							<% else %>
+							<li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-user'></i> Log ind / opret bruger"), new_user_session_path %></li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="content">
+				<% unless flash[:error].nil? %>
+				<div class="alert alert-error">
+					<%= flash[:error] %>
+				</div>
+				<% end %>
+				<% unless flash[:notice].nil? %>
+				<div class="alert alert-success">
+					<%= flash[:notice] %>
+				</div>
+				<% end %>
+
+				<%= yield %>
+			</div>
+		</div>
+		<footer>
+			<div class="container">
+				<div class="content">
+					<div class="footer-content">
+						Copyright &copy; 2012 <a href="http://twitter.com/#!/jesperbjensen">Jesper Blad Jensen (aka. Deldy)</a>. Kildekoden er tilgængelig på <a href="http://github.com/geekhubdk/geekhub">Github</a><br/>
+						<a href="http://thenounproject.com/noun/cloud/#icon-No322" target="_blank">Cloud</a>  from The Noun Project<br/>
+						<a href="http://thenounproject.com/noun/person/#icon-No7345" target="_blank">Person</a> designed by <a href="http://thenounproject.com/bjorna1" target="_blank">Björn Andersson</a> from The Noun Project
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+	</html>
