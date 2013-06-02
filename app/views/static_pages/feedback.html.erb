@@ -1,22 +1,24 @@
-<% content_for(:title, "Feedback")%>
-<div id="feedback" class="container">
-  <div class="row">
-    <div class="span12"><%= render 'shared/navigation' %></div>
-  </div>
-
-  <h1>Feedback</h1>
-  <!-- BEGIN Podio web form -->
-  <script src="http://podio.com/webforms/3575108/274028.js"></script>
-  <script type="text/javascript">
-    _podioWebForm.render("274028")
-  </script>
-    <div class="podio-webform-container">
-    PODIO provides <a href="https://company.podio.com/project-management-software" class="podio-webform-inner">project management software</a> you can build yourself.
+<div class="container">
+  <% content_for(:title, "Feedback")%>
+  <div id="feedback" class="container">
+    <div class="row">
+      <div class="span12"><%= render 'shared/navigation' %></div>
     </div>
-  <!-- END Podio web form -->
-  <style>
-    .podio-webform-container {
-      background-color: inherit !important;
-    }
-  </style>
+
+    <h1>Feedback</h1>
+    <!-- BEGIN Podio web form -->
+    <script src="http://podio.com/webforms/3575108/274028.js"></script>
+    <script type="text/javascript">
+      _podioWebForm.render("274028")
+    </script>
+      <div class="podio-webform-container">
+      PODIO provides <a href="https://company.podio.com/project-management-software" class="podio-webform-inner">project management software</a> you can build yourself.
+      </div>
+    <!-- END Podio web form -->
+    <style>
+      .podio-webform-container {
+        background-color: inherit !important;
+      }
+    </style>
+  </div>
 </div>

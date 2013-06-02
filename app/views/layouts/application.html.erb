@@ -85,16 +85,19 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
 			<div class="content">
 				<% unless flash[:error].nil? %>
-				<div class="alert alert-error">
-					<%= flash[:error] %>
+				<div class="container">
+					<div class="alert alert-error">
+						<%= flash[:error] %>
+					</div>
 				</div>
 				<% end %>
 				<% unless flash[:notice].nil? %>
-				<div class="alert alert-success">
-					<%= flash[:notice] %>
+				<div class="container">
+					<div class="alert alert-success">
+						<%= flash[:notice] %>
+					</div>
 				</div>
 				<% end %>
 

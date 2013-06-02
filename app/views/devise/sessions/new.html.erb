@@ -1,4 +1,4 @@
-
+<div class="container">
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <legend>Log ind</legend>
   <p>Du skal være logget ind for at indsende events. Tryk på <%=link_to "opret bruger", new_registration_path(resource_name) %></i> for at oprette en profil.<br/>Denne profil giver dig mulighed for at senere at kunne opdatere dit event, hvis der skulle komme ændringer.</p>
@@ -22,3 +22,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
