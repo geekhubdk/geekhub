@@ -3,10 +3,10 @@
 	<meta name="description" content="Geekhub.dk er en brugervedligeholdt liste, som lister events/møder som er interessante for udviklere.">	
 <% end %>
 <div id="events">
-  <div class="row">
+  <div class="row-fluid">
     <div class="span12"><%= render 'shared/navigation' %></div>
   </div>
-  <div class="row">
+  <div class="row-fluid">
     <div class="span9">
       <div class="hidden-tablet hidden-desktop">
         <%= link_to "Foreslå event", "#eventModal", { class: "btn btn-small", role: "button", 'data-toggle' => "modal" } %>
@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-  <div class="row hidden-phone">
+  <div class="row-fluid hidden-phone">
     <div class="span4">
       <h2>Hold dig opdateret</h2>
       <p>
@@ -54,15 +54,15 @@
     </div>
   </div>
   <section>
-    <div class="row" style="margin-top: 15px;">
+    <div class="row-fluid" style="margin-top: 15px;">
       <%= render "filters" %>
     </div>
-    <div class="meetings row" style="margin-top: 15px;">
+    <div class="meetings row-fluid" style="margin-top: 15px;">
       <div class="span12">
         <%= render @meetings%>
       </div>
     </div>
-    <div class="row">
+    <div class="row-fluid">
       <div class="span12">
         <%= link_to "Arkiv", archive_meetings_path %>
       </div>

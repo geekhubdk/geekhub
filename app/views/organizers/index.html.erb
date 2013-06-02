@@ -1,7 +1,7 @@
 <div id="organizers">
 	<%= render "shared/navigation" %>
 	
-	<div class="row">
+	<div class="row-fluid">
 		<div class="span9">
 			<h1><% content_for :title, "Arrangører i det danske community" %></h1>
 			<p>Nedenunder ses en liste af arrangører og brugergrupper i det danske community som hoster events til udviklere.<br/>Hvis der mangler en på listen, så kan du tilføje den ved at trykke på 'Ny arrangør'</p>
@@ -11,7 +11,7 @@
 		</div>
 	</div>
 
-	<div class="organizers row">
+	<div class="organizers row-fluid">
 		<% @organizers.each do |organizer| %>
 			<div class="span12">
 				<article class="organizer">
