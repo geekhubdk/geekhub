@@ -30,4 +30,8 @@ module ApplicationHelper
     message = auto_link message, :html => { :target => '_blank' }
     message = message.gsub(/( @(\w+))/, %Q{<a href="http://twitter.com/\\2" target="_blank">\\1</a>})
   end
+
+  def icon_with_text css_class, text
+    raw("<i style='margin-top: 3px;' class='icon #{css_class}'></i> #{text}")
+  end
 end

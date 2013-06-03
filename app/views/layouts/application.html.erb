@@ -74,14 +74,14 @@
 						</li>
 					</ul>
 					<ul class="nav pull-right">
-						<li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-plus'></i> Indsend event"), new_meeting_path %></li>
-						<li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-signal'></i> RSS"), rss_path %></li>
-						<li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-calendar'></i> ICal/ICS"), kalender_path %></li>
-						<li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-envelope'></i> Nyhedsbrev"),meeting_email_alert_subscriptions_path %></li>
+						<li><%= link_to icon_with_text("icon-white icon-plus", "Indset event"), new_meeting_path %></li>
+						<li><%= link_to icon_with_text("icon-white icon-signal", "RSS"), rss_path %></li>
+						<li><%= link_to icon_with_text("icon-white icon-calendar", "ICal/ICS"), kalender_path %></li>
+						<li><%= link_to icon_with_text("icon-white icon-envelope", "Nyhedsbrev"),meeting_email_alert_subscriptions_path %></li>
 						<% if user_signed_in? %>
 						<%= render 'shared/user_toolbar' %>
 						<% else %>
-						<li><%= link_to raw("<i style='margin-top: 3px;' class='icon icon-white icon-user'></i> Log ind / opret bruger"), new_user_session_path %></li>
+						<li><%= link_to icon_with_text("icon-white icon-user", "Log ind / opret bruger"), new_user_session_path %></li>
 						<% end %>
 					</ul>
 				</div>
