@@ -1,20 +1,6 @@
 # encoding: utf-8
 #
 module MeetingsHelper
-  def friendly_date date
-    str = l date, format: :short
-
-    if date.to_date < 7.days.from_now.to_date && date.to_date > 1.day.from_now.to_date
-      week_day_name = l(date, :format => '%A')
-      "På #{week_day_name}, den #{str}"
-    elsif date.to_date == Date.today
-      "I dag, den #{str}"
-    else
-      str
-    end
-
-  end
-
   def google_maps_image sizex, sizey, address, scale, zoom
     "http://maps.googleapis.com/maps/api/staticmap?size=#{sizex}x#{sizey}&scale=#{scale}&zoom=#{zoom}&markers=#{CGI.escape address}&sensor=false&key=AIzaSyDF3n_lGmqAvqxgRcRm1n1MPslVJW9oyG0"
   end
