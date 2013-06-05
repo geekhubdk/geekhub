@@ -1,3 +1,6 @@
+# encoding: utf-8
+#
+
 class MeetingDecorator < Draper::Decorator
   include Draper::LazyHelpers
 
