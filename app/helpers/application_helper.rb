@@ -34,4 +34,8 @@ module ApplicationHelper
   def icon_with_text css_class, text
     raw("<i style='margin-top: 3px;' class='icon #{css_class}'></i> #{text}")
   end
+
+  def format_description description
+    raw nl2br(auto_link_with_twitter(h(description)))
+  end
 end

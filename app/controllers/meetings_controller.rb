@@ -101,7 +101,7 @@ private
   end
 
   def find_meeting
-    @meeting = Meeting.find(params[:id])
+    @meeting = Meeting.find(params[:id]).decorate
   end
 
   def ensure_that_user_can_edit

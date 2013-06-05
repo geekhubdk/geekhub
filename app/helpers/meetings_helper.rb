@@ -54,44 +54,4 @@ module MeetingsHelper
   def format_description description
     raw nl2br(auto_link_with_twitter(h(description)))
   end
-  
-  def show_edit_tools meeting
-    user_signed_in? &&  meeting.can_be_edited_by(current_user)
-  end
-  
-  def is_online meeting
-    @meeting.city.try(:name) == "Online"
-  end
-  
-  def meeting_map meeting
-    width = 470
-    height = 300
-    
-    if is_online meeting
-      '<div class="online"></div>'
-    else
-      if meeting.address.blank?
-        return <<-eos
-        <p class="location" title="#{meeting.city.name}">
-    			#{google_maps_image_link meeting.city.name, width, height, 10}
-    		</p>
-    		eos
-      else
-        return <<-eos
-        <p class="location" title="#{meeting.address}">
-    			#{google_maps_image_link meeting.address, width, height, 14}
-    		</p>
-    		<p>Adresse: #{meeting.address} %></p>
-        eos
-      end
-    end
-  end
-  
-  def meeting_contact_link meeting
-    if @meeting.joinable
-      mail_to(@meeting.user.email, "Kontakt arrangør", class: "btn btn-link btn-large pull-right")  
-    else
-		  mail_to("hello@geekhub.dk", "Rapportér fejl", subject: u("Ang. #{meeting.title} (##{meeting.id})"), class: "btn btn-link btn-large pull-right")
-	  end
-  end
 end

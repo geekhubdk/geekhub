@@ -79,6 +79,10 @@ class Meeting < ActiveRecord::Base
     true
   end
 
+  def is_online
+    self.city.try(:name) == "Online"
+  end
+
   def self.available_for_alerts
     Meeting.upcoming.where("meetings.created_at < ?", 3.hours.ago).includes(:meeting_email_alerts).where('meeting_email_alerts.id IS NULL').all
   end
