@@ -3,7 +3,7 @@ class AttendeesController < ApplicationController
 
   	@meeting = Meeting.find(params[:meeting_id])
 
-  	unless !current_user.nil? && @meeting.can_be_edited_by(current_user)
+  	unless @meeting.can_be_edited_by(current_user)
   		raise "Not allowed to see attendee list"
   	end
 

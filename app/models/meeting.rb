@@ -44,7 +44,11 @@ class Meeting < ActiveRecord::Base
   end
 
   def can_be_edited_by user
-    user_id.nil? || user_id == user.id || user.email == "deldy@deldysoft.dk"
+    if user.nil?
+      false
+    else
+      user_id.nil? || user_id == user.id || user.email == "deldy@deldysoft.dk"
+    end
   end
 
   def join_url
