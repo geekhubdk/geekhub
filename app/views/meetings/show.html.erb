@@ -1,67 +1,67 @@
 <div class="container">
-<% content_for :title, @meeting.title %>
+	<% content_for :title, @meeting.title %>
 
-<article class="meeting row">
+	<article class="meeting row">
 
-	<div class="span7">  
-		<header>
-			<h1><%= link_to @meeting.title, @meeting.url %></h1>
-		</header>
-		<section class="description">
-			<%= format_description @meeting.description %>
-		</section>
-		<footer>
-			<%= link_to('Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "btn btn-large btn-primary"}) unless @meeting.joinable %>
+		<div class="span7">  
+			<header>
+				<h1><%= link_to @meeting.title, @meeting.url %></h1>
+			</header>
+			<section class="description">
+				<%= format_description @meeting.description %>
+			</section>
+			<footer>
+				<%= link_to('Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "btn btn-large btn-primary"}) unless @meeting.joinable %>
 
-			<%= link_to('Tilmeld dig', "#attendModal", {id: 'attend', class: "btn btn-large btn-primary", 'data-toggle' => "modal"}) if @meeting.can_attend? %>  
+				<%= link_to('Tilmeld dig', "#attendModal", {id: 'attend', class: "btn btn-large btn-primary", 'data-toggle' => "modal"}) if @meeting.can_attend? %>  
 
-			<% if @meeting.reached_capacity? %>
-			<strong style="color: red;">Udsolgt</strong>
-			<% end %>
+				<% if @meeting.reached_capacity? %>
+				<strong style="color: red;">Udsolgt</strong>
+				<% end %>
 
-			<%= link_to('Afmeld dig', "#detendModal", {id: 'detend', class: "btn btn-large btn-link", 'data-toggle' => "modal"}) if @meeting.can_detend? %>  
-			
-			<%= raw meeting_contact_link(@meeting) %>
-		</footer>
-		<div class="row-fluid">
-			
-			<% if @meeting.joinable && @attendees.count > 0 %>
-			<div class="span6">
-				<div class="attendees">
-					<h2>De kommer (<%= @attendees.count %>):</h2>
-					<%= render @attendees.reverse, locals: { meeting: @meeting } %>
+				<%= link_to('Afmeld dig', "#detendModal", {id: 'detend', class: "btn btn-large btn-link", 'data-toggle' => "modal"}) if @meeting.can_detend? %>  
+				
+				<%= raw meeting_contact_link(@meeting) %>
+			</footer>
+			<div class="row-fluid">
+				
+				<% if @meeting.joinable && @attendees.count > 0 %>
+				<div class="span6">
+					<div class="attendees">
+						<h2>De kommer (<%= @attendees.count %>):</h2>
+						<%= render @attendees.reverse, locals: { meeting: @meeting } %>
 
-					<small class="muted">(Billeder er fra <a class="muted" target="_blank" href="http://gravatar.com/">Gravatar</a> eller <a class="muted" target="_blank" href="http://twitter.com">Twitter</a>. Hvis der skal ansigt på dig, så tilmeld dig på en af disse sites)</small>
+						<small class="muted">(Billeder er fra <a class="muted" target="_blank" href="http://gravatar.com/">Gravatar</a> eller <a class="muted" target="_blank" href="http://twitter.com">Twitter</a>. Hvis der skal ansigt på dig, så tilmeld dig på en af disse sites)</small>
+					</div>
 				</div>
+				<% end %>
+				
+				<% if @meeting.commentable? %>
+				<div class="span6">
+					<%= render 'comments' %>
+				</div>
+				<% end %>
 			</div>
-			<% end %>
-			
-			<% if @meeting.commentable? %>
-			<div class="span6">
-				<%= render 'comments' %>
+		</div>
+		<aside class="span5">
+			<span><%= l @meeting.starts_at, format: :short %></span>
+			<%= render partial: 'tags', locals: { meeting: @meeting } %>
+			<div class="map">
+				<%= raw meeting_map(@meeting) %>
 			</div>
+			<% if show_edit_tools @meeting %>
+			<div class="btn-group">
+				<%= link_to 'Rediger', edit_meeting_path(@meeting), class: "btn" %>
+				<%= link_to 'Slet', @meeting, method: :delete, :data => { :confirm => 'Nu er du ikke ved at gøre noget dumt, vel? :)' }, class: "btn btn-danger" %>
+			</div>
+
+			<%= link_to 'Se deltagerliste', meeting_attendees_path(@meeting), class: "btn btn-link" if @meeting.joinable %>
+
 			<% end %>
-		</div>
-	</div>
-	<aside class="span5">
-		<span><%= l @meeting.starts_at, format: :short %></span>
-		<%= render partial: 'tags', locals: { meeting: @meeting } %>
-		<div class="map">
-			<%= raw meeting_map(@meeting) %>
-		</div>
-		<% if show_edit_tools @meeting %>
-		<div class="btn-group">
-			<%= link_to 'Rediger', edit_meeting_path(@meeting), class: "btn" %>
-			<%= link_to 'Slet', @meeting, method: :delete, :data => { :confirm => 'Nu er du ikke ved at gøre noget dumt, vel? :)' }, class: "btn btn-danger" %>
-		</div>
+		</aside>
+	</article>
 
-		<%= link_to 'Se deltagerliste', meeting_attendees_path(@meeting), class: "btn btn-link" if @meeting.joinable %>
-
-		<% end %>
-	</aside>
-</article>
-
-<!-- Modal -->
-<%= render "attend_modal" %>
-<%= render "detend_modal" %>
+	<!-- Modal -->
+	<%= render "attend_modal" %>
+	<%= render "detend_modal" %>
 </div>
