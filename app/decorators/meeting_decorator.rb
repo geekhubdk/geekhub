@@ -30,6 +30,7 @@ class MeetingDecorator < Draper::Decorator
     else
       out = content_tag(:p, google_maps_image_link(location, width, height, zoom), class: 'location', title: location)
       out << raw("<p>Adresse: #{location}</p>") if is_real_address
+      out
     end
   end
 
