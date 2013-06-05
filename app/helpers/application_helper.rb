@@ -50,6 +50,5 @@ module ApplicationHelper
     else
       str
     end
-
   end
 end
