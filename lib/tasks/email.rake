@@ -30,6 +30,17 @@ task :alerts => :environment do
       MeetingAlertMailer.alert_email(meetings, e).deliver
     end
 
+    meetings.each do |m|
+      twitter_update = "#{m.title}"
+      puts "Sending update: #{twitter_update}"
+    end
+
+    begin
+      Twitter.update(twitter_update)
+    rescue e
+      error_message="#{$!}"
+      puts "Could not send tweet: #{error_message}"
+    end
   else
     puts "- No alerts to send"
   end
