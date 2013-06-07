@@ -1,5 +1,7 @@
 Geekhub::Application.routes.draw do
 
+  match "/m/:id" => redirect {|p, req| "/meetings/#{p[:id]}" }
+
   get "attendees/create"
 
   get "datapolitik" => "static_pages#datapolitik"
