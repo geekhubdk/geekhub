@@ -89,7 +89,7 @@ class Meeting < ActiveRecord::Base
   end
   
   def self.available_for_tweet_alerts
-    Meeting.upcoming.where("meetings.created_at < ?", 3.hours.ago).includes(:meeting_tweet_alerts).where('meeting_tweet_alerts.id IS NULL').all
+    Meeting.upcoming.where("meetings.created_at < ?", 5.minutes.ago).includes(:meeting_tweet_alerts).where('meeting_tweet_alerts.id IS NULL').all
   end
 
   class MeetingFilterResult
