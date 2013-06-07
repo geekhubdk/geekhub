@@ -12,6 +12,7 @@ class Meeting < ActiveRecord::Base
   
   has_many :attendees
   has_many :meeting_email_alerts
+  has_many :meeting_tweet_alerts
   has_many :comments, :as => :commentable
 
   geocoded_by :geocode_location
@@ -87,6 +88,10 @@ class Meeting < ActiveRecord::Base
     Meeting.upcoming.where("meetings.created_at < ?", 3.hours.ago).includes(:meeting_email_alerts).where('meeting_email_alerts.id IS NULL').all
   end
   
+  def self.available_for_tweet_alerts
+    Meeting.upcoming.where("meetings.created_at < ?", 3.hours.ago).includes(:meeting_tweet_alerts).where('meeting_tweet_alerts.id IS NULL').all
+  end
+
   class MeetingFilterResult
     attr_reader :meetings, :location_filters
 

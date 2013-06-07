@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130501202730) do
+ActiveRecord::Schema.define(:version => 20130607153709) do
 
   create_table "attendees", :force => true do |t|
     t.string   "name"
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(:version => 20130501202730) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "meeting_tweet_alerts", :force => true do |t|
+    t.integer  "meeting_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "meeting_tweet_alerts", ["meeting_id"], :name => "index_meeting_tweet_alerts_on_meeting_id"
 
   create_table "meetings", :force => true do |t|
     t.string   "title"

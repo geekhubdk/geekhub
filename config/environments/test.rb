@@ -38,4 +38,12 @@ Geekhub::Application.configure do
   config.active_support.deprecation = :stderr
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # for twitter
+  Twitter.configure do |config|
+    config.consumer_key = '35QL7O6w7PEEhIGz8fbOw'
+    config.consumer_secret = 'bkzA8oF0L7qoj6XuTb6yi3P2hqtV5zyq0fWRkCpzqMM'
+    config.oauth_token = '1490607336-SFWq0QqNXqc6alCsvCAQ6pdB7HrqwjnbLVxXbCq'
+    config.oauth_token_secret = 'qRUW1ShDMeiESkyyCSom0RApxK7VGBsZQl8hU8Efx4'
+  end
 end
