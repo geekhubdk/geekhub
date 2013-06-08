@@ -16,7 +16,7 @@ class MeetingsController < ApplicationController
 
     respond_with @meetings
   end
-  
+
   def archive
     @meetings = Meeting.unscoped.order("starts_at desc").includes(:city => :region)
   end
