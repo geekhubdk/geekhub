@@ -1,0 +1,11 @@
+<%= link_to('Læs mere / tilmelding', @meeting.url, {id: 'readmore', class: "btn btn-large btn-primary"}) unless @meeting.joinable %>
+
+<%= link_to('Tilmeld dig', "#attendModal", {id: 'attend', class: "btn btn-large btn-primary", 'data-toggle' => "modal"}) if @meeting.can_attend? %>
+
+<% if @meeting.reached_capacity? %>
+<strong style="color: red;">Udsolgt</strong>
+<% end %>
+
+<%= link_to('Afmeld dig', "#detendModal", {id: 'detend', class: "btn btn-large btn-link", 'data-toggle' => "modal"}) if @meeting.can_detend? %>
+
+<%= raw @meeting.contact_link %>
