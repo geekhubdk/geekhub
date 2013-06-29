@@ -189,6 +189,7 @@ DEPENDENCIES
   pg
   rails (= 3.2.12)
   rails_autolink
+  rake (= 10.0.3)
   rb-fsevent (~> 0.9.1)
   sass-rails (~> 3.2.3)
   simplecov

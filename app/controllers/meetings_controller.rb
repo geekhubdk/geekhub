@@ -18,7 +18,7 @@ class MeetingsController < ApplicationController
   end
 
   def archive
-    @meetings = Meeting.unscoped.order("starts_at desc").includes(:city => :region)
+    @meetings = Meeting.unscoped.order('starts_at desc').includes(:city => :region)
   end
 
   def show
@@ -42,9 +42,9 @@ class MeetingsController < ApplicationController
     @meeting.user = current_user
 
     if @meeting.save
-      redirect_to root_path, notice: t("meeting.added")
+      redirect_to root_path, notice: t('meeting.added')
     else
-      render action: "new"
+      render action: 'new'
     end
   end
 
@@ -52,9 +52,9 @@ class MeetingsController < ApplicationController
     @meeting.user ||= current_user
 
     if @meeting.update_attributes(params[:meeting])
-      redirect_to root_path, notice: t("meeting.updated")
+      redirect_to root_path, notice: t('meeting.updated')
     else
-      render "edit"
+      render 'edit'
     end
   end
 
@@ -70,27 +70,25 @@ class MeetingsController < ApplicationController
   end
 
   def typeahead_address
-    query = "%" + params[:query] + "%"
+    query = '%' + params[:query] + '%'
     city = params[:city]
     after = Time.now - 6.months
 
-    meetings = Meeting.unscoped.select("DISTINCT(address)")
+    meetings = Meeting.unscoped.select('DISTINCT(address)')
 
     if city.blank?
-      meetings = meetings.where("address ILIKE ? AND starts_at >= ? AND address IS NOT NULL", query, after)
+      respond_with meetings.where('address ILIKE ? AND starts_at >= ? AND address IS NOT NULL', query, after).pluck('address')
     else
-      meetings = meetings.where("address ILIKE ? AND starts_at >= ? AND address IS NOT NULL and city_id = ?", query, after, city)
+      respond_with meetings.where('address ILIKE ? AND starts_at >= ? AND address IS NOT NULL and city_id = ?', query, after, city).pluck('address')
     end
-
-    respond_with meetings.collect{|m| m.address}
   end
 
   def typeahead_organizers
-    query = "%" + params[:query] + "%"
+    query = '%' + params[:query] + '%'
     after = Time.now - 6.months
     respond_with Meeting.unscoped
-                   .select("DISTINCT(organizer)")
-                   .where("organizer ILIKE ? AND starts_at >= ?", query, after)
+                   .select('DISTINCT(organizer)')
+                   .where('organizer ILIKE ? AND starts_at >= ?', query, after)
                    .collect{|m| m.organizer}
   end
 
@@ -112,7 +110,7 @@ private
 
   def load_saved_location_filters
     if should_read_location_from_config
-      params[:location] = cookies[:location].split("&")
+      params[:location] = cookies[:location].split('&')
     end
   end
 
