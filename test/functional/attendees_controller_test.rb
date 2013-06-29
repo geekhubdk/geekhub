@@ -12,9 +12,8 @@ class AttendeesControllerTest < ActionController::TestCase
 
   test 'index, must be allowed to edit' do
     sign_in User.last
-    assert_raise do
-      get :index, meeting_id: meetings(:one).id
-    end
+    get :index, meeting_id: meetings(:one).id
+    assert_response :unauthorized
   end
 
   test 'Create a attendee' do
@@ -87,9 +86,9 @@ class AttendeesControllerTest < ActionController::TestCase
     meeting = Meeting.find(meetings(:one).id)
     attendee = meeting.attendees.create({ email: 'test@test.dk', name: 'test', user_id: User.last.id })
 
-    assert_raise do
-      delete :destroy, meeting_id: meeting.id, id: attendee.id
-    end
+    delete :destroy, meeting_id: meeting.id, id: attendee.id
+
+    assert_response :unauthorized
 
     assert_equal 0, ActionMailer::Base.deliveries.count
   end

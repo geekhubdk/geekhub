@@ -16,7 +16,7 @@ class MeetingsControllerTest < ActionController::TestCase
   test 'should contain filter attribute' do
     get :index
   	assert_not_nil assigns(:location_filters)
-  	assert_true assigns(:location_filters).any?{|v| v.name == meetings(:one).city.name}
+  	assert assigns(:location_filters).any?{|v| v.name == meetings(:one).city.name}
   end
 
   test 'should get index as rss' do

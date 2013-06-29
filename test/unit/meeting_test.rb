@@ -11,9 +11,9 @@ class MeetingTest < ActiveSupport::TestCase
     params = { location: city.name }
     result = Meeting.filter(params)
     
-    assert_true result.location_filters.any?{|v| v.name == city.name}
-    assert_true result.meetings.any?{|m| m.city.name = city.name}
-    assert_false result.meetings.any?{|m| m.city.name != city.name}
+    assert result.location_filters.any?{|v| v.name == city.name}
+    assert result.meetings.any?{|m| m.city.name = city.name}
+    assert !result.meetings.any?{|m| m.city.name != city.name}
   end
 
   test 'two location filter should work' do
@@ -21,8 +21,8 @@ class MeetingTest < ActiveSupport::TestCase
     params = { location: locations }
     result = Meeting.filter(params)
     
-    assert_true result.location_filters.any?{|v| (v.name == locations[0]) || (v.name == locations[1])}
-    assert_false result.meetings.any?{|m| (m.city.name != locations[0] && m.city.name != locations[1])}
+    assert result.location_filters.any?{|v| (v.name == locations[0]) || (v.name == locations[1])}
+    assert !result.meetings.any?{|m| (m.city.name != locations[0] && m.city.name != locations[1])}
   end
 
   test 'one organizer filter should work' do
@@ -30,8 +30,8 @@ class MeetingTest < ActiveSupport::TestCase
     params = { organizer: organizer }
     result = Meeting.filter(params)
 
-    assert_true result.meetings.any?{|m| m.organizer = organizer}
-    assert_false result.meetings.any?{|m| m.organizer != organizer}
+    assert result.meetings.any?{|m| m.organizer = organizer}
+    assert !result.meetings.any?{|m| m.organizer != organizer}
   end
 
   test 'two organizer filter should work' do
@@ -39,21 +39,21 @@ class MeetingTest < ActiveSupport::TestCase
     params = { organizer: organizers }
     result = Meeting.filter(params)
 
-    assert_false result.meetings.any?{|m| (m.organizer != organizers[0] && m.organizer != organizers[1])}
+    assert !result.meetings.any?{|m| (m.organizer != organizers[0] && m.organizer != organizers[1])}
   end
 
   test 'does allow empty url if meeting is joinable' do
     m = meetings(:one)
     m.url = ''
     m.joinable = true
-    assert_true m.save
+    assert m.save
   end
 
   test 'does not allow empty url if meeting is not joinable' do
     m = meetings(:one)
     m.url = ''
     m.joinable = false
-    assert_false m.save
+    assert !m.save
   end
 
   test 'join_url should return url if not joinable' do
@@ -72,7 +72,7 @@ class MeetingTest < ActiveSupport::TestCase
 
   test 'can_attend must return true if capacity is met' do
     m = meetings(:joinable)
-    assert_true m.can_attend?
+    assert m.can_attend?
   end
 
   test 'can_attend must return false if capacity is met' do
@@ -81,6 +81,6 @@ class MeetingTest < ActiveSupport::TestCase
     a.email = 'test@test.dk'
     a.name = 'Jesper'
     a.save
-    assert_false m.can_attend?
+    assert !m.can_attend?
   end
 end

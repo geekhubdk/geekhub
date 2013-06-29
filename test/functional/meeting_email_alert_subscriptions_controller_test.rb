@@ -12,7 +12,7 @@ class MeetingEmailAlertSubscriptionsControllerTest < ActionController::TestCase
     
     assert_not_nil(assigns[:subscription])
     assert(assigns[:show_subscribe], 'Should have true in show subscribe')
-    assert_false(assigns[:show_unsubscribe], 'Should have false in show unsubscribe')
+    assert !assigns[:show_unsubscribe], 'Should have false in show unsubscribe'
   end
   
   test 'Create should make a subscription on the user' do

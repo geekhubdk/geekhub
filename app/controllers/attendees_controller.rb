@@ -4,7 +4,8 @@ class AttendeesController < ApplicationController
   	@meeting = Meeting.find(params[:meeting_id])
 
   	unless @meeting.can_be_edited_by(current_user)
-  		raise 'Not allowed to see attendee list'
+      permission_denied
+      return
   	end
 
   	@attendees = @meeting.attendees
@@ -36,7 +37,8 @@ class AttendeesController < ApplicationController
 		@attendee = @meeting.attendees.find(params[:id])
 
     if(@attendee.user_id != current_user.id)
-      raise 'Not allowed'
+      permission_denied
+      return
     end
 
 		@attendee.destroy
