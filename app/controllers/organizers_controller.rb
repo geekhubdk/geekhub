@@ -2,7 +2,7 @@ class OrganizersController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
-    @organizers = Organizer.order('name').all
+    @organizers = Organizer.order('name')
   end
 
   def new

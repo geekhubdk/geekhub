@@ -22,9 +22,9 @@ class MeetingsController < ApplicationController
   end
 
   def show
-    @attendees = @meeting.attendees.all
+    @attendees = @meeting.attendees.to_a
     @new_attendee = @meeting.attendees.new
-    @comments = @meeting.comments.all
+    @comments = @meeting.comments.to_a
     @comment = @meeting.comments.new
   end
 

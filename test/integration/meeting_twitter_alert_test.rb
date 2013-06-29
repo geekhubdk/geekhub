@@ -2,6 +2,7 @@ require 'test_helper'
 require 'meeting_twitter_alert_sender'
 class MeetingTwitterAlertTest < ActionDispatch::IntegrationTest
   test 'sending a tweet for a new meeting' do
+    skip 'Sends message to twitter, so only run when that module is changed'
     random_meeting_name = SecureRandom.hex
     
     clear_meetings

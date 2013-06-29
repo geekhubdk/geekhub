@@ -5,7 +5,7 @@ class Meeting < ActiveRecord::Base
 
   scope :upcoming, ->{ where('starts_at >= ?', Date.today) }
 
-  default_scope order('starts_at').includes(:city => :region)
+  default_scope { order('starts_at').includes(:city => :region) }
 
   belongs_to :user
   belongs_to :city
@@ -59,7 +59,7 @@ class Meeting < ActiveRecord::Base
   end
 
   def can_add_attendee email
-    self.attendees.all.select{|a| a.email.downcase == email.downcase}.count == 0
+    self.attendees.select{|a| a.email.downcase == email.downcase}.count == 0
   end
 
   def can_attend?
@@ -85,11 +85,11 @@ class Meeting < ActiveRecord::Base
   end
 
   def self.available_for_alerts
-    Meeting.upcoming.where('meetings.created_at < ?', 3.hours.ago).includes(:meeting_email_alerts).where('meeting_email_alerts.id IS NULL').all
+    Meeting.upcoming.includes(:meeting_email_alerts).where('meeting_email_alerts.id IS NULL and meetings.created_at < ?', 3.hours.ago).references(:meeting_email_alerts)
   end
   
   def self.available_for_tweet_alerts
-    Meeting.upcoming.where('meetings.created_at < ?', 5.minutes.ago).includes(:meeting_tweet_alerts).where('meeting_tweet_alerts.id IS NULL').all
+    Meeting.upcoming.includes(:meeting_tweet_alerts).where('meeting_tweet_alerts.id IS NULL and meetings.created_at < ?', 5.minutes.ago).references(:meeting_email_alerts)
   end
 
   class MeetingFilterResult
