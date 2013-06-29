@@ -28,6 +28,8 @@ gem 'devise', '3.0.0.rc'
 
 gem 'jquery-ui-rails'
 
+gem 'activesupport', '4.0.0'
+
 gem 'pg'
 gem 'geocoder'
 gem 'thin'
