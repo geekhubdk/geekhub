@@ -3,9 +3,9 @@ class Meeting < ActiveRecord::Base
   validates :url, presence: true, :unless => :joinable
   validates :capacity, :numericality => { :greater_than => 0 }, :allow_nil => true
 
-  scope :upcoming, ->{ where("starts_at >= ?", Date.today) }
+  scope :upcoming, ->{ where('starts_at >= ?', Date.today) }
 
-  default_scope order("starts_at").includes(:city => :region)
+  default_scope order('starts_at').includes(:city => :region)
 
   belongs_to :user
   belongs_to :city
@@ -33,7 +33,7 @@ class Meeting < ActiveRecord::Base
   end
 
   def self.filter(filters)
-    m = filters[:all] == "1" ? Meeting.all : Meeting.upcoming
+    m = filters[:all] == '1' ? Meeting.all : Meeting.upcoming
 
     location_filters = build_location_filters(m)
 
@@ -48,7 +48,7 @@ class Meeting < ActiveRecord::Base
     if user.nil?
       false
     else
-      user_id.nil? || user_id == user.id || user.email == "deldy@deldysoft.dk"
+      user_id.nil? || user_id == user.id || user.email == 'deldy@deldysoft.dk'
     end
   end
 
@@ -81,15 +81,15 @@ class Meeting < ActiveRecord::Base
   end
 
   def is_online
-    self.city.try(:name) == "Online"
+    self.city.try(:name) == 'Online'
   end
 
   def self.available_for_alerts
-    Meeting.upcoming.where("meetings.created_at < ?", 3.hours.ago).includes(:meeting_email_alerts).where('meeting_email_alerts.id IS NULL').all
+    Meeting.upcoming.where('meetings.created_at < ?', 3.hours.ago).includes(:meeting_email_alerts).where('meeting_email_alerts.id IS NULL').all
   end
   
   def self.available_for_tweet_alerts
-    Meeting.upcoming.where("meetings.created_at < ?", 5.minutes.ago).includes(:meeting_tweet_alerts).where('meeting_tweet_alerts.id IS NULL').all
+    Meeting.upcoming.where('meetings.created_at < ?', 5.minutes.ago).includes(:meeting_tweet_alerts).where('meeting_tweet_alerts.id IS NULL').all
   end
 
   class MeetingFilterResult

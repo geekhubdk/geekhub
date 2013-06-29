@@ -2,7 +2,7 @@
 <% @comments.each do |comment| %>
 <div class="comment">
 	<div class="attendee">
-	<div class="image"><%= image_tag avatar_url(comment.email), style: "width: 32px; height: 32px" %></div>
+	<div class="image"><%= image_tag avatar_url(comment.email), style: 'width: 32px; height: 32px' %></div>
 
 	<span>
 		<%= comment.name %>:
@@ -23,25 +23,25 @@
 <% end %>
 <div>
 	<%= form_for [@meeting, @comment] do |f| %>
-	<%= hidden_field_tag 'no-spammy-spammy', "0" %>
+	<%= hidden_field_tag 'no-spammy-spammy', '0' %>
 	<p>
 		Skriv en kommentar:
 	</p>
 	<div class="control-group">
 		<div class="controls">
-			<%= f.text_area :content, class: "input-xlarge", required: true, placeholder: "Kommentar", rows: 5 %>
+			<%= f.text_area :content, class: 'input-xlarge', required: true, placeholder: 'Kommentar', rows: 5 %>
 		</div>
 	</div>
 	<div class="control-group">
 		<div class="controls">
-			<%= f.text_field :name, class: "input-xlarge", required: true, placeholder: "Navn" %>
+			<%= f.text_field :name, class: 'input-xlarge', required: true, placeholder: 'Navn' %>
 		</div>
 	</div>
 	<div class="control-group">
 		<div class="controls">
-			<%= f.text_field :email, class: "input-xlarge", required: true, placeholder: "Email" %>
+			<%= f.text_field :email, class: 'input-xlarge', required: true, placeholder: 'Email' %>
 		</div>
 	</div>
-	<%= f.submit "Kommenter", class: "btn btn-success"%> <small><span class="muted">(Alle felter er påkrævet)</span></small>
+	<%= f.submit 'Kommenter', class: 'btn btn-success'%> <small><span class="muted">(Alle felter er påkrævet)</span></small>
 	<% end %>
 </div>

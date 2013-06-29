@@ -12,7 +12,7 @@ class MeetingTwitterAlertSender
     url = "geekhub.dk/m/#{id}"
     title_max_length = 140 - url.length - 3
     if title.length > title_max_length
-      title = title.strip.slice(0, title_max_length-3) + "..." 
+      title = title.strip.slice(0, title_max_length-3) + '...'
     end
     "#{title} - #{url}"
   end

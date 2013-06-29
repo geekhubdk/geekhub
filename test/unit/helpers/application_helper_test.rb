@@ -5,25 +5,25 @@ require 'action_view/helpers'
 class ApplicationHelperTest < ActionView::TestCase
   include ERB::Util
 
-  test "month_name" do
-    assert_equal "februar", month_name("02")
+  test 'month_name' do
+    assert_equal 'februar', month_name('02')
   end
 
-  test "avatar_url_for_attendee, returns nothing is attendee is nothing" do
+  test 'avatar_url_for_attendee, returns nothing is attendee is nothing' do
     actual = avatar_url_for_attendee(nil)
 
-    assert_equal "", actual
+    assert_equal '', actual
   end
 
-  test "avatar_url_for_attendee, returns gravatar if twitter is empty" do
-    actual = avatar_url_for_attendee(Attendee.new({ email: "test@test.dk", twitter: nil }))
+  test 'avatar_url_for_attendee, returns gravatar if twitter is empty' do
+    actual = avatar_url_for_attendee(Attendee.new({ email: 'test@test.dk', twitter: nil }))
 
     assert_match /gravatar/, actual
-    assert_match /http:\/\/www.geekhub\.dk\/person.png/, actual, "should use person.png as default image"
+    assert_match /http:\/\/www.geekhub\.dk\/person.png/, actual, 'should use person.png as default image'
   end
 
-  test "avatar_url_for_attendee, returns twitter if twitter is not empty" do
-    actual = avatar_url_for_attendee(Attendee.new({ email: "test@test.dk", twitter: "jesperbjensen" }))
+  test 'avatar_url_for_attendee, returns twitter if twitter is not empty' do
+    actual = avatar_url_for_attendee(Attendee.new({ email: 'test@test.dk', twitter: 'jesperbjensen'}))
 
     assert_match /twitter/, actual 
   end

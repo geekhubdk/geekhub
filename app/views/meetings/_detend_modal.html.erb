@@ -1,5 +1,5 @@
 <div id="detendModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <%= form_tag destroy_attendee_meeting_attendees_path(meeting_id: @meeting.id), style: "margin: 0" do %>
+  <%= form_tag destroy_attendee_meeting_attendees_path(meeting_id: @meeting.id), style: 'margin: 0' do %>
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Afmelding</h3>
@@ -7,8 +7,8 @@
   <div class="modal-body">
     <p>Skriv email på deltageren, og tryk på <em>Afmeld</em>.</p>
 
-    <%= label_tag :email, "E-mail" %>
-    <%= email_field_tag :email, "", required: true %>
+    <%= label_tag :email, 'E-mail' %>
+    <%= email_field_tag :email, '', required: true %>
 
   </div>
   <div class="modal-footer">

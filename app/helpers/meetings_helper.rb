@@ -13,8 +13,8 @@ module MeetingsHelper
     high_res = google_maps_image(sizex, sizey,address, 2, zoom)
     normal_res = google_maps_image(sizex, sizey,address, 1, zoom)
 
-    html = image_tag("/#{sizex}_#{sizey}.png", 'data-original' => normal_res, style: "width: #{sizex}px; height: #{sizey}px", alt: address, class: "lazy google-map-image hidden-high-res") +
-           image_tag("/#{sizex}_#{sizey}.png", 'data-original'=> high_res, width: sizex, height: sizey, alt: address,  class: "lazy google-map-image hidden-normal-res")
+    html = image_tag("/#{sizex}_#{sizey}.png", 'data-original' => normal_res, style: "width: #{sizex}px; height: #{sizey}px", alt: address, class: 'lazy google-map-image hidden-high-res') +
+           image_tag("/#{sizex}_#{sizey}.png", 'data-original'=> high_res, width: sizex, height: sizey, alt: address,  class: 'lazy google-map-image hidden-normal-res')
 
     link_to(
       html,
@@ -30,7 +30,7 @@ module MeetingsHelper
 
     (0..23).each do |h|
       (0..55).step(15).each do |m|
-        values << (h < 10 ? "0#{h}" : "#{h}") + ":" + (m < 10 ? "0#{m}" : "#{m}")
+        values << (h < 10 ? "0#{h}" : "#{h}") + ':' + (m < 10 ? "0#{m}" : "#{m}")
       end
     end
 

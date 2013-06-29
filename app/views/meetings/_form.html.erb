@@ -26,13 +26,13 @@
         <div class="well" data-visible-field="input[name='meeting[joinable]']" data-visible-value="false">
           <div class="field">
             <%= f.label :url %>
-            <%= f.text_field :url, placeholder: "http://example.org", class: 'span11', 'data-behavior' => "meeting-url" %>
+            <%= f.text_field :url, placeholder: 'http://example.org', class: 'span11', 'data-behavior' => 'meeting-url' %>
           </div>
         </div>
         <div class="well" data-visible-field="input[name='meeting[joinable]']" data-visible-value="true">
           <div class="field-inline">
             <%= f.label :capacity %>
-            <%= f.number_field :capacity, placeholder: "f.eks. 50", class: 'span2', min: "1" %>
+            <%= f.number_field :capacity, placeholder: 'f.eks. 50', class: 'span2', min: '1' %>
             <span class="help-inline">
               Lad den være tom, hvis der ikke er nogen maks kapacitet.
             </span>
@@ -43,18 +43,18 @@
         <div class="well">   
           <div class="field">
             <%= f.label :title %>
-            <%= f.text_field :title, class: "span5" %>
+            <%= f.text_field :title, class: 'span5' %>
           </div>
           <div class="field">
             <%= f.label :starts_at %>
-            <%= render partial: "datepicker", locals: { f: f, field: :starts_at, value: @meeting.starts_at } %>
+            <%= render partial: 'datepicker', locals: { f: f, field: :starts_at, value: @meeting.starts_at } %>
           </div>
           <div class="field checkbox">
             <%= f.check_box :costs_money %> <%= f.label :costs_money %>
           </div>
           <div class="field">
             <%= f.label :city_id %>
-            <%= f.select(:city_id, City.order("name").collect {|p| [ p.name, p.id ] }, {:include_blank => 'Vælg venligst by'})%>
+            <%= f.select(:city_id, City.order('name').collect {|p| [ p.name, p.id ] }, {:include_blank => 'Vælg venligst by'})%>
             <div>
               <small>Mangler der en by? Så skriv en mail til <a href="mailto:hello@geekhub.dk">hello@geekhub.dk</a>.</small>
             </div>
@@ -73,14 +73,14 @@
         <div class="well">
           <div class="field">
             <%= f.label :description %>
-            <%= f.text_area :description, :rows => 13, class: "span5" %>
+            <%= f.text_area :description, :rows => 13, class: 'span5' %>
             <small>(understøtter p.t. ikke fancy formateringer)</small>
           </div>
         </div>
       </div>
     </div>
     <div class="actions">
-      <%= f.submit class: "btn btn-primary btn-large" %>
+      <%= f.submit class: 'btn btn-primary btn-large' %>
     </div>
   <% end %>
 </div>

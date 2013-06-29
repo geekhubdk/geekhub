@@ -1,7 +1,7 @@
 xml.instruct!
 
 def format_rss_description meeting
-  costs_money_text = meeting.costs_money ? "" : "(gratis)"
+  costs_money_text = meeting.costs_money ? '' : '(gratis)'
 
   <<-eos
     <strong>#{meeting.city.name}, #{l meeting.starts_at, :format => :long} - #{meeting.organizer} #{costs_money_text} </strong><br/> 
@@ -9,14 +9,14 @@ def format_rss_description meeting
     eos
 end
 
-xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
+xml.rss 'version' => '2.0', 'xmlns:dc' => 'http://purl.org/dc/elements/1.1/' do
   xml.channel do
 
 
-    xml.title "geekhub - kommende events"
+    xml.title 'geekhub - kommende events'
 
     xml.link        url_for :only_path => false, :controller => 'meetings'
-    xml.description "kommende events i Danmark"
+    xml.description 'kommende events i Danmark'
 
     @meetings.each do |m|
       xml.item do

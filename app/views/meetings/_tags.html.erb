@@ -7,7 +7,7 @@
 	<% if meeting.joinable? %>
 	<div class="tags-tag attendees">
 		<div class="image">
-			<%= image_tag "/person.png" %>
+			<%= image_tag '/person.png' %>
 		</div><%= pluralize meeting.attendees_count, 'deltager', 'deltagere' %>
 	</div>
 	<% end %>

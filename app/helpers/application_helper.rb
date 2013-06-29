@@ -19,7 +19,7 @@ module ApplicationHelper
   end
 
   def avatar_url_for_attendee(attendee)
-    return "" if attendee.nil?
+    return '' if attendee.nil?
 
     if(attendee.twitter.blank?)
       gravatar_id = Digest::MD5.hexdigest(attendee.email.downcase)

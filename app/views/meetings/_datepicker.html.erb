@@ -1,10 +1,10 @@
 <div class="dateselector">
-	<%= f.hidden_field field, value: value ? value.strftime('%Y/%m/%d %H:%M:%S') : "" %>
+	<%= f.hidden_field field, value: value ? value.strftime('%Y/%m/%d %H:%M:%S') : '' %>
 	<div class="date">
 		<input type="text" maxlength="10" class="datepicker" name="date" value="<%=value ? value.strftime('%d/%m/%Y') : ''%>" />
 	</div>
 	<div class="time">
     	kl. 
-    	<%= select_tag field.to_s + "_hour", time_options_for_select(value), { class: "time" } %>
+    	<%= select_tag field.to_s + '_hour', time_options_for_select(value), { class: 'time'} %>
     </div>
 </div>

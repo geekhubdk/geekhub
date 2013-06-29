@@ -1,15 +1,15 @@
 Geekhub::Application.routes.draw do
 
-  match "/m/:id" => redirect {|p, req| "/meetings/#{p[:id]}" }
+  match '/m/:id' => redirect {|p, req| "/meetings/#{p[:id]}" }
 
-  get "attendees/create"
+  get 'attendees/create'
 
-  get "datapolitik" => "static_pages#datapolitik"
-  get "om" => "static_pages#om"
-  get "kontakt" => "static_pages#kontakt"
-  get "kalender" => "static_pages#kalender"
-  get "rss" => "static_pages#rss"
-  get "feedback" => "static_pages#feedback"
+  get 'datapolitik' => 'static_pages#datapolitik'
+  get 'om' => 'static_pages#om'
+  get 'kontakt' => 'static_pages#kontakt'
+  get 'kalender' => 'static_pages#kalender'
+  get 'rss' => 'static_pages#rss'
+  get 'feedback' => 'static_pages#feedback'
 
   resources :organizers, :meeting_suggestions, :meeting_email_alert_subscriptions
 
@@ -32,7 +32,7 @@ Geekhub::Application.routes.draw do
 
   devise_for :users
 
-  root :to => "meetings#index"
+  root :to => 'meetings#index'
 
   namespace :api do
     namespace :v1 do

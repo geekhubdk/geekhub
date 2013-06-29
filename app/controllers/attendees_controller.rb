@@ -4,7 +4,7 @@ class AttendeesController < ApplicationController
   	@meeting = Meeting.find(params[:meeting_id])
 
   	unless @meeting.can_be_edited_by(current_user)
-  		raise "Not allowed to see attendee list"
+  		raise 'Not allowed to see attendee list'
   	end
 
   	@attendees = @meeting.attendees
@@ -16,17 +16,17 @@ class AttendeesController < ApplicationController
   	if @meeting.can_add_attendee(params[:attendee][:email])
 	  	@attendee = @meeting.attendees.new(params[:attendee])
 	  	@attendee.user = current_user
-      @attendee.twitter.slice!(0) if @attendee.twitter.present? && @attendee.twitter.starts_with?("@")
+      @attendee.twitter.slice!(0) if @attendee.twitter.present? && @attendee.twitter.starts_with?('@')
 
 	  	if @attendee.save
         AttendeeMailer.new_attendee_email(@attendee).deliver
-	  		redirect_to @meeting, notice: t("attendee.attending")
+	  		redirect_to @meeting, notice: t('attendee.attending')
 	  	else
-	  		flash[:error] = t("attendee.invalid")
+	  		flash[:error] = t('attendee.invalid')
 	  		redirect_to @meeting
 	  	end
 		else
-	  	flash[:error] = t("attendee.already_attending")
+	  	flash[:error] = t('attendee.already_attending')
 	  	redirect_to @meeting
   	end
   end
@@ -36,13 +36,13 @@ class AttendeesController < ApplicationController
 		@attendee = @meeting.attendees.find(params[:id])
 
     if(@attendee.user_id != current_user.id)
-      raise "Not allowed"
+      raise 'Not allowed'
     end
 
 		@attendee.destroy
     AttendeeMailer.destroy_attendee_email(@attendee).deliver
 
-		redirect_to @meeting, notice: t("attendee.destroyed")
+		redirect_to @meeting, notice: t('attendee.destroyed')
   end
 
 	def destroy_attendee
@@ -50,12 +50,12 @@ class AttendeesController < ApplicationController
 		@attendee = @meeting.attendees.where('lower(email) = ?', params[:email].downcase).first
 
     if @attendee.nil?
-      flash[:error] = t("attendee.not_found_by_email")
+      flash[:error] = t('attendee.not_found_by_email')
       redirect_to @meeting
     else
       @attendee.destroy
       AttendeeMailer.destroy_attendee_email(@attendee).deliver
-      redirect_to @meeting, notice: t("attendee.destroyed")
+      redirect_to @meeting, notice: t('attendee.destroyed')
     end
 	end
 end

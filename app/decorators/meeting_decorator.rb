@@ -12,9 +12,9 @@ class MeetingDecorator < Draper::Decorator
 
   def contact_link
     if self.joinable
-     mail_to(self.user.email, "Kontakt arrangør", class: "btn btn-link btn-large pull-right")
+     mail_to(self.user.email, 'Kontakt arrangør', class: 'btn btn-link btn-large pull-right')
     else
-     mail_to("hello@geekhub.dk", "Rapportér fejl", subject: u("Ang. #{self.title} (##{self.id})"), class: "btn btn-link btn-large pull-right")
+     mail_to('hello@geekhub.dk', 'Rapportér fejl', subject: u("Ang. #{self.title} (##{self.id})"), class: 'btn btn-link btn-large pull-right')
     end
   end
 

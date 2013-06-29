@@ -25,8 +25,8 @@
 	<%=raw yield(:head) %>
 	<% end %>
 
-	<%= stylesheet_link_tag    "application" %>
-	<%= javascript_include_tag "application" %>
+	<%= stylesheet_link_tag 'application' %>
+	<%= javascript_include_tag 'application' %>
 	<%= csrf_meta_tags %>
 
 	<!-- For third-generation iPad with high-resolution Retina display: -->
@@ -60,7 +60,7 @@
 					<span class="icon-bar"></span>
 				</a>
 
-				<%= link_to 'geekhub', root_path, class: "brand" %>
+				<%= link_to 'geekhub', root_path, class: 'brand' %>
 				<div class="nav-collapse">
 					<ul class="nav visible-phone">
 						<li>
@@ -74,15 +74,15 @@
 						</li>
 					</ul>
 					<ul class="nav pull-right">
-						<li><%= link_to icon_with_text("icon-white icon-plus", "Indset event"), new_meeting_path %></li>
-						<li><%= link_to icon_with_text("icon-white icon-bullhorn", "Twitter"), 'http://twitter.com/geekhubdk', target: :blank %></li>
-						<li><%= link_to icon_with_text("icon-white icon-signal", "RSS"), rss_path %></li>
-						<li><%= link_to icon_with_text("icon-white icon-calendar", "ICal/ICS"), kalender_path %></li>
-						<li><%= link_to icon_with_text("icon-white icon-envelope", "Nyhedsbrev"),meeting_email_alert_subscriptions_path %></li>
+						<li><%= link_to icon_with_text('icon-white icon-plus', 'Indset event'), new_meeting_path %></li>
+						<li><%= link_to icon_with_text('icon-white icon-bullhorn', 'Twitter'), 'http://twitter.com/geekhubdk', target: :blank %></li>
+						<li><%= link_to icon_with_text('icon-white icon-signal', 'RSS'), rss_path %></li>
+						<li><%= link_to icon_with_text('icon-white icon-calendar', 'ICal/ICS'), kalender_path %></li>
+						<li><%= link_to icon_with_text('icon-white icon-envelope', 'Nyhedsbrev'),meeting_email_alert_subscriptions_path %></li>
 						<% if user_signed_in? %>
 						<%= render 'shared/user_toolbar' %>
 						<% else %>
-						<li><%= link_to icon_with_text("icon-white icon-user", "Log ind / opret bruger"), new_user_session_path %></li>
+						<li><%= link_to icon_with_text('icon-white icon-user', 'Log ind / opret bruger'), new_user_session_path %></li>
 						<% end %>
 					</ul>
 				</div>

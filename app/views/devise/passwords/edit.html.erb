@@ -5,14 +5,14 @@
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
-  <%= f.label :password, "Nyt kodeord" %>
+  <%= f.label :password, 'Nyt kodeord' %>
   <%= f.password_field :password %>
 
-  <%= f.label :password_confirmation, "Gentag nyt kodeord" %>
+  <%= f.label :password_confirmation, 'Gentag nyt kodeord' %>
   <%= f.password_field :password_confirmation %>
 
-  <div class="form-actions"><%= f.submit "Skift dit kodeord", class: "btn btn-primary" %></div>
+  <div class="form-actions"><%= f.submit 'Skift dit kodeord', class: 'btn btn-primary' %></div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render 'devise/shared/links' %>
 </div>

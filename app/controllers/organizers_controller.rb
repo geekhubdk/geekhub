@@ -2,7 +2,7 @@ class OrganizersController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
-    @organizers = Organizer.order("name").all
+    @organizers = Organizer.order('name').all
   end
 
   def new
@@ -19,7 +19,7 @@ class OrganizersController < ApplicationController
     if @organizer.save
       redirect_to organizers_url, notice: 'Organizer was successfully created.'
     else
-      render action: "new"
+      render action: 'new'
     end
   end
 
@@ -29,7 +29,7 @@ class OrganizersController < ApplicationController
     if @organizer.update_attributes(params[:organizer])
       redirect_to organizers_url, notice: 'Organizer was successfully updated.'
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 

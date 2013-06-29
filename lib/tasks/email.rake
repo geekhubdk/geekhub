@@ -2,18 +2,18 @@ require 'active_support/inflections'
 require 'action_view/helpers'
 extend ActionView::Helpers
 
-desc "Send alerts of new meetings"
+desc 'Send alerts of new meetings'
 task :alerts => :environment do
-  puts "Sending alerts"
+  puts 'Sending alerts'
 
-  puts "- Finding meetings that is available for alerts"
+  puts '- Finding meetings that is available for alerts'
 
   meetings = Meeting.available_for_alerts
 
   puts "- Found #{pluralize(meetings.count, 'meeting')} to send alerts for"
 
   if meetings.length > 0
-    puts "- Finding subscriptions"
+    puts '- Finding subscriptions'
 
     subscriptions = MeetingEmailAlertSubscription.all
 
@@ -42,6 +42,6 @@ task :alerts => :environment do
       puts "Could not send tweet: #{error_message}"
     end
   else
-    puts "- No alerts to send"
+    puts '- No alerts to send'
   end
 end

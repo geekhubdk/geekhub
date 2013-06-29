@@ -36,17 +36,17 @@
 			</div>
 			<% if @meeting.show_edit_tools %>
 			<div class="btn-group">
-				<%= link_to 'Rediger', edit_meeting_path(@meeting), class: "btn" %>
-				<%= link_to 'Slet', @meeting, method: :delete, :data => { :confirm => 'Nu er du ikke ved at gøre noget dumt, vel? :)' }, class: "btn btn-danger" %>
+				<%= link_to 'Rediger', edit_meeting_path(@meeting), class: 'btn' %>
+				<%= link_to 'Slet', @meeting, method: :delete, :data => { :confirm => 'Nu er du ikke ved at gøre noget dumt, vel? :)' }, class: 'btn btn-danger' %>
 			</div>
 
-			<%= link_to 'Se deltagerliste', meeting_attendees_path(@meeting), class: "btn btn-link" if @meeting.joinable %>
+			<%= link_to 'Se deltagerliste', meeting_attendees_path(@meeting), class: 'btn btn-link' if @meeting.joinable %>
 
 			<% end %>
 		</aside>
 	</article>
 
 	<!-- Modal -->
-	<%= render "attend_modal" %>
-	<%= render "detend_modal" %>
+	<%= render 'attend_modal' %>
+	<%= render 'detend_modal' %>
 </div>

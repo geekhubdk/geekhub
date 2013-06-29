@@ -10,11 +10,11 @@ class MeetingEmailAlertSubscriptionsController < ApplicationController
 
   def create
     current_user.meeting_email_alert_subscriptions.create
-    redirect_to meeting_email_alert_subscriptions_path, notice: "Du er hermed tilmeldt"
+    redirect_to meeting_email_alert_subscriptions_path, notice: 'Du er hermed tilmeldt'
   end
 
   def destroy
     current_user.meeting_email_alert_subscriptions.find(params[:id]).destroy
-    redirect_to meeting_email_alert_subscriptions_path, notice: "Du er hermed afmeldt"
+    redirect_to meeting_email_alert_subscriptions_path, notice: 'Du er hermed afmeldt'
   end
 end

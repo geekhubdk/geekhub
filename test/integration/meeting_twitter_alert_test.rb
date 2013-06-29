@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'meeting_twitter_alert_sender'
 class MeetingTwitterAlertTest < ActionDispatch::IntegrationTest
-  test "sending a tweet for a new meeting" do
+  test 'sending a tweet for a new meeting' do
     random_meeting_name = SecureRandom.hex
     
     clear_meetings
@@ -35,7 +35,7 @@ class MeetingTwitterAlertTest < ActionDispatch::IntegrationTest
   end
 
   def assert_tweet_created message
-    timeline = Twitter.user_timeline("geekhubdk_test")
+    timeline = Twitter.user_timeline('geekhubdk_test')
     matching_tweets = timeline.select{|t| t.text.include? message}
     number_of_tweets_with_message = matching_tweets.length
     assert_equal 1, number_of_tweets_with_message

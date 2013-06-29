@@ -1,11 +1,11 @@
 <div class="container">
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <legend>Log ind</legend>
-  <p>Du skal være logget ind for at indsende events. Tryk på <%=link_to "opret bruger", new_registration_path(resource_name) %></i> for at oprette en profil.<br/>Denne profil giver dig mulighed for at senere at kunne opdatere dit event, hvis der skulle komme ændringer.</p>
-  <%= f.label :email, class: "control-label" %>
+  <p>Du skal være logget ind for at indsende events. Tryk på <%=link_to 'opret bruger', new_registration_path(resource_name) %></i> for at oprette en profil.<br/>Denne profil giver dig mulighed for at senere at kunne opdatere dit event, hvis der skulle komme ændringer.</p>
+  <%= f.label :email, class: 'control-label' %>
   <%= f.email_field :email %>
 
-  <%= f.label :password, class: "control-label" %>
+  <%= f.label :password, class: 'control-label' %>
   <%= f.password_field :password %>
 
   <% if devise_mapping.rememberable? -%>
@@ -15,11 +15,11 @@
   <% end %>
 
   <div class="form-actions">
-    <%= f.submit "Log ind", class: "btn btn-large btn-primary" %>
-    <%= link_to "Opret bruger", new_registration_path(resource_name), class: "btn btn-small" %>
+    <%= f.submit 'Log ind', class: 'btn btn-large btn-primary' %>
+    <%= link_to 'Opret bruger', new_registration_path(resource_name), class: 'btn btn-small' %>
   </div>
 
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render 'devise/shared/links' %>
 </div>

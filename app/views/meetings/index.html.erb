@@ -1,5 +1,5 @@
 <div class="container">
-<% content_for(:title, "Liste over møder / events for udviklere")%>
+<% content_for(:title, 'Liste over møder / events for udviklere')%>
 <% content_for(:head) do %>
 	<meta name="description" content="Geekhub.dk er en brugervedligeholdt liste, som lister events/møder som er interessante for udviklere.">	
 <% end %>
@@ -10,26 +10,26 @@
   <div class="row">
     <div class="span9">
       <div class="hidden-tablet hidden-desktop">
-        <%= link_to "Foreslå event", "#eventModal", { class: "btn btn-small", role: "button", 'data-toggle' => "modal" } %>
+        <%= link_to 'Foreslå event', '#eventModal', { class: 'btn btn-small', role: 'button', 'data-toggle' => 'modal'} %>
         <span>eller:</span>
-        <%= link_to "Opret dit event", new_meeting_path %>
+        <%= link_to 'Opret dit event', new_meeting_path %>
       </div>
       <h1>Velkommen til geekhub</h1>
       <div class="intro">
         <p>
           Geekhub.dk er en brugervedligeholdt liste, som lister events/møder som er interessante for udviklere.
-          <%= link_to "Læs mere", om_path %>
+          <%= link_to 'Læs mere', om_path %>
         </p>
       </div>
     </div>
     <div class="span3 hidden-phone">
       <div class="pull-right">
         <div>
-          <%= link_to "Foreslå event", "#eventModal", { class: "big-frontpage-button btn btn-primary btn-large", role: "button", 'data-toggle' => "modal" } %>
+          <%= link_to 'Foreslå event', '#eventModal', { class: 'big-frontpage-button btn btn-primary btn-large', role: 'button', 'data-toggle' => 'modal'} %>
         </div>
         <div class="muted" style="margin: 5px; text-align: center;">
           <span>eller:</span>
-          <%= link_to "Opret dit event", new_meeting_path %>
+          <%= link_to 'Opret dit event', new_meeting_path %>
         </div>
       </div>
     </div>
@@ -38,13 +38,13 @@
     <div class="span4">
       <h2>Hold dig opdateret</h2>
       <p>
-      Få at vide når der kommer nye events på din måde. Tilmeld dig vores <%= link_to  "RSS-feed", rss_path %>, brug vores <%= link_to "kalender-feed", kalender_path %>, få en <%= link_to "mail", meeting_email_alert_subscriptions_path %> eller tryk F5 i vildskab. Du bestemmer.
+      Få at vide når der kommer nye events på din måde. Tilmeld dig vores <%= link_to  'RSS-feed', rss_path %>, brug vores <%= link_to 'kalender-feed', kalender_path %>, få en <%= link_to 'mail', meeting_email_alert_subscriptions_path %> eller tryk F5 i vildskab. Du bestemmer.
       </p>
     </div>
     <div class="span4">
       <h2>Host dit event</h2>
       <p>
-      Hvis du vil holde et event, og har brug for simpel tilmelding, så kan Geekhub hjælpe. Selvfølgelig kan du også <%= link_to "tilføje dit event", new_meeting_path %> uden at bruge vores tilmelding.
+      Hvis du vil holde et event, og har brug for simpel tilmelding, så kan Geekhub hjælpe. Selvfølgelig kan du også <%= link_to 'tilføje dit event', new_meeting_path %> uden at bruge vores tilmelding.
       </p>
     </div>
     <div class="span4">
@@ -56,7 +56,7 @@
   </div>
   <section>
     <div class="row" style="margin-top: 15px;">
-      <%= render "filters" %>
+      <%= render 'filters' %>
     </div>
     <div class="meetings row" style="margin-top: 15px;">
       <div class="span12">
@@ -65,11 +65,11 @@
     </div>
     <div class="row">
       <div class="span12">
-        <%= link_to "Arkiv", archive_meetings_path %>
+        <%= link_to 'Arkiv', archive_meetings_path %>
       </div>
     </div>
   </section>
 </div>
 <!-- Modal -->
-<%= render "suggest_modal" %>
+<%= render 'suggest_modal' %>
 </div>
