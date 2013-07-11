@@ -10,12 +10,12 @@ class MeetingAlertMailer < ActionMailer::Base
   #
   def alert_email meetings, email
 
-    subject = "#{meetings.count} events er blivet oprettet på Geekhub."
+    subject = "#{meetings.length} events er blivet oprettet på Geekhub."
 
     if meetings.length == 1
       subject = "Nyt event på Geekhub: #{meetings.map{|m| m.title}.join(' :: ')}"
     elsif meetings.length < 3
-      subject = "#{meetings.count} nye events på Geekhub: #{meetings.map{|m| m.title}.join(' :: ')}"
+      subject = "#{meetings.length} nye events på Geekhub: #{meetings.map{|m| m.title}.join(' :: ')}"
     end
 
     @meetings = meetings
