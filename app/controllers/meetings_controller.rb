@@ -77,9 +77,9 @@ class MeetingsController < ApplicationController
     meetings = Meeting.unscoped.select('DISTINCT(address)')
 
     if city.blank?
-      respond_with meetings.where('address ILIKE ? AND starts_at >= ? AND address IS NOT NULL', query, after).pluck('address')
+      respond_with meetings.where('address ILIKE ? AND starts_at >= ? AND address IS NOT NULL', query, after).pluck('address').uniq
     else
-      respond_with meetings.where('address ILIKE ? AND starts_at >= ? AND address IS NOT NULL and city_id = ?', query, after, city).pluck('address')
+      respond_with meetings.where('address ILIKE ? AND starts_at >= ? AND address IS NOT NULL and city_id = ?', query, after, city).pluck('address').uniq
     end
   end
 
