@@ -10,14 +10,14 @@ task :alerts => :environment do
 
   meetings = Meeting.available_for_alerts
 
-  puts "- Found #{pluralize(meetings.count, 'meeting')} to send alerts for"
+  puts "- Found #{pluralize(meetings.length, 'meeting')} to send alerts for"
 
   if meetings.length > 0
     puts '- Finding subscriptions'
 
     subscriptions = MeetingEmailAlertSubscription.all
 
-    puts "- Found #{pluralize(subscriptions.count, 'subscription')}"
+    puts "- Found #{pluralize(subscriptions.length, 'subscription')}"
 
     emails = subscriptions.map{|s| s.user.email}
 
