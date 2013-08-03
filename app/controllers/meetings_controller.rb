@@ -74,12 +74,12 @@ class MeetingsController < ApplicationController
     city = params[:city]
     after = Time.now - 6.months
 
-    meetings = Meeting.unscoped.select('DISTINCT(address)')
+    addresses = Meeting.unscoped.select('DISTINCT(address)')
 
     if city.blank?
-      respond_with meetings.where('address ILIKE ? AND starts_at >= ? AND address IS NOT NULL', query, after).pluck('address').uniq
+      respond_with addresses.where('address ILIKE ? AND starts_at >= ? AND address IS NOT NULL', query, after).pluck('address').uniq
     else
-      respond_with meetings.where('address ILIKE ? AND starts_at >= ? AND address IS NOT NULL and city_id = ?', query, after, city).pluck('address').uniq
+      respond_with addresses.where('address ILIKE ? AND starts_at >= ? AND address IS NOT NULL and city_id = ?', query, after, city).pluck('address').uniq
     end
   end
 
