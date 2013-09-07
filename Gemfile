@@ -41,7 +41,7 @@ gem 'twitter'
 
 gem 'rake', '10.0.3'
 
-gem 'bootstrap-sass', '~> 2.3.2'
+gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
 
 gem 'protected_attributes'
 
