@@ -1,15 +1,19 @@
-<div id="eventModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="eventModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
   <%= form_for MeetingSuggestion.new(), html: { style: 'margin: 0'} do |f| %>
   <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Foreslå event</h3>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Foreslå event</h4>
   </div>
   <div class="modal-body">
     <p>
       Her kan du foreslå et event. Skriv web-addressen til eventet, og tryk på foreslå. Vi vil derefter kigge på eventet, og tilføje det til listen.
     </p>
+    <div class="form-group">
     <%= f.label :url %>
-    <%= f.text_field :url, required: true, class: 'span5', type: 'url', placeholder: 'http://example.org' %>
+      <%= f.text_field :url, required: true, class: 'form-control', type: 'url', placeholder: 'http://example.org' %>
+    </div>
     <p>
       <small>
         <strong>Er det dig som holder eventet?</strong>
@@ -18,8 +22,10 @@
     </p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Luk</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Luk</button>
     <input type="submit" class="btn btn-primary" value="Foreslå" />
   </div>
   <% end %>
+</div>
+</div>
 </div>
