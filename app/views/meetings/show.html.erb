@@ -3,7 +3,7 @@
 
 	<article class="meeting row">
 
-		<div class="span7">
+		<div class="col-md-7">
 			<header>
 				<h1><%= link_to @meeting.title, @meeting.url %></h1>
 			</header>
@@ -13,22 +13,22 @@
 			<footer>
         <%= render 'footer' %>
 			</footer>
-			<div class="row-fluid">
+			<div class="row">
 
 				<% if @meeting.joinable && @attendees.count > 0 %>
-          <div class="span6">
+          <div class="col-md-6">
             <%= render 'attendees' %>
           </div>
 				<% end %>
 
 				<% if @meeting.commentable? %>
-  				<div class="span6">
+  				<div class="col-md-6">
  	  				<%= render 'comments' %>
 	  			</div>
 				<% end %>
 			</div>
 		</div>
-		<aside class="span5">
+		<aside class="col-md-5">
 			<span><%= l @meeting.starts_at, format: :short %></span>
 			<%= render partial: 'tags', locals: { meeting: @meeting } %>
 			<div class="map">
