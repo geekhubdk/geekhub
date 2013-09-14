@@ -1,4 +1,4 @@
-<div class="filters span12">
+<div class="filters col-md-12">
   <%= form_tag '', method: :get, remote: true do %>
     <div id="location-filter">
       <% @location_filters.group_by(&:region).each do |region, filters| %>
@@ -8,7 +8,7 @@
             </div>
             <div class="btn-group">
               <% filters.each do |f| %>
-                <label class="btn">
+                <label class="btn btn-default">
                   <%= check_box_tag 'location[]', f.name, is_filter_active(f) %>
                   <%= f.name %>
                 </label>
