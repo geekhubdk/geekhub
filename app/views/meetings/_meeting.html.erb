@@ -1,7 +1,7 @@
 <article class="meeting <%=meeting.city.name.downcase%> <%=meeting.city.region.try(:name).try(:downcase)%>">
   <div class="container">
     <div class="row">
-      <div class="map hidden-phone">
+      <div class="map hidden-xs">
         <% if meeting.city.try(:name) == 'Online' %>
         <div class="online"></div>
         <% else %>
