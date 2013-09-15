@@ -9,4 +9,5 @@
 //= require bootstrap
 //= require jquery.ui.datepicker
 //= require jquery.lazyload
+//= require typeahead
 //= require_tree .

@@ -32,28 +32,11 @@
     });
 
     $("input#meeting_address").typeahead({
-      source: function(query, process) {
-        $.ajax({
-          url: "/meetings/typeahead_address",
-          data: {
-            query: query,
-            city: $("#meeting_city_id").val()
-          },
-          dataType: 'json'
-        }).success(process);
-      }
+      remote: "/meetings/typeahead_address?query=%QUERY"
     });
 
     $("input#meeting_organizer").typeahead({
-      source: function(query, process) {
-        $.ajax({
-          url: "/meetings/typeahead_organizers",
-          data: {
-            query: query
-          },
-          dataType: 'json'
-        }).success(process);
-      }
+      remote: "/meetings/typeahead_organizers?query=%QUERY",
     });
 
     $(".help-tooltip").popover();
