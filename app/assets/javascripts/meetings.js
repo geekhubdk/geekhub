@@ -31,13 +31,13 @@
       });
     });
 
-    $("input#meeting_address").typeahead({
-      remote: "/meetings/typeahead_address?query=%QUERY"
+    $("input#meeting_address").autocomplete({
+      source: "/meetings/typeahead_address",
     });
 
-    $("input#meeting_organizer").typeahead({
-      remote: "/meetings/typeahead_organizers?query=%QUERY",
-    });
+    $("input#meeting_organizer").autocomplete({
+      source: "/meetings/typeahead_organizers",
+    })
 
     $(".help-tooltip").popover();
   });
