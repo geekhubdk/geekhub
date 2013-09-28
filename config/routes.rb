@@ -1,6 +1,6 @@
 Geekhub::Application.routes.draw do
 
-  get '/m/:id' => redirect {|p, req| "/meetings/#{p[:id]}" }
+  get '/m/:id' => redirect {|p, req| "/meetings/#{p[:id]}?utm_source=short_url" }
 
   get "widget" => "widget#show"
   get "widget/example" => "widget#example"
