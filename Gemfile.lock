@@ -195,7 +195,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 2.3.2)
-  coffee-rails (~> 4.0.0)
   devise (= 3.0.0.rc)
   draper (~> 1.0)
   geocoder
