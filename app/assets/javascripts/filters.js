@@ -11,6 +11,7 @@
       var html;
       html = $(".meetings", $(data)).html();
       $(".meetings").html(html);
+      enable_lazy_loaded_images($(".meetings"));
     });
 
     $("#save_filter").click(function() {
