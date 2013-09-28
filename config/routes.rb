@@ -2,6 +2,9 @@ Geekhub::Application.routes.draw do
 
   get '/m/:id' => redirect {|p, req| "/meetings/#{p[:id]}" }
 
+  get "widget" => "widget#show"
+  get "widget/example" => "widget#example"
+  
   get 'attendees/create'
 
   get 'datapolitik' => 'static_pages#datapolitik'

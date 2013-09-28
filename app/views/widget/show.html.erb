@@ -1,0 +1,67 @@
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css">
+<style>
+body {
+  margin: 0;
+}
+
+#geekhub-widget-container {
+  margin: 0;
+  font-family: 'Open Sans', arial, sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: #111;
+}
+
+#geekhub-widget-container * {
+  font-family: 'Open Sans', arial, sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  color: #111;
+}
+#geekhub-widget-container .geekhub-widget-header {
+  background-color: #0072BB;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 4px 8px;
+}
+#geekhub-widget-container .geekhub-widget-meeting {
+  border-bottom: 1px solid #E5E5E5;
+  border-left: 1px solid #E5E5E5;
+  border-right: 1px solid #E5E5E5;
+  padding: 8px;
+  background: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 17px;
+  text-overflow: ellipsis;
+}
+
+#geekhub-widget-container .geekhub-widget-meeting a {
+  color: #111;
+  text-decoration: none;
+}
+
+#geekhub-widget-container .geekhub-widget-meeting small {
+  color: #888;
+}
+
+#geekhub-widget-container .geekhub-widget-meeting .geekhub-widget-date {
+  display: inline;
+  font-weight: 400;
+}
+</style>
+<div id="geekhub-widget-container" style="overflow:hidden;">
+
+<a class="geekhub-widget-header" href="<%=root_url%>" target="_blank"><%=@title%></a>
+<div class="geekhub-widget-meetings">
+  <% @meetings.each do |meeting| %>
+  <div class="geekhub-widget-meeting" title="<%= "#{meeting.city.name} - #{l meeting.starts_at, format: :short} - #{meeting.title}" %>">
+    <div class="geekhub-widget-date">
+      <%= l meeting.starts_at, format: "%d. %b" %>
+    </div>
+    <span class="geekhub-widget-dash"> - </span>
+    <a href="<%= meeting_url(meeting) %>" target="_blank"><%= meeting.title %> - <small><%=meeting.city.name %></small></a>
+  </div>
+  <% end %>
+</div>
