@@ -53,7 +53,7 @@ body {
 </style>
 <div id="geekhub-widget-container" style="overflow:hidden;">
 
-<a class="geekhub-widget-header" href="<%=root_url%>" target="_blank"><%=@title%></a>
+<a class="geekhub-widget-header" href="<%=root_url(utm_source: "widget")%>" target="_blank"><%=@title%></a>
 <div class="geekhub-widget-meetings">
   <% @meetings.each do |meeting| %>
   <div class="geekhub-widget-meeting" title="<%= "#{meeting.city.name} - #{l meeting.starts_at, format: :short} - #{meeting.title}" %>">
@@ -61,7 +61,7 @@ body {
       <%= l meeting.starts_at, format: "%d. %b" %>
     </div>
     <span class="geekhub-widget-dash"> - </span>
-    <a href="<%= meeting_url(meeting) %>" target="_blank"><%= meeting.title %> - <small><%=meeting.city.name %></small></a>
+    <a href="<%= meeting_url(meeting, utm_source: "widget") %>" target="_blank"><%= meeting.title %> - <small><%=meeting.city.name %></small></a>
   </div>
   <% end %>
 </div>
