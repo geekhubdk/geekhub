@@ -83,4 +83,38 @@ class MeetingTest < ActiveSupport::TestCase
     a.save
     assert !m.can_attend?
   end
+
+  test "upcomming meetings is available for alerts when no yet alerted and over 3 hours old" do
+    Meeting.destroy_all
+
+    available_meeting = Meeting.new({ :created_at => 3.hours.ago - 1.minute, :starts_at => 2.days.from_now })
+    available_meeting.save(:validate => false)
+    meeting_that_is_too_soon = Meeting.new({ :created_at => 3.hours.ago + 1.minute, :starts_at => 2.days.from_now })
+    meeting_that_is_too_soon.save(:validate => false)
+    meeting_that_is_already_sent = Meeting.new({ :created_at => 3.hours.ago - 1.minute, :starts_at => 2.days.from_now })
+    meeting_that_is_already_sent.meeting_email_alerts.new()
+    meeting_that_is_already_sent.save(:validate => false)
+    
+    meetings = Meeting.available_for_alerts
+
+    assert_equal 1, meetings.length, "should find one meeting"
+    assert_equal available_meeting, meetings.first, "should be the available meeting"
+  end
+
+  test "upcomming meetings is available for tweets when no yet alerted and over 5 minuttes old" do
+    Meeting.destroy_all
+
+    available_meeting = Meeting.new({ :created_at => 6.minutes.ago, :starts_at => 2.days.from_now })
+    available_meeting.save(:validate => false)
+    meeting_that_is_too_soon = Meeting.new({ :created_at => 4.minutes.ago, :starts_at => 2.days.from_now })
+    meeting_that_is_too_soon.save(:validate => false)
+    meeting_that_is_already_sent = Meeting.new({ :created_at => 6.minutes.ago, :starts_at => 2.days.from_now })
+    meeting_that_is_already_sent.meeting_tweet_alerts.new()
+    meeting_that_is_already_sent.save(:validate => false)
+    
+    meetings = Meeting.available_for_tweet_alerts
+
+    assert_equal 1, meetings.length, "should find one meeting"
+    assert_equal available_meeting, meetings.first, "should be the available meeting"
+  end
 end
