@@ -61,7 +61,17 @@ body {
       <%= l meeting.starts_at, format: "%d. %b" %>
     </div>
     <span class="geekhub-widget-dash"> - </span>
-    <a href="<%= meeting_url(meeting, utm_source: "widget") %>" target="_blank"><%= meeting.title %> - <small><%=meeting.city.name %></small></a>
+    <a href="<%= meeting_url(meeting, utm_medium: "widget") %>" target="_blank"><%= meeting.title %> - <small><%=meeting.city.name %></small></a>
   </div>
   <% end %>
 </div>
+<script type="text/javascript">
+  var elements = document.querySelectorAll(".geekhub-widget-meetings a");
+
+  for (var i = 0; i < elements.length; i++) {
+    element = elements[i];
+    element.href += "&utm_source=" + document.referrer;
+    // Do something with element i.
+  }
+
+</script>
