@@ -2,21 +2,28 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <legend>Log ind</legend>
   <p>Du skal være logget ind for at indsende events. Tryk på <%=link_to 'opret bruger', new_registration_path(resource_name) %></i> for at oprette en profil.<br/>Denne profil giver dig mulighed for at senere at kunne opdatere dit event, hvis der skulle komme ændringer.</p>
-  <%= f.label :email, class: 'control-label' %>
-  <%= f.email_field :email %>
-
+  <div class="form-group">
+    <%= f.label :email, class: 'control-label' %>
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
+  <div class="form-group">
   <%= f.label :password, class: 'control-label' %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password, class: "form-control"  %>
+  </div>
 
   <% if devise_mapping.rememberable? -%>
-    <label class="checkbox">
-      <%= f.check_box :remember_me %> Husk mig
-    </label>
+    <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :remember_me %> Husk mig
+        </label>
+      </div>
+    </div>
   <% end %>
 
-  <div class="form-actions">
-    <%= f.submit 'Log ind', class: 'btn btn-large btn-primary' %>
-    <%= link_to 'Opret bruger', new_registration_path(resource_name), class: 'btn btn-small' %>
+  <div class="form-group">
+    <%= f.submit 'Log ind', class: 'btn btn-primary' %>
+    <%= link_to 'Opret bruger', new_registration_path(resource_name), class: 'btn' %>
   </div>
 
 <% end %>

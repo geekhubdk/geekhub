@@ -1,6 +1,5 @@
-$navbarBackground: #0072BB;
-$navbarBackgroundHighlight: #1F93DE;
-$navbarText: #fff;
+$navbar-default-bg: #1F93DE;
+$navbar-default-link-color: #fff;
 $navbarBrandColor: #fff;
 $navbarLinkColor: #fff;
 
@@ -136,4 +135,3 @@ form {
 @import "attendees";
 @import "organizers";
 @import "modules/main_nav";
-@import "bootstrap-responsive";

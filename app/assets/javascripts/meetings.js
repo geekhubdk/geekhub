@@ -31,30 +31,13 @@
       });
     });
 
-    $("input#meeting_address").typeahead({
-      source: function(query, process) {
-        $.ajax({
-          url: "/meetings/typeahead_address",
-          data: {
-            query: query,
-            city: $("#meeting_city_id").val()
-          },
-          dataType: 'json'
-        }).success(process);
-      }
+    $("input#meeting_address").autocomplete({
+      source: "/meetings/typeahead_address",
     });
 
-    $("input#meeting_organizer").typeahead({
-      source: function(query, process) {
-        $.ajax({
-          url: "/meetings/typeahead_organizers",
-          data: {
-            query: query
-          },
-          dataType: 'json'
-        }).success(process);
-      }
-    });
+    $("input#meeting_organizer").autocomplete({
+      source: "/meetings/typeahead_organizers",
+    })
 
     $(".help-tooltip").popover();
   });

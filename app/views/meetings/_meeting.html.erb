@@ -1,23 +1,28 @@
-<article class="meeting">
-  <div class="map hidden-phone">
-    <% if meeting.city.try(:name) == 'Online' %>
-      <div class="online"></div>
-    <% else %>
-      <% if !meeting.address.blank? %>
+<article class="meeting <%=meeting.city.name.downcase%> <%=meeting.city.region.try(:name).try(:downcase)%>">
+  <div class="container">
+    <div class="row">
+      <div class="map hidden-xs">
+        <% if meeting.city.try(:name) == 'Online' %>
+        <div class="online"></div>
+        <% else %>
+        <% if !meeting.address.blank? %>
         <%= google_maps_image_link meeting.address, 250, 150 %>
-      <% elsif !meeting.city.nil? %>
+        <% elsif !meeting.city.nil? %>
         <%= google_maps_image_link meeting.city.name, 250, 150 %>
-      <% end %>
-    <% end %>
+        <% end %>
+        <% end %>
+      </div>
+      <div>
+        <%= friendly_date(meeting.starts_at) %>
+      </div>
+      <h1>
+        <%= link_to meeting.title, meeting, title: meeting.title %>
+      </h1>
+      <div>
+        <%= render partial: 'tags', locals: { meeting: meeting } %>
+      </div>
+    </div>  
   </div>
-  <div>
-    <%= friendly_date(meeting.starts_at) %>
-  </div>
-  <h1>
-      <%= link_to meeting.title, meeting, title: meeting.title %>
-  </h1>
-  <div>
-    <%= render partial: 'tags', locals: { meeting: meeting } %>
-  </div>
+  
 </article>
 

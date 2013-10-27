@@ -1,71 +1,51 @@
-<div class="container">
 <% content_for(:title, 'Liste over møder / events for udviklere')%>
 <% content_for(:head) do %>
-	<meta name="description" content="Geekhub.dk er en brugervedligeholdt liste, som lister events/møder som er interessante for udviklere.">	
+<meta name="description" content="Geekhub.dk er en brugervedligeholdt liste, som lister events/møder som er interessante for udviklere.">	
 <% end %>
 <div id="events">
-  <div class="row">
-    <div class="span12"><%= render 'shared/navigation' %></div>
-  </div>
-  <div class="row">
-    <div class="span9">
-      <div class="hidden-tablet hidden-desktop">
-        <%= link_to 'Foreslå event', '#eventModal', { class: 'btn btn-small', role: 'button', 'data-toggle' => 'modal'} %>
-        <span>eller:</span>
-        <%= link_to 'Opret dit event', new_meeting_path %>
-      </div>
-      <h1>Velkommen til geekhub</h1>
-      <div class="intro">
-        <p>
-          Geekhub.dk er en brugervedligeholdt liste, som lister events/møder som er interessante for udviklere.
-          <%= link_to 'Læs mere', om_path %>
-        </p>
-      </div>
-    </div>
-    <div class="span3 hidden-phone">
-      <div class="pull-right">
-        <div>
-          <%= link_to 'Foreslå event', '#eventModal', { class: 'big-frontpage-button btn btn-primary btn-large', role: 'button', 'data-toggle' => 'modal'} %>
-        </div>
-        <div class="muted" style="margin: 5px; text-align: center;">
-          <span>eller:</span>
-          <%= link_to 'Opret dit event', new_meeting_path %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Velkommen til geekhub</h1>
+        <div class="intro">
+          <p>
+            Geekhub.dk er en brugervedligeholdt liste, som lister events/møder som er interessante for udviklere.
+            <%= link_to 'Læs mere', om_path %>
+          </p>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row hidden-phone">
-    <div class="span4">
-      <h2>Hold dig opdateret</h2>
-      <p>
-      Få at vide når der kommer nye events på din måde. Tilmeld dig vores <%= link_to  'RSS-feed', rss_path %>, brug vores <%= link_to 'kalender-feed', kalender_path %>, få en <%= link_to 'mail', meeting_email_alert_subscriptions_path %> eller tryk F5 i vildskab. Du bestemmer.
-      </p>
-    </div>
-    <div class="span4">
-      <h2>Host dit event</h2>
-      <p>
-      Hvis du vil holde et event, og har brug for simpel tilmelding, så kan Geekhub hjælpe. Selvfølgelig kan du også <%= link_to 'tilføje dit event', new_meeting_path %> uden at bruge vores tilmelding.
-      </p>
-    </div>
-    <div class="span4">
-      <h2>For alle udviklere</h2>
-      <p>
-      Vi er ligeglade med hvilket programmeringssprog du bruger. Ved du at nogen holder et event omkring noget PHP, Java eller måske LOL-code, så tag at <a href="#eventModal" data-toggle="modal">foreslå det til listen</a>.
-      </p>
+      <div class="col-md-3 hidden-xs">
+        <div class="pull-right">
+          <div style="margin-top: 25px;">
+            <%= link_to 'Foreslå event', '#eventModal', { class: 'big-frontpage-button btn btn-primary btn-large', role: 'button', 'data-toggle' => 'modal'} %>
+          </div>
+          <div class="muted" style="margin: 5px; text-align: center;">
+            <span>eller:</span>
+            <%= link_to 'Opret dit event', new_meeting_path %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <section>
-    <div class="row" style="margin-top: 15px;">
-      <%= render 'filters' %>
+    <div class="container">
+
+      <div class="row" style="margin-top: 15px;">
+        <%= render 'filters' %>
+      </div>
     </div>
-    <div class="meetings row" style="margin-top: 15px;">
-      <div class="span12">
+
+    <div class="container">
+      <div class="meetings" style="margin-top: 15px;">
         <%= render @meetings%>
       </div>
     </div>
-    <div class="row">
-      <div class="span12">
-        <%= link_to 'Arkiv', archive_meetings_path %>
+    <div class="container">
+
+      <div class="row">
+        <div class="span12">
+          <%= link_to 'Arkiv', archive_meetings_path %>
+        </div>
       </div>
     </div>
   </section>

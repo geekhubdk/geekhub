@@ -8,5 +8,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.ui.datepicker
+//= require jquery.ui.autocomplete
 //= require jquery.lazyload
 //= require_tree .

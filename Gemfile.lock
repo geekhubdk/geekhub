@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
+  revision: 1344c58711e9ba30cbbd028908ea3fe6df73969d
+  branch: 3
+  specs:
+    bootstrap-sass (3.0.0.0)
+      sass (~> 3.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -29,8 +37,6 @@ GEM
     arel (4.0.0)
     atomic (1.1.10)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.3.2.0)
-      sass (~> 3.2)
     builder (3.1.4)
     coderay (1.0.9)
     coffee-rails (4.0.0)
@@ -145,7 +151,7 @@ GEM
     rb-kqueue (0.2.0)
       ffi (>= 0.5.0)
     request_store (1.0.5)
-    sass (3.2.9)
+    sass (3.2.10)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
@@ -194,7 +200,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 2.3.2)
+  bootstrap-sass!
   devise (= 3.0.0.rc)
   draper (~> 1.0)
   geocoder

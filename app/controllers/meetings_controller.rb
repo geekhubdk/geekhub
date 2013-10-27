@@ -70,7 +70,7 @@ class MeetingsController < ApplicationController
   end
 
   def typeahead_address
-    query = '%' + params[:query] + '%'
+    query = '%' + params[:term] + '%'
     city = params[:city]
     after = Time.now - 6.months
 
@@ -84,7 +84,7 @@ class MeetingsController < ApplicationController
   end
 
   def typeahead_organizers
-    query = '%' + params[:query] + '%'
+    query = '%' + params[:term] + '%'
     after = Time.now - 6.months
     respond_with Meeting.unscoped
                    .select('DISTINCT(organizer)')
