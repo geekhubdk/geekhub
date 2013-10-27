@@ -33,9 +33,12 @@ class MeetingsControllerTest < ActionController::TestCase
   test 'should create meeting' do
     sign_in User.first
     assert_difference('Meeting.count') do
-      post :create, meeting: @meeting.attributes
+      post :create, meeting: @meeting.attributes.merge!({:title => "new", :tag_names => "Closure, Java"})
     end
 
+    created_meeting = Meeting.unscoped.find_by(title: "new")
+    assert_equal 2, created_meeting.tags.count
+    assert_equal "closure,java", created_meeting.tag_names
     assert_equal I18n.t('meeting.added'), flash[:notice]
     assert_redirected_to root_path()
   end
@@ -66,8 +69,12 @@ class MeetingsControllerTest < ActionController::TestCase
   
   test 'should update meeting' do
     sign_in User.first
-    put :update, id: @meeting.to_param, meeting: @meeting.attributes, approve: true
+    put :update, id: @meeting.to_param, meeting: @meeting.attributes.merge!({:tag_names => "Closure, Java"}), approve: true
     
+    updated_meeting = Meeting.unscoped.find(@meeting.id)
+    assert_equal 2, updated_meeting.tags.count
+    assert_equal "closure,java", updated_meeting.tag_names
+
     assert_equal I18n.t('meeting.updated'), flash[:notice]
     assert_redirected_to root_path()
   end

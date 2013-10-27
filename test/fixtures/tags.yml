@@ -2,8 +2,8 @@
 
 one:
   id: 1
-  name: .NET
+  name: .net
 
 two:
   id: 2
-  name: JavaScript
+  name: javascript

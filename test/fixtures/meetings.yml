@@ -2,7 +2,7 @@
 
 one:
   id: 1
-  title: MyString
+  title: Meeting 1
   starts_at: 2100-12-12 13:59:34
   city_id: 1
   organizer: ONUG
