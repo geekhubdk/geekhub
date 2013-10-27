@@ -13,6 +13,8 @@ class Meeting < ActiveRecord::Base
   has_many :attendees
   has_many :meeting_email_alerts
   has_many :meeting_tweet_alerts
+  has_many :meeting_tags, :dependent => :destroy
+  has_many :tags, :through => :meeting_tags
   has_many :comments, :as => :commentable
 
   geocoded_by :geocode_location
@@ -33,10 +35,10 @@ class Meeting < ActiveRecord::Base
   end
 
   def self.filter(filters)
-    m = filters[:all] == '1' ? Meeting.all : Meeting.upcoming
+    m = filters[:all] == '1' ? Meeting.includes(:meeting_tags => :tag) : Meeting.upcoming.includes(:meeting_tags => :tag)
 
     location_filters = build_location_filters(m)
-
+    m = m.select{|x| x.tags.any?{|t| param_match(t.name,filters[:tag])}} if filters[:tag].present?
     m = m.select{|x| param_match(x.organizer,filters[:organizer])}
     m = m.select{|x| param_match(x.city.name,filters[:location])}
     m = m.select{|x| param_match(x.city.region.try(:name),filters[:region])}

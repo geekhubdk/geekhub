@@ -9,67 +9,80 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607153709) do
+ActiveRecord::Schema.define(version: 20131027101128) do
 
-  create_table "attendees", :force => true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "attendees", force: true do |t|
     t.string   "name"
     t.string   "email"
     t.integer  "meeting_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "twitter"
   end
 
-  create_table "cities", :force => true do |t|
+  create_table "cities", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "region_id"
   end
 
-  create_table "comments", :force => true do |t|
+  create_table "comments", force: true do |t|
     t.string   "email"
     t.text     "content"
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "name"
   end
 
-  create_table "meeting_email_alert_subscriptions", :force => true do |t|
+  create_table "meeting_email_alert_subscriptions", force: true do |t|
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "meeting_email_alert_subscriptions", ["user_id"], :name => "index_meeting_email_alert_subscriptions_on_user_id"
+  add_index "meeting_email_alert_subscriptions", ["user_id"], name: "index_meeting_email_alert_subscriptions_on_user_id", using: :btree
 
-  create_table "meeting_email_alerts", :force => true do |t|
+  create_table "meeting_email_alerts", force: true do |t|
     t.integer  "meeting_id"
     t.string   "emails"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "meeting_suggestions", :force => true do |t|
+  create_table "meeting_suggestions", force: true do |t|
     t.string   "url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "meeting_tweet_alerts", :force => true do |t|
+  create_table "meeting_tags", force: true do |t|
     t.integer  "meeting_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "meeting_tweet_alerts", ["meeting_id"], :name => "index_meeting_tweet_alerts_on_meeting_id"
+  add_index "meeting_tags", ["meeting_id"], name: "index_meeting_tags_on_meeting_id", using: :btree
+  add_index "meeting_tags", ["tag_id"], name: "index_meeting_tags_on_tag_id", using: :btree
 
-  create_table "meetings", :force => true do |t|
+  create_table "meeting_tweet_alerts", force: true do |t|
+    t.integer  "meeting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "meeting_tweet_alerts", ["meeting_id"], name: "index_meeting_tweet_alerts_on_meeting_id", using: :btree
+
+  create_table "meetings", force: true do |t|
     t.string   "title"
     t.datetime "starts_at"
     t.string   "organizer"
@@ -85,42 +98,48 @@ ActiveRecord::Schema.define(:version => 20130607153709) do
     t.float    "longitude"
     t.integer  "city_id"
     t.string   "address"
-    t.boolean  "joinable",        :default => false
+    t.boolean  "joinable",        default: false
     t.integer  "capacity"
-    t.integer  "attendees_count", :default => 0
-    t.integer  "comments_count",  :default => 0
+    t.integer  "attendees_count", default: 0
+    t.integer  "comments_count",  default: 0
   end
 
-  create_table "organizers", :force => true do |t|
+  create_table "organizers", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "url"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table "regions", :force => true do |t|
+  create_table "regions", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "user_roles", :force => true do |t|
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_roles", force: true do |t|
     t.integer  "user_id"
     t.string   "role"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "user_roles", ["user_id"], :name => "index_user_roles_on_user_id"
+  add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id", using: :btree
 
-  create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+  create_table "users", force: true do |t|
+    t.string   "email",                              default: "", null: false
+    t.string   "encrypted_password",     limit: 128, default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",                      default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -129,7 +148,7 @@ ActiveRecord::Schema.define(:version => 20130607153709) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
