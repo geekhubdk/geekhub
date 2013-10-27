@@ -294,7 +294,7 @@ da:
         costs_money: "Det koster penge at deltage"
         address: "Adresse"
         capacity: "Kapacitet"
-        tag_names: "Teknologier"
+        tag_names: "Tags"
       organizer:
         name: "Navn"
         description: "Kort beskrivelse"
