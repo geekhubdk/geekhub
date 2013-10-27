@@ -1,9 +1,14 @@
 <div class="tags">
-	<div class="tags-tag location"><%= meeting.city.try(:name) %></div>
+	<div class="tags-tag location"><%= meeting.city.try(:name).downcase %></div>
 	<% unless meeting.costs_money %>
-	<div class="tags-tag free">Gratis</div>
+	<% meeting.tags.each do |t| %>
+		<div class="tags-tag technology">
+			<%= t.name.downcase %>
+		</div>
 	<% end %>
-	<div class="tags-tag organizer"><%= meeting.organizer %></div>
+	<div class="tags-tag free">gratis</div>
+	<% end %>
+	<div class="tags-tag organizer"><%= meeting.organizer.downcase %></div>
 	<% if meeting.joinable? %>
 	<div class="tags-tag attendees">
 		<div class="image">
@@ -16,4 +21,5 @@
 		<%= pluralize meeting.comments_count, 'kommentar', 'kommentarer' %>
 	</div>
 	<% end %>
+
 </div>
