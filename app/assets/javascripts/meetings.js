@@ -39,6 +39,12 @@
       source: "/meetings/typeahead_organizers",
     })
 
+    $("input#meeting_tag_names").each(function() {
+        var element = $(this);
+        var tags = jQuery.parseJSON(element.attr("data-tags"));
+        element.select2({tags:tags, tokenSeparators: [","]});
+    });
+
     $(".help-tooltip").popover();
   });
 

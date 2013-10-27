@@ -73,7 +73,9 @@
           </div>
           <div class="form-group">
             <%= f.label :tag_names %>
-            <%= f.text_field :tag_names, class: "form-control" %> (valgfri, f.eks. .net, ruby, javascript)
+            <div>
+              <%= f.text_field :tag_names, style: "width: 100%", "data-tags" => @tags.to_json %> (valgfri, f.eks. .net, ruby, javascript)
+            </div>
           </div>
         </div>
       </div>

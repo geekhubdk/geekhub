@@ -1,6 +1,7 @@
 class MeetingsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show, :save_filter, :archive]
   before_filter :find_meeting, :only => [:show, :update, :edit, :destroy]
+  before_filter :list_tags, :only => [:new, :update, :edit, :destroy]
   before_filter :ensure_that_user_can_edit, only: [:update, :edit, :destroy]
 
   respond_to :html, :rss, :ics, only: [ :index ]
@@ -100,6 +101,10 @@ private
 
   def find_meeting
     @meeting = Meeting.find(params[:id]).decorate
+  end
+
+  def list_tags
+    @tags = Tag.select('DISTINCT(name)').collect{|t| t.name}
   end
 
   def ensure_that_user_can_edit

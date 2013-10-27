@@ -10,4 +10,6 @@
 //= require jquery.ui.datepicker
 //= require jquery.ui.autocomplete
 //= require jquery.lazyload
+//= require select2
+//= require select2_locale_da
 //= require_tree .
