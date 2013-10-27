@@ -128,4 +128,22 @@ class MeetingTest < ActiveSupport::TestCase
     assert m2.tags.any?{|m| m.name == "closure"}
     assert m2.tags.any?{|m| m.name == "java"}
   end
+
+  test "should be able to assign zero tags" do
+    m = meetings(:one)
+    m.tag_names = ""
+    m.save
+
+    m2 = Meeting.find(m.id)
+    assert m2.tag_names = ""
+  end
+
+  test "empty tags, should be omitted" do
+    m = meetings(:one)
+    m.tag_names = ".NET, ,Ruby On Rails, "
+    m.save
+
+    m2 = Meeting.find(m.id)
+    assert m2.tag_names = ".net,ruby on rails"
+  end
 end
