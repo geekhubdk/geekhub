@@ -118,7 +118,7 @@ class MeetingTest < ActiveSupport::TestCase
     assert_equal available_meeting, meetings.first, "should be the available meeting"
   end
 
-  test "should be able to insert tags by created a comma-seperated string og tag_names" do
+  test "should be able to insert tags by created a comma-seperated string of tag_names" do
     m = meetings(:one)
     m.tag_names = "Closure, Java"
     m.save
