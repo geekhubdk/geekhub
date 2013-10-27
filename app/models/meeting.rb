@@ -17,14 +17,20 @@ class Meeting < ActiveRecord::Base
   has_many :tags, :through => :meeting_tags
   has_many :comments, :as => :commentable
 
+  attr_writer :tag_names
+
   geocoded_by :geocode_location
   after_validation :geocode
 
+  after_save :assign_tags
+  
+  def tag_names
+    @tag_names || tags.map(&:name).join(',')
+  end
 
   def month
     self.starts_at.strftime('%m')
   end
-
 
   def geocode_location
     unless address.blank?
@@ -105,6 +111,14 @@ class Meeting < ActiveRecord::Base
   end
 
 private
+
+  def assign_tags
+    if @tag_names
+      self.tags = @tag_names.split(/,+/).map do |name|
+        Tag.find_or_create_by(name: name)
+      end
+    end
+  end
 
   def self.param_match value, param
     return true if value.nil?
