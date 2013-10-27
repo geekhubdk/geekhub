@@ -44,10 +44,10 @@ class Meeting < ActiveRecord::Base
     m = filters[:all] == '1' ? Meeting.includes(:meeting_tags => :tag) : Meeting.upcoming.includes(:meeting_tags => :tag)
 
     location_filters = build_location_filters(m)
-    m = m.select{|x| x.tags.any?{|t| param_match(t.name,filters[:tag])}} if filters[:tag].present?
-    m = m.select{|x| param_match(x.organizer,filters[:organizer])}
-    m = m.select{|x| param_match(x.city.name,filters[:location])}
-    m = m.select{|x| param_match(x.city.region.try(:name),filters[:region])}
+    m = m.select{|x| param_match(x.tags.map(&:name),filters[:tag])} if filters[:tag].present?
+    m = m.select{|x| param_match(x.organizer,filters[:organizer])} if filters[:organizer].present?
+    m = m.select{|x| param_match(x.city.name,filters[:location])} if filters[:location].present?
+    m = m.select{|x| param_match(x.city.region.try(:name),filters[:region])} if filters[:region].present?
 
     MeetingFilterResult.new(m, location_filters)
   end
@@ -100,16 +100,6 @@ class Meeting < ActiveRecord::Base
     Meeting.upcoming.includes(:meeting_tweet_alerts).where('meeting_tweet_alerts.id IS NULL and meetings.created_at < ?', 5.minutes.ago).references(:meeting_email_alerts)
   end
 
-  class MeetingFilterResult
-    attr_reader :meetings, :location_filters
-
-    def initialize meetings, location_filters
-      @meetings = meetings
-      @location_filters = location_filters
-    end
-
-  end
-
 private
 
   def assign_tags
@@ -121,8 +111,8 @@ private
   end
 
   def self.param_match value, param
-    return true if value.nil?
-    param.blank? || [*param].any?{|p| p.downcase == value.downcase}
+    return false if [*value].empty?
+    param.blank? || [*param].any?{|p| [*value].any?{|v| p.downcase == v.downcase}}
   end
 
   def self.build_location_filters meetings
