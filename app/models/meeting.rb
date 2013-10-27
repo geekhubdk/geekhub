@@ -44,10 +44,10 @@ class Meeting < ActiveRecord::Base
     m = filters[:all] == '1' ? Meeting.includes(:meeting_tags => :tag) : Meeting.upcoming.includes(:meeting_tags => :tag)
 
     location_filters = build_location_filters(m)
-    m = m.select{|x| param_match(x.tags.map(&:name),filters[:tag])} if filters[:tag].present?
-    m = m.select{|x| param_match(x.organizer,filters[:organizer])} if filters[:organizer].present?
-    m = m.select{|x| param_match(x.city.name,filters[:location])} if filters[:location].present?
-    m = m.select{|x| param_match(x.city.region.try(:name),filters[:region])} if filters[:region].present?
+    m = m.select{|x| param_match(x.tags.map(&:name),filters[:tag])}
+    m = m.select{|x| param_match(x.organizer,filters[:organizer])}
+    m = m.select{|x| param_match(x.city.name,filters[:location])}
+    m = m.select{|x| param_match(x.city.region.try(:name),filters[:region])}
 
     MeetingFilterResult.new(m, location_filters)
   end
@@ -111,6 +111,7 @@ private
   end
 
   def self.param_match value, param
+    return true unless param.present?
     return false if [*value].empty?
     param.blank? || [*param].any?{|p| [*value].any?{|v| p.downcase == v.downcase}}
   end
