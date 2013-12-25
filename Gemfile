@@ -52,6 +52,7 @@ group :production do
 end
 
 group :development, :test do
+  gem "spring"
   # Pretty printed test output
   gem 'minitest'
   gem 'minitest-reporters', '>= 0.5.0'
