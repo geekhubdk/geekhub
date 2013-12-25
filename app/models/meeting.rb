@@ -85,7 +85,7 @@ class Meeting < ActiveRecord::Base
   end
   
   def commentable?
-    true
+    self.joinable
   end
 
   def is_online
