@@ -63,10 +63,24 @@
     <div class="container">
 
       <div class="row">
-        <div class="span12">
-          <%= link_to 'Arkiv', archive_meetings_path %>
+        <div class="span12" style="margin-right: 20px; margin-left: 20px; margin-bottom: 20px; overflow: hidden;">
+          <div style="float:left;">
+            <%= link_to 'Mangler et møde? Foreslå det til listen', archive_meetings_path, class: "btn btn-default", 'data-toggle'=> 'modal', href: "#eventModal" %>
+          </div>
+          <div style="float:right;">
+            <%= link_to 'Se tidligere møder', archive_meetings_path, class: "btn btn-default" %>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="container">
+      <section class="focus-area">
+        <a href="http://nextup.geekhub.dk">
+          <h1>Vær med til at skabe Geekhub</h1>
+          <p>Stem på din yndlings feature, deltag i dialog, og få tidlig adgang.</p>
+          <p class="underlined">Se listen af features her!</p>
+        </a>
+      </section>
     </div>
   </section>
 </div>

@@ -122,12 +122,45 @@ form {
   cursor: pointer;
 }
 
+.underlined {
+  text-decoration: underline;
+}
+
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .hidden-high-res {
     display: none;
   }
   .hidden-normal-res {
     display: inherit;
+  }
+}
+
+.focus-area {
+  text-align: center;
+  border: 1px solid #C6C6C6;
+  border-left: 5px solid #e67e22;
+  border-right: 5px solid #e67e22;
+  padding: 20px;
+  overflow: hidden;
+
+  a {
+    color: #000;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h1, p {
+    margin: 0;
+  }
+
+  p {
+    line-height: 1.8em;
   }
 }
 
