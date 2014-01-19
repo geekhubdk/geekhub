@@ -45,28 +45,15 @@ private
       capacity: meeting.capacity
     }
 
-    if(params[:show_hidden] == "1")
-      m["suggested_by"] = meeting.suggested_by
-      m["user"] = meeting.user.try(:email)
-    end
-
     return m
   end
 
   def attendee_json(a)
-    if(params[:show_hidden] == "1")
-      {name: a.name, email: a.email, twitter: a.twitter}
-    else
-      {name: a.name, twitter: a.twitter}
-    end
+    {name: a.name, twitter: a.twitter}
   end
 
   def comment_json(c)
-    if(params[:show_hidden] == "1")
-      {email: c.email, content: c.content, name: c.name, created_at: c.created_at}
-    else
-      {content: c.content, name: c.name, created_at: c.created_at}
-    end
+    {content: c.content, name: c.name, created_at: c.created_at}
   end
 
   def tag_json(t)
