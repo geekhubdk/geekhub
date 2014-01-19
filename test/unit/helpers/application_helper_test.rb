@@ -21,12 +21,4 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_match /gravatar/, actual
     assert_match /http:\/\/www.geekhub\.dk\/person.png/, actual, 'should use person.png as default image'
   end
-
-  test 'avatar_url_for_attendee, returns twitter if twitter is not empty' do
-    skip # Twitter API no longer supported. Must be replased by new API
-
-    actual = avatar_url_for_attendee(Attendee.new({ email: 'test@test.dk', twitter: 'jesperbjensen'}))
-
-    assert_match /twitter/, actual 
-  end
 end
