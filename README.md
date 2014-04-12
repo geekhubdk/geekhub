@@ -10,3 +10,8 @@ If you need any help, or have any questions just create an issue in the issue tr
 
 #Contributing
 Everybody is very welcome to help building a better Geekhub. If you like, then take a look in the issue list, and see if there is anything you whould like to fix. If you have a awesome idea - make an issue so we can discuss.
+
+#Getting it to run
+* Clone the repository localy.
+* Press that F5 key :)
+* Mails is delivered to a local folder on your drive: C:\mails. Use a mail client to open (like Thunderbird).
