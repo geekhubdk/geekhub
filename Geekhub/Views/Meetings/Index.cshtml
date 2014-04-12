@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Geekhub.App.Modules.Meetings.Models.Meeting>
+
+<div class="site-content">
+    <section id="toolbar">
+        <div class="wrapper">
+            <a href="@Url.Action("Create", "Meetings")">Indsend et event</a>
+        </div>
+    </section>
+    @Html.Partial("_Meetings")
+    <div class="footer-call-to-action">
+        <p><strong>Har vi glemt noget?</strong> <a href="@Url.Action("Create", "Meetings")">Indsend et event</a> - det vil vi være glade for :)</p>
+        <p><strong>Følg med:</strong> <a href="@Url.Action("Create","NewsletterSubscriptions")" target="_blank">Tilmeld dig en alert-mail</a>, eller følg os på <a href="http://www.twitter.com/geekhubdk">Twitter</a>.</p>
+    </div>
+</div>

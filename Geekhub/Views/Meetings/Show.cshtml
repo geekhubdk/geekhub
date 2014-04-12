@@ -1,0 +1,86 @@
+﻿@using System.Globalization
+@using Geekhub.App.Core.Support
+@model Geekhub.App.Modules.Meetings.Models.Meeting
+@{
+    ViewBag.Title = Model.Title + "- Geekhub.dk";
+    
+    var lat = Model.Latitude.GetValueOrDefault(0).ToString(CultureInfo.InvariantCulture);
+    var lng = Model.Longtitude.GetValueOrDefault(0).ToString(CultureInfo.InvariantCulture);
+}
+
+<div id="meeting">
+    <div class="site-content">
+        <div id="mapContainer">
+        </div>
+        <div class="column-wrapper">
+            <div class="leadin">@string.Join(" & ", Model.Organizers.Select(x => x.Name)) præsentere:</div>
+            <div class="title">
+                <h1>@Model.Title</h1>
+            </div>
+            <div class="when icon-clock semi-transparent-icon">
+                @Model.StartsAt.ToNiceDate()
+            </div>
+            <div class="tags icon-tags semi-transparent-icon">
+                @if (Model.City != null) {
+                    <div class="tags-tag location">@Model.City.Name</div>
+                }
+                @foreach (var t in Model.Tags) {
+                    <div class="tags-tag">@t.Name</div>
+                }
+            </div>
+            <div class="description">
+                @Html.Raw(Html.Encode(Model.Description).Replace(Environment.NewLine, "<br/>"))
+            </div>
+            <div class="read-more">
+                <a href="@Model.Url" onclick="trackOutboundLink('@Model.Url'); return false;" target="_blank">Læs mere / tilmelding</a>
+            </div>
+            <section class="actions">
+                <header>
+                    Værktøjer
+                </header>
+                <a href="mailto:hello@geekhub.dk?subject=@HttpUtility.UrlEncode(Model.Title)">Rapportér fejl</a>
+                @using (Html.BeginForm("Edit", "Meetings", new { id = Model.Id }, FormMethod.Get)) {
+                    <button type="submit">Rediger / ret</button>
+                }
+                @using (Html.BeginForm("Delete", "Meetings", new { id = Model.Id })) {
+                    <button type="submit" class="danger" onclick="return confirm('Er du nu helt sikker? Dette er ikke for sjov.');">Slet</button>
+                }
+            </section>
+        </div>
+    </div>
+
+    @if (lat != "0" && lng != "0") {
+        <script>
+            var element = document.getElementById("mapContainer");
+            var width = element.offsetWidth;
+            var img = document.createElement("img");
+            var height = parseInt(width / 2);
+
+            if (height > 150)
+                height = 150;
+
+            img.addEventListener("error", function() { img.remove(); });
+            img.src = "http://maps.googleapis.com/maps/api/staticmap?center=@(lat),@(lng)&markers=@(lat),@(lng)&zoom=12&size=" + width + "x" + height + "&sensor=false&scale=2";
+            
+            element.appendChild(img);
+        </script>
+    }
+    <script>
+        /**
+        * Funktion, der sporer et klik på et udgående link i Google Analytics.
+        * Denne funktion tager en gyldig webadressestreng som et argument og bruger den pågældende webadressestreng
+        * som hændelsesetiket.
+        */
+        var trackOutboundLink = function (url) {
+            ga('send', 'event', 'outbound', 'click', url, {
+                'hitCallback':
+                  function () {
+                      document.location = url;
+                  }
+            });
+        }
+    </script>
+  
+</div>
+
+

@@ -1,0 +1,43 @@
+﻿@import '_Frameless.less';
+@import '_Variables.less';
+.simple-page {
+    .width(4);
+    margin-left: auto;
+    margin-right: auto;
+
+    @media @desktop {
+        & {
+            width: @8cols;
+        }
+    }
+
+    p {
+        margin-bottom: 10px;
+        line-height: 1.43em;
+    }
+
+    ul {
+        margin-left: 20px;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+        line-height: 1.43em;
+    }
+
+    h2 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .heading {
+        margin-top: @gutter/@em;
+        margin-bottom: @gutter/@em;
+    }
+
+    .intro {
+        margin-top: @gutter/@em;
+        margin-bottom: @gutter/@em;
+        line-height: 1.43em;
+    }
+}

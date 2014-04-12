@@ -1,0 +1,110 @@
+﻿@import '../_Frameless.less';
+@import '../_Variables.less';
+#meeting {
+    #mapContainer img {
+        width: 100%;
+    }
+
+    .column-wrapper 
+    {
+        width: @4cols;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    @media @desktop {
+        .column-wrapper {
+            width: @8cols;
+        }
+    }
+
+    .title {
+        padding: 0;
+        text-align: center;
+        margin-top: @gutter/@em;
+        margin-bottom: @gutter/@em;
+
+        h1 {
+            font-size: 1.5em;
+        }
+    }
+
+    .leadin {
+        margin-top: @gutter/@em;
+        margin-bottom: @gutter/@em;
+        text-align: center;
+    }
+
+    .when {
+        text-align: center;
+        margin-top: @gutter/@em;
+        margin-bottom: @gutter/@em;
+    }
+
+    .tags {
+        text-align: center;
+        margin-top: @gutter/@em;
+        margin-bottom: @gutter/@em;
+    }
+    
+    .tags-tag {
+        display: inline-block;
+        margin: 0 5px;
+        color: #444;
+
+        &.location {
+            font-weight: 600;
+        }
+    }
+
+    .read-more {
+        text-align: center;
+        padding-top: @gutter/@em;
+        padding-bottom: @gutter/@em;
+    
+        a {
+            background-color:#3276b1;
+            border-radius: 3px;
+            color: #fff;
+            text-decoration: none;
+            padding: @gutter/2/@em;
+            display: inline-block;
+        }
+    }
+
+    .description {
+        font-size: 90%;
+        line-height: 1.5em;
+    }
+
+    .actions {
+        width: 180px;
+        margin: 0 auto 40px auto;
+        
+        &>header {
+            border-bottom: 1px solid #ccc;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            font-size: 80%;
+            font-weight: 100;
+        }
+
+        button, a {
+            display: block;
+            border: 0;
+            width: 100%;
+            text-align: left;
+            background-color: transparent;
+            padding: 4px 0;
+            font-size: 12px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            color: #333;
+            text-decoration: none;
+            font-family: inherit;
+            &.danger {
+                color: #ff6767;
+            }
+        }
+    }
+}

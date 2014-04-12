@@ -1,0 +1,33 @@
+﻿@model dynamic
+<div id="login" class="simple-page">
+    <div class="site-content">
+        <div class="heading">
+            <h1>Log ind</h1>
+        </div>
+        @if (ViewBag.Scenario == "create") {
+            <p class="info">
+                For at oprette et møde skal du være logget ind.<br />
+                Det kræver bare din email og dit navn - dette er for at vi kan få fat i dig, hvis vi har nogen spørgsmål.
+            </p>
+        }
+        <div class="intro">
+            <p>Indtast din email for at oprette en profil eller logge ind:</p>
+        </div>
+        <div class="form">
+            <form method="POST">
+                <div class="form-row">
+                    <div class="label">
+                        <label>Email</label>
+                    </div>
+                    <div class="controls">
+                        <input name="email" required="required" type="email" placeholder="Din email" />
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <input type="submit" value="Log ind / opret" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

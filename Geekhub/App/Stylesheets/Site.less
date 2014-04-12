@@ -1,0 +1,146 @@
+﻿@import '_Variables.less';
+@import '_Frameless.less';
+@import '_Top.less';
+@import 'Meetings/_Index.less';
+@import 'Meetings/_Show.less';
+@import '_Form.less';
+@import '_Menu.less';
+@import '_SimplePage.less';
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    overflow-y: scroll;
+}
+
+a {
+    color: #5679e2;
+}
+
+a:hover {
+    color: #7ca5f0;
+}
+
+a:visited {
+    color: #5679e2;
+}
+
+.subtitle {
+    color: #ddd;
+}
+
+.site-footer {
+    margin-top: 50px;
+    padding: 25px 0;
+    border: 1px solid #ededed;
+    color: #999;
+    font-size: 0.8em;
+    text-align: center;
+
+    .copy {
+        margin-bottom: 5px;
+    }
+
+    .credits p {
+        display: inline;
+    }
+
+        .credits p:not(:last-child):after {
+            content: ",";
+
+        }
+}
+
+@media(max-width: 570px) {
+    .subtitle {
+        display: none;
+    }
+}
+
+.site-content {
+    padding-top: 60px;
+}
+
+.gutter-wrapper {
+    margin-left: -@gutter/@em;
+}
+
+.muted {
+    color: #888;
+}
+
+.notice {
+    z-index: 200;
+    position: absolute;
+    text-align: center;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #fff;
+    display: inline-block;
+    left: 40px; 
+    right: 40px;
+    height: 1px;
+}
+
+.info {
+    border: 1px solid #5679e2;
+    background-color: #7ca5f0;
+    color: #fff;
+    padding: 15px;
+    margin: 0 0 10px 0;
+    border-radius: 3px;
+    font-size: 80%;
+}
+
+.notice-text {
+    background-color: #2ECC71;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.warn-text {
+    background-color: #ebe129;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+#createMeetingForm {
+    .width(4);
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: @gutter/@em;
+
+    @media @desktop {
+        & {
+            .width(8);
+        }
+    }
+}
+
+.semi-transparent-icon:before {
+    opacity: 0.3;
+}
+
+.code {
+    border: 1px solid #888;
+    border-radius: 5px;
+    background-color: #fafafa;
+    padding: 5px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
+    font-size: 0.8em;
+}

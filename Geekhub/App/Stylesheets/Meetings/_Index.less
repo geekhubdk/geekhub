@@ -1,0 +1,123 @@
+﻿@import '../_Frameless.less';
+@import '../_Variables.less';
+#meetings {
+    padding-top: @gutter/@em;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    .gutter-wrapper {
+        width: @4cols;
+        margin-left: auto;
+        margin-right: auto;
+        /*-ms-flex: auto;
+        flex: auto;
+        -ms-flex-flow: row;
+        flex-flow: row;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        align-items: stretch;*/
+    }
+
+    .meeting {
+        .width(4);
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        /*margin-left: @gutter/@em;*/
+        margin-bottom: @gutter/@em;
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+        border: 1px solid #eee;
+        overflow: hidden;
+        text-align: center;
+        padding: 10px;
+        display: block;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .leadin {
+        padding: 5px;
+    }
+
+    .tags {
+        padding: 5px;
+        text-transform: lowercase;
+        font-size: 0.8em;
+    }
+
+    .tags-tag {
+        display: inline-block;
+        margin: 0 5px;
+        color: #444;
+
+        &.location {
+            font-weight: 600;
+        }
+    }
+
+    h1 {
+        padding: 5px;
+        margin: 15px 0;
+        color: #333;
+    }
+
+    .when {
+        font-weight: 400;
+        font-size: 0.9em;
+        padding: 5px;
+    }
+    
+    @media @desktop {
+
+        .gutter-wrapper {
+            .width(8);
+        }
+
+        .meeting {
+            .width(8);
+        }
+    }
+
+}
+
+.footer-call-to-action {
+    .width(4);
+    margin: 0 auto;
+    color: #555;
+    text-align: center;
+
+    @media @desktop {
+        & {
+            .width(8);
+        }
+    }
+}
+
+
+#toolbar {
+    background-color: #fafafa;
+    padding: 12px;
+    
+    .wrapper {
+        .width(4);
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    a {
+        color: black;
+        border: 1px solid #cacaca;
+        padding: 4px 8px;
+        border-radius: 4px;
+        background-color: #E7E7E7;
+        text-decoration: none;
+        box-shadow: inset 2px 2px 1px rgba(255,255,255,.45);
+    }
+}

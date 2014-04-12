@@ -1,0 +1,41 @@
+﻿@import '_Variables.less';
+.offcanvas-right(@width) {
+    position: fixed;
+    overflow-y: auto;
+    overflow-x: hidden;
+    top: 0;
+    left: 100%;
+    height: 100%;
+    width: @width;
+
+    -moz-transition: margin-left 0.5s;
+    -o-transition: margin-left 0.5s;
+    -webkit-transition: margin-left 0.5s;
+    transition: margin-left 0.5s;
+
+    .menu-open & {
+        margin-left: -250px;
+        -moz-transition: margin-left 0.5s;
+        -o-transition: margin-left 0.5s;
+        -webkit-transition: margin-left 0.5s;
+        transition: margin-left 0.5s;
+    }
+
+}
+
+.offcanvas-pulled-content(@menuWidth) {
+    left: 0;
+
+    -moz-transition: left 0.5s;
+    -o-transition: left 0.5s;
+    -webkit-transition: left 0.5s;
+    transition: left 0.5s;
+    
+    .menu-open & {
+        left: -@menuWidth;
+        -moz-transition: left 0.5s;
+        -o-transition: left 0.5s;
+        -webkit-transition: left 0.5s;
+        transition: left 0.5s;
+    }
+}

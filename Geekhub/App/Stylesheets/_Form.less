@@ -1,0 +1,87 @@
+﻿@import '_Variables.less';
+.form {
+  
+    input[type=text],
+    input[type=url],
+    input[type=tel],
+    input[type=datetime],
+    input[type=date],
+    input[type=time],
+    input[type=email],
+    textarea {
+        width: 100%;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border: 1px solid #aaa;
+        border-radius: 3px;
+        padding: 5px;
+        box-shadow: inset 0px 1px 2px rgba(0,0,0,0.1);
+        -webkit-appearance: none;
+        font-family: sans-serif;
+        font-size: 100%;
+        min-height: 31px;
+
+        &.date-field {
+            width: 160px;
+        }
+
+        &.time-field {
+            width: 100px;
+        }
+    }
+
+    .label {
+        margin-bottom: 5px;
+    }
+
+    .help {
+        color: #aaa;
+    }
+
+    input[readonly] {
+        color: #333;
+        border: 0;
+        box-shadow: none;
+    }
+
+    input[type=submit], button {        
+        color: black;
+        border: 1px solid #cacaca;
+        padding: 4px 8px;
+        border-radius: 4px;
+        background-color: #E7E7E7;
+        text-decoration: none;
+        box-shadow: inset 2px 2px 1px rgba(255, 255, 255, 0.45);
+    }
+
+    .form-row {
+        margin-bottom: 20px;
+    }
+
+    .form-row .label {
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 0.6em;
+        color: #555;
+        text-transform:uppercase;
+    }
+
+    .form-row .controls {
+    }
+
+    .form-actions {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .meeting-description-input {
+        height: 200px;
+    }
+
+    @media @desktop {
+        .meeting-description-input {
+            height: 400px;
+        }
+    }
+}

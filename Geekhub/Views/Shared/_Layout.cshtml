@@ -1,0 +1,119 @@
+﻿@using Deldysoft.Foundation
+@using Geekhub.App.Core.Config
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        @if (ViewBag.Title == null) {
+          <text>Liste over møder / events for udviklere - Geekhub</text>
+        } else {
+          @(ViewBag.Title + " - Geekhub")  
+        }
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet">
+    <link href="~/Content/Fonts/fontello/css/fontello.css" rel="stylesheet" />
+
+    @if (ViewBag.MetaDescription != null) {
+        <meta name="description" content="@ViewBag.MetaDescription" />
+    }
+
+    @if (AppEnvironment.Current == EnvironmentType.Development) {
+        <link rel="stylesheet/less" href="~/App/Stylesheets/Site.less?v=@DateTime.Now.Ticks" rel="stylesheet" />
+        <script src="~/Vendor/Javascripts/less.min.js"></script>
+    } else {
+        <link rel="stylesheet" href="~/App/Stylesheets/Site.min.css?v=@File.GetLastWriteTimeUtc(Server.MapPath("~/App/Stylesheets/Site.min.css")).Ticks" rel="stylesheet" />
+    }
+
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <!-- Size should be 144 x 144 pixels -->
+    <link href="~/Content/Images/apple-touch-icon-144x144-precomposed.png" rel="apple-touch-icon-precomposed" sizes="144x144" type="image/png" />
+
+    <!-- For iPhone with high-resolution Retina display: -->
+    <!-- Size should be 114 x 114 pixels -->
+    <link href="~/Content/Images/apple-touch-icon-114x114-precomposed.png" rel="apple-touch-icon-precomposed" sizes="114x114" type="image/png" />
+
+    <!-- For first- and second-generation iPad: -->
+    <!-- Size should be 72 x 72 pixels -->
+    <link href="~/Content/Images/apple-touch-icon-72x72-precomposed.png" rel="apple-touch-icon-precomposed" sizes="72x72" type="image/png" />
+
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <!-- Size should be 57 x 57 pixels -->
+    <link href="~/Content/Images/apple-touch-icon-32x32-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png" />
+
+    <!-- For all other devices -->
+    <!-- Size should be 32 x 32 pixels -->
+    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+</head>
+<body>
+    <div id="page-content">
+        <div id="top">
+            @Html.Partial("SVG/Logo")
+            <div class="toolbar">
+                <div id="menuToggle" type="button">
+                    @*<div class="text">menu</div>*@
+                    <div class="hamburger">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </div>
+                </div>
+                <div class="logo">
+                    <a href="@Url.Action("Index","Meetings")">Geekhub</a>
+                    <span class="subtitle"> - stedet hvor udviklere finder deres events</span>
+                </div>
+            </div>
+        </div>
+        @if (TempData["notice"] != null) {
+            <div id="notice" class="notice"><div class="notice-text">@TempData["notice"]</div></div>
+        }
+        @if (TempData["warn"] != null) {
+            <div id="notice" class="notice"><div class="warn-text">@TempData["warn"]</div></div>
+        }
+        @RenderBody()
+
+        <section class="site-footer">
+            <div class="copy">&copy; 2012-2014 Jesper Blad Jensen - <a href="mailto:hello@geekhub.dk">hello@geekhub.dk</a> - <a href="http://twitter.com/geekhubdk">@@geekhubdk</a></div>
+            <div class="credits">
+                <p>Share by Jamison Wieser from The Noun Project</p>
+                <p>Login by Brandon Manning from The Noun Project</p>
+                <p>Logout from The Noun Project</p>
+            </div>
+        </section>
+    </div>
+
+    @Html.Partial("_Menu")
+    <script>
+        var noticeElement = document.querySelector("#notice .notice-text");
+        if (noticeElement) {
+            noticeElement.onclick = function () {
+                var parent = this.parentNode;
+                parent.parentNode.removeChild(parent);
+            };
+        }
+
+        document.getElementById("menuToggle").onclick = function () {
+            var body = document.body;
+            if (body.classList.contains("menu-open")) {
+                body.classList.remove("menu-open");
+            } else {
+                document.body.classList.add("menu-open");
+            }
+        };
+    </script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-4193296-7', 'geekhub.dk');
+        ga('send', 'pageview');
+    </script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,19 @@
+﻿@model Geekhub.App.Modules.Meetings.ViewModels.RssViewModel
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>@Model.Title</title>
+        <link>@Model.Link</link>
+        <description>@Model.Description</description>
+        @foreach (var item in Model.Items) {
+            <item>
+                <title>@item.Title</title>
+                @Html.Raw("<link>"+item.Link+"</link>")
+                <description>
+                    @item.Description
+                </description>
+                <guid>@item.Guid</guid>
+            </item>
+        }
+    </channel>
+</rss>

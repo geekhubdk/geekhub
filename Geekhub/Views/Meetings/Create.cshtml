@@ -1,0 +1,171 @@
+﻿@model Geekhub.App.Modules.Meetings.ViewModels.MeetingFormModel
+
+<script src="~/Vendor/Javascripts/jquery-2.1.0.js"></script>
+<script src="~/Vendor/Javascripts/select2/select2.min.js"></script>
+<link href="~/Vendor/Javascripts/select2/select2.css" rel="stylesheet" />
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places"></script>
+<div class="site-content">
+    <div id="createMeetingForm">
+        <h1>Opret/Rediger event</h1>
+        <p>Her kan du oprette eller redigere et event / møde. Før du gør det, så læs lige <a href="@Url.Action("Guidelines", "Articles")">retningslinierne</a> omkring hvilke møder som passer på listen.</p>
+        <p>Alle har lov til at oprette events, samt at alle kan redigere dem. Så vær flink og opføre dig ordenligt hvis du redigere et møde.</p>
+        <div class="form">
+            <form method="post">
+
+                <div class="form-row">
+                    <div class="label">
+                        <label>Url <span class="help">(f.eks. link til tilmelding eller læs mere)</span></label>
+                    </div>
+                    <div class="controls">
+                        @Html.TextBoxFor(x => x.Url, new { type = "url", required = true })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="label">
+                        <label>Titel</label>
+                    </div>
+                    <div class="controls">
+                        @Html.TextBoxFor(x => x.Title, new { required = true })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="label">
+                        <label>Hvor <span class="help">(helst en bestemt addresse, men ellers så bare byen)</span></label>
+                    </div>
+                    <div class="controls">
+                        @Html.TextBoxFor(x => x.Address, new { required = true, id = "address", autocomplete="off"})
+                        <span class="muted">Formateret adresse:</span>
+                        <span class="muted" id="address_formatted_display"></span>
+                        @Html.HiddenFor(x => x.AddressFormatted, new { id = "address_formatted" })
+                        @Html.HiddenFor(x => x.AddressLat, new { id = "address_lat" })
+                        @Html.HiddenFor(x => x.AddressLng, new { id = "address_lng" })
+                        @Html.HiddenFor(x => x.City, new { id = "city" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="label">
+                        <label>Hvornår</label>
+                    </div>
+                    <div class="controls">
+                        @Html.TextBoxFor(x => x.StartsAtDate, new { type = "date", required = true, @class = "date-field" })
+                        @Html.TextBoxFor(x => x.StartsAtTime, new { type = "time", @class = "time-field" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="label">
+                        <label>Arrangører</label>
+                    </div>
+                    <div class="controls">
+                        @Html.TextBoxFor(x => x.Organizers, new { style = "width:100%", required = true, id = "organizers", data_tags = ViewBag.Organizers })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="label">
+                        <label>Tags <span class="help">(valgfri)</span></label>
+                    </div>
+                    <div class="controls">
+                        @Html.TextBoxFor(x => x.Tags, new { style = "width:100%", required = true, id = "tags", data_tags = ViewBag.Tags })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="label">
+                        <label>Beskrivelse <span class="help">(beskriv dit event, du må gerne bruge teksten på den originale site)</span></label>
+                    </div>
+                    <div class="controls">
+                        @Html.TextAreaFor(x => x.Description, new { @class="meeting-description-input", required = true })
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <input type="submit" value="Opret" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function initialize() {
+        // Create the search box and link it to the UI element.
+        var input = $('#address');
+
+        // If we are comming back from a invalid submission,
+        // we will display the old formatted value in the display field:
+        $("#address_formatted_display").text($("#address_formatted").val());
+
+        var options = {
+            componentRestrictions: { country: "da" }
+        };
+
+        window.searchBox = new google.maps.places.SearchBox(input[0], options);
+        window.geocoder = new google.maps.Geocoder();
+
+        google.maps.event.addListener(searchBox, 'places_changed', function () {
+            places_changed();
+        });
+
+    }
+    
+    function places_changed() {
+        var address = $("#address");
+        var address_lat = $("#address_lat");
+        var address_lng = $("#address_lng");
+        var city = $("#city");
+        var address_formatted = $("#address_formatted");
+        var address_formatted_display = $("#address_formatted_display");
+
+        var places = searchBox.getPlaces();
+        if (places.length > 0)
+        {
+            var formatted_address = places[0].formatted_address;
+            address_formatted.val(formatted_address);
+            address_formatted_display.text(formatted_address);
+            address_lat.val(places[0].geometry.location.lat());
+            address_lng.val(places[0].geometry.location.lng());
+
+            address.val(address_formatted.val());
+            geocoder.geocode({ 'address': formatted_address }, function (results, status) {
+
+                // We need to find the locality
+                var result = results[0];
+                for (var x = 0; x < result.address_components.length; x++) {
+                    var component = result.address_components[x];
+
+                    for (var y = 0; y < component.types.length; y++) {
+                        if (component.types[y] == "locality") {
+                            city.val(component.long_name);
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    $(function () {
+        setupTagField("#tags");
+        setupTagField("#organizers");
+        initialize();
+
+        $('form input').bind("keyup keypress", function (e) {
+            var code = e.keyCode || e.which;
+            if (code == 13) {
+                e.preventDefault();
+                e.preventBubble();
+                return false;
+            }
+        });
+
+
+        $("#address").blur(function () {
+            setTimeout(function () {
+                $("#address").val($("#address_formatted").val());
+            }, 0);
+        });
+    });
+
+    function setupTagField(field) {
+        var element = $(field);
+        var tags = jQuery.parseJSON(element.attr("data-tags"));
+        element.select2({ tags: tags, tokenSeparators: [","] });
+    }
+</script>
+

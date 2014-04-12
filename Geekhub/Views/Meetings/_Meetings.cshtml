@@ -1,0 +1,27 @@
+﻿@using System.Globalization
+@using Geekhub.App.Core.Support
+@model IEnumerable<Geekhub.App.Modules.Meetings.Models.Meeting>
+<section id="list">
+    <div id="meetings">
+        <div class="gutter-wrapper">
+            @foreach (var meeting in Model) {
+                <section class="meeting" data-lat="@meeting.Latitude.GetValueOrDefault(0).ToString(CultureInfo.InvariantCulture)" data-lng="@meeting.Longtitude.GetValueOrDefault(0).ToString(CultureInfo.InvariantCulture)">
+                    <div class="leadin">@string.Join(" & ", meeting.Organizers.Select(x => x.Name)) præsentere:</div>
+                    <h1><a href="@Url.Action("Show", "Meetings", new { id=meeting.Id })">@meeting.Title</a></h1>
+                    <div class="when icon-clock semi-transparent-icon">
+                        @meeting.StartsAt.ToNiceDate()
+                    </div>
+                    <div class="tags icon-tags semi-transparent-icon">
+                        @if (meeting.City != null) {
+                            <div class="tags-tag location">@meeting.City.Name</div>
+                        }
+                        @foreach (var t in meeting.Tags) {
+                            <div class="tags-tag">@t.Name</div>
+                        }
+                    </div>
+                </section>
+            }
+        </div>
+    </div>
+</section>
+

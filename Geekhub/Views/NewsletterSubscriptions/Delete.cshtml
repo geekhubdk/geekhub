@@ -1,0 +1,33 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Afmeld nyhedsbrev";
+}
+<div id="newsletter_subscribe" class="simple-page">
+    <div class="site-content">
+        <div class="heading">
+            <h1>Afmeld nyhedsbrev</h1>
+        </div>
+        <div class="intro">
+            <p>
+                Indtast din email for at afmelde dig nyhedsbrevet.
+            </p>
+        </div>
+        <div class="form">
+            <form method="POST">
+                <div class="form-row">
+                    <div class="label">
+                        <label>Email</label>
+                    </div>
+                    <div class="controls">
+                        <input name="email" required="required" type="email" placeholder="Din email" />
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <input type="submit" value="Tilmeld" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

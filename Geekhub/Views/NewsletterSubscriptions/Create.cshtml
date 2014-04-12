@@ -1,0 +1,46 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Tilmeld nyhedsbrev";
+}
+<div id="newsletter_subscribe" class="simple-page">
+    <div class="site-content">
+        <div class="heading">
+            <h1>Tilmeld nyhedsbrev</h1>
+        </div>
+        <div class="intro">
+            <p>
+                Nyhedsbrevet er en daglig digest-mail som indeholder nye events.
+                <br />
+                Ved at tilmelde dig nyhedsbrevet så kan du altid være med på hvad der sker.
+            </p>
+            <p>
+                Nyhedsbrevet vil kun blive sendt hvis nye events bliver oprettet. Typisk vil dette resultere i cirka en mail om ugen.
+            </p>
+            <p>
+                Indtast din email for at tilmelde dig nyhedsbrevet.
+            </p>
+        </div>
+        <div class="form">
+            <form method="POST">
+                <div class="form-row">
+                    <div class="label">
+                        <label>Email</label>
+                    </div>
+                    <div class="controls">
+                        <input name="email" required="required" type="email" placeholder="Din email" />
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <input type="submit" value="Tilmeld" />
+                </div>
+            </form>
+        </div>
+        <p>
+            <small>
+                Du kan også <a href="@Url.Action("Delete")">afmelde nyhedsbrevet</a>.
+            </small>            
+        </p>
+    </div>
+</div>

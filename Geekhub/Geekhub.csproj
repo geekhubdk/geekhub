@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B3AFAFCC-986D-4F5A-8EBA-25AF228D60AC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Geekhub</RootNamespace>
+    <AssemblyName>Geekhub</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.2.0\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc5.3.2.0\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Biggy">
+      <HintPath>..\biggy\Release\Biggy.dll</HintPath>
+    </Reference>
+    <Reference Include="DDay.iCal">
+      <HintPath>..\packages\DDay.iCal.1.0.2.575\lib\DDay.iCal.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Hammock.ClientProfile">
+      <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\Hammock.ClientProfile.dll</HintPath>
+    </Reference>
+    <Reference Include="Inflector, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\Inflector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.4.1\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="TweetSharp">
+      <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\TweetSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\Stylesheets\Site.css">
+      <DependentUpon>Site.less</DependentUpon>
+    </Content>
+    <Content Include="App\Stylesheets\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Fonts\fontello\css\animation.css" />
+    <Content Include="Content\Fonts\fontello\css\fontello-codes.css" />
+    <Content Include="Content\Fonts\fontello\css\fontello-embedded.css" />
+    <Content Include="Content\Fonts\fontello\css\fontello-ie7-codes.css" />
+    <Content Include="Content\Fonts\fontello\css\fontello-ie7.css" />
+    <Content Include="Content\Fonts\fontello\css\fontello.css" />
+    <Content Include="Content\Fonts\fontello\demo.html" />
+    <Content Include="Content\Fonts\fontello\font\fontello.svg" />
+    <Content Include="Content\Fonts\fontello\LICENSE.txt" />
+    <Content Include="Content\Fonts\fontello\README.txt" />
+    <Content Include="Content\Images\apple-touch-icon-114x114-precomposed.png" />
+    <Content Include="Content\Images\apple-touch-icon-144x144-precomposed.png" />
+    <Content Include="Content\Images\apple-touch-icon-32x32-precomposed.png" />
+    <Content Include="Content\Images\apple-touch-icon-72x72-precomposed.png" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Fonts\fontello\config.json" />
+    <Content Include="Content\Fonts\fontello\font\fontello.eot" />
+    <Content Include="Content\Fonts\fontello\font\fontello.ttf" />
+    <Content Include="Content\Fonts\fontello\font\fontello.woff" />
+    <Content Include="App\Stylesheets\Meetings\_Index.less" />
+    <Content Include="App\Stylesheets\Meetings\_Show.less" />
+    <Content Include="App\Stylesheets\_Form.less" />
+    <Content Include="App\Stylesheets\_Frameless.less" />
+    <Content Include="App\Stylesheets\_Frontpage.less" />
+    <Content Include="App\Stylesheets\_Menu.less" />
+    <Content Include="App\Stylesheets\_Mixins.less" />
+    <Content Include="App\Stylesheets\_SimplePage.less" />
+    <Content Include="App\Stylesheets\_Top.less" />
+    <Content Include="App\Stylesheets\_Variables.less" />
+    <Content Include="App\Stylesheets\Site.less" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
+    <None Include="Vendor\Javascripts\jquery-2.1.0.intellisense.js" />
+    <Content Include="Vendor\Javascripts\jquery-2.1.0.js" />
+    <Content Include="Vendor\Javascripts\jquery-2.1.0.min.js" />
+    <Content Include="Vendor\Javascripts\less.min.js" />
+    <Content Include="Vendor\Javascripts\select2\select2-bootstrap.css" />
+    <Content Include="Vendor\Javascripts\select2\select2-spinner.gif" />
+    <Content Include="Vendor\Javascripts\select2\select2.css" />
+    <Content Include="Vendor\Javascripts\select2\select2.js" />
+    <Content Include="Vendor\Javascripts\select2\select2.min.js" />
+    <Content Include="Vendor\Javascripts\select2\select2.png" />
+    <Content Include="Vendor\Javascripts\select2\select2x2.png" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_ar.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_bg.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_ca.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_cs.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_da.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_de.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_el.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_es.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_et.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_eu.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_fa.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_fi.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_fr.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_gl.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_he.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_hr.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_hu.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_id.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_is.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_it.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_ja.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_ko.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_lt.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_lv.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_mk.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_ms.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_nl.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_no.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_pl.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_pt-BR.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_pt-PT.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_ro.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_ru.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_sk.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_sv.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_th.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_tr.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_ua.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_vi.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_zh-CN.js" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_zh-TW.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App\Controllers\AlertsController.cs" />
+    <Compile Include="App\Controllers\ArticlesController.cs" />
+    <Compile Include="App\Controllers\ControllerBase.cs" />
+    <Compile Include="App\Controllers\MeetingsController.cs" />
+    <Compile Include="App\Controllers\NewsletterSubscriptionsController.cs" />
+    <Compile Include="App\Controllers\UsersController.cs" />
+    <Compile Include="App\Core\Adapters\IEmailAdapter.cs" />
+    <Compile Include="App\Core\Adapters\SmtpEmailAdapter.cs" />
+    <Compile Include="App\Core\CommandHandling\CommandHandlerBase.cs" />
+    <Compile Include="App\Core\CommandHandling\CommandLog.cs" />
+    <Compile Include="App\Core\CommandHandling\CommandLogger.cs" />
+    <Compile Include="App\Core\CommandHandling\QueryBase.cs" />
+    <Compile Include="App\Core\Config\CoreContainerConfig.cs" />
+    <Compile Include="App\Core\Data\BiggyListFixed.cs" />
+    <Compile Include="App\Core\Data\DataContext.cs" />
+    <Compile Include="App\Core\Data\LegacyImporter.cs" />
+    <Compile Include="App\Core\Mvc\CalendarResult.cs" />
+    <Compile Include="App\Core\Mvc\IViewRendere.cs" />
+    <Compile Include="App\Core\Mvc\UserInformationHelper.cs" />
+    <Compile Include="App\Core\Support\CollectionExtensions.cs" />
+    <Compile Include="App\Core\Support\DateTimeExtensions.cs" />
+    <Compile Include="App\Core\Support\NameValueCollectionExtensions.cs" />
+    <Compile Include="App\Core\Support\StringExtentions.cs" />
+    <Compile Include="App\Modules\Alerts\Adapters\DebugTwitterAdapter.cs" />
+    <Compile Include="App\Modules\Alerts\Adapters\ITwitterAdapter.cs" />
+    <Compile Include="App\Modules\Alerts\Adapters\LiveTwitterAdapter.cs" />
+    <Compile Include="App\Modules\Alerts\CommandHandlers\SendNewMeetingsNewsletterCommandHandler.cs" />
+    <Compile Include="App\Modules\Alerts\CommandHandlers\SendTweetsForMeetingsCommandHandler.cs" />
+    <Compile Include="App\Modules\Alerts\CommandHandlers\SubscribeToNewsletterCommandHandler.cs" />
+    <Compile Include="App\Modules\Alerts\CommandHandlers\UnsubscribeToNewsletterCommandHandler.cs" />
+    <Compile Include="App\Modules\Alerts\Commands\SendNewMeetingsNewsletterCommand.cs" />
+    <Compile Include="App\Modules\Alerts\Commands\SendTweetsForMeetingsCommand.cs" />
+    <Compile Include="App\Modules\Alerts\Commands\SubscribeToNewsletterCommand.cs" />
+    <Compile Include="App\Modules\Alerts\Commands\UnsubscribeToNewsletterCommand.cs" />
+    <Compile Include="App\Modules\Alerts\Config\AlertsContainerConfig.cs" />
+    <Compile Include="App\Modules\Alerts\Models\MeetingTweetAlert.cs" />
+    <Compile Include="App\Modules\Alerts\Models\NewMeetingsNewsletter.cs" />
+    <Compile Include="App\Modules\Alerts\Models\NewsletterLog.cs" />
+    <Compile Include="App\Modules\Alerts\Models\NewsletterSubscription.cs" />
+    <Compile Include="App\Modules\Alerts\Support\SubscriptionNotFoundException.cs" />
+    <Compile Include="App\Modules\Alerts\Support\TwitterMeetingAlertGenerator.cs" />
+    <Compile Include="App\Modules\Meetings\CommandHandlers\CreateMeetingCommandHandler.cs" />
+    <Compile Include="App\Modules\Meetings\CommandHandlers\DeleteMeetingCommandHandler.cs" />
+    <Compile Include="App\Modules\Meetings\CommandHandlers\SaveMeetingCommandHandler.cs" />
+    <Compile Include="App\Modules\Meetings\Commands\CreateMeetingCommand.cs" />
+    <Compile Include="App\Modules\Meetings\Commands\DeleteMeetingCommand.cs" />
+    <Compile Include="App\Modules\Meetings\Commands\SaveMeetingCommand.cs" />
+    <Compile Include="App\Modules\Meetings\Models\City.cs" />
+    <Compile Include="App\Modules\Meetings\Models\Meeting.cs" />
+    <Compile Include="App\Modules\Meetings\Models\MeetingExtensions.cs" />
+    <Compile Include="App\Modules\Meetings\Models\Organizer.cs" />
+    <Compile Include="App\Modules\Meetings\Models\Tag.cs" />
+    <Compile Include="App\Modules\Meetings\Queries\ArchivedMeetingsQuery.cs" />
+    <Compile Include="App\Modules\Meetings\Queries\LoadMeetingFormDataQuery.cs" />
+    <Compile Include="App\Modules\Meetings\Queries\ShowMeetingQuery.cs" />
+    <Compile Include="App\Modules\Meetings\Queries\UpcommingMeetingsQuery.cs" />
+    <Compile Include="App\Modules\Meetings\Support\MeetingUrlGenerator.cs" />
+    <Compile Include="App\Modules\Meetings\ViewModels\MeetingFormModel.cs" />
+    <Compile Include="App\Modules\Meetings\ViewModels\MeetingFormModelBinder.cs" />
+    <Compile Include="App\Modules\Meetings\ViewModels\RssViewModel.cs" />
+    <Compile Include="App\Modules\Meetings\ViewModels\WidgetViewModel.cs" />
+    <Compile Include="App\Modules\Users\CommandHandlers\CreateUserCommandHandler.cs" />
+    <Compile Include="App\Modules\Users\CommandHandlers\ExpireUserValidationCodeCommandHandler.cs" />
+    <Compile Include="App\Modules\Users\CommandHandlers\SendUserLoginEmailCommandHandler.cs" />
+    <Compile Include="App\Modules\Users\Commands\CreateUserCommand.cs" />
+    <Compile Include="App\Modules\Users\Commands\ExpireUserValidationCodeCommand.cs" />
+    <Compile Include="App\Modules\Users\Commands\SendUserLoginEmailCommand.cs" />
+    <Compile Include="App\Modules\Users\Models\User.cs" />
+    <Compile Include="App\Modules\Users\Queries\FetchUserByEmailQuery.cs" />
+    <Compile Include="App\Modules\Users\Queries\IsUserValidationCodeValidQuery.cs" />
+    <Compile Include="App\Modules\Users\Support\UserValidationCodeGenerator.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\Meetings\Index.cshtml" />
+    <Content Include="Views\Meetings\Show.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Shared\SVG\Logout.cshtml" />
+    <Content Include="Views\Shared\SVG\Login.cshtml" />
+    <Content Include="Views\Shared\SVG\Logo.cshtml" />
+    <Content Include="Views\Users\Validate.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Meetings\Create.cshtml" />
+    <Content Include="Views\Meetings\Rss.cshtml" />
+    <Content Include="Views\Meetings\Widget.cshtml" />
+    <Content Include="Views\NewsletterSubscriptions\Create.cshtml" />
+    <Content Include="Views\NewsletterSubscriptions\Delete.cshtml" />
+    <Content Include="Views\Articles\Guidelines.cshtml" />
+    <Content Include="Views\Articles\Embed.cshtml" />
+    <Content Include="Views\Articles\About.cshtml" />
+    <Content Include="Views\Meetings\_Meetings.cshtml" />
+    <Content Include="Views\Meetings\Archive.cshtml" />
+    <Content Include="Vendor\Javascripts\select2\bower.json" />
+    <Content Include="Vendor\Javascripts\select2\LICENSE" />
+    <Content Include="Vendor\Javascripts\select2\README.md" />
+    <Content Include="Vendor\Javascripts\select2\release.sh" />
+    <Content Include="Vendor\Javascripts\select2\select2.jquery.json" />
+    <Content Include="Vendor\Javascripts\select2\select2_locale_en.js.template" />
+    <Content Include="Vendor\Javascripts\jquery-2.1.0.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Deldysoft.Foundation\Deldysoft.Foundation.csproj">
+      <Project>{25f02573-21e7-49c4-b0ca-15117e8294a4}</Project>
+      <Name>Deldysoft.Foundation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53360</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/Geekhub</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
