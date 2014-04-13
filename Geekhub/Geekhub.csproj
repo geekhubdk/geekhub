@@ -267,6 +267,7 @@
     <Compile Include="App\Modules\Alerts\Models\NewMeetingsNewsletter.cs" />
     <Compile Include="App\Modules\Alerts\Models\NewsletterLog.cs" />
     <Compile Include="App\Modules\Alerts\Models\NewsletterSubscription.cs" />
+    <Compile Include="App\Modules\Alerts\Queries\SubscriberCountQuery.cs" />
     <Compile Include="App\Modules\Alerts\Support\SubscriptionNotFoundException.cs" />
     <Compile Include="App\Modules\Alerts\Support\TwitterMeetingAlertGenerator.cs" />
     <Compile Include="App\Modules\Meetings\CommandHandlers\CreateMeetingCommandHandler.cs" />
