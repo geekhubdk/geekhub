@@ -167,8 +167,9 @@ namespace Geekhub.App.Controllers
             if (AppEnvironment.Current != EnvironmentType.Development) {
                 return Content("Only allowed in development mode");
             }
-
-            var result = new WebClient().DownloadString("http://www.geekhub.dk/meetings.json");
+            var client = new WebClient();
+            client.Encoding = System.Text.Encoding.UTF8;
+            var result = client.DownloadString("http://www.geekhub.dk/meetings.json?ticks=" + DateTime.Now.Ticks);
             var json = JsonConvert.DeserializeObject<JsonViewModel>(result);
 
             var deleteAll = new DeleteAllMeetingsCommand();
