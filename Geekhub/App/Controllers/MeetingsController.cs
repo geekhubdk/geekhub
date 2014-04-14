@@ -91,13 +91,6 @@ namespace Geekhub.App.Controllers
             return RedirectToAction("Index");
         }
 
-        [Route("meetings/import")]
-        public ActionResult Import()
-        {
-            LegacyImporter.Import();
-            return Content("Done");
-        }
-
         [Authorize]
         [Route("meetings/{id}/edit")]
         public ActionResult Edit(int id)

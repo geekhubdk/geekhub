@@ -243,7 +243,6 @@
     <Compile Include="App\Core\Config\CoreContainerConfig.cs" />
     <Compile Include="App\Core\Data\BiggyListFixed.cs" />
     <Compile Include="App\Core\Data\DataContext.cs" />
-    <Compile Include="App\Core\Data\LegacyImporter.cs" />
     <Compile Include="App\Core\Mvc\CalendarResult.cs" />
     <Compile Include="App\Core\Mvc\IViewRendere.cs" />
     <Compile Include="App\Core\Mvc\UserInformationHelper.cs" />
