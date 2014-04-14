@@ -285,6 +285,7 @@
     <Compile Include="App\Modules\Meetings\Queries\ShowMeetingQuery.cs" />
     <Compile Include="App\Modules\Meetings\Queries\UpcommingMeetingsQuery.cs" />
     <Compile Include="App\Modules\Meetings\Support\MeetingUrlGenerator.cs" />
+    <Compile Include="App\Modules\Meetings\ViewModels\JsonViewModel.cs" />
     <Compile Include="App\Modules\Meetings\ViewModels\MeetingFormModel.cs" />
     <Compile Include="App\Modules\Meetings\ViewModels\MeetingFormModelBinder.cs" />
     <Compile Include="App\Modules\Meetings\ViewModels\RssViewModel.cs" />

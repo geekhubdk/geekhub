@@ -126,6 +126,13 @@ namespace Geekhub.App.Controllers
             return PartialView(new RssViewModel(model));
         }
 
+        [Route("meetings.json")]
+        public ActionResult Json()
+        {
+            var model = _upcommingMeetingsQuery.Execute(Request.QueryString);
+            return Json(new JsonViewModel(model), JsonRequestBehavior.AllowGet);
+        }
+
         [Route("widget")]
         public ActionResult Widget()
         {
