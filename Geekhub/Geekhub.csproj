@@ -270,9 +270,12 @@
     <Compile Include="App\Modules\Alerts\Support\SubscriptionNotFoundException.cs" />
     <Compile Include="App\Modules\Alerts\Support\TwitterMeetingAlertGenerator.cs" />
     <Compile Include="App\Modules\Meetings\CommandHandlers\CreateMeetingCommandHandler.cs" />
+    <Compile Include="App\Modules\Meetings\CommandHandlers\DeleteAllMeetingsCommandHandler.cs" />
     <Compile Include="App\Modules\Meetings\CommandHandlers\DeleteMeetingCommandHandler.cs" />
     <Compile Include="App\Modules\Meetings\CommandHandlers\SaveMeetingCommandHandler.cs" />
     <Compile Include="App\Modules\Meetings\Commands\CreateMeetingCommand.cs" />
+    <Compile Include="App\Modules\Meetings\Commands\CreateMeetingFromJsonCommand.cs" />
+    <Compile Include="App\Modules\Meetings\Commands\DeleteAllMeetingsCommand.cs" />
     <Compile Include="App\Modules\Meetings\Commands\DeleteMeetingCommand.cs" />
     <Compile Include="App\Modules\Meetings\Commands\SaveMeetingCommand.cs" />
     <Compile Include="App\Modules\Meetings\Models\City.cs" />

@@ -8,15 +8,25 @@ namespace Geekhub.App.Modules.Meetings.ViewModels
 {
     public class JsonViewModel
     {
-        public JsonViewModel(IEnumerable<Meeting> meetings)
+        public JsonViewModel()
         {
-            Items = meetings.Select(meeting => new JsonMeetingViewModel(meeting)).ToArray();
+            Items = new List<JsonMeetingViewModel>();
         }
 
-        public JsonMeetingViewModel[] Items { get; private set; }
+        public JsonViewModel(IEnumerable<Meeting> meetings)
+        {
+            Items = meetings.Select(meeting => new JsonMeetingViewModel(meeting)).ToList();
+        }
+
+        public List<JsonMeetingViewModel> Items { get; set; }
 
         public sealed class JsonMeetingViewModel 
         {
+            public JsonMeetingViewModel()
+            {
+                
+            }
+
             public JsonMeetingViewModel(Meeting meeting)
             {
                 Id = meeting.Id;

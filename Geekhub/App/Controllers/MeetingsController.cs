@@ -1,11 +1,16 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using Deldysoft.Foundation;
 using Deldysoft.Foundation.CommandHandling;
 using Geekhub.App.Core.CommandHandling;
 using Geekhub.App.Core.Data;
 using Geekhub.App.Core.Mvc;
 using Geekhub.App.Core.Support;
 using Geekhub.App.Modules.Meetings.Commands;
+using Geekhub.App.Modules.Meetings.Models;
 using Geekhub.App.Modules.Meetings.Queries;
 using Geekhub.App.Modules.Meetings.Support;
 using Geekhub.App.Modules.Meetings.ViewModels;
@@ -154,6 +159,27 @@ namespace Geekhub.App.Controllers
                     Summary = x.Title,
                     Url = MeetingUrlGenerator.CreateFullMeetingUrl(x.Id,"ics"),
             }));
+        }
+
+        [Route("meetings/pull")]
+        public ActionResult Pull()
+        {
+            if (AppEnvironment.Current != EnvironmentType.Development) {
+                return Content("Only allowed in development mode");
+            }
+
+            var result = new WebClient().DownloadString("http://www.geekhub.dk/meetings.json");
+            var json = JsonConvert.DeserializeObject<JsonViewModel>(result);
+
+            var deleteAll = new DeleteAllMeetingsCommand();
+            _commandExecuter.Execute(deleteAll);
+
+            foreach (var meeting in json.Items) {
+                var cmd = new CreateMeetingFromJsonCommand(meeting, "Pull");
+                _commandExecuter.Execute(cmd);
+            }
+
+            return Content("Completed");
         }
 
         private void LoadFormData()
