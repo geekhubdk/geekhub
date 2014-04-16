@@ -22,5 +22,16 @@ namespace Geekhub.App.Controllers
             return View();
         }
 
+        [Route("articles/rss")]
+        public ActionResult Rss()
+        {
+            return View();
+        }
+
+        [Route("articles/ics")]
+        public ActionResult Ics()
+        {
+            return View();
+        }
 	}
 }

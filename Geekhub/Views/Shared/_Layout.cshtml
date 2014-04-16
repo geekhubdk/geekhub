@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet">
     <link href="~/Content/Fonts/fontello/css/fontello.css" rel="stylesheet" />
-
+    <link rel="alternative" type="application/rss+xml" href="@Url.Action("Rss", "Meetings")" title="RSS feed over nye møder"/>
     @if (ViewBag.MetaDescription != null) {
         <meta name="description" content="@ViewBag.MetaDescription" />
     }
