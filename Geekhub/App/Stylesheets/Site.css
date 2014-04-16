@@ -388,6 +388,9 @@ body {
   padding: 4px 8px;
   text-decoration: none;
 }
+#toolbar a:hover {
+  text-decoration: underline;
+}
 #meeting #mapContainer img {
   width: 100%;
 }
@@ -824,3 +827,4 @@ a:visited {
   font-family: Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
   font-size: 0.8em;
 }
+/*# sourceMappingURL=Site.css.map */
