@@ -385,12 +385,8 @@ body {
 }
 #toolbar a {
   color: black;
-  border: 1px solid #cacaca;
   padding: 4px 8px;
-  border-radius: 4px;
-  background-color: #E7E7E7;
   text-decoration: none;
-  box-shadow: inset 2px 2px 1px rgba(255, 255, 255, 0.45);
 }
 #meeting #mapContainer img {
   width: 100%;
