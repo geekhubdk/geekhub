@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geekhub", "Geekhub\Geekhub.csproj", "{B3AFAFCC-986D-4F5A-8EBA-25AF228D60AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geekhub.Tests", "Geekhub.Tests\Geekhub.Tests.csproj", "{FB7D1813-C2CF-4A63-87A8-25C37B2BCAB6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deldysoft.Foundation", "Deldysoft.Foundation\Deldysoft.Foundation.csproj", "{25F02573-21E7-49C4-B0CA-15117E8294A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0AD97312-A15A-4AD2-BEA1-43EA584C0572}"
+	ProjectSection(SolutionItems) = preProject
+		WebEssentials-Settings.json = WebEssentials-Settings.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
