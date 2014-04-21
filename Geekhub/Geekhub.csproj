@@ -231,6 +231,7 @@
     <Compile Include="App\Controllers\AlertsController.cs" />
     <Compile Include="App\Controllers\ArticlesController.cs" />
     <Compile Include="App\Controllers\ControllerBase.cs" />
+    <Compile Include="App\Controllers\FrontpageController.cs" />
     <Compile Include="App\Controllers\MeetingsController.cs" />
     <Compile Include="App\Controllers\NewsletterSubscriptionsController.cs" />
     <Compile Include="App\Controllers\UsersController.cs" />
@@ -345,6 +346,7 @@
     <Content Include="Vendor\Javascripts\jquery-2.1.0.min.map" />
     <Content Include="Views\Articles\Rss.cshtml" />
     <Content Include="Views\Articles\Ics.cshtml" />
+    <Content Include="Views\Frontpage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -363,6 +365,7 @@
       <Name>Deldysoft.Foundation</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

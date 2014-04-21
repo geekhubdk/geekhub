@@ -35,7 +35,7 @@ namespace Geekhub.App.Controllers
             _archivedMeetingsQuery = archivedMeetingsQuery;
         }
 
-        [Route("")]
+        [Route("meetings")]
         public ActionResult Index()
         {
             ViewBag.MetaDescription =
