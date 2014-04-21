@@ -51,19 +51,23 @@ namespace Deldysoft.Foundation
 
         private static void RegisterCommandBus(ContainerBuilder container, List<Assembly> assemblies)
         {
-            container.Register(x=>CreateCommandBus(x,assemblies)).As<CommandBus>().InstancePerLifetimeScope();
-            container.Register(CreateCommandExecuter).As<ICommandExecuter>().InstancePerLifetimeScope();
+            CommandBus bus = null;
+            container.Register(x => {
+                bus = CreateCommandBus(x,assemblies);
+                return bus;
+            }).As<CommandBus>().InstancePerLifetimeScope();
+            container.Register(x=>CreateCommandExecuter(bus)).As<ICommandExecuter>().InstancePerLifetimeScope();
         }
 
-        private static object CreateCommandExecuter(IComponentContext componentContext)
+        private static object CreateCommandExecuter(CommandBus bus)
         {
             var commandExecuter = new CommandExecuter {
-                CommandBus = componentContext.Resolve<CommandBus>()
+                CommandBus = bus
             };
             return commandExecuter;
         }
 
-        private static object CreateCommandBus(IComponentContext componentContext, IEnumerable<Assembly> assemblies)
+        private static CommandBus CreateCommandBus(IComponentContext componentContext, IEnumerable<Assembly> assemblies)
         {
             var bus = new CommandBus(componentContext.Resolve<ICommandLoggerAdapter>());
             foreach (var assembly in assemblies) {
