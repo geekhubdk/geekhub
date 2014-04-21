@@ -20,7 +20,7 @@
 
     @if (AppEnvironment.Current == EnvironmentType.Development) {
         <link rel="stylesheet/less" href="~/App/Stylesheets/Site.less?v=@DateTime.Now.Ticks" rel="stylesheet" />
-        <script src="~/Vendors/Javascripts/less.min.js"></script>
+        <script src="~/vendors/Javascripts/less.min.js"></script>
     } else {
         <link rel="stylesheet" href="~/App/Stylesheets/Site.min.css?v=@File.GetLastWriteTimeUtc(Server.MapPath("~/App/Stylesheets/Site.min.css")).Ticks" rel="stylesheet" />
     }

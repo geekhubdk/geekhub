@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web;
+using System.Web.Mvc;
 using System.Web.Security;
 using Deldysoft.Foundation.CommandHandling;
 using Geekhub.App.Core.CommandHandling;
@@ -58,7 +60,18 @@ namespace Geekhub.App.Controllers
                 if(_isUserValidationCodeValidQuery.Execute(email, code))
                 {
                     _commandBus.Execute(new ExpireUserValidationCodeCommand(email));
-                    FormsAuthentication.SetAuthCookie(email.ToLower(), true);
+                    
+                    //create a new forms auth ticket
+                    var ticket = new FormsAuthenticationTicket(2,
+                        email, DateTime.Now, DateTime.Now.AddYears(1), true, String.Empty);
+                    //encrypt the ticket
+                    string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+
+                    var authenticationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket) {
+                        Expires = ticket.Expiration
+                    };
+
+                    Response.Cookies.Add(authenticationCookie);
 
                     if (!string.IsNullOrWhiteSpace(returnUrl)) {
                         return Redirect(returnUrl);
