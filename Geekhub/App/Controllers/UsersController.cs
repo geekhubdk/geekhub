@@ -54,15 +54,21 @@ namespace Geekhub.App.Controllers
         [Route("users/validate")]
         public ActionResult Validate(string email, string code = "", string returnUrl = "")
         {
-            if (!string.IsNullOrWhiteSpace(code) && _isUserValidationCodeValidQuery.Execute(email, code)) {
-                _commandBus.Execute(new ExpireUserValidationCodeCommand(email));
-                FormsAuthentication.SetAuthCookie(email.ToLower(), true);
+            if (!string.IsNullOrWhiteSpace(code)) {
+                if(_isUserValidationCodeValidQuery.Execute(email, code))
+                {
+                    _commandBus.Execute(new ExpireUserValidationCodeCommand(email));
+                    FormsAuthentication.SetAuthCookie(email.ToLower(), true);
 
-                if (!string.IsNullOrWhiteSpace(returnUrl)) {
-                    return Redirect(returnUrl);
+                    if (!string.IsNullOrWhiteSpace(returnUrl)) {
+                        return Redirect(returnUrl);
+                    }
+
+                    return RedirectToAction("Index", "Meetings");
+                } else {
+                    _commandBus.Execute(new RegisterInvalidValidationCodeCommand(email));
                 }
 
-                return RedirectToAction("Index", "Meetings");
             }
 
             return View();

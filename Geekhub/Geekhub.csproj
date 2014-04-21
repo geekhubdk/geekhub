@@ -295,9 +295,11 @@
     <Compile Include="App\Modules\Meetings\ViewModels\WidgetViewModel.cs" />
     <Compile Include="App\Modules\Users\CommandHandlers\CreateUserCommandHandler.cs" />
     <Compile Include="App\Modules\Users\CommandHandlers\ExpireUserValidationCodeCommandHandler.cs" />
+    <Compile Include="App\Modules\Users\CommandHandlers\RegisterInvalidValidationCodeCommandHandler.cs" />
     <Compile Include="App\Modules\Users\CommandHandlers\SendUserLoginEmailCommandHandler.cs" />
     <Compile Include="App\Modules\Users\Commands\CreateUserCommand.cs" />
     <Compile Include="App\Modules\Users\Commands\ExpireUserValidationCodeCommand.cs" />
+    <Compile Include="App\Modules\Users\Commands\RegisterInvalidValidationCodeCommand.cs" />
     <Compile Include="App\Modules\Users\Commands\SendUserLoginEmailCommand.cs" />
     <Compile Include="App\Modules\Users\Models\User.cs" />
     <Compile Include="App\Modules\Users\Queries\FetchUserByEmailQuery.cs" />

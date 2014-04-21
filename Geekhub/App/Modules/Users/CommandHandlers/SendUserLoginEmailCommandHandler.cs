@@ -5,6 +5,7 @@ using Geekhub.App.Core.CommandHandling;
 using Geekhub.App.Core.Data;
 using Geekhub.App.Modules.Alerts.Adapters;
 using Geekhub.App.Modules.Users.Commands;
+using Geekhub.App.Modules.Users.Models;
 using Geekhub.App.Modules.Users.Support;
 
 namespace Geekhub.App.Modules.Users.CommandHandlers
@@ -22,9 +23,9 @@ namespace Geekhub.App.Modules.Users.CommandHandlers
         }
 
         public void Execute(SendUserLoginEmailCommand command) {
-            var generatedCode = _userValidationCodeGenerator.GenerateCode();
-
             var user = DataContext.Users.Single(x => x.Email == command.UserEmail);
+
+            var generatedCode = _userValidationCodeGenerator.GenerateCode(user.InvalidLoginAttempts);
             user.ValidationCode = generatedCode;
             DataContext.Users.Update(user);
 
