@@ -23,7 +23,7 @@ namespace Geekhub.App.Modules.Users.CommandHandlers
             var user = DataContext.Users.Single(x => x.Email.Equals(command.Email, StringComparison.InvariantCultureIgnoreCase));
             user.InvalidLoginAttempts++;
 
-            if (user.InvalidLoginAttempts > 3) {
+            if (user.InvalidLoginAttempts % 3 == 0) {
                 user.ValidationCode = null;
                 DataContext.Users.Update(user);
                 // We will send a new email

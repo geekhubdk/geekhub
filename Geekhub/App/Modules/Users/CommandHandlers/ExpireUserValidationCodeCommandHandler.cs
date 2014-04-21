@@ -16,6 +16,7 @@ namespace Geekhub.App.Modules.Users.CommandHandlers
         {
             var user = DataContext.Users.Single(x => x.Email == command.UserEmail);
             user.ValidationCode = null;
+            user.InvalidLoginAttempts = 0;
             DataContext.Users.Update(user);
         }
     }
