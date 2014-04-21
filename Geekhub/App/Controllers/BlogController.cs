@@ -21,7 +21,11 @@ namespace Geekhub.App.Controllers
         [Route("Partials/BlogPostsForFrontpage")]
         public ActionResult BlogPostsForFrontpage()
         {
-            return PartialView(_blogRssPostReader.GetLatestPosts(3));
+            try {
+                return PartialView(_blogRssPostReader.GetLatestPosts(3));
+            } catch (Exception ex) {
+                return Content("Could not load view: " + ex.Message);
+            }
         }
 
     }
