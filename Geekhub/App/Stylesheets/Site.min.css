@@ -711,6 +711,59 @@ body {
   margin-bottom: 1.875em;
   line-height: 1.43em;
 }
+#frontpage {
+  width: 18.125em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+}
+#frontpage .intro {
+  text-align: center;
+}
+#frontpage h1.title {
+  font-size: 200%;
+}
+#frontpage .see-more {
+  text-align: center;
+  display: block;
+}
+#frontpage .dimmed-see-more {
+  text-align: center;
+  display: block;
+  color: #aaa;
+  font-size: 0.8em;
+  margin-top: 5px;
+}
+#frontpage h2 {
+  text-align: center;
+  font-size: 120%;
+  color: #444;
+  margin: 40px 0 0 0;
+}
+#frontpage .blog-posts .item {
+  display: block;
+  margin: 20px 0;
+  text-decoration: none;
+  color: #444;
+  padding: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+}
+#frontpage .blog-posts .item .title {
+  font-size: 160%;
+  font-weight: bold;
+  text-align: center;
+}
+#frontpage .blog-posts .item .createdAt {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9em;
+}
+@media only screen and (min-width: 750px) {
+  #frontpage {
+    width: 38.125em;
+  }
+}
 html,
 body {
   height: 100%;

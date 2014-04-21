@@ -183,12 +183,18 @@ namespace Geekhub.App.Controllers
             return Content("Completed");
         }
 
+        [Route("Partials/MeetingsForFrontpage")]
+        public ActionResult MeetingsForFrontpage()
+        {
+            var upcommingMeetings = _upcommingMeetingsQuery.Execute(Request.QueryString).Take(3);
+            return PartialView(upcommingMeetings);
+        }
+
         private void LoadFormData()
         {
             var result = _loadMeetingFormDataQuery.Execute();
             ViewBag.Organizers = JsonConvert.SerializeObject(result.Organizers);
             ViewBag.Tags = JsonConvert.SerializeObject(result.Tags);
         }
-
     }
 }

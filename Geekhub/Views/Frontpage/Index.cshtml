@@ -1,1 +1,13 @@
-﻿This is frontpage
+﻿<div id="frontpage">
+    <section class="intro">
+        <h1 class="title">Velkommen til Geekhub</h1>
+        <p>Stedet hvor udvikler finder deres events.</p>
+    </section>
+    <a class="dimmed-see-more" href="@Url.Action("About", "Articles")">Læs mere om Geekhub</a>
+    <h2>Kommende events</h2>
+    @Html.Action("MeetingsForFrontpage", "Meetings")
+    <a class="see-more" href="@Url.Action("Index", "Meetings")">Se flere events</a>
+    <h2>Blog</h2>
+    @Html.Action("BlogPostsForFrontpage", "Blog")
+    <a class="see-more" href="https://medium.com/@("@geekhubdk")/">Besøg bloggen</a>
+</div>
