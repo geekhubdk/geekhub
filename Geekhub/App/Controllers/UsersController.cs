@@ -2,26 +2,15 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Deldysoft.Foundation.CommandHandling;
-using Geekhub.App.Core.CommandHandling;
-using Geekhub.App.Modules.Users.Commands;
+
+
 using Geekhub.App.Modules.Users.Queries;
+using Geekhub.App.Modules.Users.CommandHandlers;
 
 namespace Geekhub.App.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly CommandBus _commandBus;
-        private readonly FetchUserByEmailQuery _fetchUserByEmailQuery;
-        private readonly IsUserValidationCodeValidQuery _isUserValidationCodeValidQuery;
-
-        public UsersController(CommandBus commandBus, FetchUserByEmailQuery fetchUserByEmailQuery, IsUserValidationCodeValidQuery isUserValidationCodeValidQuery)
-        {
-            _commandBus = commandBus;
-            _fetchUserByEmailQuery = fetchUserByEmailQuery;
-            _isUserValidationCodeValidQuery = isUserValidationCodeValidQuery;
-        }
-
         [Route("users/login")]
         public ActionResult Login(string returnUrl)
         {
@@ -44,10 +33,10 @@ namespace Geekhub.App.Controllers
             }
 
             if (user == null && !string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(name)) {
-                _commandBus.Execute(new CreateUserCommand(email, name));
+                new CreateUserCommandHandler(email, name);
             }
 
-            _commandBus.Execute(new SendUserLoginEmailCommand(email));
+            new SendUserLoginEmailCommandHandler(email);
             
             return RedirectToAction("Validate", new { email, returnUrl});
 
@@ -59,7 +48,7 @@ namespace Geekhub.App.Controllers
             if (!string.IsNullOrWhiteSpace(code)) {
                 if(new IsUserValidationCodeValidQuery(email, code).IsValid)
                 {
-                    _commandBus.Execute(new ExpireUserValidationCodeCommand(email));
+                    new ExpireUserValidationCodeCommandHandler(email);
                     
                     //create a new forms auth ticket
                     var ticket = new FormsAuthenticationTicket(2,
@@ -79,7 +68,7 @@ namespace Geekhub.App.Controllers
 
                     return RedirectToAction("Index", "Meetings");
                 } else {
-                    _commandBus.Execute(new RegisterInvalidValidationCodeCommand(email));
+                    new RegisterInvalidValidationCodeCommandHandler(email);
                 }
 
             }

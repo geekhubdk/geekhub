@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Geekhub.App.Core.CommandHandling;
 using Geekhub.App.Core.Data;
 
 namespace Geekhub.App.Modules.Users.Queries

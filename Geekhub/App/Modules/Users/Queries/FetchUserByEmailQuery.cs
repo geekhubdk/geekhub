@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Geekhub.App.Core.CommandHandling;
+
 using Geekhub.App.Core.Data;
 using Geekhub.App.Modules.Users.Models;
 

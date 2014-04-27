@@ -1,21 +1,14 @@
-using Deldysoft.Foundation.CommandHandling;
-using Geekhub.App.Core.CommandHandling;
 using Geekhub.App.Core.Data;
-using Geekhub.App.Modules.Users.Commands;
 using Geekhub.App.Modules.Users.Models;
 
 namespace Geekhub.App.Modules.Users.CommandHandlers
 {
-    public class CreateUserCommandHandler : CommandHandlerBase, IHandleCommand<CreateUserCommand>
+    public class CreateUserCommandHandler
     {
-        public CreateUserCommandHandler(DataContext dataContext) : base(dataContext)
+        public CreateUserCommandHandler(string email, string name)
         {
-        }
-
-        public void Execute(CreateUserCommand command)
-        {
-            var user = new User {Email = command.Email.ToLower(), Name = command.Name};
-            DataContext.Users.Add(user);
+            var user = new User {Email = email.ToLower(), Name = name};
+            DataContext.Current.Users.Add(user);
         }
     }
 }

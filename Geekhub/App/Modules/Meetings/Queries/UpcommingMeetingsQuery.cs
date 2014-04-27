@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using Geekhub.App.Core.CommandHandling;
+
 using Geekhub.App.Core.Data;
 using Geekhub.App.Modules.Meetings.Models;
 

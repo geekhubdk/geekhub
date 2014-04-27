@@ -4,31 +4,22 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Deldysoft.Foundation;
-using Deldysoft.Foundation.CommandHandling;
-using Geekhub.App.Core.CommandHandling;
+
+
 using Geekhub.App.Core.Data;
 using Geekhub.App.Core.Mvc;
 using Geekhub.App.Core.Support;
-using Geekhub.App.Modules.Meetings.Commands;
 using Geekhub.App.Modules.Meetings.Models;
 using Geekhub.App.Modules.Meetings.Queries;
 using Geekhub.App.Modules.Meetings.Support;
 using Geekhub.App.Modules.Meetings.ViewModels;
 using Newtonsoft.Json;
+using Geekhub.App.Modules.Meetings.CommandHandlers;
 
 namespace Geekhub.App.Controllers
 {
     public class MeetingsController : ControllerBase
     {
-        private readonly ICommandExecuter _commandExecuter;
-        private readonly UpcommingMeetingsQuery _upcommingMeetingsQuery;
-        private readonly LoadMeetingFormDataQuery _loadMeetingFormDataQuery;
-
-        public MeetingsController(ICommandExecuter commandExecuter)
-        {
-            _commandExecuter = commandExecuter;
-        }
-
         [Route("meetings")]
         public ActionResult Index()
         {
@@ -70,7 +61,7 @@ namespace Geekhub.App.Controllers
             LoadFormData();
 
             if (ModelState.IsValid) {
-                _commandExecuter.Execute(new CreateMeetingCommand(formModel, User.Identity.Name));
+                new CreateMeetingCommandHandler(formModel);
                 Notice("Se dit flotte møde :)");
                 return RedirectToAction("Index");
             }
@@ -83,7 +74,7 @@ namespace Geekhub.App.Controllers
         [Route("meetings/{id}/delete")]
         public ActionResult Delete(int id)
         {
-            _commandExecuter.Execute(new DeleteMeetingCommand(id, User.Identity.Name));
+            new DeleteMeetingCommandHandler(id);
 
             Notice("Du føler dig destruktiv idag, hva? Pyt. Mødet er dæbt.");
 
@@ -110,7 +101,7 @@ namespace Geekhub.App.Controllers
             LoadFormData();
 
             if (ModelState.IsValid) {
-                _commandExecuter.Execute(new SaveMeetingCommand(id, User.Identity.Name, formModel));
+                new SaveMeetingCommandHandler(id, formModel);
                 Notice("Se dit flotte møde :)");
                 return RedirectToAction("Show", new { id });
             }
@@ -166,12 +157,10 @@ namespace Geekhub.App.Controllers
             var result = client.DownloadString("http://www.geekhub.dk/meetings.json?ticks=" + DateTime.Now.Ticks);
             var json = JsonConvert.DeserializeObject<JsonViewModel>(result);
 
-            var deleteAll = new DeleteAllMeetingsCommand();
-            _commandExecuter.Execute(deleteAll);
+            new DeleteAllMeetingsCommandHandler().Execute();
 
             foreach (var meeting in json.Items) {
-                var cmd = new CreateMeetingFromJsonCommand(meeting, "Pull");
-                _commandExecuter.Execute(cmd);
+                new CreateMeetingCommandHandler(meeting);
             }
 
             return Content("Completed");

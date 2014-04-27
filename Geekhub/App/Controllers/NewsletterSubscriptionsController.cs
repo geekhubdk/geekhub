@@ -1,20 +1,13 @@
 ﻿using System.Web.Mvc;
-using Deldysoft.Foundation.CommandHandling;
-using Geekhub.App.Modules.Alerts.Commands;
+
 using Geekhub.App.Modules.Alerts.Queries;
 using Geekhub.App.Modules.Alerts.Support;
+using Geekhub.App.Modules.Alerts.CommandHandlers;
 
 namespace Geekhub.App.Controllers
 {
     public class NewsletterSubscriptionsController : ControllerBase
     {
-        private readonly ICommandExecuter _commandExecuter;
-
-        public NewsletterSubscriptionsController(ICommandExecuter commandExecuter)
-        {
-            _commandExecuter = commandExecuter;
-        }
-
         [Route("newsletter/subscribe")]
         public ActionResult Create()
         {
@@ -31,7 +24,7 @@ namespace Geekhub.App.Controllers
                 return View();
             }
 
-            _commandExecuter.Execute(new SubscribeToNewsletterCommand(email));
+            new SubscribeToNewsletterCommandHandler(email);
 
             Notice("Du er tilmeldt nyhedsbrevet");
             return Redirect("~/");
@@ -52,7 +45,7 @@ namespace Geekhub.App.Controllers
             }
 
             try {
-                _commandExecuter.Execute(new UnsubscribeToNewsletterCommand(email));
+                new UnsubscribeToNewsletterCommandHandler(email);
             } catch (SubscriptionNotFoundException) {
                 Warn("Vi kunne ikke finde dig. Prøv en anden email");
                 return View();

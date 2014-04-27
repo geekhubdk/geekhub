@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Web;
 using Biggy;
-using Geekhub.App.Core.CommandHandling;
 using Geekhub.App.Modules.Alerts.Models;
 using Geekhub.App.Modules.Meetings.Models;
 using Geekhub.App.Modules.Users.Models;
@@ -12,7 +11,6 @@ namespace Geekhub.App.Core.Data
     {
         public InMemoryList<Meeting> Meetings;
         public InMemoryList<User> Users;
-        public InMemoryList<CommandLog> CommandLogs;
         public InMemoryList<MeetingTweetAlert> MeetingTweetAlerts;
         public InMemoryList<NewsletterLog> NewsletterLogs;
         public InMemoryList<NewsletterSubscription> NewsletterSubscriptions;
@@ -32,7 +30,6 @@ namespace Geekhub.App.Core.Data
             Meetings = CreateList<Meeting>(path);
             Users = CreateList<User>(path);
             MeetingTweetAlerts = CreateList<MeetingTweetAlert>(path);
-            CommandLogs = CreateList<CommandLog>(path);
             NewsletterLogs = CreateList<NewsletterLog>(path);
             NewsletterSubscriptions = CreateList<NewsletterSubscription>(path);
         }

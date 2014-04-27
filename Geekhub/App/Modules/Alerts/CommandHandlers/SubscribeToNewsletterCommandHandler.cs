@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Linq;
-using Deldysoft.Foundation.CommandHandling;
-using Geekhub.App.Core.CommandHandling;
+
+
 using Geekhub.App.Core.Data;
-using Geekhub.App.Modules.Alerts.Commands;
 using Geekhub.App.Modules.Alerts.Models;
 
 namespace Geekhub.App.Modules.Alerts.CommandHandlers
 {
-    public class SubscribeToNewsletterCommandHandler : IHandleCommand<SubscribeToNewsletterCommand>
+    public class SubscribeToNewsletterCommandHandler
     {
-        public void Execute(SubscribeToNewsletterCommand command)
+        public SubscribeToNewsletterCommandHandler(string email)
         {
             var subscription = DataContext.Current.NewsletterSubscriptions.FirstOrDefault(
-                x => x.Email.Equals(command.Email, StringComparison.CurrentCultureIgnoreCase));
+                x => x.Email.Equals(email, StringComparison.CurrentCultureIgnoreCase));
 
             if (subscription == null) {
-                subscription = new NewsletterSubscription {Email = command.Email};
+                subscription = new NewsletterSubscription {Email = email};
                 DataContext.Current.NewsletterSubscriptions.Add(subscription);
             }
 

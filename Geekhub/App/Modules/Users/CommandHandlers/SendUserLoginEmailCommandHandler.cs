@@ -1,35 +1,28 @@
 ﻿using System.Linq;
-using Deldysoft.Foundation.CommandHandling;
+
 using Geekhub.App.Core.Adapters;
-using Geekhub.App.Core.CommandHandling;
+
 using Geekhub.App.Core.Data;
 using Geekhub.App.Modules.Alerts.Adapters;
-using Geekhub.App.Modules.Users.Commands;
 using Geekhub.App.Modules.Users.Models;
 using Geekhub.App.Modules.Users.Support;
 
 namespace Geekhub.App.Modules.Users.CommandHandlers
 {
-    public class SendUserLoginEmailCommandHandler : CommandHandlerBase, IHandleCommand<SendUserLoginEmailCommand>
+    public class SendUserLoginEmailCommandHandler
     {
-        private readonly UserValidationCodeGenerator _userValidationCodeGenerator;
-        private readonly IEmailAdapter _emailAdapter;
+        private readonly UserValidationCodeGenerator _userValidationCodeGenerator = new UserValidationCodeGenerator();
+        private readonly IEmailAdapter _emailAdapter = Alerts.Config.AlertsContainerConfig.CreateEmailAdapter();
 
-        public SendUserLoginEmailCommandHandler(DataContext dataContext, UserValidationCodeGenerator userValidationCodeGenerator, IEmailAdapter emailAdapter)
-            : base(dataContext)
+        public SendUserLoginEmailCommandHandler(string email)
         {
-            _userValidationCodeGenerator = userValidationCodeGenerator;
-            _emailAdapter = emailAdapter;
-        }
-
-        public void Execute(SendUserLoginEmailCommand command) {
-            var user = DataContext.Users.Single(x => x.Email == command.UserEmail);
+            var user = DataContext.Current.Users.Single(x => x.Email == email);
 
             var generatedCode = _userValidationCodeGenerator.GenerateCode(user.InvalidLoginAttempts);
             user.ValidationCode = generatedCode;
-            DataContext.Users.Update(user);
+            DataContext.Current.Users.Update(user);
 
-            SendValidationEmail(command.UserEmail, generatedCode);
+            SendValidationEmail(email, generatedCode);
         }
         
         private void SendValidationEmail(string email, string validationCode)

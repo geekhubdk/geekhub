@@ -30,13 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac">
-      <HintPath>..\packages\Autofac.3.2.0\lib\net40\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Autofac.Integration.Mvc">
-      <HintPath>..\packages\Autofac.Mvc5.3.2.0\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
@@ -76,17 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppEnvironment.cs" />
-    <Compile Include="Bootstrapper.cs" />
-    <Compile Include="BootstrapperContainerFluentOptions.cs" />
-    <Compile Include="BootstrapperFluentOptions.cs" />
-    <Compile Include="CommandHandling\CommandBus.cs" />
-    <Compile Include="CommandHandling\CommandExecuter.cs" />
-    <Compile Include="CommandHandling\ICommandExecuter.cs" />
-    <Compile Include="CommandHandling\ICommandLoggerAdapter.cs" />
-    <Compile Include="CommandHandling\IHandleCommand.cs" />
     <Compile Include="EnvironmentType.cs" />
-    <Compile Include="IModuleContainerConfig.cs" />
-    <Compile Include="ModuleContainerConfigBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

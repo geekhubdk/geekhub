@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Geekhub.App.Core.Data;
 using Geekhub.App.Modules.Alerts.CommandHandlers;
-using Geekhub.App.Modules.Alerts.Commands;
 using Geekhub.App.Modules.Alerts.Models;
 using Geekhub.App.Modules.Meetings.Models;
 using Geekhub.App.Modules.Meetings.Queries;
@@ -47,8 +46,8 @@ namespace Geekhub.Tests.App.Modules.Alerts
             var emailAdapter = new EmailAdapterFake();
             var upcommingMeetingsQuery = new UpcommingMeetingsQuery();
 
-            var handler = new SendNewMeetingsNewsletterCommandHandler(context, emailAdapter);
-            handler.Execute(new SendNewMeetingsNewsletterCommand());
+            var handler = new SendNewMeetingsNewsletterCommandHandler(emailAdapter);
+            handler.Execute();
 
             Assert.Equal(2, emailAdapter.SentEmails.Count);
 
@@ -89,8 +88,8 @@ namespace Geekhub.Tests.App.Modules.Alerts
 
             var emailAdapter = new EmailAdapterFake();
             
-            var handler = new SendNewMeetingsNewsletterCommandHandler(context, emailAdapter);
-            handler.Execute(new SendNewMeetingsNewsletterCommand());
+            var handler = new SendNewMeetingsNewsletterCommandHandler();
+            handler.Execute();
 
             Assert.Equal(0, emailAdapter.SentEmails.Count);
         }

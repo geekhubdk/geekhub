@@ -12,13 +12,11 @@ namespace Geekhub.App.Modules.Alerts.Models
     public class NewMeetingsNewsletter
     {
         private readonly IEmailAdapter _emailAdapter;
-        private readonly DataContext _dataContext;
         public IEnumerable<Meeting> Meetings { get; private set; }
 
-        public NewMeetingsNewsletter(IEnumerable<Meeting> meetings, IEmailAdapter emailAdapter, DataContext dataContext)
+        public NewMeetingsNewsletter(IEnumerable<Meeting> meetings, IEmailAdapter emailAdapter)
         {
             _emailAdapter = emailAdapter;
-            _dataContext = dataContext;
             Meetings = meetings;
         }
 
@@ -48,7 +46,7 @@ namespace Geekhub.App.Modules.Alerts.Models
                 Recipients = subscribers,
                 Parameters = parameters
             };
-            _dataContext.NewsletterLogs.Add(log);
+            DataContext.Current.NewsletterLogs.Add(log);
         }
 
         private string GenerateBodyFor(string email)

@@ -1,30 +1,28 @@
 ﻿using System;
 using System.Web.Mvc;
-using Deldysoft.Foundation.CommandHandling;
-using Geekhub.App.Core.CommandHandling;
-using Geekhub.App.Modules.Alerts.Commands;
+
+
+using Geekhub.App.Modules.Alerts.CommandHandlers;
+using Geekhub.App.Modules.Alerts.Adapters;
+using Geekhub.App.Modules.Alerts.Support;
+using Geekhub.App.Modules.Alerts.Config;
 
 namespace Geekhub.App.Controllers
 {
     [Route("alerts/{action}")]
     public class AlertsController : Controller
     {
-        private readonly CommandBus _commandBus;
-
-        public AlertsController(CommandBus commandBus)
-        {
-            _commandBus = commandBus;
-        }
-
         public ActionResult SendTweets()
         {
-            _commandBus.Execute(new SendTweetsForMeetingsCommand(TimeSpan.FromHours(0)));
+            new SendTweetsForMeetingsCommandHandler(TimeSpan.FromHours(0));
+            
             return Content("Done");
         }
 
         public ActionResult SendNewMeetingsNewsletter()
         {
-            _commandBus.Execute(new SendNewMeetingsNewsletterCommand());
+            new SendNewMeetingsNewsletterCommandHandler();
+
             return Content("Done");
         }
 	}

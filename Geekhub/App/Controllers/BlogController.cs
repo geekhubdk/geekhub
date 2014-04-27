@@ -11,12 +11,7 @@ namespace Geekhub.App.Controllers
 {
     public class BlogController : Controller
     {
-        private readonly BlogRssPostReader _blogRssPostReader;
-
-        public BlogController(BlogRssPostReader blogRssPostReader)
-        {
-            _blogRssPostReader = blogRssPostReader;
-        }
+        private BlogRssPostReader _blogRssPostReader = new BlogRssPostReader();
 
         [Route("Partials/BlogPostsForFrontpage")]
         public ActionResult BlogPostsForFrontpage()

@@ -40,12 +40,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac">
-      <HintPath>..\packages\Autofac.3.2.0\lib\net40\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Autofac.Integration.Mvc">
-      <HintPath>..\packages\Autofac.Mvc5.3.2.0\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="Biggy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\biggy\Biggy.dll</HintPath>
@@ -236,14 +230,10 @@
     <Compile Include="App\Controllers\FrontpageController.cs" />
     <Compile Include="App\Controllers\MeetingsController.cs" />
     <Compile Include="App\Controllers\NewsletterSubscriptionsController.cs" />
+    <Compile Include="App\Controllers\SendTweetsForMeetingCommandHandler.cs" />
     <Compile Include="App\Controllers\UsersController.cs" />
     <Compile Include="App\Core\Adapters\IEmailAdapter.cs" />
     <Compile Include="App\Core\Adapters\SmtpEmailAdapter.cs" />
-    <Compile Include="App\Core\CommandHandling\CommandHandlerBase.cs" />
-    <Compile Include="App\Core\CommandHandling\CommandLog.cs" />
-    <Compile Include="App\Core\CommandHandling\CommandLogger.cs" />
-    <Compile Include="App\Core\CommandHandling\QueryBase.cs" />
-    <Compile Include="App\Core\Config\CoreContainerConfig.cs" />
     <Compile Include="App\Core\Data\BiggyListFixed.cs" />
     <Compile Include="App\Core\Data\DataContext.cs" />
     <Compile Include="App\Core\Mvc\CalendarResult.cs" />
@@ -260,10 +250,6 @@
     <Compile Include="App\Modules\Alerts\CommandHandlers\SendTweetsForMeetingsCommandHandler.cs" />
     <Compile Include="App\Modules\Alerts\CommandHandlers\SubscribeToNewsletterCommandHandler.cs" />
     <Compile Include="App\Modules\Alerts\CommandHandlers\UnsubscribeToNewsletterCommandHandler.cs" />
-    <Compile Include="App\Modules\Alerts\Commands\SendNewMeetingsNewsletterCommand.cs" />
-    <Compile Include="App\Modules\Alerts\Commands\SendTweetsForMeetingsCommand.cs" />
-    <Compile Include="App\Modules\Alerts\Commands\SubscribeToNewsletterCommand.cs" />
-    <Compile Include="App\Modules\Alerts\Commands\UnsubscribeToNewsletterCommand.cs" />
     <Compile Include="App\Modules\Alerts\Config\AlertsContainerConfig.cs" />
     <Compile Include="App\Modules\Alerts\Models\MeetingTweetAlert.cs" />
     <Compile Include="App\Modules\Alerts\Models\NewMeetingsNewsletter.cs" />
@@ -278,11 +264,6 @@
     <Compile Include="App\Modules\Meetings\CommandHandlers\DeleteAllMeetingsCommandHandler.cs" />
     <Compile Include="App\Modules\Meetings\CommandHandlers\DeleteMeetingCommandHandler.cs" />
     <Compile Include="App\Modules\Meetings\CommandHandlers\SaveMeetingCommandHandler.cs" />
-    <Compile Include="App\Modules\Meetings\Commands\CreateMeetingCommand.cs" />
-    <Compile Include="App\Modules\Meetings\Commands\CreateMeetingFromJsonCommand.cs" />
-    <Compile Include="App\Modules\Meetings\Commands\DeleteAllMeetingsCommand.cs" />
-    <Compile Include="App\Modules\Meetings\Commands\DeleteMeetingCommand.cs" />
-    <Compile Include="App\Modules\Meetings\Commands\SaveMeetingCommand.cs" />
     <Compile Include="App\Modules\Meetings\Models\City.cs" />
     <Compile Include="App\Modules\Meetings\Models\Meeting.cs" />
     <Compile Include="App\Modules\Meetings\Models\MeetingExtensions.cs" />
@@ -302,10 +283,6 @@
     <Compile Include="App\Modules\Users\CommandHandlers\ExpireUserValidationCodeCommandHandler.cs" />
     <Compile Include="App\Modules\Users\CommandHandlers\RegisterInvalidValidationCodeCommandHandler.cs" />
     <Compile Include="App\Modules\Users\CommandHandlers\SendUserLoginEmailCommandHandler.cs" />
-    <Compile Include="App\Modules\Users\Commands\CreateUserCommand.cs" />
-    <Compile Include="App\Modules\Users\Commands\ExpireUserValidationCodeCommand.cs" />
-    <Compile Include="App\Modules\Users\Commands\RegisterInvalidValidationCodeCommand.cs" />
-    <Compile Include="App\Modules\Users\Commands\SendUserLoginEmailCommand.cs" />
     <Compile Include="App\Modules\Users\Models\User.cs" />
     <Compile Include="App\Modules\Users\Queries\FetchUserByEmailQuery.cs" />
     <Compile Include="App\Modules\Users\Queries\IsUserValidationCodeValidQuery.cs" />
