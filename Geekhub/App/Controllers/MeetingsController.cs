@@ -22,17 +22,11 @@ namespace Geekhub.App.Controllers
     {
         private readonly ICommandExecuter _commandExecuter;
         private readonly UpcommingMeetingsQuery _upcommingMeetingsQuery;
-        private readonly ArchivedMeetingsQuery _archivedMeetingsQuery;
-        private readonly ShowMeetingQuery _showMeetingQuery;
         private readonly LoadMeetingFormDataQuery _loadMeetingFormDataQuery;
 
-        public MeetingsController(ICommandExecuter commandExecuter, UpcommingMeetingsQuery upcommingMeetingsQuery, ShowMeetingQuery showMeetingQuery, LoadMeetingFormDataQuery loadMeetingFormDataQuery, ArchivedMeetingsQuery archivedMeetingsQuery)
+        public MeetingsController(ICommandExecuter commandExecuter)
         {
             _commandExecuter = commandExecuter;
-            _upcommingMeetingsQuery = upcommingMeetingsQuery;
-            _showMeetingQuery = showMeetingQuery;
-            _loadMeetingFormDataQuery = loadMeetingFormDataQuery;
-            _archivedMeetingsQuery = archivedMeetingsQuery;
         }
 
         [Route("meetings")]
@@ -41,21 +35,21 @@ namespace Geekhub.App.Controllers
             ViewBag.MetaDescription =
                 "Geekhub.dk er stedet hvor udviklere finder deres events/arrangementer - foreslå dit event til listen, og spred budskabet.";
 
-            var upcommingMeetings = _upcommingMeetingsQuery.Execute(Request.QueryString);
+            var upcommingMeetings = new UpcommingMeetingsQuery(Request.QueryString).Meetings;
             return View(upcommingMeetings);
         }
 
         [Route("arkiv")]
         public ActionResult Archive()
         {
-            var archivedMeetings = _archivedMeetingsQuery.Execute();
+            var archivedMeetings = new ArchivedMeetingsQuery().Meetings;
             return View(archivedMeetings);
         }
 
         [Route("meetings/{id}")]
         public ActionResult Show(int id)
         {
-            var meeting = _showMeetingQuery.Execute(id);
+            var meeting = new ShowMeetingQuery(id).Meeting;
             return View(meeting);
         }
 
@@ -102,7 +96,7 @@ namespace Geekhub.App.Controllers
         {
             LoadFormData();
 
-            var meeting = _showMeetingQuery.Execute(id);
+            var meeting = new ShowMeetingQuery(id).Meeting;
             var formModel = new MeetingFormModel(meeting);
 
             return View("Create", formModel);
@@ -127,14 +121,14 @@ namespace Geekhub.App.Controllers
         [Route("meetings.rss")]
         public ActionResult Rss()
         {
-            var model = _upcommingMeetingsQuery.Execute(Request.QueryString);
+            var model = new UpcommingMeetingsQuery(Request.QueryString).Meetings;
             return PartialView(new RssViewModel(model));
         }
 
         [Route("meetings.json")]
         public ActionResult Json()
         {
-            var model = _upcommingMeetingsQuery.Execute(Request.QueryString);
+            var model = new UpcommingMeetingsQuery(Request.QueryString).Meetings;
             return Json(new JsonViewModel(model), JsonRequestBehavior.AllowGet);
         }
 
@@ -142,7 +136,7 @@ namespace Geekhub.App.Controllers
         public ActionResult Widget()
         {
             var title = Request.QueryString["title"].Or("Udvikler events i danmark");
-            var meetings = _upcommingMeetingsQuery.Execute(Request.QueryString);
+            var meetings = new UpcommingMeetingsQuery(Request.QueryString).Meetings;
 
             var model = new WidgetViewModel(title, meetings.Take(5));
             return PartialView(model);
@@ -151,7 +145,7 @@ namespace Geekhub.App.Controllers
         [Route("meetings.ics")]
         public ActionResult Ics()
         {
-            var meetings = _upcommingMeetingsQuery.Execute(Request.QueryString);
+            var meetings = new UpcommingMeetingsQuery(Request.QueryString).Meetings;
             return new CalendarResult("Geekhub", meetings.Select(x=>new CalendarResult.Event() {
                     DateStart = x.StartsAt,
                     DateEnd = x.StartsAt.AddHours(2),
@@ -186,15 +180,15 @@ namespace Geekhub.App.Controllers
         [Route("Partials/MeetingsForFrontpage")]
         public ActionResult MeetingsForFrontpage()
         {
-            var upcommingMeetings = _upcommingMeetingsQuery.Execute(Request.QueryString).Take(3);
+            var upcommingMeetings = new UpcommingMeetingsQuery(Request.QueryString).Meetings.Take(3);
             return PartialView(upcommingMeetings);
         }
 
         private void LoadFormData()
         {
-            var result = _loadMeetingFormDataQuery.Execute();
-            ViewBag.Organizers = JsonConvert.SerializeObject(result.Organizers);
-            ViewBag.Tags = JsonConvert.SerializeObject(result.Tags);
+            var query = new LoadMeetingFormDataQuery();
+            ViewBag.Organizers = JsonConvert.SerializeObject(query.Organizers);
+            ViewBag.Tags = JsonConvert.SerializeObject(query.Tags);
         }
     }
 }

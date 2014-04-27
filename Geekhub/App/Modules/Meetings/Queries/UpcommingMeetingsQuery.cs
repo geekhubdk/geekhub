@@ -8,20 +8,14 @@ using Geekhub.App.Modules.Meetings.Models;
 
 namespace Geekhub.App.Modules.Meetings.Queries
 {
-    public class UpcommingMeetingsQuery : QueryBase
+    public class UpcommingMeetingsQuery
     {
-        public UpcommingMeetingsQuery(DataContext dataContext) : base(dataContext)
+        public UpcommingMeetingsQuery(NameValueCollection filter = null)
         {
+            filter = filter ?? new NameValueCollection();
+            Meetings = DataContext.Current.Meetings.Where(x => x.StartsAt > DateTime.Now.Date && x.IsNotDeleted).OrderBy(x => x.StartsAt).Filter(filter);
         }
 
-        public IEnumerable<Meeting> Execute(NameValueCollection filter)
-        {
-            return DataContext.Meetings.Where(x => x.StartsAt > DateTime.Now.Date && x.IsNotDeleted).OrderBy(x => x.StartsAt).Filter(filter);
-        }
-
-        public virtual IEnumerable<Meeting> Execute()
-        {
-            return Execute(new NameValueCollection());
-        }
+        public IEnumerable<Meeting> Meetings { get; private set; }
     }
 }

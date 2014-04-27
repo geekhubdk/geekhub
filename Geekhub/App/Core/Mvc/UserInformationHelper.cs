@@ -15,7 +15,7 @@ namespace Geekhub.App.Core.Mvc
                 return null;
 
             if (context.Items["UserInformation"] == null) {
-                var user = new FetchUserByEmailQuery(DataContext.Current).Execute(context.User.Identity.Name);
+                var user = new FetchUserByEmailQuery(context.User.Identity.Name).User;
 
                 if (user == null) {
                     FormsAuthentication.SignOut();

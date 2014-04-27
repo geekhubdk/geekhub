@@ -7,16 +7,13 @@ using Geekhub.App.Modules.Meetings.Models;
 
 namespace Geekhub.App.Modules.Meetings.Queries
 {
-    public class ArchivedMeetingsQuery : QueryBase
+    public class ArchivedMeetingsQuery
     {
-        public ArchivedMeetingsQuery(DataContext dataContext)
-            : base(dataContext)
+        public ArchivedMeetingsQuery()
         {
+            Meetings = DataContext.Current.Meetings.Where(x => x.StartsAt.Date < DateTime.Now.Date).OrderByDescending(x => x.StartsAt);
         }
 
-        public virtual IEnumerable<Meeting> Execute()
-        {
-            return DataContext.Meetings.Where(x => x.StartsAt.Date < DateTime.Now.Date).OrderByDescending(x => x.StartsAt);
-        }
+        public IOrderedEnumerable<Meeting> Meetings { get; private set; }
     }
 }

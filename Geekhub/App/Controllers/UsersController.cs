@@ -36,7 +36,7 @@ namespace Geekhub.App.Controllers
         [Route("users/login")]
         public ActionResult Login(string email, string name, string returnUrl)
         {
-            var user = _fetchUserByEmailQuery.Execute(email);
+            var user = new FetchUserByEmailQuery(email).User;
 
             if (user == null && string.IsNullOrWhiteSpace(name)) {
                 ViewBag.Email = email;
@@ -57,7 +57,7 @@ namespace Geekhub.App.Controllers
         public ActionResult Validate(string email, string code = "", string returnUrl = "")
         {
             if (!string.IsNullOrWhiteSpace(code)) {
-                if(_isUserValidationCodeValidQuery.Execute(email, code))
+                if(new IsUserValidationCodeValidQuery(email, code).IsValid)
                 {
                     _commandBus.Execute(new ExpireUserValidationCodeCommand(email));
                     

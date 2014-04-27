@@ -7,15 +7,13 @@ using Geekhub.App.Core.Data;
 
 namespace Geekhub.App.Modules.Alerts.Queries
 {
-    public class SubscriberCountQuery : QueryBase
+    public class SubscriberCountQuery
     {
-        public SubscriberCountQuery(DataContext dataContext) : base(dataContext)
+        public SubscriberCountQuery()
         {
+            NumberOfSubscribers = DataContext.Current.NewsletterSubscriptions.Count(x => x.SubscribedToNewMeetingUpdates);
         }
 
-        public int Execute()
-        {
-            return DataContext.NewsletterSubscriptions.Count(x => x.SubscribedToNewMeetingUpdates);
-        }
+        public int NumberOfSubscribers { get; private set; }
     }
 }

@@ -16,12 +16,10 @@ namespace Geekhub.App.Modules.Alerts.CommandHandlers
     public class SendNewMeetingsNewsletterCommandHandler : CommandHandlerBase, IHandleCommand<SendNewMeetingsNewsletterCommand>
     {
         private readonly IEmailAdapter _emailAdapter;
-        private readonly UpcommingMeetingsQuery _upcommingMeetingsQuery;
-
-        public SendNewMeetingsNewsletterCommandHandler(DataContext dataContext, IEmailAdapter emailAdapter, UpcommingMeetingsQuery upcommingMeetingsQuery) : base(dataContext)
+        
+        public SendNewMeetingsNewsletterCommandHandler(DataContext dataContext, IEmailAdapter emailAdapter) : base(dataContext)
         {
             _emailAdapter = emailAdapter;
-            _upcommingMeetingsQuery = upcommingMeetingsQuery;
         }
 
         public void Execute(SendNewMeetingsNewsletterCommand command)
@@ -56,7 +54,7 @@ namespace Geekhub.App.Modules.Alerts.CommandHandlers
 
         private Meeting[] FindNewMeetingsToCreateNewsletterFrom()
         {
-            var upcommingMeetings = _upcommingMeetingsQuery.Execute();
+            var upcommingMeetings = new UpcommingMeetingsQuery().Meetings;
             var lastMail = DataContext.NewsletterLogs.Where(x=>x.NewsletterType == typeof (NewMeetingsNewsletter).Name).OrderByDescending(x=>x.DateSent).FirstOrDefault();
 
             var fromTime = lastMail == null ? new DateTime(2000,1,1) : lastMail.DateSent;

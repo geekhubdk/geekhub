@@ -9,12 +9,10 @@ namespace Geekhub.App.Controllers
     public class NewsletterSubscriptionsController : ControllerBase
     {
         private readonly ICommandExecuter _commandExecuter;
-        private readonly SubscriberCountQuery _subscriberCountQuery;
 
-        public NewsletterSubscriptionsController(ICommandExecuter commandExecuter, SubscriberCountQuery subscriberCountQuery)
+        public NewsletterSubscriptionsController(ICommandExecuter commandExecuter)
         {
             _commandExecuter = commandExecuter;
-            _subscriberCountQuery = subscriberCountQuery;
         }
 
         [Route("newsletter/subscribe")]
@@ -67,7 +65,7 @@ namespace Geekhub.App.Controllers
         
         private void IncludeSubscriberCount()
         {
-            ViewBag.SubscriberCount = _subscriberCountQuery.Execute();
+            ViewBag.SubscriberCount = new SubscriberCountQuery().NumberOfSubscribers;
         }
 
 	}

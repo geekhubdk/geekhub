@@ -37,6 +37,7 @@ namespace Geekhub.Tests.App.Modules.Alerts
         public void CheckThatItWillGenerateAndSendCurrectly()
         {
             var context = new DataContext(null);
+            DataContext.Current = context;
             context.Meetings.Add(_meeting1);
             context.Meetings.Add(_meeting2);
                         
@@ -44,9 +45,9 @@ namespace Geekhub.Tests.App.Modules.Alerts
             context.NewsletterSubscriptions.Add(new NewsletterSubscription() {Email ="jesper@deldysoft.dk", SubscribedToNewMeetingUpdates = true });
 
             var emailAdapter = new EmailAdapterFake();
-            var upcommingMeetingsQuery = new UpcommingMeetingsQuery(context);
+            var upcommingMeetingsQuery = new UpcommingMeetingsQuery();
 
-            var handler = new SendNewMeetingsNewsletterCommandHandler(context, emailAdapter, upcommingMeetingsQuery);
+            var handler = new SendNewMeetingsNewsletterCommandHandler(context, emailAdapter);
             handler.Execute(new SendNewMeetingsNewsletterCommand());
 
             Assert.Equal(2, emailAdapter.SentEmails.Count);
@@ -86,9 +87,8 @@ namespace Geekhub.Tests.App.Modules.Alerts
                 });
 
             var emailAdapter = new EmailAdapterFake();
-            var upcommingMeetingsQuery = new UpcommingMeetingsQuery(context);
-
-            var handler = new SendNewMeetingsNewsletterCommandHandler(context, emailAdapter, upcommingMeetingsQuery);
+            
+            var handler = new SendNewMeetingsNewsletterCommandHandler(context, emailAdapter);
             handler.Execute(new SendNewMeetingsNewsletterCommand());
 
             Assert.Equal(0, emailAdapter.SentEmails.Count);

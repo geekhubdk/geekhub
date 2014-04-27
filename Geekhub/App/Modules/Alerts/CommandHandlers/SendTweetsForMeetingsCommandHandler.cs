@@ -16,18 +16,17 @@ namespace Geekhub.App.Modules.Alerts.CommandHandlers
     {
         private readonly TwitterMeetingAlertGenerator _twitterMeetingAlertGenerator;
         private readonly ITwitterAdapter _twitterAdapter;
-        private readonly UpcommingMeetingsQuery _upcommingMeetingsQuery;
-
-        public SendTweetsForMeetingsCommandHandler(DataContext dataContext, TwitterMeetingAlertGenerator twitterMeetingAlertGenerator, ITwitterAdapter twitterAdapter, UpcommingMeetingsQuery upcommingMeetingsQuery) : base(dataContext)
+        
+        public SendTweetsForMeetingsCommandHandler(DataContext dataContext, TwitterMeetingAlertGenerator twitterMeetingAlertGenerator, ITwitterAdapter twitterAdapter) : base(dataContext)
         {
             _twitterMeetingAlertGenerator = twitterMeetingAlertGenerator;
             _twitterAdapter = twitterAdapter;
-            _upcommingMeetingsQuery = upcommingMeetingsQuery;
         }
 
         public void Execute(SendTweetsForMeetingsCommand command)
         {
-            foreach (var meeting in _upcommingMeetingsQuery.Execute()) {
+            var meetings = new UpcommingMeetingsQuery().Meetings;
+            foreach (var meeting in meetings) {
 
                 // We will wait for 1 hour before sending tweets
                 if (DateTime.Now - meeting.CreatedAt < command.WaitTime) {

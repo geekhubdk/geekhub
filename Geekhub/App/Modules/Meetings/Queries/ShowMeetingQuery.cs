@@ -5,15 +5,13 @@ using Geekhub.App.Modules.Meetings.Models;
 
 namespace Geekhub.App.Modules.Meetings.Queries
 {
-    public class ShowMeetingQuery : QueryBase
+    public class ShowMeetingQuery
     {
-        public ShowMeetingQuery(DataContext dataContext) : base(dataContext)
+        public ShowMeetingQuery(int id)
         {
+            Meeting = DataContext.Current.Meetings.Single(x => x.Id == id);
         }
 
-        public Meeting Execute(int id)
-        {
-            return DataContext.Meetings.Single(x => x.Id == id);
-        }
+        public Meeting Meeting { get; private set; }
     }
 }
