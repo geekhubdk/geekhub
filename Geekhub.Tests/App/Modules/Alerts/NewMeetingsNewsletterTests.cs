@@ -75,6 +75,7 @@ namespace Geekhub.Tests.App.Modules.Alerts
         public void DoesNotSendTheSameMeetingsAgain()
         {
             var context = new DataContext(null);
+            DataContext.Current = context;
             context.Meetings.Add(_meeting1);
             context.Meetings.Add(_meeting2);
 
