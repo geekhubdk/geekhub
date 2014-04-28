@@ -1,18 +1,19 @@
-﻿using System.Linq;
-
-
-using Geekhub.App.Core.Data;
-using Geekhub.App.Core.Support;
+﻿using Geekhub.App.Core.Data;
 using Geekhub.App.Modules.Meetings.Models;
 using Geekhub.App.Modules.Meetings.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Geekhub.App.Core.Support;
 
-namespace Geekhub.App.Modules.Meetings.CommandHandlers
+namespace Geekhub.App.Modules.Meetings.Data
 {
-    public class CreateMeetingCommandHandler
+    public class MeetingsService
     {
         private readonly MeetingFormModelBinder _meetingFormModelBinder = new MeetingFormModelBinder();
 
-        public CreateMeetingCommandHandler(MeetingFormModel formModel)
+        public void Create(MeetingFormModel formModel)
         {
             var meeting = new Meeting();
 
@@ -23,7 +24,7 @@ namespace Geekhub.App.Modules.Meetings.CommandHandlers
             DataContext.Current.Meetings.Add(meeting);
         }
 
-        public CreateMeetingCommandHandler(JsonViewModel.JsonMeetingViewModel formModel)
+        public void Create(JsonViewModel.JsonMeetingViewModel formModel)
         {
             var meeting = new Meeting();
 
@@ -43,6 +44,27 @@ namespace Geekhub.App.Modules.Meetings.CommandHandlers
             meeting.Url = formModel.Url;
 
             DataContext.Current.Meetings.Add(meeting);
+        }
+
+        public void Save(int meetingId, MeetingFormModel formModel)
+        {
+            var meeting = DataContext.Current.Meetings.FirstOrDefault(x => x.Id == meetingId);
+
+            _meetingFormModelBinder.FormModelToMeeting(formModel, meeting);
+
+            DataContext.Current.Meetings.Update(meeting);
+        }
+
+        public void DeleteAll()
+        {
+            DataContext.Current.Meetings.Purge();
+        }
+
+        public void Delete(int meetingId)
+        {
+            var meeting = DataContext.Current.Meetings.First(x => x.Id == meetingId);
+            meeting.DeletedAt = DateTime.Now;
+            DataContext.Current.Meetings.Update(meeting);
         }
 
         private void SetID(Meeting meeting)

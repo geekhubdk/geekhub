@@ -10,6 +10,8 @@ namespace Geekhub.App.Modules.Meetings.Models
     {
         public static IEnumerable<Meeting> Filter(this IEnumerable<Meeting> meetings, NameValueCollection query)
         {
+            query = query ?? new NameValueCollection();
+
             var tags = query.GetValuesFrom("tag[]", "tag");
             var organizers = query.GetValuesFrom("organizer[]","organizer");
             var locations = query.GetValuesFrom("location[]", "location");

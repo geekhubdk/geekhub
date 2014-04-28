@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Geekhub.App.Core.Adapters;
-
 using Geekhub.App.Core.Data;
 using Geekhub.App.Modules.Alerts.Adapters;
 using Geekhub.App.Modules.Alerts.Models;
 using Geekhub.App.Modules.Meetings.Models;
-using Geekhub.App.Modules.Meetings.Queries;
 using Geekhub.App.Modules.Alerts.Config;
+using Geekhub.App.Modules.Meetings.Data;
 
 namespace Geekhub.App.Modules.Alerts.CommandHandlers
 {
     public class SendNewMeetingsNewsletterCommandHandler
     {
         private readonly IEmailAdapter _emailAdapter;
+        private readonly MeetingsRepository _meetingsRepository = new MeetingsRepository();
+
 
         public SendNewMeetingsNewsletterCommandHandler() : this(AlertsContainerConfig.CreateEmailAdapter())
         {
@@ -59,7 +59,7 @@ namespace Geekhub.App.Modules.Alerts.CommandHandlers
 
         private Meeting[] FindNewMeetingsToCreateNewsletterFrom()
         {
-            var upcommingMeetings = new UpcommingMeetingsQuery().Meetings;
+            var upcommingMeetings = _meetingsRepository.GetUpcommingMeetings();
             var lastMail = DataContext.Current.NewsletterLogs.Where(x=>x.NewsletterType == typeof (NewMeetingsNewsletter).Name).OrderByDescending(x=>x.DateSent).FirstOrDefault();
 
             var fromTime = lastMail == null ? new DateTime(2000,1,1) : lastMail.DateSent;

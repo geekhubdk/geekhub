@@ -5,7 +5,6 @@ using Geekhub.App.Core.Data;
 using Geekhub.App.Modules.Alerts.CommandHandlers;
 using Geekhub.App.Modules.Alerts.Models;
 using Geekhub.App.Modules.Meetings.Models;
-using Geekhub.App.Modules.Meetings.Queries;
 using Xunit;
 
 namespace Geekhub.Tests.App.Modules.Alerts
@@ -44,8 +43,7 @@ namespace Geekhub.Tests.App.Modules.Alerts
             context.NewsletterSubscriptions.Add(new NewsletterSubscription() {Email ="jesper@deldysoft.dk", SubscribedToNewMeetingUpdates = true });
 
             var emailAdapter = new EmailAdapterFake();
-            var upcommingMeetingsQuery = new UpcommingMeetingsQuery();
-
+            
             var handler = new SendNewMeetingsNewsletterCommandHandler(emailAdapter);
             handler.Execute();
 
