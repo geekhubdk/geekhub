@@ -230,7 +230,6 @@
     <Compile Include="App\Controllers\FrontpageController.cs" />
     <Compile Include="App\Controllers\MeetingsController.cs" />
     <Compile Include="App\Controllers\NewsletterSubscriptionsController.cs" />
-    <Compile Include="App\Controllers\SendTweetsForMeetingCommandHandler.cs" />
     <Compile Include="App\Controllers\UsersController.cs" />
     <Compile Include="App\Core\Adapters\IEmailAdapter.cs" />
     <Compile Include="App\Core\Adapters\SmtpEmailAdapter.cs" />
@@ -246,11 +245,8 @@
     <Compile Include="App\Modules\Alerts\Adapters\DebugTwitterAdapter.cs" />
     <Compile Include="App\Modules\Alerts\Adapters\ITwitterAdapter.cs" />
     <Compile Include="App\Modules\Alerts\Adapters\LiveTwitterAdapter.cs" />
-    <Compile Include="App\Modules\Alerts\CommandHandlers\SendNewMeetingsNewsletterCommandHandler.cs" />
-    <Compile Include="App\Modules\Alerts\CommandHandlers\SendTweetsForMeetingsCommandHandler.cs" />
-    <Compile Include="App\Modules\Alerts\CommandHandlers\SubscribeToNewsletterCommandHandler.cs" />
-    <Compile Include="App\Modules\Alerts\CommandHandlers\UnsubscribeToNewsletterCommandHandler.cs" />
     <Compile Include="App\Modules\Alerts\Config\AlertsContainerConfig.cs" />
+    <Compile Include="App\Modules\Alerts\Data\AlertsService.cs" />
     <Compile Include="App\Modules\Alerts\Models\MeetingTweetAlert.cs" />
     <Compile Include="App\Modules\Alerts\Models\NewMeetingsNewsletter.cs" />
     <Compile Include="App\Modules\Alerts\Models\NewsletterLog.cs" />
@@ -273,10 +269,7 @@
     <Compile Include="App\Modules\Meetings\ViewModels\MeetingFormModelBinder.cs" />
     <Compile Include="App\Modules\Meetings\ViewModels\RssViewModel.cs" />
     <Compile Include="App\Modules\Meetings\ViewModels\WidgetViewModel.cs" />
-    <Compile Include="App\Modules\Users\CommandHandlers\CreateUserCommandHandler.cs" />
-    <Compile Include="App\Modules\Users\CommandHandlers\ExpireUserValidationCodeCommandHandler.cs" />
-    <Compile Include="App\Modules\Users\CommandHandlers\RegisterInvalidValidationCodeCommandHandler.cs" />
-    <Compile Include="App\Modules\Users\CommandHandlers\SendUserLoginEmailCommandHandler.cs" />
+    <Compile Include="App\Modules\Users\Data\UsersService.cs" />
     <Compile Include="App\Modules\Users\Models\User.cs" />
     <Compile Include="App\Modules\Users\Queries\FetchUserByEmailQuery.cs" />
     <Compile Include="App\Modules\Users\Queries\IsUserValidationCodeValidQuery.cs" />

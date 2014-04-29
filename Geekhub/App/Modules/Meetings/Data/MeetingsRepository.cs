@@ -29,6 +29,7 @@ namespace Geekhub.App.Modules.Meetings.Data
         {
             return DataContext.Current.Meetings.SelectMany(x => x.Tags.Select(y => y.Name)).Distinct();
         }
+
         public Meeting GetMeeting(int meetingId)
         {
             return DataContext.Current.Meetings.Single(x => x.Id == meetingId);

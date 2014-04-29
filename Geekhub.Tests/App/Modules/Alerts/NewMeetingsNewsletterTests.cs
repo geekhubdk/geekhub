@@ -2,10 +2,10 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using Geekhub.App.Core.Data;
-using Geekhub.App.Modules.Alerts.CommandHandlers;
 using Geekhub.App.Modules.Alerts.Models;
 using Geekhub.App.Modules.Meetings.Models;
 using Xunit;
+using Geekhub.App.Modules.Alerts.Data;
 
 namespace Geekhub.Tests.App.Modules.Alerts
 {
@@ -43,9 +43,9 @@ namespace Geekhub.Tests.App.Modules.Alerts
             context.NewsletterSubscriptions.Add(new NewsletterSubscription() {Email ="jesper@deldysoft.dk", SubscribedToNewMeetingUpdates = true });
 
             var emailAdapter = new EmailAdapterFake();
-            
-            var handler = new SendNewMeetingsNewsletterCommandHandler(emailAdapter);
-            handler.Execute();
+
+            var handler = new AlertsService(emailAdapter, null);
+            handler.SendNewMeetingsNewsletter();
 
             Assert.Equal(2, emailAdapter.SentEmails.Count);
 
@@ -86,8 +86,8 @@ namespace Geekhub.Tests.App.Modules.Alerts
 
             var emailAdapter = new EmailAdapterFake();
             
-            var handler = new SendNewMeetingsNewsletterCommandHandler();
-            handler.Execute();
+            var handler = new AlertsService(emailAdapter, null);
+            handler.SendNewMeetingsNewsletter();
 
             Assert.Equal(0, emailAdapter.SentEmails.Count);
         }

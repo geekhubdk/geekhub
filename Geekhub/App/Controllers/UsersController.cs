@@ -2,15 +2,15 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-
-
 using Geekhub.App.Modules.Users.Queries;
-using Geekhub.App.Modules.Users.CommandHandlers;
+using Geekhub.App.Modules.Users.Data;
 
 namespace Geekhub.App.Controllers
 {
     public class UsersController : Controller
     {
+        private UsersService _usersService = new UsersService();
+
         [Route("users/login")]
         public ActionResult Login(string returnUrl)
         {
@@ -33,10 +33,10 @@ namespace Geekhub.App.Controllers
             }
 
             if (user == null && !string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(name)) {
-                new CreateUserCommandHandler(email, name);
+                _usersService.CreateUser(email, name);
             }
 
-            new SendUserLoginEmailCommandHandler(email);
+            _usersService.SendUserLoginEmail(email);
             
             return RedirectToAction("Validate", new { email, returnUrl});
 
@@ -48,7 +48,7 @@ namespace Geekhub.App.Controllers
             if (!string.IsNullOrWhiteSpace(code)) {
                 if(new IsUserValidationCodeValidQuery(email, code).IsValid)
                 {
-                    new ExpireUserValidationCodeCommandHandler(email);
+                    _usersService.ExpireUserValidationCode(email);
                     
                     //create a new forms auth ticket
                     var ticket = new FormsAuthenticationTicket(2,
@@ -68,7 +68,7 @@ namespace Geekhub.App.Controllers
 
                     return RedirectToAction("Index", "Meetings");
                 } else {
-                    new RegisterInvalidValidationCodeCommandHandler(email);
+                    _usersService.RegisterInvalidValidationCode(email);
                 }
 
             }
