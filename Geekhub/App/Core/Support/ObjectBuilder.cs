@@ -1,12 +1,15 @@
-﻿using System;
-using System.Configuration;
-using Deldysoft.Foundation;
-using Geekhub.App.Modules.Alerts.Adapters;
+﻿using Deldysoft.Foundation;
 using Geekhub.App.Core.Adapters;
+using Geekhub.App.Modules.Alerts.Adapters;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Web;
 
-namespace Geekhub.App.Modules.Alerts.Config
+namespace Geekhub.App.Core.Support
 {
-    public class AlertsContainerConfig
+    public class ObjectFactory
     {
         public static ITwitterAdapter CreateTwitterAdapter()
         {
@@ -23,6 +26,11 @@ namespace Geekhub.App.Modules.Alerts.Config
             return twitterAdapter;
         }
 
+        public static IEmailAdapter CreateEmailAdapter()
+        {
+            return new SmtpEmailAdapter();
+        }
+
         private static string GetApplicationSetting(string key)
         {
             var value = ConfigurationManager.AppSettings[key];
@@ -32,9 +40,5 @@ namespace Geekhub.App.Modules.Alerts.Config
             return value;
         }
 
-        public static IEmailAdapter CreateEmailAdapter()
-        {
-            return new SmtpEmailAdapter();
-        }
     }
 }

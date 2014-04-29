@@ -1,7 +1,7 @@
 ﻿using Geekhub.App.Core.Adapters;
 using Geekhub.App.Core.Data;
+using Geekhub.App.Core.Support;
 using Geekhub.App.Modules.Alerts.Adapters;
-using Geekhub.App.Modules.Alerts.Config;
 using Geekhub.App.Modules.Alerts.Models;
 using Geekhub.App.Modules.Alerts.Support;
 using Geekhub.App.Modules.Meetings.Data;
@@ -21,7 +21,7 @@ namespace Geekhub.App.Modules.Alerts.Data
         private readonly TwitterMeetingAlertGenerator _twitterMeetingAlertGenerator = new TwitterMeetingAlertGenerator();
         private readonly ITwitterAdapter _twitterAdapter;
 
-        public AlertsService() : this(AlertsContainerConfig.CreateEmailAdapter(), AlertsContainerConfig.CreateTwitterAdapter())
+        public AlertsService() : this(ObjectFactory.CreateEmailAdapter(), ObjectFactory.CreateTwitterAdapter())
         {
 
         }

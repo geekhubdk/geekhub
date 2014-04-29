@@ -2,15 +2,12 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Geekhub.App.Modules.Users.Queries;
 using Geekhub.App.Modules.Users.Data;
 
 namespace Geekhub.App.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : ControllerBase
     {
-        private UsersService _usersService = new UsersService();
-
         [Route("users/login")]
         public ActionResult Login(string returnUrl)
         {
@@ -25,7 +22,7 @@ namespace Geekhub.App.Controllers
         [Route("users/login")]
         public ActionResult Login(string email, string name, string returnUrl)
         {
-            var user = new FetchUserByEmailQuery(email).User;
+            var user = UsersRepository.GetUserByEmail(email);
 
             if (user == null && string.IsNullOrWhiteSpace(name)) {
                 ViewBag.Email = email;
@@ -33,10 +30,10 @@ namespace Geekhub.App.Controllers
             }
 
             if (user == null && !string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(name)) {
-                _usersService.CreateUser(email, name);
+                UsersService.CreateUser(email, name);
             }
 
-            _usersService.SendUserLoginEmail(email);
+            UsersService.SendUserLoginEmail(email);
             
             return RedirectToAction("Validate", new { email, returnUrl});
 
@@ -46,9 +43,9 @@ namespace Geekhub.App.Controllers
         public ActionResult Validate(string email, string code = "", string returnUrl = "")
         {
             if (!string.IsNullOrWhiteSpace(code)) {
-                if(new IsUserValidationCodeValidQuery(email, code).IsValid)
+                if(UsersRepository.IsUserValidationCodeValid(email, code))
                 {
-                    _usersService.ExpireUserValidationCode(email);
+                    UsersService.ExpireUserValidationCode(email);
                     
                     //create a new forms auth ticket
                     var ticket = new FormsAuthenticationTicket(2,
@@ -68,7 +65,7 @@ namespace Geekhub.App.Controllers
 
                     return RedirectToAction("Index", "Meetings");
                 } else {
-                    _usersService.RegisterInvalidValidationCode(email);
+                    UsersService.RegisterInvalidValidationCode(email);
                 }
 
             }

@@ -1,5 +1,6 @@
 ﻿using Geekhub.App.Core.Adapters;
 using Geekhub.App.Core.Data;
+using Geekhub.App.Core.Support;
 using Geekhub.App.Modules.Alerts.Data;
 using Geekhub.App.Modules.Users.Models;
 using Geekhub.App.Modules.Users.Support;
@@ -13,7 +14,7 @@ namespace Geekhub.App.Modules.Users.Data
     public class UsersService
     {
         private readonly UserValidationCodeGenerator _userValidationCodeGenerator = new UserValidationCodeGenerator();
-        private readonly IEmailAdapter _emailAdapter = Alerts.Config.AlertsContainerConfig.CreateEmailAdapter();
+        private readonly IEmailAdapter _emailAdapter = ObjectFactory.CreateEmailAdapter();
 
         public void CreateUser(string email, string name)
         {

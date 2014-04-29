@@ -3,19 +3,21 @@ using System.Web.Security;
 using Geekhub.App.Core.Data;
 using Geekhub.App.Core.Support;
 using Geekhub.App.Modules.Users.Models;
-using Geekhub.App.Modules.Users.Queries;
+using Geekhub.App.Modules.Users.Data;
 
 namespace Geekhub.App.Core.Mvc
 {
     public static class UserInformationHelper
     {
+        private static UsersRepository _usersRepository = new UsersRepository();
+
         public static UserInformationViewModel GetUserInformation(this HttpContextBase context)
         {
             if (!context.User.Identity.IsAuthenticated)
                 return null;
 
             if (context.Items["UserInformation"] == null) {
-                var user = new FetchUserByEmailQuery(context.User.Identity.Name).User;
+                var user = _usersRepository.GetUserByEmail(context.User.Identity.Name);
 
                 if (user == null) {
                     FormsAuthentication.SignOut();

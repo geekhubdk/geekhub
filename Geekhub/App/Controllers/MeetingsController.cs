@@ -18,30 +18,27 @@ namespace Geekhub.App.Controllers
 {
     public class MeetingsController : ControllerBase
     {
-        private MeetingsService _meetingsService = new MeetingsService();
-        private MeetingsRepository _meetingsRepository = new MeetingsRepository();
-
         [Route("meetings")]
         public ActionResult Index()
         {
             ViewBag.MetaDescription =
                 "Geekhub.dk er stedet hvor udviklere finder deres events/arrangementer - foreslå dit event til listen, og spred budskabet.";
 
-            var upcommingMeetings = _meetingsRepository.GetUpcommingMeetings(Request.QueryString);
+            var upcommingMeetings = MeetingsRepository.GetUpcommingMeetings(Request.QueryString);
             return View(upcommingMeetings);
         }
 
         [Route("arkiv")]
         public ActionResult Archive()
         {
-            var archivedMeetings = _meetingsRepository.GetArchivedMeetings(Request.QueryString);
+            var archivedMeetings = MeetingsRepository.GetArchivedMeetings(Request.QueryString);
             return View(archivedMeetings);
         }
 
         [Route("meetings/{id}")]
         public ActionResult Show(int id)
         {
-            var meeting = _meetingsRepository.GetMeeting(id);
+            var meeting = MeetingsRepository.GetMeeting(id);
             return View(meeting);
         }
 
@@ -62,7 +59,7 @@ namespace Geekhub.App.Controllers
             LoadFormData();
 
             if (ModelState.IsValid) {
-                _meetingsService.Create(formModel);
+                MeetingsService.Create(formModel);
                 Notice("Se dit flotte møde :)");
                 return RedirectToAction("Index");
             }
@@ -75,7 +72,7 @@ namespace Geekhub.App.Controllers
         [Route("meetings/{id}/delete")]
         public ActionResult Delete(int id)
         {
-            _meetingsService.Delete(id);
+            MeetingsService.Delete(id);
 
             Notice("Du føler dig destruktiv idag, hva? Pyt. Mødet er dæbt.");
 
@@ -88,7 +85,7 @@ namespace Geekhub.App.Controllers
         {
             LoadFormData();
 
-            var meeting = _meetingsRepository.GetMeeting(id);
+            var meeting = MeetingsRepository.GetMeeting(id);
             var formModel = new MeetingFormModel(meeting);
 
             return View("Create", formModel);
@@ -102,7 +99,7 @@ namespace Geekhub.App.Controllers
             LoadFormData();
 
             if (ModelState.IsValid) {
-                _meetingsService.Save(id, formModel);
+                MeetingsService.Save(id, formModel);
                 Notice("Se dit flotte møde :)");
                 return RedirectToAction("Show", new { id });
             }
@@ -113,14 +110,14 @@ namespace Geekhub.App.Controllers
         [Route("meetings.rss")]
         public ActionResult Rss()
         {
-            var model = _meetingsRepository.GetUpcommingMeetings(Request.QueryString);
+            var model = MeetingsRepository.GetUpcommingMeetings(Request.QueryString);
             return PartialView(new RssViewModel(model));
         }
 
         [Route("meetings.json")]
         public ActionResult Json()
         {
-            var model = _meetingsRepository.GetUpcommingMeetings(Request.QueryString);
+            var model = MeetingsRepository.GetUpcommingMeetings(Request.QueryString);
             return Json(new JsonViewModel(model), JsonRequestBehavior.AllowGet);
         }
 
@@ -128,7 +125,7 @@ namespace Geekhub.App.Controllers
         public ActionResult Widget()
         {
             var title = Request.QueryString["title"].Or("Udvikler events i danmark");
-            var meetings = _meetingsRepository.GetUpcommingMeetings(Request.QueryString);
+            var meetings = MeetingsRepository.GetUpcommingMeetings(Request.QueryString);
 
             var model = new WidgetViewModel(title, meetings.Take(5));
             return PartialView(model);
@@ -137,7 +134,7 @@ namespace Geekhub.App.Controllers
         [Route("meetings.ics")]
         public ActionResult Ics()
         {
-            var meetings = _meetingsRepository.GetUpcommingMeetings(Request.QueryString);
+            var meetings = MeetingsRepository.GetUpcommingMeetings(Request.QueryString);
             return new CalendarResult("Geekhub", meetings.Select(x=>new CalendarResult.Event() {
                     DateStart = x.StartsAt,
                     DateEnd = x.StartsAt.AddHours(2),
@@ -158,10 +155,10 @@ namespace Geekhub.App.Controllers
             var result = client.DownloadString("http://www.geekhub.dk/meetings.json?ticks=" + DateTime.Now.Ticks);
             var json = JsonConvert.DeserializeObject<JsonViewModel>(result);
 
-            _meetingsService.DeleteAll();
+            MeetingsService.DeleteAll();
 
             foreach (var meeting in json.Items) {
-                _meetingsService.Create(meeting);
+                MeetingsService.Create(meeting);
             }
 
             return Content("Completed");
@@ -170,14 +167,14 @@ namespace Geekhub.App.Controllers
         [Route("Partials/MeetingsForFrontpage")]
         public ActionResult MeetingsForFrontpage()
         {
-            var upcommingMeetings = _meetingsRepository.GetUpcommingMeetings(Request.QueryString).Take(3);
+            var upcommingMeetings = MeetingsRepository.GetUpcommingMeetings(Request.QueryString).Take(3);
             return PartialView(upcommingMeetings);
         }
 
         private void LoadFormData()
         {
-            ViewBag.Organizers = JsonConvert.SerializeObject(_meetingsRepository.GetMeetingOrganizers());
-            ViewBag.Tags = JsonConvert.SerializeObject(_meetingsRepository.GetMeetingsTags());
+            ViewBag.Organizers = JsonConvert.SerializeObject(MeetingsRepository.GetMeetingOrganizers());
+            ViewBag.Tags = JsonConvert.SerializeObject(MeetingsRepository.GetMeetingsTags());
         }
     }
 }

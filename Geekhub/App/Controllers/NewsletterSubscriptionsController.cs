@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using Geekhub.App.Modules.Alerts.Queries;
 using Geekhub.App.Modules.Alerts.Support;
 using Geekhub.App.Modules.Alerts.Data;
 
@@ -7,8 +6,6 @@ namespace Geekhub.App.Controllers
 {
     public class NewsletterSubscriptionsController : ControllerBase
     {
-        private AlertsService _alertsService = new AlertsService();
-
         [Route("newsletter/subscribe")]
         public ActionResult Create()
         {
@@ -25,7 +22,7 @@ namespace Geekhub.App.Controllers
                 return View();
             }
 
-            _alertsService.SubscribeToNewsletter(email);
+            AlertsService.SubscribeToNewsletter(email);
 
             Notice("Du er tilmeldt nyhedsbrevet");
             return Redirect("~/");
@@ -46,7 +43,7 @@ namespace Geekhub.App.Controllers
             }
 
             try {
-                _alertsService.UnsubscribeFromNewsletter(email);
+                AlertsService.UnsubscribeFromNewsletter(email);
             } catch (SubscriptionNotFoundException) {
                 Warn("Vi kunne ikke finde dig. Prøv en anden email");
                 return View();
@@ -59,7 +56,7 @@ namespace Geekhub.App.Controllers
         
         private void IncludeSubscriberCount()
         {
-            ViewBag.SubscriberCount = new SubscriberCountQuery().NumberOfSubscribers;
+            ViewBag.SubscriberCount = AlertsRepository.GetNewsletterSubscriberCount();
         }
 
 	}
