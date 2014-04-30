@@ -43,19 +43,6 @@ namespace Geekhub.App.Core.Data
                 return new BiggyList<T>();
             } else {
                 try {
-                    var p = path + "\\Data\\" + typeof(T).Name + "s.json";
-                    var needsUpdate = File.Exists(p) && File.ReadAllText(p).StartsWith("[");
-
-                    if (needsUpdate) {
-                        var items = JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(p));
-                        var tmpList = new BiggyList<T>(new Biggy.JSON.JsonStore<T>(dbPath: path + "/_tmp"));
-                        foreach (var i in items) {
-                            tmpList.Add(i);
-                        }
-                        File.Delete(p);
-                        File.Move(path + "/_tmp/Data/" + typeof(T).Name + "s.json", p);
-                    }
-
                     return new BiggyList<T>(new Biggy.JSON.JsonStore<T>(dbPath: path));
                 }
                 catch (Exception ex) {
