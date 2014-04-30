@@ -65,7 +65,7 @@ namespace Geekhub.Tests.App.Modules.Alerts
             // The secound meeting should be the first, as its start date is first
             Assert.True(firstEmail.Html.IndexOf("title1", System.StringComparison.Ordinal) > firstEmail.Html.IndexOf("title2", System.StringComparison.Ordinal));
 
-            Assert.Equal(1, context.NewsletterLogs.Count);
+            Assert.Equal(1, context.NewsletterLogs.Count());
         }
 
         [Fact]

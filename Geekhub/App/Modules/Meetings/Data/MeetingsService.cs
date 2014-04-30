@@ -57,7 +57,7 @@ namespace Geekhub.App.Modules.Meetings.Data
 
         public void DeleteAll()
         {
-            DataContext.Current.Meetings.Purge();
+            DataContext.Current.Meetings.Clear();
         }
 
         public void Delete(int meetingId)
