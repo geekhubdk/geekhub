@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using Geekhub.App.Modules.Alerts.Adapters;
-using Geekhub.App.Modules.Alerts.Support;
 using Geekhub.App.Modules.Alerts.Data;
 
 namespace Geekhub.App.Controllers
