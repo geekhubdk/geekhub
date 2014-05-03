@@ -1,4 +1,9 @@
 ﻿<link href="~/vendors/Javascripts/jquery-jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
+<style>
+    .jvectormap-zoomin, .jvectormap-zoomout {
+        display: none;
+    }
+</style>
 
 <div style="margin-top: 60px; margin-left: auto; margin-right: auto; width: 600px;">
     <h2>Test af kort</h2>
@@ -12,8 +17,9 @@
 <script src="~/vendors/Javascripts/jquery-2.1.0.min.js"></script>
 <script src="~/vendors/Javascripts/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="~/vendors/Javascripts/jquery-jvectormap/jquery-jvectormap-dk-merc-en.js"></script>
-
 <script>
+
+    var markers = @ViewBag.Markers;
 
     $(function () {
         $('#map').vectorMap({
@@ -28,6 +34,7 @@
                     "stroke-opacity": 1
                 },
                 hover: {
+                    "fill-opacity": 1,
                 },
                 selected: {
                     fill: 'yellow'
@@ -35,7 +42,26 @@
                 selectedHover: {
                 }
             },
-            zoomOnScroll: false
+            markerStyle: {
+                initial: {
+                    fill: '#3498db',
+                    stroke: '#34495e',
+                    r: 10,
+                    cursor: "pointer"
+                }
+            },
+            zoomOnScroll: false,
+            zoomMin: 1,
+            zoomMax: 1,
+            onMarkerClick: function (e, code) {
+                var marker = markers[code];
+                console.log(marker);
+                window.location = marker.href;
+            },
+            onRegionLabelShow: function(e, label, code) {
+                e.preventDefault();
+            },
+            markers: markers
         });
     });
 

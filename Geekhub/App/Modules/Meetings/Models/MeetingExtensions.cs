@@ -14,7 +14,7 @@ namespace Geekhub.App.Modules.Meetings.Models
 
             var tags = query.GetValuesFrom("tag[]", "tag");
             var organizers = query.GetValuesFrom("organizer[]","organizer");
-            var locations = query.GetValuesFrom("location[]", "location");
+            var locations = query.GetValuesFrom("location[]", "location", "city[]", "city");
             
             meetings = Filter(meetings, tags, x => x.Tags.Select(y=>y.Name));
             meetings = Filter(meetings, organizers, x => x.Organizers.Select(y => y.Name));
