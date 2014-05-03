@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Geekhub.App.Modules.Meetings.Models.Meeting>
+﻿@using Geekhub.App.Modules.Meetings.Models
+@model IEnumerable<Geekhub.App.Modules.Meetings.Models.Meeting>
 
 <div class="site-content">
     <section id="toolbar">
@@ -6,9 +7,17 @@
             <a href="@Url.Action("Create", "Meetings")">Indsend et event</a>
         </div>
     </section>
+    @Html.Partial("_FilterSummary")
     @Html.Partial("_Meetings")
+    @{
+        var filter = new MeetingsFilter(Request.QueryString);
+        if (filter.Any()) {
+            <a style="text-align: center; display: block; margin: 25px;" href="@Url.Action("Index", "Meetings")">Se alle events</a>
+        }
+    }
     <div class="footer-call-to-action">
         <p><strong>Har vi glemt noget?</strong> <a href="@Url.Action("Create", "Meetings")">Indsend et event</a> - det vil vi være glade for :)</p>
         <p><strong>Følg med:</strong> <a href="@Url.Action("Create","NewsletterSubscriptions")" target="_blank">Tilmeld dig en notifikations-mail</a>, eller følg os på <a href="http://www.twitter.com/geekhubdk">Twitter</a>.</p>
     </div>
+
 </div>

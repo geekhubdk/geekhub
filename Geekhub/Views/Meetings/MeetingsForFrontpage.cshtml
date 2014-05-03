@@ -1,3 +1,7 @@
 ﻿@model IEnumerable<Geekhub.App.Modules.Meetings.Models.Meeting>
-
-@Html.Partial("_Meetings")
+<div class="only-small">
+    @Html.Partial("_Meetings")
+</div>
+<div class="only-big">
+    @Html.Partial("../MeetingsMap/Index", (object)ViewBag.MapData)
+</div>

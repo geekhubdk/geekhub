@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using Geekhub.App.Core.Support;
 
 namespace Geekhub.App.Modules.Meetings.Models
 {
@@ -11,14 +10,11 @@ namespace Geekhub.App.Modules.Meetings.Models
         public static IEnumerable<Meeting> Filter(this IEnumerable<Meeting> meetings, NameValueCollection query)
         {
             query = query ?? new NameValueCollection();
+            var filter = new MeetingsFilter(query);
 
-            var tags = query.GetValuesFrom("tag[]", "tag");
-            var organizers = query.GetValuesFrom("organizer[]","organizer");
-            var locations = query.GetValuesFrom("location[]", "location");
-            
-            meetings = Filter(meetings, tags, x => x.Tags.Select(y=>y.Name));
-            meetings = Filter(meetings, organizers, x => x.Organizers.Select(y => y.Name));
-            meetings = Filter(meetings, locations, x => new[]{x.City.Name});
+            meetings = Filter(meetings, filter.Tags, x => x.Tags.Select(y=>y.Name));
+            meetings = Filter(meetings, filter.Organizers, x => x.Organizers.Select(y => y.Name));
+            meetings = Filter(meetings, filter.Locations, x => new[]{x.City.Name});
   
             return meetings;
         }

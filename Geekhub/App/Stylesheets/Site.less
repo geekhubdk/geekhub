@@ -145,3 +145,20 @@ a:visited {
     font-family: Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
     font-size: 0.8em;
 }
+
+.only-big {
+    display: none;
+}
+
+.only-small {
+    display: inherit;
+}
+@media @desktop {
+    .only-big {
+        display: inherit;
+    }
+
+    .only-small {
+        display: none;
+    }
+}
