@@ -1,0 +1,11 @@
+﻿@using Geekhub.App.Modules.Meetings.Models
+@model dynamic
+
+@{
+    var filter = new MeetingsFilter(Request.QueryString);
+}
+<div class="simple-page">
+    @if (filter.Locations.Any()) {
+        <h1 style="text-align: center; margin-top: 25px;">Events i @string.Join(" & ", filter.Locations)</h1>
+    }
+</div>

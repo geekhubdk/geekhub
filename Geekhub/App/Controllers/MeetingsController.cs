@@ -167,8 +167,9 @@ namespace Geekhub.App.Controllers
         [Route("Partials/MeetingsForFrontpage")]
         public ActionResult MeetingsForFrontpage()
         {
-            var upcommingMeetings = MeetingsRepository.GetUpcommingMeetings(Request.QueryString).Take(3);
-            return PartialView(upcommingMeetings);
+            var upcommingMeetings = MeetingsRepository.GetUpcommingMeetings(Request.QueryString).ToArray();
+            ViewBag.MapData = MeetingsMapHelper.CreateMeetingMapModel(upcommingMeetings, Url);
+            return PartialView(upcommingMeetings.Take(3));
         }
 
         private void LoadFormData()

@@ -5,13 +5,9 @@
     }
 </style>
 
-<div style="margin-top: 60px; margin-left: auto; margin-right: auto; width: 600px;">
-    <h2>Test af kort</h2>
+<div style="width:600px; height: 600px">
+    <div id="map" style="width:100%; height:100%">
 
-    <div style="width:600px; height: 600px">
-        <div id="map" style="width:100%; height:100%">
-
-        </div>
     </div>
 </div>
 <script src="~/vendors/Javascripts/jquery-2.1.0.min.js"></script>
@@ -19,7 +15,7 @@
 <script src="~/vendors/Javascripts/jquery-jvectormap/jquery-jvectormap-dk-merc-en.js"></script>
 <script>
 
-    var markers = @ViewBag.Markers;
+    var markers = @Model;
 
     $(function () {
         $('#map').vectorMap({

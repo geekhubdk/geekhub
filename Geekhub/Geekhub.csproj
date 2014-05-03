@@ -169,7 +169,6 @@
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
     <None Include="vendors\Javascripts\jquery-2.1.0.intellisense.js" />
-    <Content Include="vendors\Javascripts\jquery-1.11.1.min.js" />
     <Content Include="vendors\Javascripts\jquery-2.1.0.js" />
     <Content Include="vendors\Javascripts\jquery-2.1.0.min.js" />
     <Content Include="vendors\Javascripts\jquery-jvectormap\jquery-jvectormap-1.2.2.css" />
@@ -234,6 +233,7 @@
     <Compile Include="App\Controllers\FrontpageController.cs" />
     <Compile Include="App\Controllers\MeetingsController.cs" />
     <Compile Include="App\Controllers\MeetingsMapController.cs" />
+    <Compile Include="App\Controllers\MeetingsMapHelper.cs" />
     <Compile Include="App\Controllers\NewsletterSubscriptionsController.cs" />
     <Compile Include="App\Controllers\UsersController.cs" />
     <Compile Include="App\Core\Adapters\IEmailAdapter.cs" />
@@ -264,6 +264,7 @@
     <Compile Include="App\Modules\Meetings\Models\City.cs" />
     <Compile Include="App\Modules\Meetings\Models\Meeting.cs" />
     <Compile Include="App\Modules\Meetings\Models\MeetingExtensions.cs" />
+    <Compile Include="App\Modules\Meetings\Models\MeetingsFilter.cs" />
     <Compile Include="App\Modules\Meetings\Models\Organizer.cs" />
     <Compile Include="App\Modules\Meetings\Models\Tag.cs" />
     <Compile Include="App\Modules\Meetings\Support\MeetingUrlGenerator.cs" />
@@ -320,6 +321,7 @@
     <Content Include="Views\Meetings\MeetingsForFrontpage.cshtml" />
     <Content Include="Views\Blog\BlogPostsForFrontpage.cshtml" />
     <Content Include="Views\MeetingsMap\Index.cshtml" />
+    <Content Include="Views\Meetings\_FilterSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
