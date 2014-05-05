@@ -13,7 +13,7 @@ namespace Geekhub.App.Modules.Meetings.Data
     {
         private readonly MeetingFormModelBinder _meetingFormModelBinder = new MeetingFormModelBinder();
 
-        public void Create(MeetingFormModel formModel)
+        public Meeting Create(MeetingFormModel formModel)
         {
             var meeting = new Meeting();
 
@@ -22,6 +22,8 @@ namespace Geekhub.App.Modules.Meetings.Data
             _meetingFormModelBinder.FormModelToMeeting(formModel, meeting);
 
             DataContext.Current.Meetings.Add(meeting);
+
+            return meeting;
         }
 
         public void Create(JsonViewModel.JsonMeetingViewModel formModel)

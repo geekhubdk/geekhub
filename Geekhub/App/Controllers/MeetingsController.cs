@@ -59,9 +59,9 @@ namespace Geekhub.App.Controllers
             LoadFormData();
 
             if (ModelState.IsValid) {
-                MeetingsService.Create(formModel);
+                var meeting = MeetingsService.Create(formModel);
                 Notice("Se dit flotte møde :)");
-                return RedirectToAction("Index");
+                return RedirectToAction("Show", new { id = meeting.Id });
             }
 
             return View(formModel);
