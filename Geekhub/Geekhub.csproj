@@ -234,6 +234,7 @@
     <Compile Include="App\Controllers\MeetingsController.cs" />
     <Compile Include="App\Controllers\MeetingsMapController.cs" />
     <Compile Include="App\Controllers\MeetingsMapHelper.cs" />
+    <Compile Include="App\Controllers\MeetupController.cs" />
     <Compile Include="App\Controllers\NewsletterSubscriptionsController.cs" />
     <Compile Include="App\Controllers\UsersController.cs" />
     <Compile Include="App\Core\Adapters\IEmailAdapter.cs" />
@@ -340,7 +341,9 @@
       <Name>Deldysoft.Foundation</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Meetup\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
