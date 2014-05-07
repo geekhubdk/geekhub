@@ -216,3 +216,4 @@ pip-log.txt
 .mr.developer.cfg
 Geekhub/Web.Release.config
 Geekhub/Web.Debug.config
+Geekhub/secrets.json
