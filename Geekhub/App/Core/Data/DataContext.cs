@@ -13,6 +13,7 @@ namespace Geekhub.App.Core.Data
     public class DataContext
     {
         public BiggyList<Meeting> Meetings;
+        public BiggyList<MeetingSubject> MeetingSubjects;
         public BiggyList<User> Users;
         public BiggyList<MeetingTweetAlert> MeetingTweetAlerts;
         public BiggyList<NewsletterLog> NewsletterLogs;
@@ -31,6 +32,7 @@ namespace Geekhub.App.Core.Data
         public DataContext(string path)
         {
             Meetings = CreateList<Meeting>(path);
+            MeetingSubjects = CreateList<MeetingSubject>(path);
             Users = CreateList<User>(path);
             MeetingTweetAlerts = CreateList<MeetingTweetAlert>(path);
             NewsletterLogs = CreateList<NewsletterLog>(path);

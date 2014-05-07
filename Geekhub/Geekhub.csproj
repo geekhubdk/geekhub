@@ -56,6 +56,9 @@
     <Reference Include="Hammock.ClientProfile">
       <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\Hammock.ClientProfile.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Inflector, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\biggy\Inflector.dll</HintPath>
@@ -244,6 +247,8 @@
     <Compile Include="App\Core\Mvc\UserInformationHelper.cs" />
     <Compile Include="App\Core\Support\CollectionExtensions.cs" />
     <Compile Include="App\Core\Support\DateTimeExtensions.cs" />
+    <Compile Include="App\Core\Support\Google.cs" />
+    <Compile Include="App\Core\Support\HtmlToPlainConverter.cs" />
     <Compile Include="App\Core\Support\NameValueCollectionExtensions.cs" />
     <Compile Include="App\Core\Support\ObjectBuilder.cs" />
     <Compile Include="App\Core\Support\Secrets.cs" />
@@ -261,12 +266,16 @@
     <Compile Include="App\Modules\Alerts\Support\TwitterMeetingAlertGenerator.cs" />
     <Compile Include="App\Modules\Blog\Support\BlogRssPostReader.cs" />
     <Compile Include="App\Modules\Blog\ViewModels\BlogPostViewModel.cs" />
+    <Compile Include="App\Modules\MeetingProviders\MeetingProviderCoordinator.cs" />
+    <Compile Include="App\Modules\MeetingProviders\MeetupMeetingProvider.cs" />
     <Compile Include="App\Modules\Meetings\Data\MeetingsRepository.cs" />
     <Compile Include="App\Modules\Meetings\Data\MeetingsService.cs" />
     <Compile Include="App\Modules\Meetings\Models\City.cs" />
     <Compile Include="App\Modules\Meetings\Models\Meeting.cs" />
     <Compile Include="App\Modules\Meetings\Models\MeetingExtensions.cs" />
     <Compile Include="App\Modules\Meetings\Models\MeetingsFilter.cs" />
+    <Compile Include="App\Modules\Meetings\Models\MeetingSubject.cs" />
+    <Compile Include="App\Modules\Meetings\Models\MeetingSubjectType.cs" />
     <Compile Include="App\Modules\Meetings\Models\Organizer.cs" />
     <Compile Include="App\Modules\Meetings\Models\Tag.cs" />
     <Compile Include="App\Modules\Meetings\Support\MeetingUrlGenerator.cs" />
