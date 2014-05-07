@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using Geekhub.App.Core.Support;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -15,7 +17,7 @@ namespace Geekhub.App.Controllers
         [Route("meetup/pullgroup")]
         public ActionResult PullGroup(string group)
         {
-            var url = "https://api.meetup.com/2/events?&group_urlname=" + group + "&key=61352153f41187a1d7565553101529";
+            var url = "https://api.meetup.com/2/events?&group_urlname=" + group + "&key=" + Secrets.Get("Meetup.ApiKey");
 
             var client = new WebClient();
             client.Encoding = System.Text.Encoding.UTF8;

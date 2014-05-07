@@ -246,6 +246,7 @@
     <Compile Include="App\Core\Support\DateTimeExtensions.cs" />
     <Compile Include="App\Core\Support\NameValueCollectionExtensions.cs" />
     <Compile Include="App\Core\Support\ObjectBuilder.cs" />
+    <Compile Include="App\Core\Support\Secrets.cs" />
     <Compile Include="App\Core\Support\StringExtentions.cs" />
     <Compile Include="App\Modules\Alerts\Adapters\DebugTwitterAdapter.cs" />
     <Compile Include="App\Modules\Alerts\Adapters\ITwitterAdapter.cs" />
