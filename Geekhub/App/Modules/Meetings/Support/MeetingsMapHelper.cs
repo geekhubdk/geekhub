@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using Geekhub.App.Modules.Meetings.Models;
 using Newtonsoft.Json;
 
-namespace Geekhub.App.Controllers
+namespace Geekhub.App.Modules.Meetings.Support
 {
     public class MeetingsMapHelper
     {

@@ -236,7 +236,6 @@
     <Compile Include="App\Controllers\FrontpageController.cs" />
     <Compile Include="App\Controllers\MeetingsController.cs" />
     <Compile Include="App\Controllers\MeetingsMapController.cs" />
-    <Compile Include="App\Controllers\MeetingsMapHelper.cs" />
     <Compile Include="App\Controllers\MeetupController.cs" />
     <Compile Include="App\Controllers\NewsletterSubscriptionsController.cs" />
     <Compile Include="App\Controllers\UsersController.cs" />
@@ -278,6 +277,7 @@
     <Compile Include="App\Modules\Meetings\Models\MeetingSubjectType.cs" />
     <Compile Include="App\Modules\Meetings\Models\Organizer.cs" />
     <Compile Include="App\Modules\Meetings\Models\Tag.cs" />
+    <Compile Include="App\Modules\Meetings\Support\MeetingsMapHelper.cs" />
     <Compile Include="App\Modules\Meetings\Support\MeetingUrlGenerator.cs" />
     <Compile Include="App\Modules\Meetings\ViewModels\JsonViewModel.cs" />
     <Compile Include="App\Modules\Meetings\ViewModels\MeetingFormModel.cs" />

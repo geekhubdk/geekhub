@@ -1,5 +1,6 @@
 ﻿using Geekhub.App.Modules.Meetings.Data;
 using Geekhub.App.Modules.Meetings.Models;
+using Geekhub.App.Modules.Meetings.Support;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
