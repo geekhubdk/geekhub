@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
-using Geekhub.App.Controllers;
 using Geekhub.App.Core.Support;
 using Geekhub.App.Modules.Meetings.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Geekhub.App.Modules.MeetingProviders
+namespace Geekhub.App.Modules.Meetings.MeetingProviders
 {
     public class MeetupMeetingProvider
     {

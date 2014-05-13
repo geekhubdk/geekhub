@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Geekhub.App.Core.Data;
 using Geekhub.App.Modules.Meetings.Models;
 
-namespace Geekhub.App.Modules.MeetingProviders
+namespace Geekhub.App.Modules.Meetings.MeetingProviders
 {
     public class MeetingProviderCoordinator
     {

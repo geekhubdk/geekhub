@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Geekhub.App.Modules.MeetingProviders;
+using Geekhub.App.Modules.Meetings.MeetingProviders;
 
 namespace Geekhub.App.Controllers
 {

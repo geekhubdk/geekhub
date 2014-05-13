@@ -265,10 +265,10 @@
     <Compile Include="App\Modules\Alerts\Support\TwitterMeetingAlertGenerator.cs" />
     <Compile Include="App\Modules\Blog\Support\BlogRssPostReader.cs" />
     <Compile Include="App\Modules\Blog\ViewModels\BlogPostViewModel.cs" />
-    <Compile Include="App\Modules\MeetingProviders\MeetingProviderCoordinator.cs" />
-    <Compile Include="App\Modules\MeetingProviders\MeetupMeetingProvider.cs" />
     <Compile Include="App\Modules\Meetings\Data\MeetingsRepository.cs" />
     <Compile Include="App\Modules\Meetings\Data\MeetingsService.cs" />
+    <Compile Include="App\Modules\Meetings\MeetingProviders\MeetingProviderCoordinator.cs" />
+    <Compile Include="App\Modules\Meetings\MeetingProviders\MeetupMeetingProvider.cs" />
     <Compile Include="App\Modules\Meetings\Models\City.cs" />
     <Compile Include="App\Modules\Meetings\Models\Meeting.cs" />
     <Compile Include="App\Modules\Meetings\Models\MeetingExtensions.cs" />
