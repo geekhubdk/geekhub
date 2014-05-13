@@ -3,11 +3,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Geekhub.App.Modules.Users.Data;
-using ControllerBase = Geekhub.App.Core.Support.ControllerBase;
+using ControllerBase = Geekhub.App.Core.Mvc.ControllerBase;
 
 namespace Geekhub.App.Controllers
 {
-    public class UsersController : ControllerBase
+    public class UsersController : Core.Mvc.ControllerBase
     {
         [Route("users/login")]
         public ActionResult Login(string returnUrl)

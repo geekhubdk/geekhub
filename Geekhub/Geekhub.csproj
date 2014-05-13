@@ -242,9 +242,9 @@
     <Compile Include="App\Core\Adapters\SmtpEmailAdapter.cs" />
     <Compile Include="App\Core\Data\DataContext.cs" />
     <Compile Include="App\Core\Mvc\CalendarResult.cs" />
+    <Compile Include="App\Core\Mvc\ControllerBase.cs" />
     <Compile Include="App\Core\Mvc\UserInformationHelper.cs" />
     <Compile Include="App\Core\Support\CollectionExtensions.cs" />
-    <Compile Include="App\Core\Support\ControllerBase.cs" />
     <Compile Include="App\Core\Support\DateTimeExtensions.cs" />
     <Compile Include="App\Core\Support\Google.cs" />
     <Compile Include="App\Core\Support\HtmlToPlainConverter.cs" />
