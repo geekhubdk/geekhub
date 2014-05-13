@@ -11,7 +11,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet">
-    <link href="~/Content/Fonts/fontello/css/fontello.css" rel="stylesheet" />
+    <link href="~/Public/Fonts/fontello/css/fontello.css" rel="stylesheet" />
     <link rel="alternative" type="application/rss+xml" href="@Url.Action("Rss", "Meetings")" title="RSS feed over nye møder"/>
     @if (ViewBag.MetaDescription != null) {
         <meta name="description" content="@ViewBag.MetaDescription" />
@@ -19,26 +19,26 @@
 
     @if (AppEnvironment.Current == EnvironmentType.Development) {
         <link rel="stylesheet/less" href="~/Stylesheets/Site.less?v=@DateTime.Now.Ticks" rel="stylesheet" />
-        <script src="~/vendors/Javascripts/less.min.js"></script>
+        <script src="~/Public/vendors/Javascripts/less.min.js"></script>
     } else {
         <link rel="stylesheet" href="~/App/Stylesheets/Site.min.css?v=@File.GetLastWriteTimeUtc(Server.MapPath("~/App/Stylesheets/Site.min.css")).Ticks" rel="stylesheet" />
     }
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
-    <link href="~/Content/Images/apple-touch-icon-144x144-precomposed.png" rel="apple-touch-icon-precomposed" sizes="144x144" type="image/png" />
+    <link href="~/Public/Images/apple-touch-icon-144x144-precomposed.png" rel="apple-touch-icon-precomposed" sizes="144x144" type="image/png" />
 
     <!-- For iPhone with high-resolution Retina display: -->
     <!-- Size should be 114 x 114 pixels -->
-    <link href="~/Content/Images/apple-touch-icon-114x114-precomposed.png" rel="apple-touch-icon-precomposed" sizes="114x114" type="image/png" />
+    <link href="~/Public/Images/apple-touch-icon-114x114-precomposed.png" rel="apple-touch-icon-precomposed" sizes="114x114" type="image/png" />
 
     <!-- For first- and second-generation iPad: -->
     <!-- Size should be 72 x 72 pixels -->
-    <link href="~/Content/Images/apple-touch-icon-72x72-precomposed.png" rel="apple-touch-icon-precomposed" sizes="72x72" type="image/png" />
+    <link href="~/Public/Images/apple-touch-icon-72x72-precomposed.png" rel="apple-touch-icon-precomposed" sizes="72x72" type="image/png" />
 
     <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
     <!-- Size should be 57 x 57 pixels -->
-    <link href="~/Content/Images/apple-touch-icon-32x32-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png" />
+    <link href="~/Public/Images/apple-touch-icon-32x32-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png" />
 
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
