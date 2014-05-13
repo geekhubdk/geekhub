@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Geekhub.App.Modules.Alerts.Models;
-using Geekhub.App.Modules.Core.Data;
-using Geekhub.App.Modules.Meetings.Models;
+using Geekhub.Modules.Alerts.Data;
+using Geekhub.Modules.Alerts.Models;
+using Geekhub.Modules.Core.Data;
+using Geekhub.Modules.Meetings.Models;
 using Xunit;
-using Geekhub.App.Modules.Alerts.Data;
 
 namespace Geekhub.Tests.App.Modules.Alerts
 {

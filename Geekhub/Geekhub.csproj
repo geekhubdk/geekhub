@@ -132,12 +132,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\Stylesheets\Site.css">
-      <DependentUpon>Site.less</DependentUpon>
-    </Content>
-    <Content Include="App\Stylesheets\Site.min.css">
-      <DependentUpon>Site.css</DependentUpon>
-    </Content>
     <Content Include="Content\Fonts\fontello\css\animation.css" />
     <Content Include="Content\Fonts\fontello\css\fontello-codes.css" />
     <Content Include="Content\Fonts\fontello\css\fontello-embedded.css" />
@@ -158,20 +152,26 @@
     <Content Include="Content\Fonts\fontello\font\fontello.eot" />
     <Content Include="Content\Fonts\fontello\font\fontello.ttf" />
     <Content Include="Content\Fonts\fontello\font\fontello.woff" />
-    <Content Include="App\Stylesheets\Meetings\_Index.less" />
-    <Content Include="App\Stylesheets\Meetings\_Show.less" />
-    <Content Include="App\Stylesheets\_Form.less" />
-    <Content Include="App\Stylesheets\_Frameless.less" />
-    <Content Include="App\Stylesheets\_Frontpage.less" />
-    <Content Include="App\Stylesheets\_Menu.less" />
-    <Content Include="App\Stylesheets\_Mixins.less" />
-    <Content Include="App\Stylesheets\_SimplePage.less" />
-    <Content Include="App\Stylesheets\_Top.less" />
-    <Content Include="App\Stylesheets\_Variables.less" />
-    <Content Include="App\Stylesheets\Site.less" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
+    <Content Include="Stylesheets\Meetings\_Index.less" />
+    <Content Include="Stylesheets\Meetings\_Show.less" />
+    <Content Include="Stylesheets\Site.less" />
+    <Content Include="Stylesheets\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
+    <Content Include="Stylesheets\_Form.less" />
+    <Content Include="Stylesheets\_Frameless.less" />
+    <Content Include="Stylesheets\_Frontpage.less" />
+    <Content Include="Stylesheets\_Menu.less" />
+    <Content Include="Stylesheets\_Mixins.less" />
+    <Content Include="Stylesheets\_SimplePage.less" />
+    <Content Include="Stylesheets\_Top.less" />
+    <Content Include="Stylesheets\_Variables.less" />
     <None Include="vendors\Javascripts\jquery-2.1.0.intellisense.js" />
+    <Content Include="Stylesheets\Site.css">
+      <DependentUpon>Site.less</DependentUpon>
+    </Content>
     <Content Include="vendors\Javascripts\jquery-2.1.0.js" />
     <Content Include="vendors\Javascripts\jquery-2.1.0.min.js" />
     <Content Include="vendors\Javascripts\jquery-jvectormap\jquery-jvectormap-1.2.2.css" />
@@ -229,70 +229,70 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\Controllers\AlertsController.cs" />
-    <Compile Include="App\Controllers\ArticlesController.cs" />
-    <Compile Include="App\Controllers\BlogController.cs" />
-    <Compile Include="App\Controllers\FrontpageController.cs" />
-    <Compile Include="App\Controllers\MeetingsController.cs" />
-    <Compile Include="App\Controllers\MeetingsMapController.cs" />
-    <Compile Include="App\Controllers\MeetupController.cs" />
-    <Compile Include="App\Controllers\NewsletterSubscriptionsController.cs" />
-    <Compile Include="App\Controllers\UsersController.cs" />
-    <Compile Include="App\Modules\Alerts\Adapters\DebugTwitterAdapter.cs" />
-    <Compile Include="App\Modules\Alerts\Adapters\ITwitterAdapter.cs" />
-    <Compile Include="App\Modules\Alerts\Adapters\LiveTwitterAdapter.cs" />
-    <Compile Include="App\Modules\Alerts\Data\AlertsRepository.cs" />
-    <Compile Include="App\Modules\Alerts\Data\AlertsService.cs" />
-    <Compile Include="App\Modules\Alerts\Models\MeetingTweetAlert.cs" />
-    <Compile Include="App\Modules\Alerts\Models\NewMeetingsNewsletter.cs" />
-    <Compile Include="App\Modules\Alerts\Models\NewsletterLog.cs" />
-    <Compile Include="App\Modules\Alerts\Models\NewsletterSubscription.cs" />
-    <Compile Include="App\Modules\Alerts\Support\SubscriptionNotFoundException.cs" />
-    <Compile Include="App\Modules\Alerts\Support\TwitterMeetingAlertGenerator.cs" />
-    <Compile Include="App\Modules\Blog\Support\BlogRssPostReader.cs" />
-    <Compile Include="App\Modules\Blog\ViewModels\BlogPostViewModel.cs" />
-    <Compile Include="App\Modules\Core\Adapters\IEmailAdapter.cs" />
-    <Compile Include="App\Modules\Core\Adapters\SmtpEmailAdapter.cs" />
-    <Compile Include="App\Modules\Core\Data\DataContext.cs" />
-    <Compile Include="App\Modules\Core\Mvc\CalendarResult.cs" />
-    <Compile Include="App\Modules\Core\Mvc\ControllerBase.cs" />
-    <Compile Include="App\Modules\Core\Mvc\UserInformationHelper.cs" />
-    <Compile Include="App\Modules\Core\Support\CollectionExtensions.cs" />
-    <Compile Include="App\Modules\Core\Support\DateTimeExtensions.cs" />
-    <Compile Include="App\Modules\Core\Support\Google.cs" />
-    <Compile Include="App\Modules\Core\Support\HtmlToPlainConverter.cs" />
-    <Compile Include="App\Modules\Core\Support\NameValueCollectionExtensions.cs" />
-    <Compile Include="App\Modules\Core\Support\ObjectFactory.cs" />
-    <Compile Include="App\Modules\Core\Support\Secrets.cs" />
-    <Compile Include="App\Modules\Core\Support\StringExtentions.cs" />
-    <Compile Include="App\Modules\Meetings\Data\MeetingsRepository.cs" />
-    <Compile Include="App\Modules\Meetings\Data\MeetingsService.cs" />
-    <Compile Include="App\Modules\Meetings\MeetingProviders\MeetingProviderCoordinator.cs" />
-    <Compile Include="App\Modules\Meetings\MeetingProviders\MeetupMeetingProvider.cs" />
-    <Compile Include="App\Modules\Meetings\Models\City.cs" />
-    <Compile Include="App\Modules\Meetings\Models\Meeting.cs" />
-    <Compile Include="App\Modules\Meetings\Models\MeetingExtensions.cs" />
-    <Compile Include="App\Modules\Meetings\Models\MeetingsFilter.cs" />
-    <Compile Include="App\Modules\Meetings\Models\MeetingSubject.cs" />
-    <Compile Include="App\Modules\Meetings\Models\MeetingSubjectType.cs" />
-    <Compile Include="App\Modules\Meetings\Models\Organizer.cs" />
-    <Compile Include="App\Modules\Meetings\Models\Tag.cs" />
-    <Compile Include="App\Modules\Meetings\Support\MeetingsMapHelper.cs" />
-    <Compile Include="App\Modules\Meetings\Support\MeetingUrlGenerator.cs" />
-    <Compile Include="App\Modules\Meetings\ViewModels\JsonViewModel.cs" />
-    <Compile Include="App\Modules\Meetings\ViewModels\MeetingFormModel.cs" />
-    <Compile Include="App\Modules\Meetings\ViewModels\MeetingFormModelBinder.cs" />
-    <Compile Include="App\Modules\Meetings\ViewModels\RssViewModel.cs" />
-    <Compile Include="App\Modules\Meetings\ViewModels\WidgetViewModel.cs" />
-    <Compile Include="App\Modules\Users\Data\UsersRepository.cs" />
-    <Compile Include="App\Modules\Users\Data\UsersService.cs" />
-    <Compile Include="App\Modules\Users\Models\User.cs" />
-    <Compile Include="App\Modules\Users\Support\UserValidationCodeGenerator.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AlertsController.cs" />
+    <Compile Include="Controllers\ArticlesController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\FrontpageController.cs" />
+    <Compile Include="Controllers\MeetingsController.cs" />
+    <Compile Include="Controllers\MeetingsMapController.cs" />
+    <Compile Include="Controllers\MeetupController.cs" />
+    <Compile Include="Controllers\NewsletterSubscriptionsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Alerts\Adapters\DebugTwitterAdapter.cs" />
+    <Compile Include="Modules\Alerts\Adapters\ITwitterAdapter.cs" />
+    <Compile Include="Modules\Alerts\Adapters\LiveTwitterAdapter.cs" />
+    <Compile Include="Modules\Alerts\Data\AlertsRepository.cs" />
+    <Compile Include="Modules\Alerts\Data\AlertsService.cs" />
+    <Compile Include="Modules\Alerts\Models\MeetingTweetAlert.cs" />
+    <Compile Include="Modules\Alerts\Models\NewMeetingsNewsletter.cs" />
+    <Compile Include="Modules\Alerts\Models\NewsletterLog.cs" />
+    <Compile Include="Modules\Alerts\Models\NewsletterSubscription.cs" />
+    <Compile Include="Modules\Alerts\Support\SubscriptionNotFoundException.cs" />
+    <Compile Include="Modules\Alerts\Support\TwitterMeetingAlertGenerator.cs" />
+    <Compile Include="Modules\Blog\Support\BlogRssPostReader.cs" />
+    <Compile Include="Modules\Blog\ViewModels\BlogPostViewModel.cs" />
+    <Compile Include="Modules\Core\Adapters\IEmailAdapter.cs" />
+    <Compile Include="Modules\Core\Adapters\SmtpEmailAdapter.cs" />
+    <Compile Include="Modules\Core\Data\DataContext.cs" />
+    <Compile Include="Modules\Core\Mvc\CalendarResult.cs" />
+    <Compile Include="Modules\Core\Mvc\ControllerBase.cs" />
+    <Compile Include="Modules\Core\Mvc\UserInformationHelper.cs" />
+    <Compile Include="Modules\Core\Support\CollectionExtensions.cs" />
+    <Compile Include="Modules\Core\Support\DateTimeExtensions.cs" />
+    <Compile Include="Modules\Core\Support\Google.cs" />
+    <Compile Include="Modules\Core\Support\HtmlToPlainConverter.cs" />
+    <Compile Include="Modules\Core\Support\NameValueCollectionExtensions.cs" />
+    <Compile Include="Modules\Core\Support\ObjectFactory.cs" />
+    <Compile Include="Modules\Core\Support\Secrets.cs" />
+    <Compile Include="Modules\Core\Support\StringExtentions.cs" />
+    <Compile Include="Modules\Meetings\Data\MeetingsRepository.cs" />
+    <Compile Include="Modules\Meetings\Data\MeetingsService.cs" />
+    <Compile Include="Modules\Meetings\MeetingProviders\MeetingProviderCoordinator.cs" />
+    <Compile Include="Modules\Meetings\MeetingProviders\MeetupMeetingProvider.cs" />
+    <Compile Include="Modules\Meetings\Models\City.cs" />
+    <Compile Include="Modules\Meetings\Models\Meeting.cs" />
+    <Compile Include="Modules\Meetings\Models\MeetingExtensions.cs" />
+    <Compile Include="Modules\Meetings\Models\MeetingsFilter.cs" />
+    <Compile Include="Modules\Meetings\Models\MeetingSubject.cs" />
+    <Compile Include="Modules\Meetings\Models\MeetingSubjectType.cs" />
+    <Compile Include="Modules\Meetings\Models\Organizer.cs" />
+    <Compile Include="Modules\Meetings\Models\Tag.cs" />
+    <Compile Include="Modules\Meetings\Support\MeetingsMapHelper.cs" />
+    <Compile Include="Modules\Meetings\Support\MeetingUrlGenerator.cs" />
+    <Compile Include="Modules\Meetings\ViewModels\JsonViewModel.cs" />
+    <Compile Include="Modules\Meetings\ViewModels\MeetingFormModel.cs" />
+    <Compile Include="Modules\Meetings\ViewModels\MeetingFormModelBinder.cs" />
+    <Compile Include="Modules\Meetings\ViewModels\RssViewModel.cs" />
+    <Compile Include="Modules\Meetings\ViewModels\WidgetViewModel.cs" />
+    <Compile Include="Modules\Users\Data\UsersRepository.cs" />
+    <Compile Include="Modules\Users\Data\UsersService.cs" />
+    <Compile Include="Modules\Users\Models\User.cs" />
+    <Compile Include="Modules\Users\Support\UserValidationCodeGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
