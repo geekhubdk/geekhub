@@ -262,7 +262,7 @@
     <Compile Include="App\Modules\Core\Support\Google.cs" />
     <Compile Include="App\Modules\Core\Support\HtmlToPlainConverter.cs" />
     <Compile Include="App\Modules\Core\Support\NameValueCollectionExtensions.cs" />
-    <Compile Include="App\Modules\Core\Support\ObjectBuilder.cs" />
+    <Compile Include="App\Modules\Core\Support\ObjectFactory.cs" />
     <Compile Include="App\Modules\Core\Support\Secrets.cs" />
     <Compile Include="App\Modules\Core\Support\StringExtentions.cs" />
     <Compile Include="App\Modules\Meetings\Data\MeetingsRepository.cs" />
