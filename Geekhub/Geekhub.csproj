@@ -232,7 +232,6 @@
     <Compile Include="App\Controllers\AlertsController.cs" />
     <Compile Include="App\Controllers\ArticlesController.cs" />
     <Compile Include="App\Controllers\BlogController.cs" />
-    <Compile Include="App\Controllers\ControllerBase.cs" />
     <Compile Include="App\Controllers\FrontpageController.cs" />
     <Compile Include="App\Controllers\MeetingsController.cs" />
     <Compile Include="App\Controllers\MeetingsMapController.cs" />
@@ -245,6 +244,7 @@
     <Compile Include="App\Core\Mvc\CalendarResult.cs" />
     <Compile Include="App\Core\Mvc\UserInformationHelper.cs" />
     <Compile Include="App\Core\Support\CollectionExtensions.cs" />
+    <Compile Include="App\Core\Support\ControllerBase.cs" />
     <Compile Include="App\Core\Support\DateTimeExtensions.cs" />
     <Compile Include="App\Core\Support\Google.cs" />
     <Compile Include="App\Core\Support\HtmlToPlainConverter.cs" />

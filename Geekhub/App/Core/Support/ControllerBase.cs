@@ -1,9 +1,9 @@
-﻿using Geekhub.App.Modules.Alerts.Data;
+﻿using System.Web.Mvc;
+using Geekhub.App.Modules.Alerts.Data;
 using Geekhub.App.Modules.Meetings.Data;
 using Geekhub.App.Modules.Users.Data;
-using System.Web.Mvc;
 
-namespace Geekhub.App.Controllers
+namespace Geekhub.App.Core.Support
 {
     public abstract class ControllerBase : Controller
     {

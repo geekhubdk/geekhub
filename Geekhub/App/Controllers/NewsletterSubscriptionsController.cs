@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Geekhub.App.Modules.Alerts.Support;
+using ControllerBase = Geekhub.App.Core.Support.ControllerBase;
 
 namespace Geekhub.App.Controllers
 {

@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Geekhub.App.Modules.Users.Data;
+using ControllerBase = Geekhub.App.Core.Support.ControllerBase;
 
 namespace Geekhub.App.Controllers
 {

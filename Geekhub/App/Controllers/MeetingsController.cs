@@ -13,6 +13,7 @@ using Geekhub.App.Modules.Meetings.ViewModels;
 using Newtonsoft.Json;
 using Geekhub.App.Modules.Meetings;
 using Geekhub.App.Modules.Meetings.Data;
+using ControllerBase = Geekhub.App.Core.Support.ControllerBase;
 
 namespace Geekhub.App.Controllers
 {
