@@ -215,7 +215,7 @@
     <Content Include="Stylesheets\_Frameless.less" />
     <Content Include="Stylesheets\_Frontpage.less" />
     <Content Include="Stylesheets\_Menu.less" />
-    <Content Include="Stylesheets\_Mixins.less" />
+    <Content Include="Stylesheets\_OffCanvas.less" />
     <Content Include="Stylesheets\_SimplePage.less" />
     <Content Include="Stylesheets\_Top.less" />
     <Content Include="Stylesheets\_Variables.less" />
