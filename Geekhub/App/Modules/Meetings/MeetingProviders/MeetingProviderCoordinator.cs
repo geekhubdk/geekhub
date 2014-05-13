@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Geekhub.App.Core.Data;
+using Geekhub.App.Modules.Core.Data;
 using Geekhub.App.Modules.Meetings.Models;
 
 namespace Geekhub.App.Modules.Meetings.MeetingProviders

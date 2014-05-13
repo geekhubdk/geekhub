@@ -1,10 +1,10 @@
 ﻿using System.Web.Mvc;
 using Geekhub.App.Modules.Alerts.Support;
-using ControllerBase = Geekhub.App.Core.Mvc.ControllerBase;
+using ControllerBase = Geekhub.App.Modules.Core.Mvc.ControllerBase;
 
 namespace Geekhub.App.Controllers
 {
-    public class NewsletterSubscriptionsController : Core.Mvc.ControllerBase
+    public class NewsletterSubscriptionsController : Modules.Core.Mvc.ControllerBase
     {
         [Route("newsletter/subscribe")]
         public ActionResult Create()

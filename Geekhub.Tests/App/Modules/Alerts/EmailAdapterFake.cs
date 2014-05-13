@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Geekhub.App.Core.Adapters;
 using Geekhub.App.Modules.Alerts.Adapters;
+using Geekhub.App.Modules.Core.Adapters;
 
 namespace Geekhub.Tests.App.Modules.Alerts
 {

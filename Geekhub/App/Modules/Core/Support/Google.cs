@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web;
 using System.Xml;
 
-namespace Geekhub.App.Core.Support
+namespace Geekhub.App.Modules.Core.Support
 {
     public class Google
     {

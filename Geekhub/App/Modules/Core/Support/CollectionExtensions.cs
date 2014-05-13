@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Geekhub.App.Core.Support
+namespace Geekhub.App.Modules.Core.Support
 {
     public static class CollectionExtensions
     {

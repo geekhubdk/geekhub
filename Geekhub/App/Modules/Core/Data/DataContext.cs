@@ -4,11 +4,8 @@ using Biggy;
 using Geekhub.App.Modules.Alerts.Models;
 using Geekhub.App.Modules.Meetings.Models;
 using Geekhub.App.Modules.Users.Models;
-using System.IO;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 
-namespace Geekhub.App.Core.Data
+namespace Geekhub.App.Modules.Core.Data
 {
     public class DataContext
     {

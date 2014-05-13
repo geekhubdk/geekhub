@@ -1,9 +1,9 @@
-﻿using Geekhub.App.Core.Adapters;
-using Geekhub.App.Core.Data;
-using Geekhub.App.Core.Support;
-using Geekhub.App.Modules.Alerts.Adapters;
+﻿using Geekhub.App.Modules.Alerts.Adapters;
 using Geekhub.App.Modules.Alerts.Models;
 using Geekhub.App.Modules.Alerts.Support;
+using Geekhub.App.Modules.Core.Adapters;
+using Geekhub.App.Modules.Core.Data;
+using Geekhub.App.Modules.Core.Support;
 using Geekhub.App.Modules.Meetings.Data;
 using Geekhub.App.Modules.Meetings.Models;
 using System;

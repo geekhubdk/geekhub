@@ -3,7 +3,7 @@ using Geekhub.App.Modules.Alerts.Data;
 using Geekhub.App.Modules.Meetings.Data;
 using Geekhub.App.Modules.Users.Data;
 
-namespace Geekhub.App.Core.Mvc
+namespace Geekhub.App.Modules.Core.Mvc
 {
     public abstract class ControllerBase : Controller
     {

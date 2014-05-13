@@ -1,11 +1,10 @@
 ﻿using System.Web;
 using System.Web.Security;
-using Geekhub.App.Core.Data;
-using Geekhub.App.Core.Support;
-using Geekhub.App.Modules.Users.Models;
+using Geekhub.App.Modules.Core.Support;
 using Geekhub.App.Modules.Users.Data;
+using Geekhub.App.Modules.Users.Models;
 
-namespace Geekhub.App.Core.Mvc
+namespace Geekhub.App.Modules.Core.Mvc
 {
     public static class UserInformationHelper
     {

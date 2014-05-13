@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using DDay.iCal;
 using DDay.iCal.Serialization.iCalendar;
 
-namespace Geekhub.App.Core.Mvc
+namespace Geekhub.App.Modules.Core.Mvc
 {
     public class CalendarResult : ActionResult
     {

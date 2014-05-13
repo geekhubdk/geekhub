@@ -1,11 +1,11 @@
-﻿using Geekhub.App.Core.Data;
+﻿using Geekhub.App.Modules.Core.Data;
+using Geekhub.App.Modules.Core.Support;
 using Geekhub.App.Modules.Meetings.Models;
 using Geekhub.App.Modules.Meetings.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Geekhub.App.Core.Support;
 
 namespace Geekhub.App.Modules.Meetings.Data
 {

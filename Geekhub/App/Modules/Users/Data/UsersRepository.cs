@@ -1,4 +1,4 @@
-﻿using Geekhub.App.Core.Data;
+﻿using Geekhub.App.Modules.Core.Data;
 using Geekhub.App.Modules.Users.Models;
 using System;
 using System.Collections.Generic;

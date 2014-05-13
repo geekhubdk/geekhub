@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using HtmlAgilityPack;
 
-namespace Geekhub.App.Core.Support
+namespace Geekhub.App.Modules.Core.Support
 {
     //Source: http://htmlagilitypack.codeplex.com/sourcecontrol/changeset/view/62772#52179
     public static class HtmlToPlainConverter

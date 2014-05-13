@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace Geekhub.App.Core.Support
+namespace Geekhub.App.Modules.Core.Support
 {
     public static class StringExtentions
     {

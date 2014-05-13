@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Geekhub.App.Core.Support
+namespace Geekhub.App.Modules.Core.Support
 {
     public static class DateTimeExtensions
     {

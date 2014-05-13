@@ -1,6 +1,6 @@
 using System.Collections.Specialized;
 using System.Linq;
-using Geekhub.App.Core.Support;
+using Geekhub.App.Modules.Core.Support;
 
 namespace Geekhub.App.Modules.Meetings.Models
 {

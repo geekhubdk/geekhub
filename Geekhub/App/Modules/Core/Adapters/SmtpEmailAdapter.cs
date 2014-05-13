@@ -1,6 +1,6 @@
 ﻿using System.Net.Mail;
 
-namespace Geekhub.App.Core.Adapters
+namespace Geekhub.App.Modules.Core.Adapters
 {
     public class SmtpEmailAdapter : IEmailAdapter
     {

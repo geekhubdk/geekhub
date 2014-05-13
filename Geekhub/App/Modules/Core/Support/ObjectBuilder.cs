@@ -1,13 +1,10 @@
-﻿using Deldysoft.Foundation;
-using Geekhub.App.Core.Adapters;
-using Geekhub.App.Modules.Alerts.Adapters;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Configuration;
-using System.Linq;
-using System.Web;
+using Deldysoft.Foundation;
+using Geekhub.App.Modules.Alerts.Adapters;
+using Geekhub.App.Modules.Core.Adapters;
 
-namespace Geekhub.App.Core.Support
+namespace Geekhub.App.Modules.Core.Support
 {
     public class ObjectFactory
     {

@@ -1,4 +1,4 @@
-﻿namespace Geekhub.App.Core.Adapters
+﻿namespace Geekhub.App.Modules.Core.Adapters
 {
     public interface IEmailAdapter
     {

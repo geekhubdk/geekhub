@@ -1,7 +1,7 @@
-﻿using Geekhub.App.Core.Adapters;
-using Geekhub.App.Core.Data;
-using Geekhub.App.Core.Support;
-using Geekhub.App.Modules.Alerts.Data;
+﻿using Geekhub.App.Modules.Alerts.Data;
+using Geekhub.App.Modules.Core.Adapters;
+using Geekhub.App.Modules.Core.Data;
+using Geekhub.App.Modules.Core.Support;
 using Geekhub.App.Modules.Users.Models;
 using Geekhub.App.Modules.Users.Support;
 using System;

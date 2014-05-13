@@ -1,6 +1,6 @@
 using System;
 using System.Globalization;
-using Geekhub.App.Core.Support;
+using Geekhub.App.Modules.Core.Support;
 using Geekhub.App.Modules.Meetings.Models;
 
 namespace Geekhub.App.Modules.Meetings.ViewModels

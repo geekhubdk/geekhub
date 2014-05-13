@@ -4,20 +4,19 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Deldysoft.Foundation;
-using Geekhub.App.Core.Data;
-using Geekhub.App.Core.Mvc;
-using Geekhub.App.Core.Support;
+using Geekhub.App.Modules.Core.Mvc;
+using Geekhub.App.Modules.Core.Support;
 using Geekhub.App.Modules.Meetings.Models;
 using Geekhub.App.Modules.Meetings.Support;
 using Geekhub.App.Modules.Meetings.ViewModels;
 using Newtonsoft.Json;
 using Geekhub.App.Modules.Meetings;
 using Geekhub.App.Modules.Meetings.Data;
-using ControllerBase = Geekhub.App.Core.Mvc.ControllerBase;
+using ControllerBase = Geekhub.App.Modules.Core.Mvc.ControllerBase;
 
 namespace Geekhub.App.Controllers
 {
-    public class MeetingsController : Core.Mvc.ControllerBase
+    public class MeetingsController : Modules.Core.Mvc.ControllerBase
     {
         [Route("meetings")]
         public ActionResult Index()

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
-using Geekhub.App.Core.Support;
+using Geekhub.App.Modules.Core.Support;
 using Geekhub.App.Modules.Meetings.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
