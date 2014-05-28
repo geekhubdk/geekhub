@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using DDay.iCal;
 using DDay.iCal.Serialization.iCalendar;
+using Geekhub.Modules.Meetings.Models;
+using Geekhub.Modules.Meetings.Support;
 
 namespace Geekhub.Modules.Core.Mvc
 {
@@ -15,6 +18,18 @@ namespace Geekhub.Modules.Core.Mvc
         {
             _name = name;
             _events = events;
+        }
+
+        public CalendarResult(string name, IEnumerable<Meeting> meetings)
+        {
+            _name = name;
+            _events = meetings.Select(x => new Event() {
+                DateStart = x.StartsAt,
+                DateEnd = x.StartsAt.AddHours(2),
+                Description = x.Description,
+                Summary = x.Title,
+                Url = MeetingUrlGenerator.CreateFullMeetingUrl(x.Id, "ics"),
+            });
         }
 
         public override void ExecuteResult(ControllerContext context)
