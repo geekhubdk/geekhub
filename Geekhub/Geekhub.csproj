@@ -261,6 +261,7 @@
     <Compile Include="Modules\Core\Data\DataContext.cs" />
     <Compile Include="Modules\Core\Mvc\CalendarResult.cs" />
     <Compile Include="Modules\Core\Mvc\ControllerBase.cs" />
+    <Compile Include="Modules\Core\Mvc\OnlyDevelopmentAttribute.cs" />
     <Compile Include="Modules\Core\Mvc\UserInformationHelper.cs" />
     <Compile Include="Modules\Core\Support\CollectionExtensions.cs" />
     <Compile Include="Modules\Core\Support\DateTimeExtensions.cs" />

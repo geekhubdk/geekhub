@@ -133,12 +133,9 @@ namespace Geekhub.Controllers
             return new CalendarResult("Geekhub", meetings);
         }
 
-        [Route("meetings/pull")]
+        [Route("meetings/pull"), OnlyDevelopment]
         public ActionResult Pull()
         {
-            if (AppEnvironment.Current != EnvironmentType.Development) {
-                return Content("Only allowed in development mode");
-            }
             var client = new WebClient();
             client.Encoding = System.Text.Encoding.UTF8;
             var result = client.DownloadString("http://www.geekhub.dk/meetings.json?ticks=" + DateTime.Now.Ticks);
