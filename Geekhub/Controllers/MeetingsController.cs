@@ -130,12 +130,12 @@ namespace Geekhub.Controllers
         public ActionResult Ics()
         {
             var meetings = MeetingsRepository.GetUpcommingMeetings(Request.QueryString);
-            return new CalendarResult("Geekhub", meetings.Select(x=>new CalendarResult.Event() {
-                    DateStart = x.StartsAt,
-                    DateEnd = x.StartsAt.AddHours(2),
-                    Description = x.Description,
-                    Summary = x.Title,
-                    Url = MeetingUrlGenerator.CreateFullMeetingUrl(x.Id,"ics"),
+            return new CalendarResult("Geekhub", meetings.Select(x => new CalendarResult.Event() {
+                DateStart = x.StartsAt,
+                DateEnd = x.StartsAt.AddHours(2),
+                Description = x.Description,
+                Summary = x.Title,
+                Url = MeetingUrlGenerator.CreateFullMeetingUrl(x.Id, "ics"),
             }));
         }
 
