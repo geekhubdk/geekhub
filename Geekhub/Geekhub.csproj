@@ -132,6 +132,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="demo.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
@@ -205,11 +206,15 @@
     <Content Include="Public\Vendor\select2\select2_locale_vi.js" />
     <Content Include="Public\Vendor\select2\select2_locale_zh-CN.js" />
     <Content Include="Public\Vendor\select2\select2_locale_zh-TW.js" />
+    <Content Include="Scripts\widget.js" />
     <Content Include="Stylesheets\Meetings\_Index.less" />
     <Content Include="Stylesheets\Meetings\_Show.less" />
     <Content Include="Stylesheets\Site.less" />
     <Content Include="Stylesheets\Site.min.css">
       <DependentUpon>Site.css</DependentUpon>
+    </Content>
+    <Content Include="Stylesheets\Widget.min.css">
+      <DependentUpon>Widget.less</DependentUpon>
     </Content>
     <Content Include="Stylesheets\_Form.less" />
     <Content Include="Stylesheets\_Frameless.less" />
@@ -334,6 +339,7 @@
     <Content Include="Public\Vendor\select2\select2.jquery.json" />
     <Content Include="Public\Vendor\select2\select2_locale_en.js.template" />
     <Content Include="Public\Vendor\jquery\jquery-2.1.0.min.map" />
+    <Content Include="Stylesheets\Widget.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

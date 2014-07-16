@@ -8,6 +8,7 @@ using Geekhub.Modules.Core.Support;
 using Geekhub.Modules.Meetings.Support;
 using Geekhub.Modules.Meetings.ViewModels;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Geekhub.Controllers
 {
@@ -113,7 +114,10 @@ namespace Geekhub.Controllers
         public ActionResult Json()
         {
             var model = MeetingsRepository.GetUpcommingMeetings(Request.QueryString);
-            return Json(new JsonViewModel(model), JsonRequestBehavior.AllowGet);
+            var options = new JsonSerializerSettings();
+            options.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            var json = JsonConvert.SerializeObject(new JsonViewModel(model), options);
+            return Content(json, "application/json");
         }
 
         [Route("widget")]
