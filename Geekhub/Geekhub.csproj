@@ -132,7 +132,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="demo.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
@@ -206,7 +205,6 @@
     <Content Include="Public\Vendor\select2\select2_locale_vi.js" />
     <Content Include="Public\Vendor\select2\select2_locale_zh-CN.js" />
     <Content Include="Public\Vendor\select2\select2_locale_zh-TW.js" />
-    <Content Include="Scripts\widget.js" />
     <Content Include="Stylesheets\Meetings\_Index.less" />
     <Content Include="Stylesheets\Meetings\_Show.less" />
     <Content Include="Stylesheets\Site.less" />
@@ -360,6 +358,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
