@@ -2,15 +2,14 @@
 
 namespace Geekhub.Controllers
 {
+    [Route("articles/{action}")]
     public class ArticlesController : Controller
     {
-        [Route("articles/guidelines")]
         public ActionResult Guidelines()
         {
             return View();
         }
 
-        [Route("articles/embed")]
         public ActionResult Embed()
         {
             return View();
@@ -22,13 +21,11 @@ namespace Geekhub.Controllers
             return View();
         }
 
-        [Route("articles/rss")]
         public ActionResult Rss()
         {
             return View();
         }
 
-        [Route("articles/ics")]
         public ActionResult Ics()
         {
             return View();
