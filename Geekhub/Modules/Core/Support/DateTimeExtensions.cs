@@ -17,7 +17,7 @@ namespace Geekhub.Modules.Core.Support
             if (daysUntil > 1 && daysUntil <= 6)
                 prefix = string.Format("På {0}, den", dateTime.ToString("dddd"));
 
-            return (prefix + " " + dateTime.ToString("dd. MMM yyyy, HH:mm")).Trim();
+            return (prefix + " " + dateTime.ToString("dd. MMM yyyy")).Trim();
         }
     }
 }

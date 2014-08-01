@@ -11,13 +11,7 @@ namespace Geekhub.Modules.Meetings.ViewModels
         {
             meeting.Url = formModel.Url;
             meeting.Title = formModel.Title;
-            meeting.Address = formModel.Address;
-            meeting.AddressFormatted = formModel.AddressFormatted;
-            if (formModel.AddressLat.IsPresent() && formModel.AddressLng.IsPresent()) {
-                meeting.Latitude = double.Parse(formModel.AddressLat, CultureInfo.InvariantCulture);
-                meeting.Longtitude = double.Parse(formModel.AddressLng, CultureInfo.InvariantCulture);
-            }
-            meeting.StartsAt = DateTime.Parse(formModel.StartsAtDate + " " + formModel.StartsAtTime);
+            meeting.StartsAt = DateTime.Parse(formModel.StartsAtDate);
             
             if (formModel.City.IsPresent()) {
                 meeting.City = new City() { Name = formModel.City };

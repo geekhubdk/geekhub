@@ -30,13 +30,13 @@ namespace Geekhub.Modules.Meetings.Data
 
             SetID(meeting);
 
-            meeting.Address = formModel.Address;
-            meeting.AddressFormatted = formModel.Address;
+            //meeting.Address = formModel.Address;
+            //meeting.AddressFormatted = formModel.Address;
             meeting.City = new City() { Name = formModel.City };
             meeting.CreatedAt = formModel.CreatedAt;
             meeting.Description = formModel.Description;
-            meeting.Latitude = formModel.Latitude;
-            meeting.Longtitude = formModel.Longtitude;
+            //meeting.Latitude = formModel.Latitude;
+            //meeting.Longtitude = formModel.Longtitude;
             meeting.Organizers.AddRange(formModel.Organizers.Select(x=>new Organizer() { Name = x}));
             meeting.StartsAt = formModel.StartsAt;
             meeting.Tags.AddRange(formModel.Tags.Select(x=>new Tag() { Name = x}));

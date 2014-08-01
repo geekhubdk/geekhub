@@ -5,7 +5,7 @@
     <div id="meetings">
         <div class="gutter-wrapper">
             @foreach (var meeting in Model) {
-                <section class="meeting" data-lat="@meeting.Latitude.GetValueOrDefault(0).ToString(CultureInfo.InvariantCulture)" data-lng="@meeting.Longtitude.GetValueOrDefault(0).ToString(CultureInfo.InvariantCulture)">
+                <section class="meeting">
                     <div class="leadin">@string.Join(" & ", meeting.Organizers.Select(x => x.Name)) præsenterer:</div>
                     <h1><a href="@Url.Action("Show", "Meetings", new { id=meeting.Id })">@meeting.Title</a></h1>
                     <div class="when icon-clock semi-transparent-icon">

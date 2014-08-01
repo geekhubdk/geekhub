@@ -30,16 +30,16 @@ namespace Geekhub.Modules.Meetings.ViewModels
             {
                 Id = meeting.Id;
                 Title = meeting.Title;
-                StartsAt = meeting.StartsAt;
+                StartsAt = meeting.StartsAt.Date;
                 CreatedAt = meeting.CreatedAt;
                 Description = meeting.Description;
                 Url = meeting.Url;
                 Tags = meeting.Tags.Select(x=>x.Name).ToArray();
                 Organizers = meeting.Organizers.Select(x => x.Name).ToArray();
-                Address = meeting.AddressFormatted;
+                //Address = meeting.AddressFormatted;
                 City = meeting.City.Name;
-                Latitude = meeting.Latitude;
-                Longtitude = meeting.Longtitude;
+                //Latitude = meeting.Latitude;
+                //Longtitude = meeting.Longtitude;
             }
 
             public int Id { get; set; }

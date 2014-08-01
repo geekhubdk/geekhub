@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,16 +12,17 @@ namespace Geekhub.Modules.Meetings.Support
     {
         public static dynamic CreateMeetingMapModel(IEnumerable<Meeting> meetings, UrlHelper urlHelper)
         {
-            var markers =
-                meetings.GroupBy(x => x.City.Name)
-                    .Select(
-                        x =>
-                            new {
-                                latLng = new[] {x.First().Latitude, x.First().Longtitude},
-                                name = string.Format("{0} i {1}", Pluralize(x.Count(), "event", "events"), x.Key),
-                                href = urlHelper.Action("Index", "Meetings", new {city = x.Key})
-                            });
-            return new HtmlString(JsonConvert.SerializeObject(markers));
+            throw new NotImplementedException();
+            //var markers =
+            //    meetings.GroupBy(x => x.City.Name)
+            //        .Select(
+            //            x =>
+            //                new {
+            //                    latLng = new[] {x.First().Latitude, x.First().Longtitude},
+            //                    name = string.Format("{0} i {1}", Pluralize(x.Count(), "event", "events"), x.Key),
+            //                    href = urlHelper.Action("Index", "Meetings", new {city = x.Key})
+            //                });
+            //return new HtmlString(JsonConvert.SerializeObject(markers));
         }
 
         private static string Pluralize(int count, string singular, string plural)

@@ -94,7 +94,7 @@ Træt af mailen? <a href=""http://www.geekhub.dk/newsletter/unsubscribe"">Afmeld
                 Url = "http://geekhub.dk/meetings/" + meeting.Id + "/?utm_source=email";
                 Title = meeting.Title;
                 City = meeting.City.Name;
-                StartsAt = meeting.StartsAt.ToString("dd. MMM HH:mm");
+                StartsAt = meeting.StartsAt.ToString("dd. MMM");
                 Organizers = string.Join(" & ", meeting.Organizers.Select(x => x.Name));
                 Description = meeting.Description.Replace(Environment.NewLine, "<br/>");
             }

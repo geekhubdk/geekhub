@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using Deldysoft.Foundation;
 using Geekhub.Modules.Core.Mvc;
 using Geekhub.Modules.Core.Support;
 using Geekhub.Modules.Meetings.Support;
@@ -158,7 +157,7 @@ namespace Geekhub.Controllers
         public ActionResult MeetingsForFrontpage()
         {
             var upcommingMeetings = MeetingsRepository.GetUpcommingMeetings(Request.QueryString).ToArray();
-            ViewBag.MapData = MeetingsMapHelper.CreateMeetingMapModel(upcommingMeetings, Url);
+            //ViewBag.MapData = MeetingsMapHelper.CreateMeetingMapModel(upcommingMeetings, Url);
             return PartialView(upcommingMeetings.Take(3));
         }
 

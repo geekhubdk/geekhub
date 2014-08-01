@@ -3,9 +3,6 @@
 @model Geekhub.Modules.Meetings.Models.Meeting
 @{
     ViewBag.Title = Model.Title + "- Geekhub.dk";
-    
-    var lat = Model.Latitude.GetValueOrDefault(0).ToString(CultureInfo.InvariantCulture);
-    var lng = Model.Longtitude.GetValueOrDefault(0).ToString(CultureInfo.InvariantCulture);
 }
 
 <div id="meeting">
@@ -49,23 +46,19 @@
         </div>
     </div>
 
-    @if (lat != "0" && lng != "0") {
-        <script>
-            var element = document.getElementById("mapContainer");
-            var width = element.offsetWidth;
-            var img = document.createElement("img");
-            var height = parseInt(width / 2);
-
-            if (height > 150)
-                height = 150;
-
-            img.addEventListener("error", function() { img.remove(); });
-            img.src = "http://maps.googleapis.com/maps/api/staticmap?center=@(lat),@(lng)&markers=@(lat),@(lng)&zoom=12&size=" + width + "x" + height + "&sensor=false&scale=2";
-            
-            element.appendChild(img);
-        </script>
-    }
     <script>
+        var element = document.getElementById("mapContainer");
+        var width = element.offsetWidth;
+        var img = document.createElement("img");
+        var height = parseInt(width / 2);
+
+        if (height > 150)
+            height = 150;
+
+        img.addEventListener("error", function() { img.remove(); });
+        img.src = "http://maps.googleapis.com/maps/api/staticmap?center=@(HttpUtility.UrlEncode(Model.City.Name))&zoom=10&size=" + width + "x" + height + "&sensor=false&scale=2";
+            
+        element.appendChild(img);
         /**
         * Funktion, der sporer et klik på et udgående link i Google Analytics.
         * Denne funktion tager en gyldig webadressestreng som et argument og bruger den pågældende webadressestreng
@@ -74,9 +67,9 @@
         var trackOutboundLink = function (url) {
             ga('send', 'event', 'outbound', 'click', url, {
                 'hitCallback':
-                  function () {
-                      document.location = url;
-                  }
+                    function () {
+                        document.location = url;
+                    }
             });
         }
     </script>

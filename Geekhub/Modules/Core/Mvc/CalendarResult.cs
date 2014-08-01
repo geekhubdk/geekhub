@@ -24,8 +24,7 @@ namespace Geekhub.Modules.Core.Mvc
         {
             _name = name;
             _events = meetings.Select(x => new Event() {
-                DateStart = x.StartsAt,
-                DateEnd = x.StartsAt.AddHours(2),
+                DateStart = x.StartsAt.Date,
                 Description = x.Description,
                 Summary = x.Title,
                 Url = MeetingUrlGenerator.CreateFullMeetingUrl(x.Id, "ics"),
@@ -41,9 +40,9 @@ namespace Geekhub.Modules.Core.Mvc
             foreach (var e in _events) {
                 var calendarEvent = new DDay.iCal.Event {
                     Description = e.Description,
-                    DTEnd = new iCalDateTime(e.DateEnd),
                     DTStamp = new iCalDateTime(e.DateStart),
                     DTStart = new iCalDateTime(e.DateStart),
+                    IsAllDay = true,
                     Location = e.Location,
                     Summary = e.Summary,
                     Url = new Uri(e.Url)

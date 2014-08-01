@@ -23,11 +23,7 @@ namespace Geekhub.Modules.Meetings.Models
         public virtual ICollection<Tag> Tags { get; set; }
         public virtual ICollection<Organizer> Organizers { get; set; }
 
-        public string Address { get; set; }
-        public string AddressFormatted { get; set; }
         public virtual City City { get; set; }
-        public double? Latitude { get; set; }
-        public double? Longtitude { get; set; }
         public DateTime? DeletedAt { get; set; }
         public bool IsNotDeleted { get { return !DeletedAt.HasValue; } }
     }

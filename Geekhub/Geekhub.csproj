@@ -63,6 +63,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\biggy\Inflector.dll</HintPath>
     </Reference>
+    <Reference Include="Klepto">
+      <HintPath>..\Libs\Klepto.dll</HintPath>
+    </Reference>
+    <Reference Include="Klepto.EventProviders">
+      <HintPath>..\Libs\Klepto.EventProviders.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -153,6 +159,7 @@
     <Content Include="Public\Vendor\jquery-jvectormap\jquery-jvectormap-1.2.2.css" />
     <Content Include="Public\Vendor\jquery-jvectormap\jquery-jvectormap-1.2.2.min.js" />
     <Content Include="Public\Vendor\jquery-jvectormap\jquery-jvectormap-dk-merc-en.js" />
+    <None Include="Properties\PublishProfiles\UnoEuro.pubxml" />
     <None Include="Public\Vendor\jquery\jquery-2.1.0.intellisense.js" />
     <Content Include="Public\Vendor\jquery\jquery-2.1.0.js" />
     <Content Include="Public\Vendor\jquery\jquery-2.1.0.min.js" />
@@ -238,6 +245,7 @@
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\FrontpageController.cs" />
+    <Compile Include="Controllers\KleptoController.cs" />
     <Compile Include="Controllers\MeetingsController.cs" />
     <Compile Include="Controllers\MeetingsMapController.cs" />
     <Compile Include="Controllers\MeetupController.cs" />
@@ -359,6 +367,7 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\Klepto\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
