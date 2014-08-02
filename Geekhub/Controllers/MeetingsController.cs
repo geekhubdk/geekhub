@@ -158,7 +158,7 @@ namespace Geekhub.Controllers
         {
             var upcommingMeetings = MeetingsRepository.GetUpcommingMeetings(Request.QueryString).ToArray();
             //ViewBag.MapData = MeetingsMapHelper.CreateMeetingMapModel(upcommingMeetings, Url);
-            return PartialView(upcommingMeetings.Take(3));
+            return PartialView(upcommingMeetings);
         }
 
         private void LoadFormData()

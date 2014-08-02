@@ -1,8 +1,31 @@
 ﻿@model IEnumerable<Geekhub.Modules.Meetings.Models.Meeting>
-@*<div class="only-small">*@
-    <h2>De tre næste events</h2>
-    @Html.Partial("_Meetings")
-@*</div>*@
-@*<div class="only-big">
-    @Html.Partial("../MeetingsMap/Index", (object)ViewBag.MapData)
-</div>*@
+
+@functions {
+    private string Pluralize(int count, string single, string plural)
+    {
+        if (count == 1) {
+            return single;
+        }
+
+        return plural;
+    }
+
+}
+
+@foreach (var group in Model.OrderBy(x=>x.City.Name).GroupBy(x => x.City.Name)) {
+    <div style="text-align: center;">
+        <a
+           style="
+    padding: 20px 0;
+    width: 100%;
+    display: block;
+    margin: 10px 0;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+    text-decoration: none;
+    font-size: 160%;
+    color: #444;
+"
+            href="@Url.Action("Index", "Meetings", new { location=group.Key })">@group.Count() @Pluralize(group.Count(), "event", "events") i <strong>@group.Key</strong></a>
+    </div>
+}

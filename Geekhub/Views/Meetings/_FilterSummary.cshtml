@@ -8,4 +8,5 @@
     @if (filter.Locations.Any()) {
         <h1 style="text-align: center; margin-top: 25px;">Events i @string.Join(" & ", filter.Locations)</h1>
     }
+    <p style="text-align: center;" class="muted">Også som: <a href="@Url.Action("Rss", "Meetings")@Request.Url.Query">RSS</a>, <a href="@Url.Action("Ics", "Meetings")@Request.Url.Query">Kalender feed</a></p>
 </div>

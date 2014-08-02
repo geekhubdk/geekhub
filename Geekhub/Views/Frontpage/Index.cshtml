@@ -4,8 +4,12 @@
         <p>En brugervedligeholdt liste over udvikler events i Danmark, hvor alle er velkommen til at <a href="http://www.geekhub.dk/meetings/create">indsende events</a>.</p>
     </section>
     <a class="dimmed-see-more" href="@Url.Action("About", "Articles")">Læs mere om Geekhub</a>
+
+    <h2>Find events i din by:</h2>
     @Html.Action("MeetingsForFrontpage", "Meetings")
-    <a class="see-more" href="@Url.Action("Index", "Meetings")">Se alle events</a>
+    <div style="margin-top: 10px;">
+        <a class="see-more" href="@Url.Action("Index", "Meetings")">Se alle events</a>
+    </div>
     <h2>Blog</h2>
     @Html.Action("BlogPostsForFrontpage", "Blog")
     <a class="see-more" href="https://medium.com/@("@geekhubdk")/">Besøg bloggen</a>
