@@ -27,8 +27,7 @@ namespace Geekhub.Modules.Meetings.ViewModels
 
             public RssViewItemModel(Meeting meeting)
             {
-                Title = string.Format("{0} - {1}, {2}", meeting.Title, meeting.StartsAt.ToString("dd. MMM yyyy"),
-                    meeting.StartsAt.ToString("HH:mm"));
+                Title = string.Format("{0} - {1}", meeting.Title, meeting.StartsAt.ToString("dd. MMM yyyy"));
                 Link = MeetingUrlGenerator.CreateFullMeetingUrl(meeting.Id, "rss");
                 Guid = Link;
                 var description = string.Format("<strong>{0} - {1}</strong><br/>{2}",
