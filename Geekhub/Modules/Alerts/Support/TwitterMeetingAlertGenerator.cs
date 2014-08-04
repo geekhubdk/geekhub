@@ -11,20 +11,19 @@ namespace Geekhub.Modules.Alerts.Support
             var message = meeting.Title;
             var hashTags = "#" + meeting.City.Name.ToLower();
             var link = "geekhub.dk/m/" + meeting.Id;
-            return SendTweetWithLink(message, hashTags , link);
+            var date = meeting.StartsAt.ToString("d. MMM");
+            return SendTweetWithLink(message, hashTags, link, date);
         }
 
-        public string SendTweetWithLink(string message, string hashTags, string link)
+        public string SendTweetWithLink(string message, string hashTags, string link, string date)
         {
-            const string delimiter = " ";
-
-            int charsLeft = TweetLength - hashTags.Length - link.Length - delimiter.Length*2;
+            int charsLeft = TweetLength - hashTags.Length - link.Length - date.Length - 5;
 
             if (message.Length > charsLeft) {
                 message = message.Substring(charsLeft - 3) + "...";
             }
 
-            return string.Concat(message, delimiter, hashTags, delimiter, link);
+            return string.Concat(message, " ", "(", date, ") ", hashTags, " ", link);
         }
 
     }
