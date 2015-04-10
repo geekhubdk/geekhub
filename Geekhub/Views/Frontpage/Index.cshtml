@@ -5,6 +5,13 @@
     </section>
     <a class="dimmed-see-more" href="@Url.Action("About", "Articles")">Læs mere om Geekhub</a>
 
+    <div class="devdk-banner">
+        <img class="devdk-banner-logo" src="~/Public/Images/devdk.svg">
+        <p>
+            Vi er igang med at bygge næste version af Geekhub sammen med devdk i Node, AngularJS og MongoDB. Vil du være med? Så join us på <a href="http://slack.devdk.org">slack.devdk.org</a> i rummet #eventsite, eller <a href="@("https://medium.com/@geekhubdk/lad-os-bygge-en-f%C3%A6lles-liste-over-udvikler-events-cf4b9e2b400a")">læs mere her</a>.
+        </p>
+    </div>
+
     <h2>Find events i din by:</h2>
     @Html.Action("MeetingsForFrontpage", "Meetings")
     <div style="margin-top: 10px;">
